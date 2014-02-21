@@ -2,11 +2,18 @@ ruby '2.1.0'
 #ruby-gemset=coursewareofthefuture
 source 'https://rubygems.org'
 
+# gem 'carrierwave'
+# gem 'cancan'
 gem 'coffee-rails', '~> 4.0.0'
+# gem 'decent_exposure'
+# gem 'fog'
+# gem 'foundation-rails'
+# gem 'haml-rails'
 gem 'jquery-rails'
 gem 'pg'
 gem 'rails'
 gem 'sass-rails', '~> 4.0.0'
+# gem 'simple_form'
 gem 'uglifier', '>= 1.3.0'
 
 # Waiting for us to do the in-class deployments!
