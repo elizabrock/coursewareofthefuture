@@ -27,3 +27,17 @@ group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
+
+group :test, :development do
+  gem 'cucumber-rails'
+  gem 'database_cleaner'
+  gem 'email_spec'
+  gem 'fabrication'
+  gem 'letter_opener'
+  gem 'poltergeist'
+  gem 'rspec-rails'
+  gem 'rspec'
+  gem 'shoulda-matchers'
+  gem 'webmock'
+  gem 'vcr'
+end
