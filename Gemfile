@@ -36,12 +36,15 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :development do
+  gem 'letter_opener'
+end
+
 group :test, :development do
   gem 'database_cleaner'
   gem 'email_spec'
   gem 'fabrication'
   gem 'faker'
-  gem 'letter_opener'
   gem 'poltergeist'
   gem 'rspec-rails'
   gem 'rspec'
