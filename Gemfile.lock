@@ -64,6 +64,7 @@ GEM
       nokogiri (>= 1.5.0)
       rails (>= 3.0.0)
     database_cleaner (1.2.0)
+    decent_exposure (2.3.1)
     devise (3.2.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -78,6 +79,8 @@ GEM
     erubis (2.7.0)
     execjs (2.0.2)
     fabrication (2.9.8)
+    faker (1.2.0)
+      i18n (~> 0.5)
     foundation-rails (5.1.1.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
@@ -220,9 +223,11 @@ DEPENDENCIES
   coveralls
   cucumber-rails
   database_cleaner
+  decent_exposure
   devise
   email_spec
   fabrication
+  faker
   foundation-rails
   haml-rails
   jbuilder (~> 1.2)

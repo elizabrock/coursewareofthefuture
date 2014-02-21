@@ -1,0 +1,6 @@
+%h1= student.name
+%p= student.phone
+%p= student.email
+
+- if student == current_student
+  %p= link_to "Edit My Profile", edit_student_registration_path
