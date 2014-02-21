@@ -49,5 +49,6 @@ group :test, :development do
 end
 
 group :test do
+  gem 'coveralls'
   gem 'cucumber-rails', require: false
 end
