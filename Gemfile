@@ -13,7 +13,7 @@ gem 'jquery-rails'
 gem 'pg'
 gem 'rails'
 gem 'sass-rails', '~> 4.0.0'
-# gem 'simple_form'
+gem 'simple_form'
 gem 'uglifier', '>= 1.3.0'
 
 # Waiting for us to do the in-class deployments!
