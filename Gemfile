@@ -29,7 +29,6 @@ group :doc do
 end
 
 group :test, :development do
-  gem 'cucumber-rails'
   gem 'database_cleaner'
   gem 'email_spec'
   gem 'fabrication'
@@ -40,4 +39,8 @@ group :test, :development do
   gem 'shoulda-matchers'
   gem 'webmock'
   gem 'vcr'
+end
+
+group :test do
+  gem 'cucumber-rails', require: false
 end
