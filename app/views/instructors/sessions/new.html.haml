@@ -1,0 +1,8 @@
+%h2 Instructor Sign In
+= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+  = f.input :email
+  = f.input :password
+  = f.button :submit, "Sign in"
+
+= link_to "Forgot your instructor password?", new_instructor_password_path
+%br/

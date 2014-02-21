@@ -1,5 +1,5 @@
 Feature: Student profiles
-  As a teacher
+  As an instructor
   I want my students to have profiles
   So that I can tell them apart
 
@@ -13,7 +13,7 @@ Feature: Student profiles
     Then I should be on the sign in page
     And I should see "You need to sign in or sign up before continuing."
 
-  Scenario: Viewing the student list
+  Scenario: Viewing the student list, as a student
     Given the following students:
       | name       |
       | Jill Smith |
@@ -24,12 +24,34 @@ Feature: Student profiles
       | Bob Jones  |
       | Jill Smith |
 
-  Scenario: Viewing a student's profile
+  Scenario: Viewing the student list, as an instructor
+    Given the following students:
+      | name       |
+      | Jill Smith |
+      | Bob Jones  |
+    And I am signed in as an instructor
+    When I go to the student list page
+    Then I should see the following list:
+      | Bob Jones  |
+      | Jill Smith |
+
+  Scenario: Viewing a student's profile, as a student
     Given the following students:
       | name       | phone            | email          |
       | Jill Smith | (615) 403 - 5055 | jill@smith.com |
       | Bob Jones  | (858) 205 - 9255 | bob@jones.com  |
     And I am signed in as Jill Smith
+    When I go to the student list page
+    And I click "Bob Jones"
+    Then I should see "(858) 205 - 9255"
+    And I should see "bob@jones.com"
+    And I should not see "Edit My Profile"
+
+  Scenario: Viewing a student's profile, as an instructor
+    Given the following students:
+      | name       | phone            | email          |
+      | Bob Jones  | (858) 205 - 9255 | bob@jones.com  |
+    And I am signed in as an instructor
     When I go to the student list page
     And I click "Bob Jones"
     Then I should see "(858) 205 - 9255"

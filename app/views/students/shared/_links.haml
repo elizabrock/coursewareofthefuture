@@ -1,6 +1,8 @@
 - if controller_name != 'sessions'
   = link_to "Sign in", new_session_path(resource_name)
   %br/
+= link_to "Instructor Sign In", new_instructor_session_path
+%br/
 - if devise_mapping.registerable? && controller_name != 'registrations'
   = link_to "Sign up", new_registration_path(resource_name)
   %br/
