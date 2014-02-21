@@ -8,7 +8,14 @@ gem 'pg'
 gem 'rails'
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'unicorn'
+
+# Waiting for us to do the in-class deployments!
+# gem 'honeybadger'
+# gem 'unicorn'
+#
+# group :production do
+#   gem 'rails_12factor'
+# end
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
