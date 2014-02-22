@@ -22,13 +22,13 @@
 // $base-line-height: 150%;
 
 // We use this to control whether or not CSS classes come through in the gem files.
-// $include-html-classes: true;
+$include-html-classes: false;
 // $include-print-styles: true;
-// $include-html-global-classes: $include-html-classes;
+$include-html-global-classes: true;
 
 // Grid
 
-// $include-html-grid-classes: $include-html-classes;
+$include-html-grid-classes: true;
 // $include-xl-html-grid-classes: false;
 
 // $row-width: rem-calc(1000);
@@ -38,7 +38,7 @@
 // We use these to control various global styles
 // $body-bg: #fff;
 // $body-font-color: #222;
-// $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-family: "proxima-nova", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: normal;
 // $body-font-style: normal;
 
@@ -51,6 +51,8 @@
 // $default-float: left;
 
 // We use these as default colors throughout
+$happygreen: #43ac6a;
+// $primary-color: $happygreen;
 // $primary-color: #008CBA;
 // $secondary-color: #e7e7e7;
 // $alert-color: #f04124;
@@ -110,7 +112,7 @@
 // TYPOGRAPHY
 //
 
-// $include-html-type-classes: $include-html-classes;
+$include-html-type-classes: true;
 
 // We use these to control header font styles
 // $header-font-family: $body-font-family;
@@ -1194,3 +1196,7 @@
 // $include-html-visibility-classes: $include-html-classes;
 
 @import 'foundation';
+
+#header {
+  // background-color: $happygreen;
+}

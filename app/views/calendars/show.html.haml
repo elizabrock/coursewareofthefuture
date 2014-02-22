@@ -1,0 +1,6 @@
+%h1 Course Calendar
+
+
+= calendar(year: 2014, month: 1){ |d| link_to "#{d.mday}#{'<br />Project Due!' if d.mday == 15}".html_safe, "#" }
+= calendar(year: 2014, month: 2){ |d| link_to d.mday, "#" }
+= calendar(year: 2014, month: 3){ |d| link_to d.mday, "#" }

@@ -7,20 +7,31 @@
     = stylesheet_link_tag    "application"
     = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tags
+    - unless Rails.env.test?
+      <script type="text/javascript" src="//use.typekit.net/dtg5jaa.js"></script>
+      <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   %body
     - if notice
       .alert-box.success= notice
     - if alert
       .alert-box.alert= alert
-    %ul#main_navigation
-      - if student_signed_in?
-        %li= link_to "My Profile", student_path(current_student)
-        %li= link_to "Sign Out", destroy_student_session_path, method: :delete
-      - elsif instructor_signed_in?
-        %li= link_to "Sign Out", destroy_instructor_session_path, method: :delete
-      - else
-        %li= link_to "Sign Up", new_student_registration_path
-        %li= link_to "Sign In", new_student_session_path
+    #header.row
+      .small-12.columns
+        %h4.left The Courseware.. of the Future!
+        %ul#devise_navigation.right
+          - if student_signed_in?
+            %li= link_to "My Profile", student_path(current_student)
+            %li= link_to "Sign Out", destroy_student_session_path, method: :delete
+          - elsif instructor_signed_in?
+            %li= link_to "Sign Out", destroy_instructor_session_path, method: :delete
+          - else
+            %li= link_to "Sign Up", new_student_registration_path
+            %li= link_to "Sign In", new_student_session_path
+        %ul#main_navigation
+          %li= link_to "Syllabus", root_path
+          %li= link_to "Course Calendar", calendar_path
+          %li= link_to "Materials", materials_path
+          %li= link_to "Assignments", assignments_path
     .row
       .small-12.columns
         = yield
