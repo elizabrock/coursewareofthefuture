@@ -1,4 +1,6 @@
-%p Welcome to the courseware of the future!
-%h1= course.title
-:markdown
-  #{ course.syllabus }
+- if course
+  %h1= course.title
+  :markdown
+    #{ course.syllabus }
+- else
+  %p There is no active course at this time.

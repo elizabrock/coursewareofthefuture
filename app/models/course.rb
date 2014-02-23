@@ -2,6 +2,8 @@ class Course < ActiveRecord::Base
   validates_presence_of :title, :syllabus, :start_date, :end_date
   validate :only_one_active_course
 
+  has_many :events
+
   def self.active
     @@active_course = Course.where(active_course: true).first
   end

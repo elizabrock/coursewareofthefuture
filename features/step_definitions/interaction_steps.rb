@@ -41,3 +41,17 @@ end
 Then(/^I should see a "(.*?)" tag with the content "(.*?)"$/) do |tag, text|
   page.should have_css(tag, text: text)
 end
+
+Then /^(?:|I )should see the following:$/ do |table|
+  table.raw.each_with_index do |content, row|
+    page.should have_content(content[0])
+  end
+end
+
+Then(/^I should see the following calendar entries:$/) do |table|
+  table.raw.each do |row|
+    date = row[0]
+    notice = row[1]
+    page.should have_css("td[data-date='#{date}']", text: notice)
+  end
+end

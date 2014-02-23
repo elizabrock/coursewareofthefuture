@@ -231,7 +231,7 @@ $include-html-type-classes: true;
 
 // Alert Boxes
 
-// $include-html-alert-classes: $include-html-classes;
+$include-html-alert-classes: true;
 
 // We use this to control alert padding.
 // $alert-padding-top: rem-calc(14);
@@ -268,7 +268,7 @@ $include-html-type-classes: true;
 
 // Block Grid
 
-// $include-html-grid-classes: $include-html-classes;
+$include-html-grid-classes: true;
 
 // We use this to control the maximum number of block grid elements per row
 // $block-grid-elements: 12;
@@ -311,7 +311,7 @@ $include-html-type-classes: true;
 // BUTTONS
 //
 
-// $include-html-button-classes: $include-html-classes;
+$include-html-button-classes: true;
 
 // We use these to build padding for buttons.
 // $button-tny: rem-calc(10);
@@ -358,7 +358,7 @@ $include-html-type-classes: true;
 
 // Clearing
 
-// $include-html-clearing-classes: $include-html-classes;
+$include-html-clearing-classes: true;
 
 // We use these to set the background colors for parts of Clearing.
 // $clearing-bg: #333;
@@ -471,7 +471,7 @@ $include-html-type-classes: true;
 
 // Forms
 
-// $include-html-form-classes: $include-html-classes;
+$include-html-form-classes: true;
 
 // We use this to set the base for lots of form spacing and positioning styles
 // $form-spacing: rem-calc(16);
@@ -536,7 +536,7 @@ $include-html-type-classes: true;
 
 // Inline Lists
 
-// $include-html-inline-list-classes: $include-html-classes;
+$include-html-inline-list-classes: true;
 
 // We use this to control the margins and padding of the inline list.
 // $inline-list-top-margin: 0;
@@ -1027,7 +1027,7 @@ $include-html-type-classes: true;
 
 // Tables
 
-// $include-html-table-classes: $include-html-classes;
+$include-html-table-classes: true;
 
 // These control the background color for the table and even rows
 // $table-bg: #fff;
@@ -1193,10 +1193,45 @@ $include-html-type-classes: true;
 // VISIBILITY CLASSES
 //
 
-// $include-html-visibility-classes: $include-html-classes;
+$include-html-visibility-classes: true;
 
 @import 'foundation';
 
 #header {
   // background-color: $happygreen;
+}
+
+
+#main_navigation {
+  margin: 1em 0;
+  padding: 0 0 20px 10px;
+  border-bottom: 1px solid #000;
+  ul, li {
+    margin: 0;
+    padding: 0;
+    display: inline;
+    list-style-type: none;
+  }
+  a:link, a:visited {
+    float: left;
+    line-height: 14px;
+    font-weight: bold;
+    margin: 0 10px 4px 10px;
+    text-decoration: none;
+    color: #999;
+  }
+
+  a:link#current, a:visited#current, a:hover {
+    border-bottom: 4px solid #000;
+    padding-bottom: 2px;
+    background: transparent;
+    color: #000;
+  }
+
+  a:hover { color: #000; }
+}
+
+.calendar {
+  td { width: 14% }
+  .monthName { text-align: center; }
 }

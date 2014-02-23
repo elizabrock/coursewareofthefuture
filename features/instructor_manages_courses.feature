@@ -11,6 +11,12 @@ Feature: Instructor manages courses
     And I check "Active course"
     And I press "Create Course"
     Then I should see "Course was successfully created"
+    And I should see the following course in the database:
+      | title         | Cohort 4   |
+      | syllabus      | Foobar     |
+      | start_date    | 2014/01/24 |
+      | end_date      | 2014/03/24 |
+      | active_course | true       |
 
   Scenario: Only the information for the active course is shown to students
     Given the following inactive courses:

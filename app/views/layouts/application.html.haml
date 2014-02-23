@@ -15,25 +15,29 @@
       .alert-box.success= notice
     - if alert
       .alert-box.alert= alert
-    #header.row
-      .small-12.columns
-        %h4
-          Inquizator
-          %span.small The Courseware.. of the Future!
-        %ul#devise_navigation.right
-          - if student_signed_in?
-            %li= link_to "My Profile", student_path(current_student)
-            %li= link_to "Sign Out", destroy_student_session_path, method: :delete
-          - elsif instructor_signed_in?
-            %li= link_to "Sign Out", destroy_instructor_session_path, method: :delete
-          - else
-            %li= link_to "Sign Up", new_student_registration_path
-            %li= link_to "Sign In", new_student_session_path
-        %ul#main_navigation
-          %li= link_to "Syllabus", root_path
-          %li= link_to "Course Calendar", calendar_path
-          %li= link_to "Materials", materials_path
-          %li= link_to "Assignments", assignments_path
+    #header
+      .row
+        .small-6.columns
+          %h3
+            Inquizator
+            %small The Courseware.. of the Future!
+        .small-6.columns
+          %ul#devise_navigation.inline-list.right
+            - if student_signed_in?
+              %li= link_to "My Profile", student_path(current_student)
+              %li= link_to "Sign Out", destroy_student_session_path, method: :delete
+            - elsif instructor_signed_in?
+              %li= link_to "Sign Out", destroy_instructor_session_path, method: :delete
+            - else
+              %li= link_to "Sign Up", new_student_registration_path
+              %li= link_to "Sign In", new_student_session_path
+      .row
+        .small-12.columns
+          %ul#main_navigation
+            %li= link_to "Syllabus", root_path, id: current_if("courses")
+            %li= link_to "Course Calendar", calendar_path, id: current_if("calendars")
+            %li= link_to "Materials", materials_path, id: current_if("materials")
+            %li= link_to "Assignments", assignments_path, id: current_if("assignments")
     .row
       .small-12.columns
         = yield

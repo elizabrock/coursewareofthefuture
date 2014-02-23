@@ -1,6 +1,4 @@
 %h1 Course Calendar
 
-
-= calendar(year: 2014, month: 1){ |d| link_to "#{d.mday}#{'<br />Project Due!' if d.mday == 15}".html_safe, "#" }
-= calendar(year: 2014, month: 2){ |d| link_to d.mday, "#" }
-= calendar(year: 2014, month: 3){ |d| link_to d.mday, "#" }
+- (course.start_date.change(day: 1)..course.end_date).select{ |d| d.day == 1 }.each do |first_of_month|
+  = calendar(year: first_of_month.year, month: first_of_month.month){ |d| format_calendar_date(d, course) }

@@ -1,3 +1,3 @@
 class CoursesController < ApplicationController
-  expose(:course){ Course.active }
+  skip_before_filter :authenticate!
 end
