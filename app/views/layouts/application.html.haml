@@ -17,7 +17,9 @@
       .alert-box.alert= alert
     #header.row
       .small-12.columns
-        %h4.left The Courseware.. of the Future!
+        %h4
+          Inquizator
+          %span.small The Courseware.. of the Future!
         %ul#devise_navigation.right
           - if student_signed_in?
             %li= link_to "My Profile", student_path(current_student)

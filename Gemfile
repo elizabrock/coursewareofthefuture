@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 # gem 'carrierwave'
 # gem 'cancan'
+gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'calendar_helper'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'decent_exposure'
