@@ -27,3 +27,17 @@ Then /^(?:|I )should see the following list:$/ do |table|
     page.should have_xpath("//ul/li[#{row+1}][contains(normalize-space(.), '#{content[0]}')] | //ol/li[#{row+1}][contains(normalize-space(.), '#{content[0]}')] ")
   end
 end
+
+When(/^I select (\d+) (\w+) (\d+) from "(.*?)"$/) do |year, month, day, tag|
+  select year, from: "#{tag}_1i"
+  select month, from: "#{tag}_2i"
+  select day, from: "#{tag}_3i"
+end
+
+When(/^I check "(.*?)"$/) do |label|
+  check label
+end
+
+Then(/^I should see a "(.*?)" tag with the content "(.*?)"$/) do |tag, text|
+  page.should have_css(tag, text: text)
+end

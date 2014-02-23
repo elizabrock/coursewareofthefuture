@@ -5,6 +5,12 @@ Given(/^I am signed in as (.*)$/) do |name|
     fill_in "Email", with: @instructor.email
     fill_in "Password", with: "password"
     click_button "Login"
+  elsif name == "a student"
+    @student = Fabricate(:student)
+    visit new_student_session_path
+    fill_in "Email", with: @student.email
+    fill_in "Password", with: "password"
+    click_button "Sign in"
   else
     @student = Student.where(name: name).first
     visit new_student_session_path

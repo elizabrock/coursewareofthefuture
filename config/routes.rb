@@ -1,5 +1,5 @@
 Coursewareofthefuture::Application.routes.draw do
-  root 'home#index'
+  root 'courses#show'
 
   devise_for :students, controllers: { registrations: :registrations }
   resources :students, only: [:index, :show]

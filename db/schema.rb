@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140223161553) do
+ActiveRecord::Schema.define(version: 20140223164436) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 20140223161553) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "courses", force: true do |t|
+    t.string   "title"
+    t.text     "syllabus"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.boolean  "active_course"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "instructors", force: true do |t|
     t.string   "email",                  default: "", null: false
