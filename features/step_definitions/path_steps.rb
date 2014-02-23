@@ -4,6 +4,8 @@ def path_to path_descriptor
     root_path
   when "the sign in page"
     new_student_session_path
+  when "the instructor sign in page"
+    new_instructor_session_path
   when 'my profile page'
     student_path(@student)
   when 'the student list page'

@@ -1,5 +1,4 @@
 Coursewareofthefuture::Application.routes.draw do
-  devise_for :instructors
   root 'home#index'
 
   devise_for :students, controllers: { registrations: :registrations }
@@ -7,4 +6,7 @@ Coursewareofthefuture::Application.routes.draw do
   resource :calendar, only: [:show]
   resources :assignments, only: [:index, :show]
   resources :materials, only: [:index, :show]
+
+  devise_for :instructors, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
 end
