@@ -12,10 +12,17 @@ Note: setup figaro
 
 ## Deployment Instructions
 
+### First Deployment
+
 1. `heroku create inquizator`
 2. `git push heroku master`
     * You may need to run `heroku keys:add`
-3. 
+3. `heroku run rake db:migrate`
+
+### Subsequent Deployments
+
+1. `git push heroku master`
+2. `heroku run rake db:migrate`
 
 ## Name Ideas
 
