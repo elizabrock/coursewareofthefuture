@@ -5,6 +5,8 @@ require File.expand_path('../config/application', __FILE__)
 
 Coursewareofthefuture::Application.load_tasks
 
-require 'coveralls/rake/task'
-Coveralls::RakeTask.new
-task :test_with_coveralls => [:spec, :cucumber, 'coveralls:push']
+unless Rails.env.production?
+  require 'coveralls/rake/task'
+  Coveralls::RakeTask.new
+  task :test_with_coveralls => [:spec, :cucumber, 'coveralls:push']
+end
