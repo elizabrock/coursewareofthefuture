@@ -19,6 +19,10 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'simple_form'
 gem 'uglifier', '>= 1.3.0'
 
+group :production do
+  gem 'rails_12factor'
+end
+
 # Waiting for us to do the in-class deployments!
 # gem 'fog'
 # gem 'honeybadger'
