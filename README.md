@@ -8,6 +8,8 @@ This will be the new courseware for Nashville Software School.
 [![Build Status](https://travis-ci.org/elizabrock/coursewareofthefuture.png?branch=master)](https://travis-ci.org/elizabrock/coursewareofthefuture)
 [![Coverage Status](https://coveralls.io/repos/elizabrock/coursewareofthefuture/badge.png?branch=master)](https://coveralls.io/r/elizabrock/coursewareofthefuture?branch=master)
 
+Note: setup figaro
+
 ## Deployment Instructions
 
 1. `heroku create inquizator`
