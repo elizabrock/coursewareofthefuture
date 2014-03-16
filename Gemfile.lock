@@ -290,7 +290,7 @@ DEPENDENCIES
   letter_opener
   pg
   poltergeist
-  rails
+  rails (~> 4.0.0)
   rails_12factor
   redcarpet
   rspec
