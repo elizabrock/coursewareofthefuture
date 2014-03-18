@@ -13,6 +13,7 @@ gem 'foundation-rails'
 gem 'fabrication'
 gem 'haml-rails'
 gem 'jquery-rails'
+gem 'omniauth-github'
 gem 'pg'
 gem 'rails', '~> 4.0.0'
 gem 'redcarpet'
@@ -28,10 +29,6 @@ end
 # gem 'fog'
 # gem 'honeybadger'
 # gem 'unicorn'
-#
-# group :production do
-#   gem 'rails_12factor'
-# end
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -56,11 +53,11 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'rspec'
   gem 'shoulda-matchers'
-  gem 'webmock'
-  gem 'vcr'
 end
 
 group :test do
   gem 'coveralls'
   gem 'cucumber-rails', require: false
+  gem 'webmock'
+  gem 'vcr'
 end

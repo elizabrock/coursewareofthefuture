@@ -1,11 +1,6 @@
 Fabricator(:student) do
+  github_uid { sequence(:uid, 12345).to_s }
+  github_username { sequence(:username){ |i| "bob#{i}" } }
   name { Faker::Name.name }
   email{ Faker::Internet.email }
-  password "password"
-  password_confirmation "password"
-  confirmed_at Time.now
-end
-
-Fabricator(:unconfirmed_student, from: :student) do
-  confirmed_at nil
 end
