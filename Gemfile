@@ -48,7 +48,7 @@ group :development do
 end
 
 group :test, :development do
-  gem 'cucumber-timecop'
+  # gem 'cucumber-timecop'
   gem 'database_cleaner'
   gem 'email_spec'
   gem 'faker'
