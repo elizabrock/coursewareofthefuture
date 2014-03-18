@@ -11,6 +11,7 @@ Coursewareofthefuture::Application.routes.draw do
   resource :calendar, only: [:show]
   resources :assignments, only: [:index, :show]
   resources :materials, only: [:index, :show], constraints: { id: /.*/ }
+  resources :self_reports
 
   devise_for :instructors, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
