@@ -67,6 +67,11 @@ ActiveRecord::Schema.define(version: 20140223175851) do
   add_index "instructors", ["email"], name: "index_instructors_on_email", unique: true, using: :btree
   add_index "instructors", ["reset_password_token"], name: "index_instructors_on_reset_password_token", unique: true, using: :btree
 
+  create_table "self_reports", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "students", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -89,5 +94,13 @@ ActiveRecord::Schema.define(version: 20140223175851) do
 
   add_index "students", ["email"], name: "index_students_on_email", unique: true, using: :btree
   add_index "students", ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true, using: :btree
+
+  create_table "table_self_reports", force: true do |t|
+    t.boolean  "attended"
+    t.float    "hours_coding"
+    t.float    "hours_learning"
+    t.float    "hours_slept"
+    t.datetime "date"
+  end
 
 end
