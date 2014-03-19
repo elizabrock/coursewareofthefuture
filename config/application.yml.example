@@ -1,4 +1,5 @@
 # Add application configuration variables here, as shown below.
 #
-# GITHUB_CLIENT_ID: 6420f58670f870ffcda8
-# GITHUB_CLIENT_SECRET: ASK_ELIZA
+GITHUB_CLIENT_ID: 6420f58670f870ffcda8
+GITHUB_CLIENT_SECRET: ASK_ELIZA
+MATERIALS_REPO: "elizabrock/inquizator-test-repo"
