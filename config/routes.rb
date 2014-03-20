@@ -1,4 +1,5 @@
 Coursewareofthefuture::Application.routes.draw do
+
   root 'courses#show'
 
   devise_for :students, controllers: { omniauth_callbacks: :omniauth_callbacks }
