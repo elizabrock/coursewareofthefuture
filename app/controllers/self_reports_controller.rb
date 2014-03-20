@@ -1,0 +1,2 @@
+class SelfReportsController < ApplicationController
+end

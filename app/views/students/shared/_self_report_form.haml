@@ -1,0 +1,6 @@
+=simple_form_for :self_report, form_html: {class: 'small-2 columns'} do |f|
+=f.input :attended, as: :radio_buttons, wrapper_html:{class: 'small-2 columns'}
+=f.input :hours_coding, collection: 0..10, wrapper_html: {class: 'small-1 columns'}
+=f.input :hours_learning, collection: 0..10, wrapper_html: {class: 'small-1 columns'}
+=f.input :hours_slept, collection: 0..10, wrapper_html: {class: 'small-1 columns'}
+=f.button :submit, wrapper_html: {class: 'small-1 columns'}
