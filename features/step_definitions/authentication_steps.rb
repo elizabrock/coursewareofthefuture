@@ -6,7 +6,7 @@ Given(/^I am signed in as (.*)$/) do |name|
     fill_in "Password", with: "password"
     click_button "Login"
   elsif name == "a student"
-    @student = Fabricate(:student)
+    @student = Fabricate.build(:student)
     sign_into_github_as(@student.github_username, @student.github_uid)
     visit '/students/auth/github'
   else
@@ -24,6 +24,9 @@ def sign_into_github_as(username, uid = nil)
   uid ||= '12345'
   OmniAuth.config.add_mock(:github, {
     uid: uid,
+    credentials: {
+      token: "d141ef15f79ca4c6f43a8c688e0434648f277f20",
+    },
     info: {
       nickname: username,
       email: "#{username}smith@example.com",

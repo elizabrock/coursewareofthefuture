@@ -16,10 +16,11 @@ Feature: Student authentication
     Then I should not see "Sign Out"
     And I should see "Sign In with Github"
     And I should see the following student in the database:
-      | email           | joesmith@example.com |
-      | github_uid      | 12345                |
-      | github_username | joe                  |
-      | name            | Joe Smith            |
+      | email               | joesmith@example.com                     |
+      | github_uid          | 12345                                    |
+      | github_username     | joe                                      |
+      | name                | Joe Smith                                |
+      | github_access_token | d141ef15f79ca4c6f43a8c688e0434648f277f20 |
 
   Scenario: Student can log in and log out with github
     Given the following student:
