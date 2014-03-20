@@ -16,23 +16,27 @@ I want to see a calendare that allows me to self-report several metrics.
     And that course has the following events:
       | date       | summary         |
       | 2014/03/25 | Federal Holiday |
-      | 2014/03/20 | No Class        |
+      | 2014/03/19 | No Class        |
       | Time.now.strftime("%Y-%m-%d") | Today           |
     And I am signed in as a student
     And I follow "Course Calendar"
 
 
-  @focus
   Scenario: Student sees 'today' in calendar under today's date.
     Then I should see "Sun"
     And I should see "Today"
 
-  @focus
   Scenario: Student sees a self-report form
     Then I should see a "label" tag with the content "Attended class"
     And I should see a "label" tag with the content "Hours coding"
     And I should see a "label" tag with the content "Hours learning"
     And I should see a "label" tag with the content "Hours slept"
 
-#  Scenario: Student enters self-report form for yesterday
-#    Then I fill 
+  @focus
+  Scenario: Student enters self-report form
+    When I choose "Yes" within "td[data-date='2014-03-19']"
+    And I select "1" from "self_report_hours_coding" within "td[data-date='2014-03-19']"
+    And I select "2" from "self_report_hours_learning" within "td[data-date='2014-03-19']"
+    And I select "3" from "self_report_hours_slept" within "td[data-date='2014-03-19']"
+    And I press "Submit" within the form for 2014-03-19
+    Then I should not see "that specific 'submit' button"
