@@ -1,3 +1,4 @@
+@wip
 Feature: Student Self Report
 As a student
 I want to see a calendare that allows me to self-report several metrics.
@@ -14,13 +15,12 @@ I want to see a calendare that allows me to self-report several metrics.
       | start_date | 2014/03/12 |
       | end_date   | 2014/06/20 |
     And that course has the following events:
-      | date       | summary         |
-      | 2014/03/25 | Federal Holiday |
-      | 2014/03/19 | No Class        |
+      | date                          | summary         |
+      | 2014/03/25                    | Federal Holiday |
+      | 2014/03/19                    | No Class        |
       | Time.now.strftime("%Y-%m-%d") | Today           |
     And I am signed in as a student
     And I follow "Course Calendar"
-
 
   Scenario: Student sees 'today' in calendar under today's date.
     Then I should see "Sun"
@@ -32,7 +32,6 @@ I want to see a calendare that allows me to self-report several metrics.
     And I should see a "label" tag with the content "Hours learning"
     And I should see a "label" tag with the content "Hours slept"
 
-  @focus
   Scenario: Student enters self-report form
     When I choose "Yes" within "td[data-date='2014-03-19']"
     And I select "1" from "self_report_hours_coding" within "td[data-date='2014-03-19']"
