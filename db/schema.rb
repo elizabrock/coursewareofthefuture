@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140319223726) do
+ActiveRecord::Schema.define(version: 20140321165343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,12 @@ ActiveRecord::Schema.define(version: 20140319223726) do
   create_table "self_reports", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "student_id"
+    t.boolean  "attended"
+    t.float    "hours_coding"
+    t.float    "hours_learning"
+    t.float    "hours_slept"
+    t.datetime "date"
   end
 
   create_table "students", force: true do |t|
@@ -91,13 +97,5 @@ ActiveRecord::Schema.define(version: 20140319223726) do
   end
 
   add_index "students", ["email"], name: "index_students_on_email", unique: true, using: :btree
-
-  create_table "table_self_reports", force: true do |t|
-    t.boolean  "attended"
-    t.float    "hours_coding"
-    t.float    "hours_learning"
-    t.float    "hours_slept"
-    t.datetime "date"
-  end
 
 end

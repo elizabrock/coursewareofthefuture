@@ -48,7 +48,6 @@ group :development do
 end
 
 group :test, :development do
-  # gem 'cucumber-timecop'
   gem 'database_cleaner'
   gem 'email_spec'
   gem 'faker'
@@ -56,6 +55,7 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'rspec'
   gem 'shoulda-matchers'
+  gem 'timecop'
 end
 
 group :test do

@@ -5,6 +5,8 @@ def selector_for(description)
   case description
   when /the form for (.*)/
     "form##{$1}"
+  when /the date (.*)/
+    "td[data-date='#{$1}']"
   else
     description.gsub('"','')
   end

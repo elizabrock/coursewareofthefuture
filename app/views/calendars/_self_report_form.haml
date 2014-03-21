@@ -1,6 +1,9 @@
 =simple_form_for :self_report, html: { id: date }, defaults: {input_html: {class: 'tiny radius'}} do |f|
   .row
     .small-12.columns
+      %p Please enter a self-report
+  .row
+    .small-12.columns
       =f.label "Attended class"
     .small-12.columns
       =f.collection_radio_buttons :attended, [[true, 'Yes'] ,[false, 'No']], :first, :last
