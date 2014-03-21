@@ -1,6 +1,7 @@
 class Student < ActiveRecord::Base
   devise :rememberable, :trackable, :omniauthable, :omniauth_providers => [:github]
 
+
   validates_format_of :email, with: /\A[^@]+@[^@]+\z/, message: "must be an email address"
 
   default_scope { order(name: :asc) }
@@ -19,4 +20,5 @@ class Student < ActiveRecord::Base
   def octoclient
     @octoclient ||= Octokit::Client.new(:access_token => github_access_token)
   end
+
 end
