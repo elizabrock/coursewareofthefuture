@@ -10,7 +10,7 @@ Coursewareofthefuture::Application.routes.draw do
   resources :student_profiles, except: [:destroy], path: :students
   resource :calendar, only: [:show]
   resources :assignments, only: [:index, :show]
-  resources :materials, only: [:index, :show]
+  resources :materials, only: [:index, :show], constraints: { id: /.*/ }
 
   devise_for :instructors, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

@@ -3,28 +3,28 @@ Then(/^I should see the materials tree from the inquizator\-test\-repo$/) do
     { title: "Computer Science",
       children: [
         { title: "Logic",
-          path: "computer-science/logic/logic.md",
+          path: "materials/computer-science/logic/logic.md",
           children: [ { title: "Truth Tables",
-                        path: "computer-science/logic/truth-tables.md" } ]
+                        path: "materials/computer-science/logic/truth-tables.md" } ]
         },
         { title: "Programming",
           children: [
             { title: "Advanced Programming",
               children: [ { title: "Garbage Collection",
-                            path: "computer-science/programming/advanced-programming/garbage-collection.md" } ]
+                            path: "materials/computer-science/programming/advanced-programming/garbage-collection.md" } ]
             },
             { title: "Basic Programming",
               children: [
                 { title: "Control Structures",
                   children: [
                     { title: "Basic Control Structures",
-                      path: "computer-science/programming/basic-programming/control-structures/basic-control-structures.md" }
+                      path: "materials/computer-science/programming/basic-programming/control-structures/basic-control-structures.md" }
                   ]
                 },
                 { title: "Data Structures and Types",
                   children: [
                     { title: "Booleans and Bits",
-                      path: "computer-science/programming/basic-programming/data-structures-and-types/booleans-and-bits/booleans-and-bits.md" }
+                      path: "materials/computer-science/programming/basic-programming/data-structures-and-types/booleans-and-bits/booleans-and-bits.md" }
                   ]
                 }
               ]
@@ -32,21 +32,21 @@ Then(/^I should see the materials tree from the inquizator\-test\-repo$/) do
             { title: "Functional Programming",
               children: [
                 { title: "Introduction to Functional Programming",
-                  path: "computer-science/programming/functional-programming/introduction-to-functional-programming.md" }
+                  path: "materials/computer-science/programming/functional-programming/introduction-to-functional-programming.md" }
               ]
             }
           ]
         }
       ]
     },
-    { title: "Life Skills", path: "life-skills/life-skills.md" },
+    { title: "Life Skills", path: "materials/life-skills/life-skills.md" },
     { title: "Rails",
       children: [
         { title: "ActionView",
-          children: [ { title: "ERB and Haml", path: "rails/actionview/erb-and-haml.md" } ]
+          children: [ { title: "ERB and Haml", path: "materials/rails/actionview/erb-and-haml.md" } ]
         },
         { title: "Ruby Ecosystem",
-          children: [ { title: "Nyan Cat", path: "rails/ruby-ecosystem/nyan-cat.md" } ]
+          children: [ { title: "Nyan Cat", path: "materials/rails/ruby-ecosystem/nyan-cat.md" } ]
         }
       ]
     }

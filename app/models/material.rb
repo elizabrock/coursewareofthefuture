@@ -1,5 +1,5 @@
 class Material
-  attr_accessor :path, :link, :filename, :children, :fullpath
+  attr_accessor :path, :link, :filename, :children, :fullpath, :content, :type
 
   def initialize(tree_item = nil)
     @children = []
@@ -7,14 +7,21 @@ class Material
     @fullpath = tree_item.path
     @filename = File.basename(@fullpath, ".md")
     @path = File.dirname(@fullpath)
+    @type = tree_item.type
     if tree_item.type == "blob"
-      @link = @fullpath
+      @link = "materials/" + @fullpath
+    end
+    if tree_item.type == "file"
+      @content = Base64.decode64(tree_item.content)
     end
   end
 
+  def self.source_repository
+    Rails.env.test? ? "elizabrock/inquizator-test-repo" : ENV["MATERIALS_REPO"]
+  end
+
   def self.root(client)
-    source = Rails.env.test? ? "elizabrock/inquizator-test-repo" : ENV["MATERIALS_REPO"]
-    tree = client.tree(source, "master", recursive: true).tree
+    tree = client.tree(source_repository, "master", recursive: true).tree
     ancestor_material = Material.new()
     tree.each do |item|
       path = item.path
@@ -31,6 +38,11 @@ class Material
       closer_ancestor = ancestor_material.find_child(subdirectory_or_file)
       populate_path_into(item, remaining_path, closer_ancestor)
     end
+  end
+
+  def self.lookup(path, client)
+    result = client.contents(source_repository, path: path)
+    Material.new(result)
   end
 
   def pretty_name
