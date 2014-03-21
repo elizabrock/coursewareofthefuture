@@ -9,8 +9,6 @@ module CalendarsHelper
     else
       s = d.mday.to_s
     end
-    # f = render_to_string(:partial => "/app/views/shared/_self_report_form.haml", :layout => false)
-    # (s<<f).html_safe
-    s<<render(partial: "self_report_form").to_s
+    s << render(partial: "self_report_form", locals: { date: d }).to_s
   end
 end

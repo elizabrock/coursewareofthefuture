@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140318182026) do
+ActiveRecord::Schema.define(version: 20140321165343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,30 +70,33 @@ ActiveRecord::Schema.define(version: 20140318182026) do
   create_table "self_reports", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "student_id"
+    t.boolean  "attended"
+    t.float    "hours_coding"
+    t.float    "hours_learning"
+    t.float    "hours_slept"
+    t.datetime "date"
   end
 
   create_table "students", force: true do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
+    t.string   "email",               default: "", null: false
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",       default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
     t.string   "phone"
+    t.string   "github_uid"
+    t.string   "github_username"
+    t.string   "avatar_url"
+    t.string   "github_access_token"
   end
 
   add_index "students", ["email"], name: "index_students_on_email", unique: true, using: :btree
-  add_index "students", ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true, using: :btree
 
   create_table "table_self_reports", force: true do |t|
     t.boolean  "attended"

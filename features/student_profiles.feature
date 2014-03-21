@@ -10,7 +10,7 @@ Feature: Student profiles
 
   Scenario: Student list is not visible to guests
     When I go to the student list page
-    Then I should be on the sign in page
+    Then I should be on the homepage
     And I should see "You need to sign in or sign up before continuing."
 
   Scenario: Viewing the student list, as a student
@@ -59,16 +59,14 @@ Feature: Student profiles
     And I should not see "Edit My Profile"
 
   Scenario: Editing my own profile, as a student
-    Given the following students:
-      | name          |
-      | Jillian Smith |
+    Given the following student:
+      | name | Jillian Smith |
     And I am signed in as Jillian Smith
     When I click "My Profile"
     And I click "Edit My Profile"
     And I fill in "Jill Smith" for "Name"
     And I fill in "jill@smith.com" for "Email"
     And I fill in "(615) 403 - 5055" for "Phone"
-    And I fill in "password" for "Current Password"
     And I press "Save Changes"
     Then I should be on my profile page
     And I should see "Your profile has been updated"
@@ -76,23 +74,16 @@ Feature: Student profiles
     And I should see "(615) 403 - 5055"
     And I should see "jill@smith.com"
 
-  Scenario: Changing my email/password
-    Given the following students:
-      | name       |
-      | John Smith |
-    And I am signed in as John Smith
-    When I follow "My Profile"
-    And I click "Edit"
-    And I fill in "newemail@example.com" for "Email"
-    And I fill in "newpassword" for "Password"
-    And I fill in "newpassword" for "Password Confirmation"
-    And I fill in "password" for "Current Password"
+  Scenario: Invalid profile update
+    Given the following student:
+      | name  | Jillian Smith  |
+      | email | jill@smith.com |
+    And I am signed in as Jillian Smith
+    When I click "My Profile"
+    And I click "Edit My Profile"
+    And I fill in "jillsmith.com" for "Email"
     And I press "Save Changes"
-    Then I should be on my profile page
-    And I should see "Your profile has been updated"
-    When I click "Sign Out"
-    And I follow "Sign In"
-    And I fill in "newemail@example.com" for "Email"
-    And I fill in "newpassword" for "Password"
-    And I press "Sign in"
-    Then I should see "Signed in successfully."
+    Then I should see "must be an email address"
+    When I go to my profile page
+    Then I should see "jill@smith.com"
+    And I should not see "jillsmith.com"

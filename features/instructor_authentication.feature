@@ -9,8 +9,7 @@ Feature: Instructor authentication
     Given the following instructor:
       | email | joe@example.com |
     When I go to the homepage
-    And I follow "Sign In"
-    And I follow "Instructor Sign In"
+    And I follow "Instructor Login"
     And I fill in "joe@example.com" for "Email"
     And I fill in "password" for "Password"
     And I press "Login"
@@ -19,7 +18,7 @@ Feature: Instructor authentication
     And I should not see "Login"
     When I follow "Logout"
     And I should not see "Logout"
-    And I should see "Sign In"
+    And I should see "Login"
 
   Scenario: Instructor password reset, happy path
     Given the following instructor:
@@ -38,8 +37,7 @@ Feature: Instructor authentication
     And I press "Change my password"
     Then I should see "Your password was changed successfully. You are now signed in."
     When I click "Logout"
-    And I click "Sign In"
-    And I follow "Instructor Sign In"
+    And I click "Instructor Login"
     And I fill in "Email" with "jil@email.com"
     And I fill in "Password" with "secret!!"
     And I press "Login"
@@ -55,8 +53,7 @@ Feature: Instructor authentication
     And I press "Create Instructor"
     Then I should see "Instructor was successfully created."
     When I click "Logout"
-    And I click "Sign In"
-    And I follow "Instructor Sign In"
+    And I click "Instructor Login"
     And I fill in "Email" with "joe@example.com"
     And I fill in "Password" with "secret123"
     And I press "Login"

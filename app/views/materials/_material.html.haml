@@ -1,0 +1,8 @@
+- materials.each do |material|
+  %li
+    - if material.link.present?
+      = link_to material.pretty_name, material.link
+    - else
+      %span= material.pretty_name
+    %ul= render partial: 'material', locals: { materials: material.children }
+

@@ -1,0 +1,20 @@
+module WithinHelpers
+  def with_scope(locator)
+    locator ? within(*selector_for(locator)) { yield } : yield
+  end
+end
+World(WithinHelpers)
+
+def selector_for(description)
+  nth_hash = { 'first' => 1, 'second' => 2, 'third' => 3, 'fourth' => 4, 'fifth' => 5}
+  case description
+  when (/^the form for (\d+)-(\d+)-(\d+)$/) 
+    'div[data-date="$1-$2-$3"] form.self_report'
+  else
+    description.gsub('"','')
+  end
+end
+
+When /^(.*) within ([^:]*)$/ do |stepdescription, parent|
+  with_scope(parent) { step stepdescription }
+end
