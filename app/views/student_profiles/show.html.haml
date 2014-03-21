@@ -3,8 +3,9 @@
 %p= student.email
 - if current_instructor
   %p= student.goals
-
+  %p= student.background
 
 - if student == current_student
   %p= student.goals
+  %p= student.background
   %p= link_to "Edit My Profile", edit_student_profile_path
