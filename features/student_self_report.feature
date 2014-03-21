@@ -33,9 +33,9 @@ I want to see a calendare that allows me to self-report several metrics.
     And I should see a "label" tag with the content "Hours slept"
 
   Scenario: Student enters self-report form
-    When I choose "Yes" within "td[data-date='2014-03-19']"
-    And I select "1" from "self_report_hours_coding" within "td[data-date='2014-03-19']"
-    And I select "2" from "self_report_hours_learning" within "td[data-date='2014-03-19']"
-    And I select "3" from "self_report_hours_slept" within "td[data-date='2014-03-19']"
+    When I choose "Yes" within the form for 2014-03-19
+    And I select "1" from "self_report_hours_coding" within the form for 2014-03-19
+    And I select "2" from "self_report_hours_learning" within the form for 2014-03-19
+    And I select "3" from "self_report_hours_slept" within the form for 2014-03-19
     And I press "Submit" within the form for 2014-03-19
     Then I should not see "that specific 'submit' button"

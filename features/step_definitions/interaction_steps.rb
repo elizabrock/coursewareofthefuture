@@ -34,6 +34,14 @@ When(/^I select (\d+) (\w+) (\d+) from "(.*?)"$/) do |year, month, day, tag|
   select day, from: "#{tag}_3i"
 end
 
+When(/^I choose "([^"]*)"$/) do |label|
+  choose label
+end
+
+When(/^I select "([^"]*)" from "([^"]*)"$/) do |option, selector|
+  select(option, :from => selector)
+end
+
 When(/^I check "(.*?)"$/) do |label|
   check label
 end
