@@ -3,4 +3,5 @@ class Student < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   default_scope { order(name: :asc) }
+  has_many :self_reports
 end
