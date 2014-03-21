@@ -55,6 +55,7 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'rspec'
   gem 'shoulda-matchers'
+  gem 'timecop'
 end
 
 group :test do

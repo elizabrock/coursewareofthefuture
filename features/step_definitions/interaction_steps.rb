@@ -10,15 +10,15 @@ When(/^I fill in "(.*?)" with "(.*?)"$/) do |label, value|
   fill_in(label, with: value)
 end
 
-When(/^I press "(.*?)"$/) do |text|
+When(/^I press "([^"]*)"$/) do |text|
   click_button text
 end
 
-Then(/^I should see "(.*?)"$/) do |text|
+Then(/^I should see "([^"]*)"$/) do |text|
   page.should have_content(text)
 end
 
-Then(/^I should not see "(.*?)"$/) do |text|
+Then(/^I should not see "([^"]*)"$/) do |text|
   page.should_not have_content(text)
 end
 
@@ -32,6 +32,14 @@ When(/^I select (\d+) (\w+) (\d+) from "(.*?)"$/) do |year, month, day, tag|
   select year, from: "#{tag}_1i"
   select month, from: "#{tag}_2i"
   select day, from: "#{tag}_3i"
+end
+
+When(/^I choose "([^"]*)"$/) do |label|
+  choose label
+end
+
+When(/^I select "([^"]*)" from "([^"]*)"$/) do |option, selector|
+  select(option, :from => selector)
 end
 
 When(/^I check "(.*?)"$/) do |label|

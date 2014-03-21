@@ -1,8 +1,8 @@
 Fabricator(:course) do
   title "Test Course"
   syllabus "Foo Bar and Plan"
-  start_date { Date.today }
-  end_date { Date.today + 90 }
+  start_date {Time.new(2014, 3, 10)} 
+  end_date  {Time.new(2014, 3, 10) + 90 } 
   active_course true
 end
 

@@ -1,6 +1,8 @@
 class Student < ActiveRecord::Base
   devise :rememberable, :trackable, :omniauthable, :omniauth_providers => [:github]
 
+  has_many :self_reports
+
   validates_format_of :email, with: /\A[^@]+@[^@]+\z/, message: "must be an email address"
 
   default_scope { order(name: :asc) }

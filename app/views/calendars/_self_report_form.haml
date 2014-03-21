@@ -1,0 +1,28 @@
+=simple_form_for :self_report, html: { id: date }, defaults: {input_html: {class: 'tiny radius'}} do |f|
+  .row
+    .small-12.columns
+      %p Please enter a self-report
+  .row
+    .small-12.columns
+      =f.label "Attended class"
+    .small-12.columns
+      =f.collection_radio_buttons :attended, [[true, 'Yes'] ,[false, 'No']], :first, :last
+  .row
+    .small-12.columns
+      =f.label :hours_coding
+  .row
+    .small-6.columns
+      =f.select :hours_coding, 0..10
+    .small-12.columns
+      =f.label :hours_learning
+  .row
+    .small-6.columns
+      =f.select :hours_learning, 0..10
+    .small-12.columns
+      =f.label :hours_slept
+  .row
+    .small-6.columns
+      =f.select :hours_slept, 0..10
+  .row
+    .small-12.columns
+      =f.button :submit, value: "Submit"
