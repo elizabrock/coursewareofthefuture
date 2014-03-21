@@ -14,12 +14,6 @@ When(/^I press "(.*?)"$/) do |text|
   click_button text
 end
 
-When(/^I choose "(.*?)" within "(.*?)"$/) do |text, parent|
-  within(parent) do
-    choose text
-  end
-end
-
 Then(/^I should see "(.*?)"$/) do |text|
   page.should have_content(text)
 end
@@ -38,13 +32,6 @@ When(/^I select (\d+) (\w+) (\d+) from "(.*?)"$/) do |year, month, day, tag|
   select year, from: "#{tag}_1i"
   select month, from: "#{tag}_2i"
   select day, from: "#{tag}_3i"
-end
-
-
-When(/^I select "(.*?)" from "(.*?)" within "(.*?)"$/) do |option, selector, parent|
-  within(parent) do
-    select(option, :from => selector)
-  end 
 end
 
 When(/^I check "(.*?)"$/) do |label|
