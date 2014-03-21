@@ -7,6 +7,7 @@ Feature: Student profiles
   - name
   - email
   - phone number
+  - goals
 
   Scenario: Student list is not visible to guests
     When I go to the student list page
@@ -37,25 +38,27 @@ Feature: Student profiles
 
   Scenario: Viewing a student's profile, as a student
     Given the following students:
-      | name       | phone            | email          |
-      | Jill Smith | (615) 403 - 5055 | jill@smith.com |
-      | Bob Jones  | (858) 205 - 9255 | bob@jones.com  |
+      | name       | phone            | email          | goals                       |
+      | Jill Smith | (615) 403 - 5055 | jill@smith.com | I want to learn Javascript. |
+      | Bob Jones  | (858) 205 - 9255 | bob@jones.com  | I want to learn rails.      |
     And I am signed in as Jill Smith
     When I go to the student list page
     And I click "Bob Jones"
     Then I should see "(858) 205 - 9255"
     And I should see "bob@jones.com"
+    And I should not see "I want to learn rails."
     And I should not see "Edit My Profile"
 
   Scenario: Viewing a student's profile, as an instructor
     Given the following students:
-      | name       | phone            | email          |
-      | Bob Jones  | (858) 205 - 9255 | bob@jones.com  |
+      | name       | phone            | email          | goals                  |
+      | Bob Jones  | (858) 205 - 9255 | bob@jones.com  | I want to learn rails. |
     And I am signed in as an instructor
     When I go to the student list page
     And I click "Bob Jones"
     Then I should see "(858) 205 - 9255"
     And I should see "bob@jones.com"
+    And I should see "I want to learn rails."
     And I should not see "Edit My Profile"
 
   Scenario: Editing my own profile, as a student
@@ -67,12 +70,14 @@ Feature: Student profiles
     And I fill in "Jill Smith" for "Name"
     And I fill in "jill@smith.com" for "Email"
     And I fill in "(615) 403 - 5055" for "Phone"
+    And I fill in "I want to learn rails." for "Goals"
     And I press "Save Changes"
     Then I should be on my profile page
     And I should see "Your profile has been updated"
     And I should see "Jill Smith"
     And I should see "(615) 403 - 5055"
     And I should see "jill@smith.com"
+    And I should see "I want to learn rails."
 
   Scenario: Invalid profile update
     Given the following student:

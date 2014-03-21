@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140319223726) do
+ActiveRecord::Schema.define(version: 20140320162828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 20140319223726) do
     t.string   "github_username"
     t.string   "avatar_url"
     t.string   "github_access_token"
+    t.text     "goals"
   end
 
   add_index "students", ["email"], name: "index_students_on_email", unique: true, using: :btree
