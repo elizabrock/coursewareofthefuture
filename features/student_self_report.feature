@@ -25,7 +25,8 @@ I want to see a calendare that allows me to self-report several metrics.
     And I follow "Course Calendar"
 
   Scenario: Student sees 'today' in calendar under today's date.
-    Then I should see "Today" within the date for 2013-03-15
+    And show me the page
+    Then I should see "Today" within the date 2013-03-15
 
   Scenario: Student sees a self-report form for days that need missing reports
     Then I should see "Please enter a self-report" within the date 2013-03-14
