@@ -76,3 +76,8 @@ def hash_list(list)
   end
   result
 end
+
+Then(/^I should not see any of the exercises from Github$/) do
+  page.should_not have_content("Exercises")
+  page.should_not have_content("Ruby Koans")
+end

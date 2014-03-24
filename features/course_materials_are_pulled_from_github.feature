@@ -5,7 +5,8 @@ Feature: Course materials are pulled from github
     Given 1 active course
     And I am signed in as a student
     When I click "Materials"
-    Then I should see the materials tree from the inquizator-test-repo
+    Then I should not see any of the exercises from Github
+    And I should see the materials tree from the inquizator-test-repo
 
   Scenario: Viewing a single material item
     Given 1 active course

@@ -31,6 +31,7 @@ class Material
   end
 
   def self.populate_path_into(item, path, ancestor_material)
+    return if path.start_with? "exercises"
     subdirectory_or_file, remaining_path = path.split("/", 2)
     if remaining_path.blank? # Because we are now in this item's parent directory
       ancestor_material.add_child( item )
