@@ -2,13 +2,22 @@
 Feature: Instructor chooses assignments from github
 
   Scenario: Happy Path
-    Given that I am logged in as an instructor
-    When I click "Assignments"
+    Given the following course:
+      | title | Cohort 4 |
+    And that course has the following assignment:
+      | title | Capstone |
+    And that assignment has the following milestones:
+      | title       | due_date   |
+      | Milestone 1 | 2013/05/01 |
+      | Milestone 2 | 2013/05/15 |
+    And I am signed in as an instructor
+    When I click "Cohort 4"
+    And I click "Assignments"
     And I click "New Assignment"
     Then I should see the list of assignments from Github
     When I select "Ruby Koans"
     And I press "Set Milestones"
-    Then I should see the following list of milestones:
+    Then I should see the following list:
       | Strings   |
       | Objects   |
       | Triangles |
@@ -18,7 +27,10 @@ Feature: Instructor chooses assignments from github
     And I press "Publish Assignment"
     Then I should see "Your assignment has been published"
     When I go to the student's assignment list
-    Then I should see the following list of milestones:
+    Then I should see the following list:
+      | Ruby Koans (3/24 - 5/28) |
+      | Capstone (5/1 - 5/15)    |
+    Then I should see the following list:
       | Strings (due 3/24)   |
       | Objects (due 4/28)   |
       | Triangles (due 5/28) |

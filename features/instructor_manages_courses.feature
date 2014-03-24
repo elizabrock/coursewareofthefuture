@@ -1,15 +1,36 @@
 Feature: Instructor manages courses
 
-  @wip
   Scenario: Creating a course
     Given I am signed in as an instructor
     When I follow "Create New Course"
     And I fill in "Title" with "Cohort 4"
     And I fill in "Syllabus" with "Foobar"
-    And I select 2014 January 24 from "Start Date"
-    And I select 2014 March 24 from "End Date"
+    And I select 2014 January 24 from "Course Start Date"
+    And I select 2014 March 24 from "Course End Date"
+    And I fill in "elizabrock/source" for "Source Repository"
     And I press "Create Course"
-    Then I should see "Course was successfully created"
+    Then I should see "Course successfully created"
+    And I should see the following course in the database:
+      | title         | Cohort 4   |
+      | syllabus      | Foobar     |
+      | start_date    | 2014/01/24 |
+      | end_date      | 2014/03/24 |
+
+  Scenario: Failing to create a course
+    Given I am signed in as an instructor
+    When I follow "Create New Course"
+    And I press "Create Course"
+    Then I should see "Course couldn't be created"
+    And I should see the error message "can't be blank" on "Title"
+    And I should see the error message "can't be blank" on "Syllabus"
+    And I should see the error message "can't be blank" on "Source Repository"
+    When I fill in "Title" with "Cohort 4"
+    And I fill in "Syllabus" with "Foobar"
+    And I select 2014 January 24 from "Course Start Date"
+    And I select 2014 March 24 from "Course End Date"
+    And I fill in "elizabrock/source" for "Source Repository"
+    And I press "Create Course"
+    Then I should see "Course successfully created"
     And I should see the following course in the database:
       | title         | Cohort 4   |
       | syllabus      | Foobar     |

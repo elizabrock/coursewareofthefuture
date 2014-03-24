@@ -7,4 +7,5 @@ describe Course do
   it { should validate_presence_of :syllabus }
   it { should validate_presence_of :start_date }
   it { should validate_presence_of :end_date }
+  it { should validate_presence_of :source_repository }
 end

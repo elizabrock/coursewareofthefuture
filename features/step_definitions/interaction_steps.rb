@@ -40,7 +40,12 @@ Then /^(?:|I )should see the following list:$/ do |table|
   end
 end
 
-When(/^I select (\d+) (\w+) (\d+) from "(.*?)"$/) do |year, month, day, tag|
+When(/^I select "(.*?)"$/) do |title|
+  select title
+end
+
+When(/^I select (\d+) (\w+) (\d+) from "(.*?)"$/) do |year, month, day, label|
+  tag = label.downcase.gsub("\s", "_")
   select year, from: "#{tag}_1i"
   select month, from: "#{tag}_2i"
   select day, from: "#{tag}_3i"
@@ -66,4 +71,9 @@ Then(/^I should see the following calendar entries:$/) do |table|
     notice = row[1]
     page.should have_css("td[data-date='#{date}']", text: notice)
   end
+end
+
+Then /^I should see the error message "([^"]*)" on "([^"]*)"$/ do |text, field|
+  selector = "//div[contains(@class,'error') and ./label[contains(text(),'#{field}')]]/small[text()=\"#{text}\"]"
+  page.should have_xpath(selector)
 end

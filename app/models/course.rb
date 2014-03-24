@@ -1,5 +1,5 @@
 class Course < ActiveRecord::Base
-  validates_presence_of :title, :syllabus, :start_date, :end_date
+  validates_presence_of :title, :syllabus, :start_date, :end_date, :source_repository
 
   has_many :events
   has_many :enrollments

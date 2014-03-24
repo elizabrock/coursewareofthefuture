@@ -1,0 +1,6 @@
+%h1 Add New Event
+
+= simple_form_for event, url: course_events_path(current_course) do |f|
+  = f.input :summary
+  = f.input :date, label: "Event Date", as: :date
+  = f.button :submit, "Create Event"

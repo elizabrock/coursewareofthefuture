@@ -1,4 +1,4 @@
-module CalendarsHelper
+module EventsHelper
   def format_calendar_date(d, course)
     if d == course.start_date
       "#{d.mday}<br />First Day of Class".html_safe

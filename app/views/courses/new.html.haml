@@ -1,1 +1,9 @@
 %h1 Create New Course
+
+= simple_form_for course do |f|
+  = f.input :title
+  = f.input :syllabus
+  = f.input :source_repository, label: "Source Repository"
+  = f.input :start_date, label: "Start Date", as: :date
+  = f.input :end_date, label: "End Date", as: :date
+  = f.button :submit, "Create Course"

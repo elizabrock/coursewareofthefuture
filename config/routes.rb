@@ -7,11 +7,12 @@ Coursewareofthefuture::Application.routes.draw do
     delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   end
 
-  resources :courses, except: [:create, :edit, :update, :destroy] do
+  resources :courses, except: [:edit, :update, :destroy] do
     resources :enrollments, only: [:index]
     resources :materials, only: [:index, :show], constraints: { id: /.*/ }
-    resource :calendar, only: [:show]
+    resources :events, only: [:new, :create]
     resources :assignments, only: [:index, :show]
+    get :calendar, to: 'events#index'
   end
   resource :enrollment, only: [:new]
   resources :users, except: [:destroy] do
