@@ -1,5 +1,6 @@
 Feature: Instructor manages courses
 
+  @wip
   Scenario: Creating a course
     Given I am signed in as an instructor
     When I follow "Course"

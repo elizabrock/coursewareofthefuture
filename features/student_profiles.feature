@@ -19,11 +19,17 @@ Feature: Student profiles
       | name       |
       | Jill Smith |
       | Bob Jones  |
+    And the following instructors:
+      | name        |
+      | Julia Child |
     And I am signed in as Jill Smith
-    When I go to the student list page
-    Then I should see the following list:
+    When I go to the homepage
+    And I click "Peers"
+    Then I should see the following list within the Students section:
       | Bob Jones  |
       | Jill Smith |
+    Then I should see the following list within the Instructors section:
+      | Julia Child |
 
   Scenario: Viewing the student list, as an instructor
     Given the following students:
@@ -60,6 +66,21 @@ Feature: Student profiles
     And I should see "bob@jones.com"
     And I should see "I want to learn rails."
     And I should not see "Edit My Profile"
+
+  Scenario: Editing my own profile, as an instructor
+    Given I am signed in as an instructor
+    When I click "My Profile"
+    And I click "Edit My Profile"
+    And I fill in "Julia Myers" for "Name"
+    And I fill in "jill@myers.com" for "Email"
+    And I fill in "(615) 403 - 5055" for "Phone"
+    And I should not see "Goals"
+    And I press "Save Changes"
+    Then I should be on my profile page
+    And I should see "Your profile has been updated"
+    And I should see "Julia Myers"
+    And I should see "(615) 403 - 5055"
+    And I should see "jill@myers.com"
 
   Scenario: Editing my own profile, as a student
     Given the following student:

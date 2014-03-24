@@ -1,5 +1,8 @@
-class Student < ActiveRecord::Base
+class User < ActiveRecord::Base
   devise :rememberable, :trackable, :omniauthable, :omniauth_providers => [:github]
+
+  scope :instructors, ->{ where(instructor: true) }
+  scope :students, ->{ where("instructor = false or instructor is null") }
 
   validates_format_of :email, with: /\A[^@]+@[^@]+\z/, message: "must be an email address"
 

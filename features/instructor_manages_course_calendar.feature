@@ -1,5 +1,6 @@
 Feature: Instructor manages course calendar
 
+  @wip
   Scenario: Adding days off
     Given I am signed in as an instructor
     When I follow "Course"

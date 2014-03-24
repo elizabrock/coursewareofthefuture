@@ -23,13 +23,11 @@
             %small The Courseware.. of the Future!
         .small-6.columns
           %ul#devise_navigation.inline-list.right
-            - if student_signed_in?
-              %li= link_to "My Profile", student_profile_path(current_student)
-              %li= link_to "Sign Out", destroy_student_session_path, method: :delete
-            - elsif instructor_signed_in?
-              %li= link_to "Sign Out", destroy_instructor_session_path, method: :delete
+            - if user_signed_in?
+              %li= link_to "My Profile", current_user
+              %li= link_to "Sign Out", destroy_user_session_path, method: :delete
             - else
-              %li= link_to "Sign In with Github", student_omniauth_authorize_path(:github)
+              %li= link_to "Sign In with Github", user_omniauth_authorize_path(:github)
       .row
         .small-12.columns
           %ul#main_navigation
@@ -37,11 +35,10 @@
             %li= link_to "Course Calendar", calendar_path, id: current_if("calendars")
             %li= link_to "Materials", materials_path, id: current_if("materials")
             %li= link_to "Assignments", assignments_path, id: current_if("assignments")
+            %li= link_to "Peers", users_path, id: current_if("users")
+            %li.right
+              %span= course.try(:title)
     .row
       .small-12.columns
         = yield
-    .row
-      .small-12.columns
-        %ul#footer_navigation
-          %li= link_to "Instructor Login", new_instructor_session_path
     = javascript_include_tag "application"

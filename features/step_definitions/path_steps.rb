@@ -7,9 +7,9 @@ def path_to path_descriptor
   when "the instructor sign in page"
     new_instructor_session_path
   when 'my profile page'
-    student_profile_path(@student)
+    user_path(@student || @instructor)
   when 'the student list page'
-    student_profiles_path
+    users_path
   when /(.*?)'s profile page/
     user = User.where(username: $1 ).first
     user_path(user)

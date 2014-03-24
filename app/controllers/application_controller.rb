@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def authenticate!
-    unless instructor_signed_in? or student_signed_in?
+    unless user_signed_in?
       redirect_to root_path, alert: "You need to sign in or sign up before continuing."
     end
   end

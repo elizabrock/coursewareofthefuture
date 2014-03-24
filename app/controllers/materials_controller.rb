@@ -1,4 +1,4 @@
 class MaterialsController < ApplicationController
-  expose(:materials){ Material.root(current_student.octoclient) }
-  expose(:material){ Material.lookup(params[:id], current_student.octoclient) }
+  expose(:materials){ Material.root(current_user.octoclient) }
+  expose(:material){ Material.lookup(params[:id], current_user.octoclient) }
 end

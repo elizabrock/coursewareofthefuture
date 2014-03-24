@@ -3,58 +3,43 @@ Feature: Instructor authentication
   I want to be able to sign in/sign out/reset my password
 
   - Standard password reset via. email
-  - Standard login/logout
+  - Standard Sign In/Sign Out
 
   Scenario: Instructor can log in and log out with email
     Given the following instructor:
-      | email | joe@example.com |
+      | github_username | joe  |
+      | github_uid      | 9876 |
+    And I am signed in to Github as "joe"
     When I go to the homepage
-    And I follow "Instructor Login"
-    And I fill in "joe@example.com" for "Email"
-    And I fill in "password" for "Password"
-    And I press "Login"
-    Then I should see "Signed in successfully."
-    And I should see "Logout"
-    And I should not see "Login"
-    When I follow "Logout"
-    And I should not see "Logout"
-    And I should see "Login"
-
-  Scenario: Instructor password reset, happy path
-    Given the following instructor:
-      | email | jil@email.com |
-    Given I am on the instructor sign in page
-    When I click "Forgot your password?"
-    And I fill in "Email" with "jil@email.com"
-    And I press "Reset My Password"
-    Then "jil@email.com" should receive an email
-    When I open the email
-    Then I should see "Change my password" in the email body
-    When I follow "Change my password" in the email
-    Then I should see "Change your password"
-    When I fill in "Password" with "secret!!"
-    And I fill in "Password confirmation" with "secret!!"
-    And I press "Change my password"
-    Then I should see "Your password was changed successfully. You are now signed in."
-    When I click "Logout"
-    And I click "Instructor Login"
-    And I fill in "Email" with "jil@email.com"
-    And I fill in "Password" with "secret!!"
-    And I press "Login"
-    Then I should see "Signed in successfully."
+    And I follow "Sign In with Github"
+    Then I should see "Successfully authenticated from Github account"
+    And I should see "Sign Out"
+    And I should not see "Sign In"
+    When I follow "Sign Out"
+    And I should not see "Sign Out"
+    And I should see "Sign In"
 
   Scenario: Instructor can create another instructor
-    Given I am signed in as an instructor
-    When I follow "Instructors"
-    And I follow "New Instructor"
-    And I fill in "joe@example.com" for "Email"
-    And I fill in "secret123" for "Password"
-    And I fill in "secret123" for "Password confirmation"
-    And I press "Create Instructor"
-    Then I should see "Instructor was successfully created."
-    When I click "Logout"
-    And I click "Instructor Login"
-    And I fill in "Email" with "joe@example.com"
-    And I fill in "Password" with "secret123"
-    And I press "Login"
-    Then I should see "Signed in successfully."
+    Given the following users:
+      | name        |
+      | Joe Smith   |
+      | Sally Myers |
+    And I am signed in as an instructor
+    When I follow "Peers"
+    And I click "Sally Myers"
+    And I press "Make Instructor"
+    Then I should see "Sally Myers is now an instructor."
+    And I should see the following user in the database:
+      | name       | Sally Myers |
+      | instructor | true        |
+    And I should be on the student list page
+    And I should see "Sally Myers" within the Instructors section
+
+  Scenario: Student cannot create another instructor
+    Given the following users:
+      | name        |
+      | Joe Smith   |
+      | Sally Myers |
+    And I am signed in as an instructor
+    When I follow "Peers"
+    Then I should not see "Make Instructor"

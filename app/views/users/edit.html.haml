@@ -1,7 +1,8 @@
 %h2 Edit Your Profile
-= simple_form_for current_student, url: student_profile_path do |f|
+= simple_form_for current_user do |f|
   = f.input :email
   = f.input :name
   = f.input :phone
-  = f.input :goals
+  - unless current_user.instructor?
+    = f.input :goals
   = f.button :submit, "Save Changes"

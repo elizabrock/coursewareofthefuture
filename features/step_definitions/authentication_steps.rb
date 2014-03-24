@@ -1,18 +1,16 @@
 Given(/^I am signed in as (.*)$/) do |name|
   if name == "an instructor"
     @instructor = Fabricate(:instructor)
-    visit new_instructor_session_path
-    fill_in "Email", with: @instructor.email
-    fill_in "Password", with: "password"
-    click_button "Login"
+    sign_into_github_as(@instructor.github_username, @instructor.github_uid)
+    visit '/users/auth/github'
   elsif name == "a student"
     @student = Fabricate.build(:student)
     sign_into_github_as(@student.github_username, @student.github_uid)
-    visit '/students/auth/github'
+    visit '/users/auth/github'
   else
-    @student = Student.where(name: name).first
+    @student = User.where(name: name).first
     sign_into_github_as(@student.github_username, @student.github_uid)
-    visit '/students/auth/github'
+    visit '/users/auth/github'
   end
 end
 
@@ -21,7 +19,10 @@ Given(/^I am signed in to Github as "(.*?)"$/) do |username|
 end
 
 def sign_into_github_as(username, uid = nil)
-  uid ||= '12345'
+  if uid.nil?
+    user = User.find_by_github_username(username)
+    uid = user.try(:github_uid) || '12345'
+  end
   OmniAuth.config.add_mock(:github, {
     uid: uid,
     credentials: {
