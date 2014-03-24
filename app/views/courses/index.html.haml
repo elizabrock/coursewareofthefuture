@@ -1,0 +1,9 @@
+%h1 Which course are you teaching today?
+
+%ul
+  - active_courses.each do |course|
+    %li= link_to course.title, course
+
+%ul
+  %li= link_to "View All Students", users_path
+  %li= link_to "Create New Course", new_course_path

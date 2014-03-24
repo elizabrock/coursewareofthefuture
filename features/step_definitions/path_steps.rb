@@ -2,17 +2,16 @@ def path_to path_descriptor
   case path_descriptor
   when "the homepage"
     root_path
-  when "the sign in page"
-    new_student_session_path
-  when "the instructor sign in page"
-    new_instructor_session_path
   when 'my profile page'
-    user_path(@student || @instructor)
-  when 'the student list page'
-    users_path
+    user_path(@user)
   when /(.*?)'s profile page/
     user = User.where(username: $1 ).first
     user_path(user)
+  when /the student list page/
+    users_path
+  when /the course calendar for (.*)/
+    course = Course.find_by_title($1)
+    course_calendar_path(course)
   else
     path_descriptor
   end

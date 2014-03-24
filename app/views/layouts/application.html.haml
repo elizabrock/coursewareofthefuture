@@ -30,14 +30,19 @@
               %li= link_to "Sign In with Github", user_omniauth_authorize_path(:github)
       .row
         .small-12.columns
-          %ul#main_navigation
-            %li= link_to "Syllabus", root_path, id: current_if("courses")
-            %li= link_to "Course Calendar", calendar_path, id: current_if("calendars")
-            %li= link_to "Materials", materials_path, id: current_if("materials")
-            %li= link_to "Assignments", assignments_path, id: current_if("assignments")
-            %li= link_to "Peers", users_path, id: current_if("users")
-            %li.right
-              %span= course.try(:title)
+          - if current_course
+            %ul#main_navigation
+              %li= link_to "Syllabus", course_path(current_course), id: current_if("courses")
+              %li= link_to "Course Calendar", course_calendar_path(current_course), id: current_if("calendars")
+              %li= link_to "Materials", course_materials_path(current_course), id: current_if("materials")
+              %li= link_to "Assignments", course_assignments_path(current_course), id: current_if("assignments")
+              %li= link_to "Peers", course_enrollments_path(current_course), id: current_if("users")
+              %li.right
+                %span
+                  %a{ "data-dropdown" => "hover1", "data-options" => "is_hover:true" }= current_course.title
+                  %ul#hover1.f-dropdown{ "data-dropdown-content" => "" }
+                    - (active_courses - [current_course]).each do |course|
+                      %li= link_to course.title, course
     .row
       .small-12.columns
         = yield

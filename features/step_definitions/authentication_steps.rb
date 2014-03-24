@@ -1,21 +1,25 @@
 Given(/^I am signed in as (.*)$/) do |name|
   if name == "an instructor"
-    @instructor = Fabricate(:instructor)
-    sign_into_github_as(@instructor.github_username, @instructor.github_uid)
-    visit '/users/auth/github'
+    user = Fabricate(:instructor)
+    sign_into_github_as(user.github_username, user.github_uid)
+  elsif name == "a student in that course"
+    user = Fabricate(:student)
+    @course.users << user
+    sign_into_github_as(user.github_username, user.github_uid)
   elsif name == "a student"
-    @student = Fabricate.build(:student)
-    sign_into_github_as(@student.github_username, @student.github_uid)
-    visit '/users/auth/github'
+    user = Fabricate(:student)
+    sign_into_github_as(user.github_username, user.github_uid)
   else
-    @student = User.where(name: name).first
-    sign_into_github_as(@student.github_username, @student.github_uid)
-    visit '/users/auth/github'
+    user = User.where(name: name).first
+    sign_into_github_as(user.github_username, user.github_uid)
   end
+  visit '/users/auth/github'
+  @user = User.find_by_github_username(user.github_username)
 end
 
 Given(/^I am signed in to Github as "(.*?)"$/) do |username|
   sign_into_github_as(username)
+
 end
 
 def sign_into_github_as(username, uid = nil)

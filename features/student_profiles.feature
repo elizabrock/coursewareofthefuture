@@ -9,13 +9,17 @@ Feature: Student profiles
   - phone number
   - goals
 
+  Background:
+    Given the following course:
+      | title | First Course |
+
   Scenario: Student list is not visible to guests
     When I go to the student list page
     Then I should be on the homepage
     And I should see "You need to sign in or sign up before continuing."
 
   Scenario: Viewing the student list, as a student
-    Given the following students:
+    Given that course has the following students:
       | name       |
       | Jill Smith |
       | Bob Jones  |
@@ -39,6 +43,25 @@ Feature: Student profiles
     And I am signed in as an instructor
     When I go to the student list page
     Then I should see the following list:
+      | Bob Jones  |
+      | Jill Smith |
+
+  Scenario: Viewing the enrollment list, as an instructor
+    Given that course has the following students:
+      | name  |
+      | Sally |
+      | Henry |
+    And the following students:
+      | name       |
+      | Jill Smith |
+      | Bob Jones  |
+    And I am signed in as an instructor
+    And I click "First Course"
+    And I click "Peers"
+    Then I should see the following list:
+      | Henry |
+      | Sally |
+    And I should not see:
       | Bob Jones  |
       | Jill Smith |
 

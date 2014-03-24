@@ -22,6 +22,18 @@ Then(/^I should not see "(.*?)"$/) do |text|
   page.should_not have_content(text)
 end
 
+Then(/^I should not see:$/) do |table|
+  table.raw.each do |content|
+    page.should_not have_content(content[0])
+  end
+end
+
+Then(/^I should see:$/) do |table|
+  table.raw.each do |content|
+    page.should have_content(content[0])
+  end
+end
+
 Then /^(?:|I )should see the following list:$/ do |table|
   table.raw.each_with_index do |content, row|
     page.should have_xpath("//ul/li[#{row+1}][contains(normalize-space(.), '#{content[0]}')] | //ol/li[#{row+1}][contains(normalize-space(.), '#{content[0]}')] ")

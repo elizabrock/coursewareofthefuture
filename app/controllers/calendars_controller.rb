@@ -1,3 +1,3 @@
 class CalendarsController < ApplicationController
-  expose(:events){ course.events }
+  expose(:events){ current_course.events }
 end

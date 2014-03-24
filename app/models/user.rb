@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   scope :instructors, ->{ where(instructor: true) }
   scope :students, ->{ where("instructor = false or instructor is null") }
 
+  has_many :enrollments
+  has_many :courses, through: :enrollments
+
   validates_format_of :email, with: /\A[^@]+@[^@]+\z/, message: "must be an email address"
 
   default_scope { order(name: :asc) }

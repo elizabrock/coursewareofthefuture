@@ -387,7 +387,7 @@ $include-html-clearing-classes: true;
 
 // Dropdown
 
-// $include-html-dropdown-classes: $include-html-classes;
+$include-html-dropdown-classes: true;
 
 // We use these to controls height and width styles.
 // $f-dropdown-max-width: 200px;
@@ -1201,37 +1201,40 @@ $include-html-visibility-classes: true;
   // background-color: $happygreen;
 }
 
-
-#main_navigation {
+ul#main_navigation {
   margin: 1em 0;
   padding: 0 0 20px 10px;
   border-bottom: 1px solid #000;
-  ul, li {
+  & > li {
     margin: 0;
     padding: 0;
     display: inline;
     list-style-type: none;
-  }
-  span, a:link, a:visited {
-    float: left;
-    line-height: 14px;
-    margin: 0 10px 4px 10px;
-    text-decoration: none;
-    font-weight: bold;
-  }
+    & > span, & > a:link, & > a:visited {
+      float: left;
+      line-height: 14px;
+      margin: 0 10px 4px 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-  a:link, a:visited {
-    color: #999;
-  }
+    & > span > a, & > span > a:hover {
+      color: black;
+    }
 
-  a:link#current, a:visited#current, a:hover {
-    border-bottom: 4px solid #000;
-    padding-bottom: 2px;
-    background: transparent;
-    color: #000;
-  }
+    & > a:link, & > a:visited {
+      color: #999;
+    }
 
-  a:hover { color: #000; }
+    & > a:link#current, & > a:visited#current, & > a:hover {
+      border-bottom: 4px solid #000;
+      padding-bottom: 2px;
+      background: transparent;
+      color: #000;
+    }
+
+    & > a:hover { color: #000; }
+  }
 }
 
 .calendar {

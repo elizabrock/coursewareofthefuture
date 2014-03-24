@@ -17,10 +17,11 @@ class Material
   end
 
   def self.source_repository
-    Rails.env.test? ? "elizabrock/inquizator-test-repo" : ENV["MATERIALS_REPO"]
+    Rails.env.test? ? @source_repository : ENV["MATERIALS_REPO"]
   end
 
-  def self.root(client)
+  def self.root(client, source_repository)
+    @source_repository = source_repository
     tree = client.tree(source_repository, "master", recursive: true).tree
     ancestor_material = Material.new()
     tree.each do |item|

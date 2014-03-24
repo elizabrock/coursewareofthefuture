@@ -5,9 +5,16 @@ class ApplicationController < ActionController::Base
 
   before_filter :authenticate!, unless: :devise_controller?
 
-  expose(:course){ Course.active }
+  expose(:active_courses){ Course.active_or_future }
+  expose(:current_course){ Course.find_by_id(params[:course_id]) }
 
   protected
+
+  def require_instructor!
+    unless user_signed_in? and current_user.instructor?
+      redirect_to root_path, alert: "You must be authenticated as an instructor to access this material."
+    end
+  end
 
   def authenticate!
     unless user_signed_in?

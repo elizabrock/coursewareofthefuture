@@ -3,6 +3,10 @@ class UsersController < ApplicationController
   expose(:students){ User.students }
   expose(:user)
 
+  def index
+    render "enrollments/index"
+  end
+
   def update
     user_params = params.require(:user).permit(:name, :email, :phone, :goals)
     if current_user.update_attributes(user_params)
