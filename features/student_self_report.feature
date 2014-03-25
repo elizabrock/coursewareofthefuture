@@ -25,7 +25,6 @@ I want to see a calendare that allows me to self-report several metrics.
     And I follow "Course Calendar"
 
   Scenario: Student sees 'today' in calendar under today's date.
-    And show me the page
     Then I should see "Today" within the date 2013-03-15
 
   Scenario: Student sees a self-report form for days that need missing reports
@@ -42,7 +41,7 @@ I want to see a calendare that allows me to self-report several metrics.
     And I should see "4 hours of learning" within the date 2013-03-13
     And I should see "Missed class" within the date 2013-03-12
     And I should see "5 hours coding" within the date 2013-03-12
-    And I should see "9 hours of sleep" within the date 2013-03-12
+    And I should see "9.0 hours of sleep" within the date 2013-03-12
     And I should see "0 hours of learning" within the date 2013-03-12
 
   Scenario: Student enters self-report form
@@ -52,6 +51,7 @@ I want to see a calendare that allows me to self-report several metrics.
     And I select "3" from "Hours slept" within the form for 2013-03-14
     And I press "Submit" within the form for 2013-03-14
     Then I should see "Your report has been entered"
+    Then show me the page
     And I should not see "Please enter a self-report" within the date 2013-03-14
     And I should see "Attended class" within the date 2013-03-12
     And I should see "1 hours coding" within the date 2013-03-12

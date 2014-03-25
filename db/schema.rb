@@ -98,12 +98,4 @@ ActiveRecord::Schema.define(version: 20140321165343) do
 
   add_index "students", ["email"], name: "index_students_on_email", unique: true, using: :btree
 
-  create_table "table_self_reports", force: true do |t|
-    t.boolean  "attended"
-    t.float    "hours_coding"
-    t.float    "hours_learning"
-    t.float    "hours_slept"
-    t.datetime "date"
-  end
-
 end
