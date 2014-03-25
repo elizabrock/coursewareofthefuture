@@ -18,6 +18,8 @@ Coursewareofthefuture::Application.routes.draw do
     resources :quizzes, only: [:show]
   end
   resource :enrollment, only: [:new]
+  resources :self_reports, only: [:new, :create]
+  resources :student_profiles, except: [:destroy], path: :students
   resources :users, except: [:destroy] do
     member do
       post :instructify

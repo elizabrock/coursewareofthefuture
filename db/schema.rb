@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324210430) do
+ActiveRecord::Schema.define(version: 20140325191630) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20140324210430) do
   create_table "self_reports", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "student_id"
+    t.integer  "user_id"
     t.boolean  "attended"
     t.float    "hours_coding"
     t.float    "hours_learning"

@@ -10,7 +10,7 @@ When(/^I fill in "(.*?)" with "(.*?)"$/) do |label, value|
   fill_in(label, with: value)
 end
 
-When(/^I press "(.*?)"$/) do |text|
+When(/^I press "([^"]*)"$/) do |text|
   click_button text
 end
 
@@ -18,7 +18,7 @@ Then(/^I should see "(.*?)"$/) do |text|
   page.should have_content(text)
 end
 
-Then(/^I should not see "(.*?)"$/) do |text|
+Then(/^I should not see "([^"]*)"$/) do |text|
   page.should_not have_content(text)
 end
 
@@ -73,6 +73,10 @@ Then /^"([^"]*)" should be selected for "([^"]*)"$/ do |value, field|
   page.should have_xpath "//select[@id = '#{field_id}']/option[@selected]"
 end
 
+When(/^I choose "([^"]*)"$/) do |label|
+  choose label
+end
+
 When(/^I check "(.*?)"$/) do |label|
   check label
 end
@@ -96,6 +100,6 @@ Then(/^I should see the following calendar entries:$/) do |table|
 end
 
 Then /^I should see the error message "([^"]*)" on "([^"]*)"$/ do |text, field|
-  selector = "//div[contains(@class,'error') and ./label[contains(text(),'#{field}')]]/small[text()=\"#{text}\"]"
+  selector = ".//div[contains(@class,'error') and ./label[contains(text(),'#{field}')]]/small[contains(text(),\"#{text}\")]"
   page.should have_xpath(selector)
 end

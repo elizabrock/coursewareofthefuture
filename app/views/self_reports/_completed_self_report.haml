@@ -1,0 +1,6 @@
+
+%ul
+  %li= self_report.attended? ? "Attended class" : "Missed class"
+  %li #{number_to_human(self_report.hours_learning)} hours of learning
+  %li #{number_to_human(self_report.hours_coding)} hours coding
+  %li #{number_to_human(self_report.hours_slept)} hours of sleep

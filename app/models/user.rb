@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :enrollments
   has_many :courses, through: :enrollments
+  has_many :self_reports
 
   validates_format_of :email, with: /\A[^@]+@[^@]+\z/, message: "must be an email address"
 

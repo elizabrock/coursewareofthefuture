@@ -1,11 +1,16 @@
 class Milestone < ActiveRecord::Base
   belongs_to :assignment, inverse_of: :milestones
 
+  validate :deadline_must_be_appropriate
   validates_presence_of :assignment
-  validates_inclusion_of :deadline,
-    in: ->(m){ (m.assignment.course.start_date..m.assignment.course.end_date) },
-    message: "Must be in the course timeframe"
-  validates_inclusion_of :deadline,
-    in: ->(m){ (Date.today..m.assignment.course.end_date) },
-    message: "Must be in the future"
+
+  private
+
+  def deadline_must_be_appropriate
+    if assignment.course.start_date > deadline or deadline > assignment.course.end_date.end_of_day
+      errors.add(:deadline, "Must be in the course timeframe of #{assignment.course.start_date} to #{assignment.course.end_date}")
+    elsif Date.today > deadline
+      errors.add(:deadline, "Must be in the future. (It is currently #{Time.now})")
+    end
+  end
 end

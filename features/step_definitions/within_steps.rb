@@ -11,6 +11,10 @@ def selector_for(description)
     page.find(:xpath, "//fieldset[./legend[contains(normalize-space(.), '#{$1}')]]")
   when /the (.*) milestone/
     page.find(:xpath, "//div[contains(@class,'milestone') and ./h2[contains(normalize-space(.), '#{$1}')]]")
+  when /the form for (.*)/
+    "form##{$1}"
+  when /the date (.*)/
+    "td[data-date='#{$1}']"
   else
     raise "Make a within step for " + description.gsub('"','')
   end
