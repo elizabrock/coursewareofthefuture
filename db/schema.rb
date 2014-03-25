@@ -87,8 +87,8 @@ ActiveRecord::Schema.define(version: 20140325191630) do
     t.string   "avatar_url"
     t.string   "github_access_token"
     t.text     "goals"
-    t.boolean  "instructor"
     t.text     "background"
+    t.boolean  "instructor"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

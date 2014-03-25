@@ -1,5 +1,5 @@
 class AddBackgroundToStudents < ActiveRecord::Migration
   def change
-    add_column :users, :background, :text
+    add_column :students, :background, :text
   end
 end
