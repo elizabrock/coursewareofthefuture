@@ -13,12 +13,12 @@ module CalendarsHelper
   end
 
   def add_form(d, course)
-    @self_report = SelfReport.find_by(date: d)
-    if @self_report
-      render(partial: "completed_self_report", locals: { date: d}).to_s
+    self_report = SelfReport.find_by(date: d)
+    if self_report
+      render(partial: "self_reports/completed_self_report", locals: { self_report: self_report, date: d}).to_s
     elsif d < Time.now.midnight.to_date
-      @self_report = SelfReport.new
-      render(partial: "self_report_form", locals: { date: d }).to_s
+      self_report = SelfReport.new(date: d)
+      render(partial: "self_reports/self_report_form", locals: { self_report: self_report, date: d }).to_s
     else
       return ""
     end

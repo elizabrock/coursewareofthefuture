@@ -1,4 +1,5 @@
-=form_for @self_report, html: { id: date }, defaults: {input_html: {class: 'tiny radius'}} do |f|
+=form_for self_report, html: { id: date }, defaults: {input_html: {class: 'tiny radius'}} do |f|
+  = f.hidden_field :date
   .row
     .small-12.columns
       %p Please enter a self-report

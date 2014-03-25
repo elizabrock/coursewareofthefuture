@@ -1,4 +1,3 @@
-@wip
 Feature: Student Self Report
 As a student
 I want to see a calendare that allows me to self-report several metrics.
@@ -41,7 +40,7 @@ I want to see a calendare that allows me to self-report several metrics.
     And I should see "4 hours of learning" within the date 2013-03-13
     And I should see "Missed class" within the date 2013-03-12
     And I should see "5 hours coding" within the date 2013-03-12
-    And I should see "9.0 hours of sleep" within the date 2013-03-12
+    And I should see "9 hours of sleep" within the date 2013-03-12
     And I should see "0 hours of learning" within the date 2013-03-12
 
   Scenario: Student enters self-report form
@@ -52,7 +51,7 @@ I want to see a calendare that allows me to self-report several metrics.
     And I press "Submit" within the form for 2013-03-14
     Then I should see "Your report has been entered"
     And I should not see "Please enter a self-report" within the date 2013-03-14
-    And I should see "Attended class" within the date 2013-03-12
-    And I should see "1 hours coding" within the date 2013-03-12
-    And I should see "2 hours of sleep" within the date 2013-03-12
-    And I should see "3 hours of learning" within the date 2013-03-12
+    And I should see "Attended class" within the date 2013-03-14
+    And I should see "1 hours coding" within the date 2013-03-14
+    And I should see "2 hours of learning" within the date 2013-03-14
+    And I should see "3 hours of sleep" within the date 2013-03-14
