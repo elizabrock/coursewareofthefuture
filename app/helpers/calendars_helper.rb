@@ -20,7 +20,7 @@ module CalendarsHelper
       @self_report = SelfReport.new
       render(partial: "self_report_form", locals: { date: d }).to_s
     else
-      render(partial: "today_and_future", locals: { date: d}).to_s
+      return ""
     end
   end
 end
