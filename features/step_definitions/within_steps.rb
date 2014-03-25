@@ -7,8 +7,12 @@ def selector_for(description)
     ".instructors"
   when "the Students section"
     ".students"
+  when /the "(.*)" fieldset/
+    page.find(:xpath, "//fieldset[./legend[contains(normalize-space(.), '#{$1}')]]")
+  when /the (.*) milestone/
+    page.find(:xpath, "//div[contains(@class,'milestone') and ./h2[contains(normalize-space(.), '#{$1}')]]")
   else
-    description.gsub('"','')
+    raise "Make a within step for " + description.gsub('"','')
   end
 end
 

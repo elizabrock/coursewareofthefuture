@@ -18,9 +18,10 @@
     #header
       .row
         .small-6.columns
-          %h3
-            Inquizator
-            %small The Courseware.. of the Future!
+          = link_to current_course || :root do
+            %h3
+              Inquizator
+              %small The Courseware.. of the Future!
         .small-6.columns
           %ul#devise_navigation.inline-list.right
             - if user_signed_in?
@@ -30,19 +31,19 @@
               %li= link_to "Sign In with Github", user_omniauth_authorize_path(:github)
       .row
         .small-12.columns
-          - if current_course
-            %ul#main_navigation
+          %ul#main_navigation
+            - if current_course
               %li= link_to "Syllabus", course_path(current_course), id: current_if("courses")
-              %li= link_to "Course Calendar", course_calendar_path(current_course), id: current_if("calendars")
+              %li= link_to "Course Calendar", course_calendar_path(current_course), id: current_if("events")
               %li= link_to "Materials", course_materials_path(current_course), id: current_if("materials")
               %li= link_to "Assignments", course_assignments_path(current_course), id: current_if("assignments")
-              %li= link_to "Peers", course_enrollments_path(current_course), id: current_if("users")
-              %li.right
-                %span
-                  %a{ "data-dropdown" => "hover1", "data-options" => "is_hover:true" }= current_course.title
-                  %ul#hover1.f-dropdown{ "data-dropdown-content" => "" }
-                    - (active_courses - [current_course]).each do |course|
-                      %li= link_to course.title, course
+              %li= link_to "Peers", course_enrollments_path(current_course), id: current_if("enrollments")
+            %li.right
+              %span
+                %a{ "data-dropdown" => "hover1", "data-options" => "is_hover:true" }= current_course.try(:title) || "Choose Course >"
+                %ul#hover1.f-dropdown{ "data-dropdown-content" => "" }
+                  - (active_courses - [current_course]).each do |course|
+                    %li= link_to course.title, course
     .row
       .small-12.columns
         = yield

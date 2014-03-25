@@ -8,11 +8,14 @@ Coursewareofthefuture::Application.routes.draw do
   end
 
   resources :courses, except: [:edit, :update, :destroy] do
-    resources :enrollments, only: [:index]
-    resources :materials, only: [:index, :show], constraints: { id: /.*/ }
-    resources :events, only: [:new, :create]
-    resources :assignments, only: [:index, :show]
+    resources :assignments, except: [:edit, :update, :destroy] do
+      get :select, on: :collection
+    end
     get :calendar, to: 'events#index'
+    resources :enrollments, only: [:index]
+    resources :events, only: [:new, :create]
+    resources :materials, only: [:index, :show], constraints: { id: /.*/ }
+    resources :quizzes, only: [:show]
   end
   resource :enrollment, only: [:new]
   resources :users, except: [:destroy] do

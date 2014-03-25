@@ -1,0 +1,2 @@
+Fabricator(:milestone) do
+end
