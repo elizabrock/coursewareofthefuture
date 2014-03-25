@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 
 # gem 'carrierwave'
 # gem 'cancan'
-gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'calendar_helper'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'decent_exposure'
@@ -60,6 +59,7 @@ end
 group :test do
   gem 'coveralls'
   gem 'cucumber-rails', require: false
+  gem 'timecop'
   gem 'webmock'
   gem 'vcr'
 end

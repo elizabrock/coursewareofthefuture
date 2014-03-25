@@ -1,6 +1,8 @@
 %h1 Assignments
 
 %ul
-  %li= link_to "First Day Checkin, due 1/16", assignment_path(13)
-  %li= link_to "Career Prep Prerequisties, due 2/1", assignment_path(13)
-  %li= link_to "Capstone 1: Checkin 1, due 3/1", assignment_path(13)
+  - assignments.each do |assignment|
+    %li= link_to assignment.title, course_assignment_path(current_course, assignment)
+  %li= link_to "Quiz Mockup", course_quiz_path(current_course, 1)
+
+= link_to "New Assignment", select_course_assignments_path(current_course)

@@ -1,6 +1,3 @@
-- if course
-  %h1= course.title
-  :markdown
-    #{ course.syllabus }
-- else
-  %p There is no active course at this time.
+%h1= current_course.title
+:markdown
+  #{ current_course.syllabus }

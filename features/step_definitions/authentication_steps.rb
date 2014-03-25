@@ -1,27 +1,32 @@
 Given(/^I am signed in as (.*)$/) do |name|
   if name == "an instructor"
-    @instructor = Fabricate(:instructor)
-    visit new_instructor_session_path
-    fill_in "Email", with: @instructor.email
-    fill_in "Password", with: "password"
-    click_button "Login"
+    user = Fabricate(:instructor)
+    sign_into_github_as(user.github_username, user.github_uid)
+  elsif name == "a student in that course"
+    user = Fabricate(:student)
+    @course.users << user
+    sign_into_github_as(user.github_username, user.github_uid)
   elsif name == "a student"
-    @student = Fabricate.build(:student)
-    sign_into_github_as(@student.github_username, @student.github_uid)
-    visit '/students/auth/github'
+    user = Fabricate(:student)
+    sign_into_github_as(user.github_username, user.github_uid)
   else
-    @student = Student.where(name: name).first
-    sign_into_github_as(@student.github_username, @student.github_uid)
-    visit '/students/auth/github'
+    user = User.where(name: name).first
+    sign_into_github_as(user.github_username, user.github_uid)
   end
+  visit '/users/auth/github'
+  @user = User.find_by_github_username(user.github_username)
 end
 
 Given(/^I am signed in to Github as "(.*?)"$/) do |username|
   sign_into_github_as(username)
+
 end
 
 def sign_into_github_as(username, uid = nil)
-  uid ||= '12345'
+  if uid.nil?
+    user = User.find_by_github_username(username)
+    uid = user.try(:github_uid) || '12345'
+  end
   OmniAuth.config.add_mock(:github, {
     uid: uid,
     credentials: {

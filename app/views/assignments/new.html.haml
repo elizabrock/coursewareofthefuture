@@ -1,0 +1,14 @@
+%h1 Finalize Assignment
+
+= simple_form_for assignment, url: course_assignments_path(current_course) do |f|
+  = f.input :title
+  = f.input :summary
+  = f.input :published
+  = f.simple_fields_for :milestones do |m|
+    %fieldset
+      %legend #{m.object.title} Milestone
+      = m.input :title
+      = m.input :instructions
+      = m.input :deadline
+  = f.button :submit, "Save Assignment"
+

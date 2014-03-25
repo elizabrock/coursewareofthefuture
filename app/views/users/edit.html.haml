@@ -1,0 +1,9 @@
+%h2 Edit Your Profile
+= simple_form_for current_user do |f|
+  = f.input :email
+  = f.input :name
+  = f.input :phone
+  - unless current_user.instructor?
+    = f.input :goals
+    = f.input :background
+  = f.button :submit, "Save Changes"

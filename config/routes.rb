@@ -1,17 +1,26 @@
 Coursewareofthefuture::Application.routes.draw do
-  root 'courses#show'
+  root 'home#index'
 
-  devise_for :students, controllers: { omniauth_callbacks: :omniauth_callbacks }
-  devise_scope :student do
-    get 'sign_in', :to => 'devise/sessions#new', :as => :new_student_session
-    delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_student_session
+  devise_for :users, controllers: { omniauth_callbacks: :omniauth_callbacks }
+  devise_scope :user do
+    get 'sign_in', :to => 'devise/sessions#new', :as => :new_user_session
+    delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   end
 
-  resources :student_profiles, except: [:destroy], path: :students
-  resource :calendar, only: [:show]
-  resources :assignments, only: [:index, :show]
-  resources :materials, only: [:index, :show], constraints: { id: /.*/ }
-
-  devise_for :instructors, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
+  resources :courses, except: [:edit, :update, :destroy] do
+    resources :assignments, except: [:edit, :update, :destroy] do
+      get :select, on: :collection
+    end
+    get :calendar, to: 'events#index'
+    resources :enrollments, only: [:index]
+    resources :events, only: [:new, :create]
+    resources :materials, only: [:index, :show], constraints: { id: /.*/ }
+    resources :quizzes, only: [:show]
+  end
+  resource :enrollment, only: [:new]
+  resources :users, except: [:destroy] do
+    member do
+      post :instructify
+    end
+  end
 end

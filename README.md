@@ -32,37 +32,9 @@ This will be the new courseware for Nashville Software School.
 Notes on Resources:
 
 * https://education.github.com/guide
-* https://github.com/elizabrock/NSS-Syllabus-Fall-2012
-* https://github.com/elizabrock/NSS-Syllabus-Spring-2013
-* https://github.com/elizabrock/NSS-Syllabus-Cohort-3
 * http://planbookedu.com/planbooks/view/pk:XRSD8
 * https://canvas.instructure.com/courses/790528
 * http://www.volunteerspot.com/login/entry/135623132021#/form
-
-Notes to Eliza:
-
-* Need to set up Figaro
-* Sortable Tree Options:
-  * https://github.com/the-teacher/the_sortable_tree
-  * https://www.google.com/search?q=nested+drag+and+drop+activeadmin&oq=nested+drag+and+drop+activeadmin&aqs=chrome..69i57.9711j0j7&sourceid=chrome&espv=210&es_sm=91&ie=UTF-8
-  * https://github.com/nebirhos/activeadmin-sortable-tree
-  * https://github.com/neo/activeadmin-sortable
-
-## Name Ideas
-
-* Stapler Labs
-* Ruby Ruler
-* Ruby Whiteboard
-* Ruby Student
-* Ruby Education
-* Ruby Sharpener
-* Course Portfolio
-* Ruby Binder
-* Ruby Pupil
-
-
-Toolbox
-Socrates
 
 ## Vision
 
@@ -91,24 +63,22 @@ Socrates
   This will be an outline of past deadlines
 
 
-## Modeling
-
-* Course Session
-  * attr: start_date
-  * attr: end_date
-  * Days Off
-    * date
-* Students
-  * CheckinCompletions
-
-
-courseware:  connect to github, grade projects, give feedback
-
-quizzes: auto grade, with regex? And just give them answers and explanation afterwards.
-
-
 ## System Dependencies
+
+None
 
 ## Setup Instructions
 
+1. Copy `config/application.yml.example` to `config/application.yml`
+2. Fill in the correct Github API key (either get them from Eliza or set one up under developer applications, here: https://github.com/settings/applications)
+3. `rake db:create:all`
+4. `rake db:migrate`
+5. `rake`
+6. Confirm that rake passed.  If it didn't, that means your setup is missing something.
+
 ## Deployment Instructions
+
+1. Get Eliza to add you to heroku
+2. `git remote add heroku <heroku_git_url>`
+3. `git push heroku master`
+4. `heroku run rake db:migrate`

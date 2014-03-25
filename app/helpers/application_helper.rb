@@ -6,8 +6,6 @@ module ApplicationHelper
   def currently_in?(arg)
     if arg.is_a? Regexp
       arg =~ request.fullpath
-    elsif arg == :root
-      request.fullpath == '/'
     else
       params[:controller] == arg
     end

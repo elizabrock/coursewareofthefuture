@@ -1,0 +1,6 @@
+%h1 Course Calendar
+
+- (current_course.start_date.change(day: 1)..current_course.end_date).select{ |d| d.day == 1 }.each do |first_of_month|
+  = calendar(year: first_of_month.year, month: first_of_month.month){ |d| format_calendar_date(d, current_course) }
+
+= link_to "Add New Event", new_course_event_path(current_course)

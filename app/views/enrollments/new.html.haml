@@ -1,0 +1,6 @@
+%h1 Course Enrollment
+%p Please select a course below to enroll in it.
+
+%ul
+  - active_courses.each do |course|
+    %li= link_to "Join #{course.title}", "#"
