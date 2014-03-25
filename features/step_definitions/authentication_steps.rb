@@ -9,6 +9,7 @@ Given(/^I am signed in as (.*)$/) do |name|
     @student = Fabricate.build(:student)
     sign_into_github_as(@student.github_username, @student.github_uid)
     visit '/students/auth/github'
+    @student = Student.last
   else
     @student = Student.where(name: name).first
     sign_into_github_as(@student.github_username, @student.github_uid)
