@@ -6,7 +6,12 @@ class AssignmentsController < ApplicationController
   before_filter :require_instructor!, except: [:index, :show]
 
   def new
-    assignment.populate_from_github(params[:assignment_source], current_user.octoclient)
+    source = params[:assignment_source]
+    begin
+      assignment.populate_from_github(source, current_user.octoclient)
+    rescue Octokit::NotFound
+      redirect_to :back, alert: "Could not retrieve instructions.md in #{source}.  Please confirm that the instructions.md is ready and then try again."
+    end
   end
 
   def create

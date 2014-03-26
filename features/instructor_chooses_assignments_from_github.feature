@@ -17,6 +17,7 @@ Feature: Instructor chooses assignments from github
       | Cheers              |
       | Ruby Koans          |
       | Some Other Exercise |
+      | Unfinished Exercise |
     When I select "Ruby Koans" for "Assignment"
     And I press "Set Milestones"
     Then I should see the following:
@@ -77,6 +78,23 @@ Feature: Instructor chooses assignments from github
       | Strings (due 2/01)   |
       | Objects (due 2/02)   |
       | Triangles (due 2/03) |
+
+  Scenario: Sad path: Exercise that's missing it's innards
+    Given the following course:
+      | title      | Cohort 4   |
+    And that it is 2013/03/01
+    And I am signed in as an instructor
+    When I click "Cohort 4"
+    And I click "Assignments"
+    And I click "New Assignment"
+    Then I should see the following options for "Assignment":
+      | Cheers              |
+      | Ruby Koans          |
+      | Some Other Exercise |
+      | Unfinished Exercise |
+    When I select "Unfinished Exercise" for "Assignment"
+    And I press "Set Milestones"
+    Then I should see "Could not retrieve instructions.md in exercises/04-unfinished-exercise. Please confirm that the instructions.md is ready and then try again."
 
   Scenario: Student views an assignment
     Given the following course:
