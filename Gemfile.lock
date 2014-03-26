@@ -102,6 +102,8 @@ GEM
       railties (>= 4.0.1)
     hashie (2.0.5)
     hike (1.2.3)
+    honeybadger (1.11.2)
+      json
     i18n (0.6.9)
     jbuilder (1.5.3)
       activesupport (>= 3.0.0)
@@ -275,6 +277,7 @@ DEPENDENCIES
   figaro
   foundation-rails
   haml-rails
+  honeybadger
   jbuilder (~> 1.2)
   jquery-rails
   letter_opener
