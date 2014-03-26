@@ -12,6 +12,8 @@ Feature: Student profiles
 
   Background:
     Given the following course:
+      | title | Nullth Course |
+    And the following course:
       | title | First Course |
 
   Scenario: Student list is not visible to guests

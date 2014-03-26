@@ -10,8 +10,7 @@ Feature: Instructor chooses assignments from github
       | title | Capstone |
     And that it is 2013/03/01
     And I am signed in as an instructor
-    When I click "Cohort 4"
-    And I click "Assignments"
+    When I click "Assignments"
     And I click "New Assignment"
     Then I should see the following options for "Assignment":
       | Cheers              |
@@ -49,8 +48,7 @@ Feature: Instructor chooses assignments from github
       | end_date   | 2014/02/03 |
     And that it is 2014/02/01
     And I am signed in as an instructor
-    When I click "Cohort 4"
-    And I click "Assignments"
+    When I click "Assignments"
     And I click "New Assignment"
     And I select "Ruby Koans" for "Assignment"
     And I press "Set Milestones"
@@ -84,8 +82,7 @@ Feature: Instructor chooses assignments from github
       | title      | Cohort 4   |
     And that it is 2013/03/01
     And I am signed in as an instructor
-    When I click "Cohort 4"
-    And I click "Assignments"
+    When I click "Assignments"
     And I click "New Assignment"
     Then I should see the following options for "Assignment":
       | Cheers              |

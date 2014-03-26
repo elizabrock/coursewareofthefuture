@@ -4,7 +4,11 @@ class HomeController < ApplicationController
   def index
     if current_user
       if current_user.instructor?
-        redirect_to courses_path
+        if Course.count == 1
+          redirect_to Course.first
+        else
+          redirect_to courses_path
+        end
       elsif current_user.courses.empty?
         redirect_to new_enrollment_path
       else

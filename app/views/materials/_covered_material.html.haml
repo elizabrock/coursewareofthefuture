@@ -1,0 +1,7 @@
+- materials.each do |material|
+  - if covered_material_links.include?(material.link)
+    %li
+      = link_to material.pretty_name, material.link
+      %small= material.pretty_path
+  = render partial: 'covered_material', locals: { materials: material.children }
+

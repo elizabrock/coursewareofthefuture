@@ -50,13 +50,21 @@ class Material
     Material.new(result)
   end
 
-  def pretty_name
-    filename.titleize.
+  def prettify(string)
+    string.titleize.
       gsub(/^\d\d\s/, "").
       gsub("To", "to").
       gsub("And", "and").
       gsub("Erb", "ERB").
       gsub("Actionview", "ActionView")
+  end
+
+  def pretty_name
+    prettify(filename)
+  end
+
+  def pretty_path
+    path.split("/").map{|s| prettify(s)}.join(" > ")
   end
 
   def add_child(tree_item)
