@@ -7,8 +7,12 @@ class UsersController < ApplicationController
     render "enrollments/index"
   end
 
+  def confirm_image
+    render "users/confirm_image"
+  end
+
   def update
-    user_params = params.require(:user).permit(:name, :email, :phone, :goals, :background)
+    user_params = params.require(:user).permit(:name, :email, :phone, :goals, :background, :avatar_url, :avatar_confirmed)
     if current_user.update_attributes(user_params)
       redirect_to current_user, notice: "Your profile has been updated."
     else

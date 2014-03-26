@@ -5,6 +5,8 @@ Coursewareofthefuture::Application.routes.draw do
   devise_scope :user do
     get 'sign_in', :to => 'devise/sessions#new', :as => :new_user_session
     delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
+
+    get 'confirm_image', :to => 'users#confirm_image', :as => :confirm_image
   end
 
   resources :courses, except: [:edit, :update, :destroy] do
