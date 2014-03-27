@@ -28,6 +28,8 @@ Feature: Student profiles
       | name        |
       | Julia Child |
     And I am signed in as Jill Smith
+    And I have a photo
+    And my photo is confirmed
     When I go to the homepage
     And I click "Peers"
     Then I should see the following list within the Students section:
@@ -42,6 +44,8 @@ Feature: Student profiles
       | Jill Smith |
       | Bob Jones  |
     And I am signed in as an instructor
+    And I have a photo
+    And my photo is confirmed
     When I go to the student list page
     Then I should see the following list:
       | Bob Jones  |
@@ -57,6 +61,8 @@ Feature: Student profiles
       | Jill Smith |
       | Bob Jones  |
     And I am signed in as an instructor
+    And I have a photo
+    And my photo is confirmed
     And I click "First Course"
     And I click "Peers"
     Then I should see the following list:
@@ -72,6 +78,8 @@ Feature: Student profiles
       | Jill Smith | (615) 403 - 5055 | jill@smith.com | I want to learn Javascript. | I know a little C. |
       | Bob Jones  | (858) 205 - 9255 | bob@jones.com  | I want to learn rails.      | I know a little C. |
     And I am signed in as Jill Smith
+    And I have a photo
+    And my photo is confirmed
     When I go to the student list page
     And I click "Bob Jones"
     Then I should see "(858) 205 - 9255"
@@ -85,6 +93,8 @@ Feature: Student profiles
       | name       | phone            | email          | goals                  | background         |
       | Bob Jones  | (858) 205 - 9255 | bob@jones.com  | I want to learn rails. | I know a little C. |
     And I am signed in as an instructor
+    And I have a photo
+    And my photo is confirmed
     When I go to the student list page
     And I click "Bob Jones"
     Then I should see "(858) 205 - 9255"
@@ -95,6 +105,8 @@ Feature: Student profiles
 
   Scenario: Editing my own profile, as an instructor
     Given I am signed in as an instructor
+    And I have a photo
+    And my photo is confirmed
     When I click "My Profile"
     And I click "Edit My Profile"
     And I fill in "Julia Myers" for "Name"
@@ -112,6 +124,8 @@ Feature: Student profiles
     Given the following student:
       | name | Jillian Smith |
     And I am signed in as Jillian Smith
+    And I have a photo
+    And my photo is confirmed
     When I click "My Profile"
     And I click "Edit My Profile"
     And I fill in "Jill Smith" for "Name"
@@ -133,6 +147,8 @@ Feature: Student profiles
       | name  | Jillian Smith  |
       | email | jill@smith.com |
     And I am signed in as Jillian Smith
+    And I have a photo
+    And my photo is confirmed
     When I click "My Profile"
     And I click "Edit My Profile"
     And I fill in "jillsmith.com" for "Email"
