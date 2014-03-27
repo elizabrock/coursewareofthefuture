@@ -91,6 +91,18 @@ Then /^(?:|I )should see the following:$/ do |table|
   end
 end
 
+Then(/^I should see the following buttons:$/) do |table|
+  table.raw.each_with_index do |content, row|
+    page.should have_button(content[0])
+  end
+end
+
+Then(/^I should not see the following buttons:$/) do |table|
+  table.raw.each_with_index do |content, row|
+    page.should_not have_button(content[0])
+  end
+end
+
 Then(/^I should see the following calendar entries:$/) do |table|
   table.raw.each do |row|
     date = row[0]

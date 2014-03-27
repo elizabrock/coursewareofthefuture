@@ -15,6 +15,10 @@ def selector_for(description)
     "form##{$1}"
   when /the date (.*)/
     "td[data-date='#{$1}']"
+  when "the materials to cover"
+    "ul#upcoming_materials"
+  when "the materials that have been covered"
+    "ol#covered_materials"
   else
     raise "Make a within step for " + description.gsub('"','')
   end

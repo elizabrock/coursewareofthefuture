@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :self_reports
 
   validates_format_of :email, with: /\A[^@]+@[^@]+\z/, message: "must be an email address"
+  validates_presence_of :github_access_token
 
   default_scope { order(name: :asc) }
 
@@ -29,5 +30,4 @@ class User < ActiveRecord::Base
   def octoclient
     @octoclient ||= Octokit::Client.new(:access_token => github_access_token)
   end
-
 end

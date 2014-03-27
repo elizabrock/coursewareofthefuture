@@ -59,7 +59,7 @@ group :test, :development do
 end
 
 group :test do
-  gem 'coveralls'
+  gem 'coveralls', require: false
   gem 'cucumber-rails', require: false
   gem 'timecop'
   gem 'webmock'

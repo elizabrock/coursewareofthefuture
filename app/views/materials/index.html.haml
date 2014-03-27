@@ -1,4 +1,10 @@
 %h1 Course Materials &amp; Outline
 
-%ul#materials
+%h2 Material We've Covered
+
+%ol#covered_materials
+  = render partial: 'covered_material', locals: { materials: materials.children }
+
+%h2 Upcoming Material
+%ul#upcoming_materials
   = render partial: 'material', locals: { materials: materials.children }

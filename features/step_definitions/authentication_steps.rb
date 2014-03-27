@@ -1,6 +1,7 @@
 Given(/^I am signed in as (.*)$/) do |name|
   if name == "an instructor"
     user = Fabricate(:instructor)
+    user.courses << Course.active_or_future.all
     sign_into_github_as(user.github_username, user.github_uid)
   elsif name == "a student in that course"
     user = Fabricate(:student)

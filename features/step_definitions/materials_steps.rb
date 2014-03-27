@@ -51,7 +51,7 @@ Then(/^I should see the materials tree from the inquizator\-test\-repo$/) do
       ]
     }
   ]
-  list = first(:css, "ul#materials")
+  list = first(:css, "ul#upcoming_materials")
   actual = hash_list(list)
   actual.should == expected
 end
@@ -80,4 +80,11 @@ end
 Then(/^I should not see any of the exercises from Github$/) do
   page.should_not have_content("Exercises")
   page.should_not have_content("Ruby Koans")
+end
+
+When(/^I mark "(.*?)" as covered$/) do |item|
+  parent = find(:xpath, "//li[./a[contains(normalize-space(.),'#{item}')]]")
+  within(parent) do
+    click_button "Mark as Covered"
+  end
 end

@@ -16,10 +16,6 @@ class Material
     end
   end
 
-  def self.source_repository
-    Rails.env.test? ? @source_repository : ENV["MATERIALS_REPO"]
-  end
-
   def self.ls(client, source_repository, directory)
     @source_repository = source_repository
     client.contents(source_repository, path: directory).map do |path|
@@ -49,18 +45,26 @@ class Material
     end
   end
 
-  def self.lookup(path, client)
+  def self.lookup(path, source_repository, client)
     result = client.contents(source_repository, path: path)
     Material.new(result)
   end
 
-  def pretty_name
-    filename.titleize.
+  def prettify(string)
+    string.titleize.
       gsub(/^\d\d\s/, "").
       gsub("To", "to").
       gsub("And", "and").
       gsub("Erb", "ERB").
       gsub("Actionview", "ActionView")
+  end
+
+  def pretty_name
+    prettify(filename)
+  end
+
+  def pretty_path
+    path.split("/").map{|s| prettify(s)}.join(" > ")
   end
 
   def add_child(tree_item)

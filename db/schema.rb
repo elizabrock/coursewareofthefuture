@@ -35,6 +35,13 @@ ActiveRecord::Schema.define(version: 20140327172142) do
     t.string   "source_repository"
   end
 
+  create_table "covered_materials", force: true do |t|
+    t.integer  "course_id"
+    t.string   "material_fullpath"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "enrollments", force: true do |t|
     t.integer  "user_id"
     t.integer  "course_id"

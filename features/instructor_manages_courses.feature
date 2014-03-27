@@ -54,7 +54,7 @@ Feature: Instructor manages courses
     And I have a photo
     And my photo is confirmed
     When I go to the homepage
-    Then I should see:
+    Then I should see the following buttons:
       | Join Cohort 4 |
       | Join Cohort 5 |
 

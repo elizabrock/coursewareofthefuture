@@ -13,10 +13,11 @@ Coursewareofthefuture::Application.routes.draw do
       get :select, on: :collection
     end
     get :calendar, to: 'events#index'
-    resources :enrollments, only: [:index]
+    resources :enrollments, only: [:index, :create]
     resources :events, only: [:new, :create]
     resources :materials, only: [:index, :show], constraints: { id: /.*/ }
     resources :quizzes, only: [:show]
+    resources :covered_materials, only: [:create]
   end
   resource :enrollment, only: [:new]
   resources :self_reports, only: [:new, :create]
