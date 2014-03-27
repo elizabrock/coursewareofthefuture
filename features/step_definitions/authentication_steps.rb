@@ -22,16 +22,6 @@ Given(/^I am signed in to Github as "(.*?)"$/) do |username|
 
 end
 
-Given(/^I have a photo$/) do
-  @user.avatar_url = "www.path.to/image.jpg"
-  @user.save
-end
-
-Given(/^my photo is confirmed$/) do
-  @user.avatar_confirmed = true
-  @user.save
-end
-
 def sign_into_github_as(username, uid = nil)
   if uid.nil?
     user = User.find_by_github_username(username)

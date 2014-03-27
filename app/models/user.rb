@@ -1,4 +1,7 @@
+require_relative '../uploaders/photo_uploader'
+
 class User < ActiveRecord::Base
+  mount_uploader :photo, PhotoUploader
   devise :rememberable, :trackable, :omniauthable, :omniauth_providers => [:github]
 
   scope :instructors, ->{ where(instructor: true) }
