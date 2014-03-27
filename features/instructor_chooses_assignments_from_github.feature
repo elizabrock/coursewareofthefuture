@@ -52,15 +52,11 @@ Feature: Instructor chooses assignments from github
       | end_date   | 2014/02/03 |
     And that it is 2014/02/01
     And I am signed in as an instructor
-<<<<<<< HEAD
     And I have a photo
     And my photo is confirmed
     When I go to the homepage
     And I click "Cohort 4"
     And I click "Assignments"
-=======
-    When I click "Assignments"
->>>>>>> 55cf75b961a274c366f64e8323555f53b4ccb8f8
     And I click "New Assignment"
     And I select "Ruby Koans" for "Assignment"
     And I press "Set Milestones"
@@ -94,15 +90,11 @@ Feature: Instructor chooses assignments from github
       | title      | Cohort 4   |
     And that it is 2013/03/01
     And I am signed in as an instructor
-<<<<<<< HEAD
     And I have a photo
     And my photo is confirmed
     When I go to the homepage
     And I click "Cohort 4"
     And I click "Assignments"
-=======
-    When I click "Assignments"
->>>>>>> 55cf75b961a274c366f64e8323555f53b4ccb8f8
     And I click "New Assignment"
     Then I should see the following options for "Assignment":
       | Cheers              |
