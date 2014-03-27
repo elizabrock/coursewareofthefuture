@@ -2,5 +2,5 @@
 %p Please select a course below to enroll in it.
 
 %ul
-  - active_courses.each do |course|
-    %li= link_to "Join #{course.title}", "#"
+  - enrollment_eligible_courses.each do |course|
+    %li= button_to "Join #{course.title}", course_enrollments_path(course)

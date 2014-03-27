@@ -46,7 +46,7 @@ Feature: Instructor manages courses
       | Cohort 5 | 2014/04/14 |
     And I am signed in as a student
     When I go to the homepage
-    Then I should see:
+    Then I should see the following buttons:
       | Join Cohort 4 |
       | Join Cohort 5 |
 

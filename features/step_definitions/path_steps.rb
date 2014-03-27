@@ -12,6 +12,9 @@ def path_to path_descriptor
   when /the course calendar for (.*)/
     course = Course.find_by_title($1)
     course_calendar_path(course)
+  when /the (.*) course page/
+    course = Course.find_by_title($1)
+    course_path(course)
   else
     path_descriptor
   end
