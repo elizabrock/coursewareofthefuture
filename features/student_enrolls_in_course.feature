@@ -13,7 +13,7 @@ Feature: Student enrolls in course
   Scenario: Enrolling in a course
     Given I am signed in as a student
     When I go to the homepage
-    Then I should see "Please select a course below to enroll"
+    Then I should see "Please select a course below to join it"
     And I should see the following buttons:
       | Join Cohort 4a |
       | Join Cohort 4b |
