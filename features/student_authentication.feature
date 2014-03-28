@@ -6,7 +6,7 @@ Feature: Student authentication
   - Standard login/logout
 
   Scenario: Student signs up via. Github
-    Given I am signed in to Github as "joe"
+    Given I am signed in to Github as "joe" with a confirmed photo
     When I go to the homepage
     And I follow "Sign In with Github"
     Then I should see "Successfully authenticated from Github account."
@@ -27,7 +27,7 @@ Feature: Student authentication
       | github_uid      | 12345           |
       | email           | joe@example.com |
       | github_username | joe             |
-    And I am signed in to Github as "joe"
+    And I am signed in to Github as "joe" with a confirmed photo
     When I go to the homepage
     And I follow "Sign In with Github"
     Then I should see "Successfully authenticated from Github account."

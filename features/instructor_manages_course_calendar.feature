@@ -7,6 +7,8 @@ Feature: Instructor manages course calendar
       | syllabus   | Foobar     |
       | start_date | 2014/01/24 |
       | end_date   | 2014/03/24 |
+    And I have a photo
+    And my photo is confirmed
     And I am on the course calendar for Cohort 4
     And I click "Add New Event"
     And I select 2014 February 24 from "Date"
@@ -24,6 +26,8 @@ Feature: Instructor manages course calendar
       | syllabus   | Foobar     |
       | start_date | 2014/01/24 |
       | end_date   | 2014/03/24 |
+    And I have a photo
+    And my photo is confirmed
     And I am on the course calendar for Cohort 4
     When I click "Add New Event"
     And I select 2013 February 19 from "Date"
@@ -49,7 +53,10 @@ Feature: Instructor manages course calendar
       | 2013/10/15 | Federal Holiday |
       | 2014/01/10 | No Class        |
     And I am signed in as a student in that course
-    When I follow "Course Calendar"
+    And I have a photo
+    And my photo is confirmed
+    When I go to the homepage
+    And I follow "Course Calendar"
     And I should see the following:
       | October  |
       | November |

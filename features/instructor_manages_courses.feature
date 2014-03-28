@@ -2,7 +2,10 @@ Feature: Instructor manages courses
 
   Scenario: Creating a course
     Given I am signed in as an instructor
-    When I follow "Create New Course"
+    And I have a photo
+    And my photo is confirmed
+    When I go to the homepage
+    And I follow "Create New Course"
     And I fill in "Title" with "Cohort 4"
     And I fill in "Syllabus" with "Foobar"
     And I select 2014 January 24 from "Start Date"
@@ -18,7 +21,10 @@ Feature: Instructor manages courses
 
   Scenario: Failing to create a course
     Given I am signed in as an instructor
-    When I follow "Create New Course"
+    And I have a photo
+    And my photo is confirmed
+    When I go to the homepage
+    And I follow "Create New Course"
     And I press "Create Course"
     Then I should see "Course couldn't be created"
     And I should see the error message "can't be blank" on "Title"
@@ -45,6 +51,8 @@ Feature: Instructor manages courses
       | Cohort 4 | 2014/02/28 |
       | Cohort 5 | 2014/04/14 |
     And I am signed in as a student
+    And I have a photo
+    And my photo is confirmed
     When I go to the homepage
     Then I should see the following buttons:
       | Join Cohort 4 |
@@ -55,5 +63,7 @@ Feature: Instructor manages courses
       | title    | Cohort 4           |
       | syllabus | This is *awesome*. |
     And I am signed in as a student in that course
+    And I have a photo
+    And my photo is confirmed
     When I go to the homepage
     Then I should see a "em" tag with the content "awesome"

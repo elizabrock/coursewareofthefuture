@@ -38,6 +38,8 @@ Feature: Switching between courses
 
   Scenario: Instructor Chooses Course
     Given I am signed in as an instructor
+    And I have a photo
+    And my photo is confirmed
     When I go to the homepage
     Then I should see "Which course are you teaching today?"
     And I should see the following list:

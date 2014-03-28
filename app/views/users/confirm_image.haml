@@ -1,0 +1,17 @@
+%h2 Avatar
+.row
+  .small-4.columns
+    %img#avatar{src: @avatar}
+    = simple_form_for current_user, url: "/users/#{current_user.id}" do |f|
+      = f.input :avatar_confirmed, as: :hidden, input_html: {value: true}
+      = f.button :submit, "This is a picture of me.", class: "expand"
+  .small-7.columns.small-offset-1
+    %h4 Provide a different picture:
+    = simple_form_for current_user, url: "/users/#{current_user.id}" do |f|
+      %br
+      = f.file_field :photo
+      %p Or...
+      = f.input :avatar_url, label: "Web address for your photo"
+      = f.button :submit, "Submit", class: "tiny"
+      %p
+        %em You will need to confirm your picture after submitting
