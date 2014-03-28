@@ -4,12 +4,18 @@ Feature: Instructor marks materials as covered
   Scenario: Students don't see "Mark as Covered"
     Given 1 course
     And I am signed in as a student in that course
+    And I have a photo
+    And my photo is confirmed
+    And I go to the homepage
     When I click "Materials"
     Then I should not see "Mark as Covered"
 
   Scenario: Instructor marks item as covered
     Given 1 course
     And I am signed in as an instructor
+    And I have a photo
+    And my photo is confirmed
+    And I go to the homepage
     When I click "Materials"
     Then I should see "Logic" within the materials to cover
     And I should not see "Logic" within the materials that have been covered
@@ -29,6 +35,9 @@ Feature: Instructor marks materials as covered
       | Javascript |
       | HTML       |
     And I am signed in as an instructor
+    And I have a photo
+    And my photo is confirmed
+    And I go to the homepage
     When I click "Javascript"
     And I click "Materials"
     Then I should see "Logic" within the materials to cover

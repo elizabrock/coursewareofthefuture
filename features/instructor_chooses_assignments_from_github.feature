@@ -12,8 +12,7 @@ Feature: Instructor chooses assignments from github
     And I am signed in as an instructor
     And I have a photo
     And my photo is confirmed
-    When I go to the homepage
-    And I click "Cohort 4"
+    When I click "Cohort 4"
     And I click "Assignments"
     And I click "New Assignment"
     Then I should see the following options for "Assignment":
@@ -54,8 +53,7 @@ Feature: Instructor chooses assignments from github
     And I am signed in as an instructor
     And I have a photo
     And my photo is confirmed
-    When I go to the homepage
-    And I click "Cohort 4"
+    When I click "Cohort 4"
     And I click "Assignments"
     And I click "New Assignment"
     And I select "Ruby Koans" for "Assignment"
@@ -92,8 +90,7 @@ Feature: Instructor chooses assignments from github
     And I am signed in as an instructor
     And I have a photo
     And my photo is confirmed
-    When I go to the homepage
-    And I click "Cohort 4"
+    When I click "Cohort 4"
     And I click "Assignments"
     And I click "New Assignment"
     Then I should see the following options for "Assignment":
