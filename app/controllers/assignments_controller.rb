@@ -3,6 +3,9 @@ class AssignmentsController < ApplicationController
   expose(:assignments){ current_user.instructor? ? current_course.assignments : current_course.assignments.published }
   expose(:assignment, attributes: :assignment_params)
 
+  expose(:published_quizzes){ current_course.quizzes.published }
+  expose(:unpublished_quizzes){ current_course.quizzes.unpublished }
+
   before_filter :require_instructor!, except: [:index, :show]
 
   def new

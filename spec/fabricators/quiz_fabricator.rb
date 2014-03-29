@@ -1,0 +1,2 @@
+Fabricator(:quiz) do
+end

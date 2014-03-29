@@ -1,5 +1,10 @@
 en:
   simple_form:
+    options:
+      question:
+        question_type:
+          "boolean": 'True/False'
+          free_text: 'Free Text'
     "yes": 'Yes'
     "no": 'No'
     required:
@@ -23,4 +28,3 @@ en:
     #   defaults:
     #     username: 'User name to sign in.'
     #     password: 'No special characters, please.'
-

@@ -1,0 +1,14 @@
+= simple_form_for quiz, url: course_quiz_path(current_course, quiz) do |f|
+  = render partial: 'quiz_form', locals: { f: f }
+  = f.simple_fields_for :questions do |q|
+    %fieldset
+      %legend= q.object.try(:question) || "Add another question"
+      = q.input :question
+      %h2= q.object.question_type
+      = q.label :question_type, "Question Type"
+      = q.select :question_type, [["Free Text", "free_text"], ["True/False", "boolean"]], include_blank: true
+      = q.input :correct_answer, label: "Correct Answer"
+  - unless quiz.questions.first.new_record?
+    = f.input :deadline, as: :text
+    %small Setting a deadline will publish this quiz. Format must be YYYY/MM/DD.
+  = f.button :submit, "Save Changes"

@@ -10,6 +10,13 @@ When(/^I fill in "(.*?)" with "(.*?)"$/) do |label, value|
   fill_in(label, with: value)
 end
 
+Then(/^"(.*?)" should be filled in for "(.*?)"$/) do |value, field|
+  field = find_field(field)
+  field_value = (field.tag_name == 'textarea') ? field.text : field.value
+  field_value.should =~ /#{value}/
+end
+
+
 When(/^I press "([^"]*)"$/) do |text|
   click_button text
 end

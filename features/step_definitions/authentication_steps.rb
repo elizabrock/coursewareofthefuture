@@ -3,6 +3,15 @@ Given(/^I am signed in as (.*)$/) do |name|
     user = Fabricate(:instructor)
     user.courses << Course.active_or_future.all
     sign_into_github_as(user.github_username, user.github_uid)
+  elsif name == "the instructor for that course"
+    user = Fabricate(:instructor)
+    @course.users << user
+    sign_into_github_as(user.github_username, user.github_uid)
+  elsif name == "an instructor for a course"
+    user = Fabricate(:instructor)
+    @course = Fabricate(:course)
+    @course.users << user
+    sign_into_github_as(user.github_username, user.github_uid)
   elsif name == "a student in that course"
     user = Fabricate(:student)
     @course.users << user
@@ -20,7 +29,14 @@ end
 
 Given(/^I am signed in to Github as "(.*?)"$/) do |username|
   sign_into_github_as(username)
+end
 
+When(/^I sign out$/) do
+  click_link "Sign Out"
+end
+
+When(/^sign in as a student in that course$/) do
+  step "I am signed in as a student in that course"
 end
 
 def sign_into_github_as(username, uid = nil)
