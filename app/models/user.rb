@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_many :enrollments
   has_many :courses, through: :enrollments
   has_many :self_reports
+  has_many :quiz_submissions
+  has_many :quizzes, through: :quiz_submissions
 
   validates_format_of :email, with: /\A[^@]+@[^@]+\z/, message: "must be an email address"
   validates_presence_of :github_access_token

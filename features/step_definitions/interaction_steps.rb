@@ -53,7 +53,19 @@ Then /^I should see the following options for "(.*?)":$/ do |field, option_texts
   option_texts.diff!(options.map{|o| [o.text]})
 end
 
-When /^(?:|I )(?:choose|select) "([^"]*)" (?:for|from) "([^"]*)"$/ do |value, field|
+When /^(?:|I )choose "([^"]*)" (?:for|from) "([^"]*)"$/ do |value, field|
+  input = page.find(:xpath, "//div[contains(normalize-space(.), '#{field}')]/label[contains(text(), '#{value}')]/input")
+  input.set(true)
+end
+
+Then(/^"(.*?)" should be choosen for "(.*?)"$/) do |value, field|
+  parent = find(:css, "label", text: field).parent
+  within(parent) do
+    page.should have_checked_field(value)
+  end
+end
+
+When /^(?:|I )select "([^"]*)" (?:for|from) "([^"]*)"$/ do |value, field|
   options = page.find_field(field).all("option")
   filtered_options = options.select{ |x| x.text =~ /#{value}$/ }
   raise 'too many options matched' if filtered_options.count > 1

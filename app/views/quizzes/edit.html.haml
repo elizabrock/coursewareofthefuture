@@ -4,9 +4,8 @@
     %fieldset
       %legend= q.object.try(:question) || "Add another question"
       = q.input :question
-      %h2= q.object.question_type
       = q.label :question_type, "Question Type"
-      = q.select :question_type, [["Free Text", "free_text"], ["True/False", "boolean"]], include_blank: true
+      = q.select :question_type, [["Free Text", Question::FREE_TEXT], ["True/False", Question::BOOLEAN]], include_blank: true
       = q.input :correct_answer, label: "Correct Answer"
   - unless quiz.questions.first.new_record?
     = f.input :deadline, as: :text

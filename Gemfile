@@ -11,6 +11,7 @@ gem 'devise'
 gem 'foundation-rails'
 gem 'fabrication'
 gem 'figaro'
+# gem 'fog'
 gem 'haml-rails'
 gem 'honeybadger'
 gem 'jquery-rails'
@@ -22,15 +23,11 @@ gem 'redcarpet'
 gem 'sass-rails', '~> 4.0.0'
 gem 'simple_form'
 gem 'uglifier', '>= 1.3.0'
+# gem 'unicorn'
 
 group :production do
   gem 'rails_12factor'
 end
-
-# Waiting for us to do the in-class deployments!
-# gem 'fog'
-# gem 'honeybadger'
-# gem 'unicorn'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -48,18 +45,18 @@ group :development do
 end
 
 group :test, :development do
-  gem 'database_cleaner'
-  gem 'email_spec'
   gem 'faker'
-  gem 'poltergeist'
   gem 'rspec-rails'
   gem 'rspec'
-  gem 'shoulda-matchers'
 end
 
 group :test do
   gem 'coveralls', require: false
   gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
+  gem 'email_spec'
+  gem 'poltergeist'
+  gem 'shoulda-matchers'
   gem 'timecop'
   gem 'webmock'
   gem 'vcr'

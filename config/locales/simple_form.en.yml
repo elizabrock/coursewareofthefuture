@@ -1,12 +1,7 @@
 en:
   simple_form:
-    options:
-      question:
-        question_type:
-          "boolean": 'True/False'
-          free_text: 'Free Text'
-    "yes": 'Yes'
-    "no": 'No'
+    "yes": 'True'
+    "no": 'False'
     required:
       text: 'required'
       mark: '*'

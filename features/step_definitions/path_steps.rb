@@ -15,6 +15,8 @@ def path_to path_descriptor
   when /the (.*) course page/
     course = Course.find_by_title($1)
     course_path(course)
+  when /the assignments page/
+    course_assignments_path(@course)
   else
     path_descriptor
   end

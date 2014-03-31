@@ -1,0 +1,10 @@
+%h1= quiz.title + "Quiz"
+
+= simple_form_for quiz_submission, url: course_quiz_submission_path(current_course, quiz) do |f|
+  %ol
+    = f.simple_fields_for :question_answers do |g|
+      %li
+        = g.input :question_id, as: :hidden
+        = g.input :answer, as: simple_form_type_for(g.object.question), label: g.object.question.question
+  = f.button :submit, "Save Progress"
+  = f.button :submit, "Finish Quiz"

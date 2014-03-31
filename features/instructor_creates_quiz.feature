@@ -12,7 +12,7 @@ Feature: Instructor creates quiz
 
   Scenario: Free Text Questions
     Given 1 course
-    And that course has the following quiz:
+    And that course has the following unpublished quiz:
       | title | Midpoint Checkin |
     And I am signed in as the instructor for that course
     When I click "Assignments"
@@ -36,7 +36,7 @@ Feature: Instructor creates quiz
 
   Scenario: True/False Questions
     Given 1 course
-    And that course has the following quiz:
+    And that course has the following unpublished quiz:
       | title | Midpoint Checkin |
     And I am signed in as the instructor for that course
     When I click "Assignments"
@@ -65,7 +65,7 @@ Feature: Instructor creates quiz
   Scenario: Editing quizzes
     Given 1 course
     And I am signed in as the instructor for that course
-    And that course has the following quiz:
+    And that course has the following unpublished quiz:
       | title | Final Checkin |
     And that quiz has the following questions:
       | question_type | question                  | correct_answer              |
@@ -110,7 +110,7 @@ Feature: Instructor creates quiz
   Scenario: Publishing quizzes
     Given 1 course
     And I am signed in as the instructor for that course
-    And that course has the following quiz:
+    And that course has the following unpublished quiz:
       | title | Final Checkin |
     When I click "Assignments"
     And I click "Final Checkin"

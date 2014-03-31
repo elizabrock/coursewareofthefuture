@@ -3,15 +3,21 @@
 %ul
   - assignments.each do |assignment|
     %li= link_to assignment.title, course_assignment_path(current_course, assignment)
+
   - published_quizzes.each do |quiz|
-    %li= link_to "#{quiz.title} Quiz (due #{quiz.deadline.strftime("%-m/%d")})", course_quiz_path(current_course, quiz)
+    - quiz_submission = current_user.quiz_submissions.find{ |qs| qs.quiz == quiz }
+    - if quiz_submission and quiz_submission.submitted?
+      %li= "#{quiz.title} Quiz (submitted for grading)"
+    - elsif quiz_submission
+      %li= link_to "#{quiz.title} Quiz (incomplete, due #{quiz.deadline.strftime("%-m/%d")})", edit_course_quiz_submission_path(current_course, quiz)
+    - else
+      %li= link_to "#{quiz.title} Quiz (due #{quiz.deadline.strftime("%-m/%d")})", course_quiz_submission_path(current_course, quiz), method: :post
 
 - if current_user.instructor?
   %h2 Instructor Information:
   - unpublished_quizzes.each do |quiz|
     %li= link_to "#{quiz.title} Quiz (Unpublished)", edit_course_quiz_path(current_course, quiz)
-    %li= link_to "Quiz Mockup", course_quiz_path(current_course, 1)
 
   %ul
-    %li= link_to "New Assignment", select_course_assignments_path(current_course)
-    %li= link_to "New Quiz", new_course_quiz_path(current_course)
+    %li= link_to "New Assignment", select_course_assignments_path(current_course), class: "button"
+    %li= link_to "New Quiz", new_course_quiz_path(current_course), class: "button"

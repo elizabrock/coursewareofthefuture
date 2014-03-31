@@ -16,7 +16,9 @@ Coursewareofthefuture::Application.routes.draw do
     resources :events, only: [:new, :create]
     resources :materials, only: [:index, :show], constraints: { id: /.*/ }
     resources :covered_materials, only: [:create]
-    resources :quizzes, except: [:index, :show, :destroy]
+    resources :quizzes, except: [:index, :show, :destroy] do
+      resource :quiz_submission, only: [:create, :edit, :update], as: :submission, path: :s
+    end
   end
   resource :enrollment, only: [:new]
   resources :self_reports, only: [:new, :create]
