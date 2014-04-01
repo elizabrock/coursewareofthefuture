@@ -8,6 +8,7 @@ class QuizSubmission < ActiveRecord::Base
   validates_associated :question_answers
 
   scope :for, ->(quiz){ where(quiz: quiz) }
+  scope :ready_to_grade, ->{ where("submitted_at is not null").where("graded != true") }
 
   def populate_from_quiz(quiz)
     self.quiz = quiz
@@ -16,10 +17,12 @@ class QuizSubmission < ActiveRecord::Base
         self.question_answers.build(question: question)
       end
     end
+    self
   end
 
   def submit!
     self.submitted_at = Time.now
+    self.question_answers.each(&:prepare_for_submission!)
     self.save
   end
 

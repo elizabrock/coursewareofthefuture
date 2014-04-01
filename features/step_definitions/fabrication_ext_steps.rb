@@ -1,5 +1,6 @@
-Then(/^the database should have these questions:$/) do |table|
+Then(/^the database should have these ([^"]*):$/) do |model_name, table|
+  klass = Fabrication::Cucumber::StepFabricator.new(model_name).klass
   table.hashes.each do |row|
-    Question.where(row.symbolize_keys).count.should == 1
+    klass.where(row.symbolize_keys).count.should == 1
   end
 end

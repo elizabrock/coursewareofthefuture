@@ -17,7 +17,8 @@
   %h2 Instructor Information:
   - unpublished_quizzes.each do |quiz|
     %li= link_to "#{quiz.title} Quiz (Unpublished)", edit_course_quiz_path(current_course, quiz)
-
+  - published_quizzes.each do |quiz|
+    %li= link_to "#{quiz.title} Quiz (#{quiz.quiz_submissions.ready_to_grade.count} ready to grade)", grade_course_quiz_path(current_course, quiz)
   %ul
     %li= link_to "New Assignment", select_course_assignments_path(current_course), class: "button"
     %li= link_to "New Quiz", new_course_quiz_path(current_course), class: "button"

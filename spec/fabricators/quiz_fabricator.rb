@@ -1,4 +1,6 @@
 Fabricator(:quiz) do
+  course
+  title "Foo"
   deadline { 3.days.from_now }
 end
 
