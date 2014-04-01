@@ -24,6 +24,7 @@ Coursewareofthefuture::Application.routes.draw do
     end
   end
   resource :enrollment, only: [:new]
+  resources :question_grades, only: [:edit, :update]
   resources :self_reports, only: [:new, :create]
   resources :student_profiles, except: [:destroy], path: :students
   resources :users, except: [:destroy] do

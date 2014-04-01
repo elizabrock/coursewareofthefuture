@@ -7,6 +7,7 @@ class QuestionAnswer < ActiveRecord::Base
   validates_presence_of :answer, if: :quiz_being_submitted?
 
   scope :for, ->(question){ where(question_id: question.id).limit(1) }
+  scope :ungraded, ->{ where("score = 0") }
 
   def prepare_for_submission!
     @quiz_being_submitted = true
@@ -20,6 +21,10 @@ class QuestionAnswer < ActiveRecord::Base
     else
       self.score = 0
     end
+  end
+
+  def gradeable?
+    self.quiz_submission.submitted?
   end
 
   private

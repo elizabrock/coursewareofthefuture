@@ -4,6 +4,7 @@ class Quiz < ActiveRecord::Base
   has_many :quiz_submissions
 
   validates_presence_of :title
+  validates_presence_of :course
   accepts_nested_attributes_for :questions, reject_if: :all_blank
 
   scope :published,   ->{ where("deadline is not null") }

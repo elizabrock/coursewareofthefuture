@@ -87,6 +87,10 @@ When(/^(\d+) (\w+) (\d+) should be selected for "(.*?)"$/) do |year, month, day,
   step %{"#{day}" should be selected for "#{tag}_3i"}
 end
 
+Then(/^"(.*?)" should be selected$/) do |descriptor|
+  find(:option, descriptor).should be_selected
+end
+
 Then /^"([^"]*)" should be selected for "([^"]*)"$/ do |value, field|
   field_id = find(:field, field)[:id]
   page.should have_xpath "//select[@id = '#{field_id}']/option[@selected]"
@@ -94,6 +98,10 @@ end
 
 When(/^I choose "([^"]*)"$/) do |label|
   choose label
+end
+
+When(/^I select "([^"]*)"$/) do |label|
+  select label
 end
 
 When(/^I check "(.*?)"$/) do |label|

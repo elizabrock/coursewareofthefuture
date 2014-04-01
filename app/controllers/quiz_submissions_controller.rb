@@ -5,8 +5,7 @@ class QuizSubmissionsController < ApplicationController
   expose(:quiz_submission){ quiz_submissions.for(quiz).first }
 
   def create
-    quiz_submission = quiz_submissions.build
-    quiz_submission.populate_from_quiz(quiz)
+    quiz_submission = quiz_submissions.build(quiz: quiz)
     quiz_submission.save!
     redirect_to edit_course_quiz_submission_path(current_course, quiz)
   end

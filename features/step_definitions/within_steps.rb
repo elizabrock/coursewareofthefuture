@@ -21,6 +21,10 @@ def selector_for(description)
     "ol#covered_materials"
   when /Q(\d)/
     page.find(:xpath, "//fieldset[position()=#{$1}]")
+  when /the unfinished quizzes/
+    "#incomplete_quizzes"
+  when /the submitted quizzes/
+    "#completed_quizzes"
   else
     raise "Make a within step for " + description.gsub('"','')
   end

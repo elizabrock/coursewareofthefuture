@@ -6,14 +6,19 @@ class QuizSubmission < ActiveRecord::Base
 
   accepts_nested_attributes_for :question_answers
   validates_associated :question_answers
+  validates_presence_of :question_answers
+  validates_presence_of :quiz
+
+  before_validation :populate_from_quiz, on: :create
 
   scope :for, ->(quiz){ where(quiz: quiz) }
-  scope :ready_to_grade, ->{ where("submitted_at is not null").where("graded != true") }
+  scope :gradeable, ->{ where("submitted_at is not null") }
+  scope :in_progress, ->{ where("submitted_at is null") }
 
-  def populate_from_quiz(quiz)
-    self.quiz = quiz
+  def populate_from_quiz
+    return unless quiz
     quiz.questions.each do |question|
-      unless self.questions.include? question
+      unless self.question_answers.find{ |qa| qa.question == question }
         self.question_answers.build(question: question)
       end
     end

@@ -1,0 +1,19 @@
+%h2 Grading
+%ol
+  - quiz.questions.each do |question|
+    %li= grading_summary(question)
+
+.row
+  .large-6.columns
+    #completed_quizzes.panel
+      %h3 Completed Quizzes
+      %ul
+        - quiz_submissions.gradeable.each do |qs|
+          %li= qs.user.name
+
+  .large-6.columns
+    #incomplete_quizzes.panel
+      %h3 Incompleted Quizzes
+      %ul
+        - quiz_submissions.in_progress.each do |qs|
+          %li= qs.user.name

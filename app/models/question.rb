@@ -1,5 +1,6 @@
 class Question < ActiveRecord::Base
   belongs_to :quiz, inverse_of: :questions
+  has_many :question_answers
 
   BOOLEAN = "boolean"
   FREE_TEXT = "free_text"
@@ -9,6 +10,8 @@ class Question < ActiveRecord::Base
   validates_presence_of :quiz, :question, :question_type, :correct_answer
   validates_inclusion_of :question_type, in: [BOOLEAN, FREE_TEXT]
   validates_inclusion_of :correct_answer, in: (TRUE_VALUES + FALSE_VALUES), if: Proc.new{|q| q.question_type == 'boolean' }
+
+  accepts_nested_attributes_for :question_answers
 
   def boolean?
     self.question_type == BOOLEAN

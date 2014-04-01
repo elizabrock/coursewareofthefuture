@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Question do
   it { should belong_to :quiz }
+  it { should have_many :question_answers }
   it { should validate_presence_of :quiz }
   it { should validate_presence_of :question }
   it { should validate_presence_of :question_type }

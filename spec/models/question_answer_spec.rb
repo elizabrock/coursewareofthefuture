@@ -12,7 +12,7 @@ describe QuestionAnswer do
     let(:true_question_incorrect){ Fabricate(:boolean_question, correct_answer: "True", quiz: quiz) }
     let(:false_question_incorrect){ Fabricate(:boolean_question, correct_answer: "False", quiz: quiz) }
     let(:free_text_question){ Fabricate(:free_text_question, correct_answer: "Foo", quiz: quiz) }
-    let(:quiz_submission){ student.quiz_submissions.build.populate_from_quiz(quiz) }
+    let(:quiz_submission){ student.quiz_submissions.build(quiz: quiz) }
     let(:student){ Fabricate(:student) }
     before do
       student.courses << quiz.course

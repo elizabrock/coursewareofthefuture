@@ -1,8 +1,7 @@
-@wip
 Feature: Instructor grades quizzes
 
   Background:
-    Given the following users:
+    Given the following students:
       | name  |
       | adam  |
       | joe   |
@@ -10,20 +9,20 @@ Feature: Instructor grades quizzes
       | sally |
       | susie |
     And 1 course
-    And I am signed in as an instructor for that course
-    And the following quiz:
-      | title | Checkin |
-    And that quiz has the following questions:
-      | question_type | question                  | correct_answer              |
-      | boolean       | Are you happy?            | true                        |
-      | free_text     | What are you happy about? | There is no correct answer. |
-      | boolean       | Is class over?            | false                       |
     And that course has the following users:
       | name  |
       | joe   |
       | jane  |
       | sally |
       | susie |
+    And I am signed in as an instructor for that course
+    And that course has the following quiz:
+      | title | Checkin |
+    And that quiz has the following questions:
+      | question_type | question                  | correct_answer              |
+      | boolean       | Are you happy?            | true                        |
+      | free_text     | What are you happy about? | There is no correct answer. |
+      | boolean       | Is class over?            | false                       |
     And that quiz has the following unfinished quiz submissions:
       | user name |
       | susie     |
@@ -34,9 +33,9 @@ Feature: Instructor grades quizzes
 
   Scenario: Viewing information about a quiz
     When I go to the assignments page
-    Then I should see "Checkin Quiz (2 ready to grade, 1 in progress)"
-    When I click "Checkin Quiz"
-    Then I should see "Susie" within the unfinished quizzes
+    Then I should see "Checkin Quiz (2 completed, 1 in progress)"
+    When I click "Checkin Quiz (2 completed, 1 in progress)"
+    Then I should see "susie" within the unfinished quizzes
     And I should see within the submitted quizzes:
       | jane  |
       | sally |
@@ -44,7 +43,7 @@ Feature: Instructor grades quizzes
 
   Scenario: Grading by question
     When I go to the assignments page
-    And I click "Checkin Quiz"
+    And I click "Checkin Quiz (2 completed, 1 in progress)"
     Then I should see:
       | Are you happy? (Automatically Graded)        |
       | What are you happy about? (2 pending grades) |
@@ -56,9 +55,10 @@ Feature: Instructor grades quizzes
     And I should not see:
       | adam  |
       | susie |
-    When I choose "Correct" for "jane"
+    When I select "Correct" within the "jane" fieldset
     And I press "Save Grades"
-    Then I should see:
+    Then I should see "Grades for 'What are you happy about?' have been updated."
+    And I should see:
       | Are you happy? (Automatically Graded)        |
       | What are you happy about? (1 pending grades) |
       | Is class over? (Automatically Graded)        |
@@ -69,14 +69,15 @@ Feature: Instructor grades quizzes
     And I should not see:
       | adam  |
       | susie |
-    When I choose "Incorrect" for "sally"
+    And "Correct" should be selected within the "jane" fieldset
+    And "" should be selected within the "sally" fieldset
+    When I select "Incorrect" within the "sally" fieldset
     And I press "Save Grades"
-    Then I should see:
+    Then I should see "Grades for 'What are you happy about?' have been updated."
+    And I should see:
       | Are you happy? (Automatically Graded) |
       | What are you happy about? (Graded)    |
       | Is class over? (Automatically Graded) |
-    And the database should have these question answers:
-      | user name | score |
-      | jane      | 0     |
-      | susie     | 1     |
-      | sally     | -1    |
+    When I click "What are you happy about?"
+    Then "Correct" should be selected within the "jane" fieldset
+    And "Incorrect" should be selected within the "sally" fieldset

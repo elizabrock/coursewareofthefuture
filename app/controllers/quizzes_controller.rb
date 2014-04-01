@@ -1,6 +1,7 @@
 class QuizzesController < ApplicationController
   expose(:quizzes){ current_course.quizzes }
   expose(:quiz, attributes: :quiz_params)
+  expose(:quiz_submissions){ quiz.quiz_submissions }
 
   def create
     if quiz.save

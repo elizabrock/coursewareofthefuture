@@ -1,0 +1,12 @@
+%h1 Grade "#{question.question}"
+
+= simple_form_for question, url: question_grade_path(question) do |f|
+  = f.simple_fields_for :question_answers do |q|
+    - if q.object.gradeable?
+      %div
+        %fieldset
+          %legend= q.object.quiz_submission.user.name
+          %p= q.object.answer
+          = q.label :score, "Grade"
+          = q.select :score, [["", 0], ["Correct", 1], ["Incorrect", -1]]
+  = f.button :submit, "Save Grades"
