@@ -1,12 +1,12 @@
 Feature: Instructor manages course calendar
 
   Scenario: Adding days off
-    Given I am signed in as an instructor
-    And the following course:
+    Given the following course:
       | title      | Cohort 4   |
       | syllabus   | Foobar     |
       | start_date | 2014/01/24 |
       | end_date   | 2014/03/24 |
+    And I am signed in as an instructor for that course
     And I am on the course calendar for Cohort 4
     And I click "Add New Event"
     And I select 2014 February 24 from "Date"
@@ -18,12 +18,12 @@ Feature: Instructor manages course calendar
       | 2014-02-24 | Federal Holiday |
 
   Scenario: Sad path of adding days off
-    Given I am signed in as an instructor
-    And the following course:
+    Given the following course:
       | title      | Cohort 4   |
       | syllabus   | Foobar     |
       | start_date | 2014/01/24 |
       | end_date   | 2014/03/24 |
+    And I am signed in as an instructor for that course
     And I am on the course calendar for Cohort 4
     When I click "Add New Event"
     And I select 2013 February 19 from "Date"

@@ -3,7 +3,7 @@ Given(/^I am signed in as (.*)$/) do |name|
     user = Fabricate(:instructor)
     user.courses << Course.active_or_future.all
     sign_into_github_as(user.github_username, user.github_uid)
-  elsif name == "the instructor for that course"
+  elsif name =~ /instructor for that course/
     user = Fabricate(:instructor)
     @course.users << user
     sign_into_github_as(user.github_username, user.github_uid)
