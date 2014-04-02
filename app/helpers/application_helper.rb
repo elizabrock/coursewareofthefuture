@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def avatar_for(current_user)
+    current_user.photo.url || current_user.avatar_url
+  end
+
   def current_if(arg)
     currently_in?(arg) ? "current" : ""
   end

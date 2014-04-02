@@ -3,13 +3,10 @@ class UsersController < ApplicationController
   expose(:students){ User.students }
   expose(:user)
 
+  skip_before_filter :require_confirmed_profile_image!, only: :confirm_image
+
   def index
     render "enrollments/index"
-  end
-
-  def confirm_image
-    @avatar = current_user.photo.url || current_user.avatar_url
-    render "users/confirm_image"
   end
 
   def update

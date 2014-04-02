@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   before_filter :authenticate!, unless: :devise_controller?
-  before_filter :get_image!, unless: :confirm_image_or_not_get?
+  before_filter :require_confirmed_profile_image!
 
   expose(:active_courses){ Course.active_or_future }
   expose(:current_course){ Course.find_by_id(params[:course_id]) }
@@ -27,18 +27,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def get_image!
+  def require_confirmed_profile_image!
     return unless user_signed_in?
-    if current_user.avatar_url.nil? || !current_user.avatar_confirmed?
-      redirect_to confirm_image_path, alert: "You must use a real picture."
+    return unless request.method == "GET"
+    unless current_user.has_confirmed_profile_image?
+      flash.keep
+      redirect_to confirm_user_image_path
     end
-  end
-
-  def confirm_image_or_not_get?
-    request.env["PATH_INFO"] == "/confirm_image" || not_get_method?
-  end
-
-  def not_get_method?
-    request.env["REQUEST_METHOD"] != "GET"
   end
 end

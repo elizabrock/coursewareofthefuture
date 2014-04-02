@@ -4,8 +4,6 @@ Feature: Course materials are pulled from github
   Scenario: Viewing the materials list
     Given 1 course
     And I am signed in as a student in that course
-    And I have a photo
-    And my photo is confirmed
     When I go to the homepage
     And I click "Materials"
     Then I should not see any of the exercises from Github
@@ -14,8 +12,6 @@ Feature: Course materials are pulled from github
   Scenario: Viewing a single material item
     Given 1 course
     And I am signed in as a student in that course
-    And I have a photo
-    And my photo is confirmed
     When I go to the homepage
     And I click "Materials"
     And I click "Logic"

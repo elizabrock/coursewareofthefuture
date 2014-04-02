@@ -9,7 +9,7 @@ Feature: Instructor authentication
     Given the following instructor:
       | github_username | joe  |
       | github_uid      | 9876 |
-    And I am signed in to Github as "joe" with a confirmed photo
+    And I am signed in to Github as "joe"
     When I go to the homepage
     And I follow "Sign In with Github"
     Then I should see "Successfully authenticated from Github account"
@@ -25,8 +25,6 @@ Feature: Instructor authentication
       | Joe Smith   |
       | Sally Myers |
     And I am signed in as an instructor
-    And I have a photo
-    And my photo is confirmed
     When I go to the homepage
     And I follow "View All Students"
     And I click "Sally Myers"
@@ -44,8 +42,6 @@ Feature: Instructor authentication
       | Joe Smith   |
       | Sally Myers |
     And I am signed in as an instructor
-    And I have a photo
-    And my photo is confirmed
     When I go to the homepage
     And I follow "View All Students"
     Then I should not see "Make Instructor"

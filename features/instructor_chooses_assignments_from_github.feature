@@ -10,10 +10,7 @@ Feature: Instructor chooses assignments from github
       | title | Capstone |
     And that it is 2013/03/01
     And I am signed in as an instructor
-    And I have a photo
-    And my photo is confirmed
-    When I click "Cohort 4"
-    And I click "Assignments"
+    When I click "Assignments"
     And I click "New Assignment"
     Then I should see the following options for "Assignment":
       | Cheers              |
@@ -51,10 +48,7 @@ Feature: Instructor chooses assignments from github
       | end_date   | 2014/02/03 |
     And that it is 2014/02/01
     And I am signed in as an instructor
-    And I have a photo
-    And my photo is confirmed
-    When I click "Cohort 4"
-    And I click "Assignments"
+    When I click "Assignments"
     And I click "New Assignment"
     And I select "Ruby Koans" for "Assignment"
     And I press "Set Milestones"
@@ -88,10 +82,7 @@ Feature: Instructor chooses assignments from github
       | title      | Cohort 4   |
     And that it is 2013/03/01
     And I am signed in as an instructor
-    And I have a photo
-    And my photo is confirmed
-    When I click "Cohort 4"
-    And I click "Assignments"
+    When I click "Assignments"
     And I click "New Assignment"
     Then I should see the following options for "Assignment":
       | Cheers              |
@@ -115,8 +106,6 @@ Feature: Instructor chooses assignments from github
       | title       | deadline   | instructions             |
       | Milestone 1 | 2013/05/01 | This milestone is simple |
       | Milestone 2 | 2013/05/15 | This milestone is hard   |
-    And I have a photo
-    And my photo is confirmed
     When I go to the homepage
     And I click "Assignments"
     And I click "Capstone"
@@ -137,8 +126,6 @@ Feature: Instructor chooses assignments from github
       | Foobar   | false     |
       | Capstone | true      |
     And I am signed in as a student in that course
-    And I have a photo
-    And my photo is confirmed
     When I go to the homepage
     And I click "Assignments"
     Then I should see "Capstone"

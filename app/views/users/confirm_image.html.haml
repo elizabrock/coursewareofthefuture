@@ -1,7 +1,8 @@
-%h2 Avatar
+%h2 Profile Image
+%h3 You must use a photo of your face. Please confirm or upload your profile image.
 .row
   .small-4.columns
-    %img#avatar{src: @avatar}
+    = image_tag avatar_for(current_user), id: "avatar"
     = simple_form_for current_user, url: "/users/#{current_user.id}" do |f|
       = f.input :avatar_confirmed, as: :hidden, input_html: {value: true}
       = f.button :submit, "This is a picture of me.", class: "expand"

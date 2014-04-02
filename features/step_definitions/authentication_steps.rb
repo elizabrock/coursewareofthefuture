@@ -24,16 +24,6 @@ Given(/^I am signed in to Github as "(.*?)"$/) do |username|
   @username = username
 end
 
-Given(/^I am signed in to Github as "(.*?)" with a confirmed photo$/) do |username|
-  sign_into_github_as(username)
-  step "I go to the homepage"
-  step 'I follow "Sign In with Github"'
-  @user = User.find_by_github_username(username)
-  step "I have a photo"
-  step "my photo is confirmed"
-  step 'I click "Sign Out"'
-end
-
 def sign_into_github_as(username, uid = nil)
   if uid.nil?
     user = User.find_by_github_username(username)

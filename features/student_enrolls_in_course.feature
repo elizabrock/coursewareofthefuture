@@ -12,8 +12,6 @@ Feature: Student enrolls in course
 
   Scenario: Enrolling in a course
     Given I am signed in as a student
-    And I have a photo
-    And my photo is confirmed
     When I go to the homepage
     Then I should see "Please select a course below to join it"
     And I should see the following buttons:
@@ -30,8 +28,6 @@ Feature: Student enrolls in course
     Given the following course:
       | title | Cohort 3 |
     And I am signed in as a student in that course
-    And I have a photo
-    And my photo is confirmed
     When I go to the homepage
     Then I should be on the Cohort 3 course page
 
@@ -39,8 +35,6 @@ Feature: Student enrolls in course
     Given the following course:
       | title | Cohort 3 |
     And I am signed in as a student in that course
-    And I have a photo
-    And my photo is confirmed
     When I go to the homepage
     Then I should be on the Cohort 3 course page
     When I click "Enroll in another course"
@@ -59,8 +53,6 @@ Feature: Student enrolls in course
     Given the following course:
       | title | Cohort 3 |
     And I am signed in as a student in that course
-    And I have a photo
-    And my photo is confirmed
     When I go to the homepage
     Then I should be on the Cohort 3 course page
     When I click "Enroll in another course"
