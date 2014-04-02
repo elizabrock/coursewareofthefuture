@@ -2,7 +2,7 @@
 
 %ul
   - active_courses.each do |course|
-    %li= link_to course.title, course
+    %li= link_to_course course
 
 %ul
   %li= link_to "View All Students", users_path

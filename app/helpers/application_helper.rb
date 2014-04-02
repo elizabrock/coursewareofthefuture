@@ -1,4 +1,20 @@
 module ApplicationHelper
+  def accessible_courses
+    if current_user.instructor?
+      active_courses
+    else
+      current_user.courses
+    end
+  end
+
+  def link_to_course(course)
+    if current_user.instructor? and !current_user.courses.include?(course)
+      link_to course.title, course_enrollments_path(course), method: :post
+    else
+      link_to course.title, course
+    end
+  end
+
   def current_if(arg)
     currently_in?(arg) ? "current" : ""
   end

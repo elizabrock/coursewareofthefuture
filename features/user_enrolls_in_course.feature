@@ -2,15 +2,28 @@ Feature: Student enrolls in course
 
   Background:
     Given the following courses:
-      | title     |
-      | Cohort 4a |
-      | Cohort 4b |
+      | title     | syllabus       |
+      | Cohort 4a | This is part A |
+      | Cohort 4b | This is part B |
     And the following past courses:
       | title     |
       | Cohort 1a |
       | Cohort 1b |
 
-  Scenario: Enrolling in a course
+  Scenario: Fix: Instructors are automatically enrolled in courses
+    Given I am signed in as an instructor
+    When I go to the homepage
+    Then I should see "Which course are you teaching today?"
+    When I click "Cohort 4a"
+    Then I should see "This is part A"
+    When I click "Inquizator"
+    When I click "Cohort 4a"
+    Then I should see "This is part A"
+    When I click "Inquizator"
+    When I click "Cohort 4b"
+    Then I should see "This is part B"
+
+  Scenario: Student enrolling in a course
     Given I am signed in as a student
     When I go to the homepage
     Then I should see "Please select a course below to join it"
@@ -24,7 +37,7 @@ Feature: Student enrolls in course
     Then I should see "You are now enrolled in Cohort 4a"
     And I should be on the Cohort 4a course page
 
-  Scenario: Signing in or going to the homepage takes you to your course
+  Scenario: Student signing in or going to the homepage takes you to your course
     Given the following course:
       | title | Cohort 3 |
     And I am signed in as a student in that course
@@ -32,7 +45,7 @@ Feature: Student enrolls in course
     When I go to the homepage
     Then I should be on the Cohort 3 course page
 
-  Scenario: Signing up for a second course
+  Scenario: Student signing up for a second course
     Given the following course:
       | title | Cohort 3 |
     And I am signed in as a student in that course

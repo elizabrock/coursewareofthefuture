@@ -9,7 +9,7 @@ Feature: Instructor chooses assignments from github
     And that course has the following assignment:
       | title | Capstone |
     And that it is 2013/03/01
-    And I am signed in as an instructor
+    And I am signed in as an instructor for that course
     When I click "Assignments"
     And I click "New Assignment"
     Then I should see the following options for "Assignment":
@@ -47,7 +47,7 @@ Feature: Instructor chooses assignments from github
       | start_date | 2014/01/16 |
       | end_date   | 2014/02/03 |
     And that it is 2014/02/01
-    And I am signed in as an instructor
+    And I am signed in as an instructor for that course
     When I click "Assignments"
     And I click "New Assignment"
     And I select "Ruby Koans" for "Assignment"
@@ -81,7 +81,7 @@ Feature: Instructor chooses assignments from github
     Given the following course:
       | title      | Cohort 4   |
     And that it is 2013/03/01
-    And I am signed in as an instructor
+    And I am signed in as an instructor for that course
     When I click "Assignments"
     And I click "New Assignment"
     Then I should see the following options for "Assignment":

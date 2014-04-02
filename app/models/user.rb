@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
 
   default_scope { order(name: :asc) }
 
+  def student?
+    !instructor?
+  end
+
   def self.find_or_create_for_github_oauth(auth)
     where(github_uid: auth.uid).first_or_create do |user|
       user.github_access_token = auth.credentials.token

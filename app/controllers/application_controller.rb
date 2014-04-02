@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate!, unless: :devise_controller?
 
   expose(:active_courses){ Course.active_or_future }
-  expose(:current_course){ current_user.try(:courses).try(:find_by_id, params[:course_id]) }
+  expose(:current_course){ current_user.try(:courses).try(:find_by_id, (params[:course_id] || params[:id])) }
 
   protected
 

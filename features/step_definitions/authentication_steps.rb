@@ -1,23 +1,21 @@
 Given(/^I am signed in as (.*)$/) do |name|
-  if name == "an instructor"
+  if name =~ /instructor/
     user = Fabricate(:instructor)
-    user.courses << Course.active_or_future.all
+    case name
+    when /for that course/
+      @course.users << user
+    when /for a course/
+      @course = Fabricate(:course)
+      @course.users << user
+    when /for those courses/
+      user.courses << Course.active_or_future.all
+    end
     sign_into_github_as(user.github_username, user.github_uid)
-  elsif name =~ /instructor for that course/
-    user = Fabricate(:instructor)
-    @course.users << user
-    sign_into_github_as(user.github_username, user.github_uid)
-  elsif name == "an instructor for a course"
-    user = Fabricate(:instructor)
-    @course = Fabricate(:course)
-    @course.users << user
-    sign_into_github_as(user.github_username, user.github_uid)
-  elsif name == "a student in that course"
+  elsif name =~ /student/
     user = Fabricate(:student)
-    @course.users << user
-    sign_into_github_as(user.github_username, user.github_uid)
-  elsif name == "a student"
-    user = Fabricate(:student)
+    if name =~ /in that course/
+      @course.users << user
+    end
     sign_into_github_as(user.github_username, user.github_uid)
   else
     user = User.where(name: name).first
