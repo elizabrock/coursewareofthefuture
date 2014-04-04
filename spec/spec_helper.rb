@@ -13,6 +13,7 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
+image = File.read(Rails.root.join('features', 'support', 'files', 'arson_girl.jpg'))
 RSpec.configure do |config|
   # ## Mock Framework
   #
@@ -40,4 +41,8 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  config.before(:each) do
+    WebMock.stub_request(:get, "http://example.com/image.png").to_return( body: image, :status   => 200, :headers  => { 'Content-Type' => "image/jpeg; charset=UTF-8" } )
+  end
 end
