@@ -106,7 +106,8 @@ Feature: Instructor chooses assignments from github
       | title       | deadline   | instructions             |
       | Milestone 1 | 2013/05/01 | This milestone is simple |
       | Milestone 2 | 2013/05/15 | This milestone is hard   |
-    When I click "Assignments"
+    When I go to the homepage
+    And I click "Assignments"
     And I click "Capstone"
     Then I should see the following:
       | Milestone 1 (due 5/01) |
@@ -125,6 +126,7 @@ Feature: Instructor chooses assignments from github
       | Foobar   | false     |
       | Capstone | true      |
     And I am signed in as a student in that course
-    When I click "Assignments"
+    When I go to the homepage
+    And I click "Assignments"
     Then I should see "Capstone"
     And I should not see "Foobar"

@@ -32,4 +32,10 @@ Coursewareofthefuture::Application.routes.draw do
       post :instructify
     end
   end
+  resource :user, only: [] do
+    member do
+      get :confirm_photo
+      patch :update_photo
+    end
+  end
 end

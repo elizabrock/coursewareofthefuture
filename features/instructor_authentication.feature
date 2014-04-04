@@ -25,7 +25,8 @@ Feature: Instructor authentication
       | Joe Smith   |
       | Sally Myers |
     And I am signed in as an instructor
-    When I follow "View All Students"
+    When I go to the homepage
+    And I follow "View All Students"
     And I click "Sally Myers"
     And I press "Make Instructor"
     Then I should see "Sally Myers is now an instructor."
@@ -41,5 +42,6 @@ Feature: Instructor authentication
       | Joe Smith   |
       | Sally Myers |
     And I am signed in as an instructor
-    When I follow "View All Students"
+    When I go to the homepage
+    And I follow "View All Students"
     Then I should not see "Make Instructor"

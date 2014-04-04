@@ -2,7 +2,8 @@ Feature: Instructor manages courses
 
   Scenario: Creating a course
     Given I am signed in as an instructor
-    When I follow "Create New Course"
+    When I go to the homepage
+    And I follow "Create New Course"
     And I fill in "Title" with "Cohort 4"
     And I fill in "Syllabus" with "Foobar"
     And I select 2014 January 24 from "Start Date"
@@ -18,7 +19,8 @@ Feature: Instructor manages courses
 
   Scenario: Failing to create a course
     Given I am signed in as an instructor
-    When I follow "Create New Course"
+    When I go to the homepage
+    And I follow "Create New Course"
     And I press "Create Course"
     Then I should see "Course couldn't be created"
     And I should see the error message "can't be blank" on "Title"

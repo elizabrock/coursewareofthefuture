@@ -49,7 +49,8 @@ Feature: Instructor manages course calendar
       | 2013/10/15 | Federal Holiday |
       | 2014/01/10 | No Class        |
     And I am signed in as a student in that course
-    When I follow "Course Calendar"
+    When I go to the homepage
+    And I follow "Course Calendar"
     And I should see the following:
       | October  |
       | November |

@@ -21,6 +21,7 @@ I want to see a calendare that allows me to self-report several metrics.
       | date       | attended | hours_coding | hours_slept | hours_learning |
       | 2013/03/12 | false    | 5            | 9           | 0              |
       | 2013/03/13 | true     | 2            | 7.5         | 4              |
+    And I go to the homepage
     And I follow "Course Calendar"
 
   Scenario: Student sees 'today' in calendar under today's date.

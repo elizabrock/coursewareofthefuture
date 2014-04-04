@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  mount_uploader :photo, PhotoUploader
   devise :rememberable, :trackable, :omniauthable, :omniauth_providers => [:github]
 
   scope :instructors, ->{ where(instructor: true) }
@@ -19,6 +20,10 @@ class User < ActiveRecord::Base
     !instructor?
   end
 
+  def has_confirmed_photo?
+    self.photo? && self.photo_confirmed?
+  end
+
   def self.find_or_create_for_github_oauth(auth)
     where(github_uid: auth.uid).first_or_create do |user|
       user.github_access_token = auth.credentials.token
@@ -26,7 +31,7 @@ class User < ActiveRecord::Base
       user.github_username = auth.info.nickname
       user.name = auth.info.name
       user.email = auth.info.email
-      user.avatar_url = auth.info.image
+      user.remote_photo_url = auth.info.image
     end
   end
 

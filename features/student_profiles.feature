@@ -3,7 +3,7 @@ Feature: Student profiles
   I want my students to have profiles
   So that I can tell them apart
 
-  - profile image (gravatar by default)
+  - profile image
   - name
   - email
   - phone number

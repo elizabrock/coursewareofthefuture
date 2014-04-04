@@ -4,6 +4,7 @@ Feature: Instructor marks materials as covered
   Scenario: Students don't see "Mark as Covered"
     Given 1 course
     And I am signed in as a student in that course
+    And I go to the homepage
     When I click "Materials"
     Then I should not see "Mark as Covered"
 

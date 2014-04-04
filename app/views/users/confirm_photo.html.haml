@@ -1,0 +1,18 @@
+%h2 Profile Image
+%h3 You must use a photo of your face. Please confirm or upload your profile image.
+.row
+  .small-4.columns
+    = image_tag current_user.photo_url, id: "user_photo"
+    = simple_form_for current_user, url: update_photo_user_path do |f|
+      = f.input :photo_confirmed, as: :hidden, input_html: {value: true}
+      = f.button :submit, "This is a picture of me.", class: "expand"
+  .small-7.columns.small-offset-1
+    %h4 Provide a different picture:
+    = simple_form_for current_user, url: update_photo_user_path do |f|
+      %br
+      = f.input :photo, as: :file, label: "Upload a photo"
+      %p Or...
+      = f.input :remote_photo_url, label: "Web address for your photo"
+      = f.button :submit, "Submit", class: "tiny"
+      %p
+        %em You will need to confirm your picture after submitting

@@ -19,6 +19,7 @@ Given(/^I am signed in as (.*)$/) do |name|
     sign_into_github_as(user.github_username, user.github_uid)
   else
     user = User.where(name: name).first
+    user = Fabricate(:user, github_username: name) if user.nil?
     sign_into_github_as(user.github_username, user.github_uid)
   end
   visit '/users/auth/github'
@@ -42,6 +43,11 @@ def sign_into_github_as(username, uid = nil)
     user = User.find_by_github_username(username)
     uid = user.try(:github_uid) || '12345'
   end
+
+  photo_url = "http://avatars.github.com/#{username}"
+  @default_image ||= File.read(Rails.root.join('features', 'support', 'files', 'arson_girl.jpg'))
+  stub_request(:get, photo_url).to_return( body: @default_image, :status   => 200, :headers  => { 'Content-Type' => "image/jpeg; charset=UTF-8" } )
+
   OmniAuth.config.add_mock(:github, {
     uid: uid,
     credentials: {
@@ -51,7 +57,7 @@ def sign_into_github_as(username, uid = nil)
       nickname: username,
       email: "#{username}smith@example.com",
       name: "#{username.capitalize} Smith",
-      image: "http://avatars.github.com/#{username}",
+      image: photo_url,
     },
     extra: {
       raw_info: {

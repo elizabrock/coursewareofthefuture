@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140401015258) do
+ActiveRecord::Schema.define(version: 20140402184035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,9 +113,9 @@ ActiveRecord::Schema.define(version: 20140401015258) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",               default: "", null: false
+    t.string   "email",               default: "",    null: false
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",       default: 0,  null: false
+    t.integer  "sign_in_count",       default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -126,11 +126,12 @@ ActiveRecord::Schema.define(version: 20140401015258) do
     t.string   "phone"
     t.string   "github_uid"
     t.string   "github_username"
-    t.string   "avatar_url"
     t.string   "github_access_token"
     t.text     "goals"
     t.text     "background"
     t.boolean  "instructor"
+    t.boolean  "photo_confirmed",     default: false
+    t.string   "photo"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

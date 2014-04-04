@@ -142,3 +142,7 @@ Then /^I should see the error message "([^"]*)" on "([^"]*)"$/ do |text, field|
   selector = ".//div[contains(@class,'error') and ./label[contains(text(),'#{field}')]]/small[contains(text(),\"#{text}\")]"
   page.should have_xpath(selector)
 end
+
+When (/^I upload a file "(.*?)"$/) do |file|
+  attach_file("user_photo", File.join(Rails.root, "/features/support/files/#{file}"))
+end

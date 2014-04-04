@@ -41,7 +41,6 @@ Feature: Student enrolls in course
     Given the following course:
       | title | Cohort 3 |
     And I am signed in as a student in that course
-    Then I should be on the Cohort 3 course page
     When I go to the homepage
     Then I should be on the Cohort 3 course page
 
@@ -49,6 +48,7 @@ Feature: Student enrolls in course
     Given the following course:
       | title | Cohort 3 |
     And I am signed in as a student in that course
+    When I go to the homepage
     Then I should be on the Cohort 3 course page
     When I click "Enroll in another course"
     And I should see the following buttons:
@@ -66,6 +66,7 @@ Feature: Student enrolls in course
     Given the following course:
       | title | Cohort 3 |
     And I am signed in as a student in that course
+    When I go to the homepage
     Then I should be on the Cohort 3 course page
     When I click "Enroll in another course"
     And I press "Join Cohort 4b"
