@@ -21,10 +21,15 @@ Coursewareofthefuture::Application.routes.draw do
   resource :enrollment, only: [:new]
   resources :self_reports, only: [:new, :create]
   resources :student_profiles, except: [:destroy], path: :students
-  get 'confirm_user_image', to: "users#confirm_image"
   resources :users, except: [:destroy] do
     member do
       post :instructify
+    end
+  end
+  resource :user, only: [] do
+    member do
+      get :confirm_photo
+      patch :update_photo
     end
   end
 end

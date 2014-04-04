@@ -1,5 +1,3 @@
-require_relative '../uploaders/photo_uploader'
-
 class User < ActiveRecord::Base
   mount_uploader :photo, PhotoUploader
   devise :rememberable, :trackable, :omniauthable, :omniauth_providers => [:github]
@@ -16,8 +14,8 @@ class User < ActiveRecord::Base
 
   default_scope { order(name: :asc) }
 
-  def has_confirmed_profile_image?
-    avatar_url.present? && avatar_confirmed?
+  def has_confirmed_photo?
+    self.photo? && self.photo_confirmed?
   end
 
   def self.find_or_create_for_github_oauth(auth)
@@ -27,7 +25,7 @@ class User < ActiveRecord::Base
       user.github_username = auth.info.nickname
       user.name = auth.info.name
       user.email = auth.info.email
-      user.avatar_url = auth.info.image
+      user.remote_photo_url = auth.info.image
     end
   end
 

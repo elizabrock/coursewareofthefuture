@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140401015258) do
+ActiveRecord::Schema.define(version: 20140402184035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,12 +91,11 @@ ActiveRecord::Schema.define(version: 20140401015258) do
     t.string   "phone"
     t.string   "github_uid"
     t.string   "github_username"
-    t.string   "avatar_url"
     t.string   "github_access_token"
     t.text     "goals"
     t.text     "background"
     t.boolean  "instructor"
-    t.boolean  "avatar_confirmed",    default: false
+    t.boolean  "photo_confirmed",     default: false
     t.string   "photo"
   end
 

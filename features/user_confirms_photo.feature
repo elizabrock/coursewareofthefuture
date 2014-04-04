@@ -15,9 +15,7 @@ Feature: Student authentication
 
   Scenario: Student with confirmed photo doesn't need to confirm
     Given the following student:
-      | github_username  | joe                    |
-      | avatar_url       | example.com/image.jpeg |
-      | avatar_confirmed | true                   |
+      | github_username | joe |
     And I am signed in as that student
     When I go to the homepage
     Then I should not see "You must use a photo of your face"
@@ -28,27 +26,30 @@ Feature: Student authentication
     And I follow "Sign In with Github"
     And I go to the homepage
     And I press "This is a picture of me."
-    And I go to the homepage
+    Then I should see "Your profile photo has been updated."
+    When I go to the homepage
     Then I should not see "You must use a photo of your face"
 
   Scenario: Student changes photo by url
     Given I am signed in to Github as "joe"
     When I go to the homepage
     And I follow "Sign In with Github"
-    Then my photo should be "http://avatars.github.com/joe"
-    When I fill in "Web address for your photo" with "www.example.com/image.jpg"
+    Then my photo should be "joe.jpeg"
+    When I fill in "Web address for your photo" with "http://example.com/image.png"
     And I press "Submit"
-    And I go to the homepage
-    Then my photo should be "www.example.com/image.jpg"
+    Then I should see "Your profile photo has been updated."
+    When I go to the homepage
+    Then my photo should be "image.png"
 
   Scenario: Student changes photo by upload
     Given I am signed in to Github as "joe"
     When I go to the homepage
     And I follow "Sign In with Github"
-    Then my photo should be "http://avatars.github.com/joe"
+    Then my photo should be "joe.jpeg"
     When I upload a file "github.png"
     And I press "Submit"
-    And I go to the homepage
+    Then I should see "Your profile photo has been updated."
+    When I go to the homepage
     Then my photo should be "github.png"
 
   Scenario: Student changes photo by upload and url
@@ -56,9 +57,10 @@ Feature: Student authentication
     When I go to the homepage
     And I follow "Sign In with Github"
     And I go to the homepage
-    Then my photo should be "http://avatars.github.com/joe"
+    Then my photo should be "joe.jpeg"
     When I upload a file "github.png"
-    And I fill in "Web address for your photo" with "www.example.com/image.jpg"
+    When I fill in "Web address for your photo" with "http://example.com/image.png"
     And I press "Submit"
-    And I go to the homepage
+    Then I should see "Your profile photo has been updated."
+    When I go to the homepage
     Then my photo should be "github.png"

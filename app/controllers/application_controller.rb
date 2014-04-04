@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   before_filter :authenticate!, unless: :devise_controller?
-  before_filter :require_confirmed_profile_image!
+  before_filter :require_confirmed_photo!
 
   expose(:active_courses){ Course.active_or_future }
   expose(:current_course){ Course.find_by_id(params[:course_id]) }
@@ -27,12 +27,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def require_confirmed_profile_image!
+  def require_confirmed_photo!
     return unless user_signed_in?
     return unless request.method == "GET"
-    unless current_user.has_confirmed_profile_image?
+    unless current_user.has_confirmed_photo?
       flash.keep
-      redirect_to confirm_user_image_path
+      redirect_to confirm_photo_user_path
     end
   end
 end
