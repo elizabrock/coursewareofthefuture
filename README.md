@@ -4,12 +4,11 @@
 
 This will be the new courseware for Nashville Software School.
 
-[![Code Climate](https://codeclimate.com/repos/5307947ce30ba0586c0036b3/badges/96fc8f2654322baed5fc/gpa.png)](https://codeclimate.com/repos/5307947ce30ba0586c0036b3/feed)
 [![Build Status](https://travis-ci.org/elizabrock/coursewareofthefuture.png?branch=master)](https://travis-ci.org/elizabrock/coursewareofthefuture)
 
-Note: The coveralls coverage status is ignoring cucumber.  I'm working on fixing it :(
+Note: The coverage status is ignoring cucumber.  I'm working on fixing it :(
 
-[![Coverage Status](https://coveralls.io/repos/elizabrock/coursewareofthefuture/badge.png?branch=master)](https://coveralls.io/r/elizabrock/coursewareofthefuture?branch=master)
+[![Code Climate](https://codeclimate.com/github/elizabrock/coursewareofthefuture.png)](https://codeclimate.com/github/elizabrock/coursewareofthefuture)
 
 
 ## Deployment Instructions

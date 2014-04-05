@@ -52,7 +52,7 @@ group :test, :development do
 end
 
 group :test do
-  gem 'coveralls', require: false
+  gem 'codeclimate-test-reporter', require: false
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'email_spec'
