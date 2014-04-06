@@ -1,4 +1,4 @@
-ruby '2.1.1'
+ruby '1.9.3'
 #ruby-gemset=coursewareofthefuture
 source 'https://rubygems.org'
 
