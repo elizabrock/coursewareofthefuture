@@ -25,13 +25,14 @@ class User < ActiveRecord::Base
   end
 
   def self.find_or_create_for_github_oauth(auth)
+    auth.info.image.gsub!("?","")
     where(github_uid: auth.uid).first_or_create do |user|
       user.github_access_token = auth.credentials.token
       user.github_uid = auth.uid
       user.github_username = auth.info.nickname
       user.name = auth.info.name
       user.email = auth.info.email
-      user.remote_photo_url = auth.info.image
+      user.remote_photo_url = auth.info.image.gsub("?","")
     end
   end
 
