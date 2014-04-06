@@ -1,5 +1,5 @@
 language: ruby
 rvm:
-  - "1.9.3"
+  - "2.1.1"
 
 script: 'CODECLIMATE_REPO_TOKEN=987608b798bb220f5268b66965c871090d90331328f3a4c7ae5a5b739ff6848c bundle exec rake'
