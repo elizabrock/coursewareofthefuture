@@ -5,6 +5,7 @@ Feature: Student authentication
   - Standard account creation with OAuth
   - Standard login/logout
 
+  @vcr
   Scenario: Student signs up via. Github
     Given I am signed in to Github as "joe"
     When I go to the homepage

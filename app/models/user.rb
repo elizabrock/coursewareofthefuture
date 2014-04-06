@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   validates_format_of :email, with: /\A[^@]+@[^@]+\z/, message: "must be an email address"
   validates_presence_of :github_access_token
 
+  after_create :retrieve_avatar
+
   default_scope { order(name: :asc) }
 
   def student?
@@ -31,11 +33,19 @@ class User < ActiveRecord::Base
       user.github_username = auth.info.nickname
       user.name = auth.info.name
       user.email = auth.info.email
-      user.remote_photo_url = auth.info.image
     end
   end
 
   def octoclient
     @octoclient ||= Octokit::Client.new(:access_token => github_access_token)
+  end
+
+  private
+
+  def retrieve_avatar
+    return if photo.present?
+    url = self.octoclient.user["avatar_url"]
+    self.remote_photo_url = url
+    self.save
   end
 end
