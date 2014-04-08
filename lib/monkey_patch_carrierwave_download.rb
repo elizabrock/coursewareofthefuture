@@ -14,6 +14,9 @@ module CarrierWave
         def file
           if @file.blank?
             http = Net::HTTP.new(@uri.host, @uri.port)
+            if @uri.scheme == "https"
+              http.use_ssl = true
+            end
             http.ssl_version = :SSLv3
             response = http.request_get(@uri.request_uri)
             @file = response

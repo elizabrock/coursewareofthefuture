@@ -31,12 +31,23 @@ Feature: User confirms photo
     When I go to the homepage
     Then I should not see "You must use a photo of your face"
 
-  Scenario: Student changes photo by url
+  Scenario: Student changes photo by url (http)
     Given I am signed in to Github as "joe"
     When I go to the homepage
     And I follow "Sign In with Github"
     Then my photo should be "12345.jpeg"
     When I fill in "Web address for your photo" with "http://example.com/image.png"
+    And I press "Submit"
+    Then I should see "Your profile photo has been updated."
+    When I go to the homepage
+    Then my photo should be "image.png"
+
+  Scenario: Student changes photo by url (https)
+    Given I am signed in to Github as "joe"
+    When I go to the homepage
+    And I follow "Sign In with Github"
+    Then my photo should be "12345.jpeg"
+    When I fill in "Web address for your photo" with "https://example.com/image.png"
     And I press "Submit"
     Then I should see "Your profile photo has been updated."
     When I go to the homepage
@@ -60,7 +71,7 @@ Feature: User confirms photo
     And I go to the homepage
     Then my photo should be "12345.jpeg"
     When I upload a file "github.png"
-    When I fill in "Web address for your photo" with "http://example.com/image.png"
+    When I fill in "Web address for your photo" with "https://example.com/image.png"
     And I press "Submit"
     Then I should see "Your profile photo has been updated."
     When I go to the homepage

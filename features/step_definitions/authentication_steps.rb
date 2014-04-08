@@ -44,7 +44,7 @@ def sign_into_github_as(username, uid = nil)
     uid = user.try(:github_uid) || '12345'
   end
 
-  photo_url = "http://avatars.github.com/#{uid}?s=460"
+  photo_url = "https://avatars.github.com/#{uid}?s=460"
   @default_image ||= File.read(Rails.root.join('features', 'support', 'files', 'arson_girl.jpg'))
   stub_request(:get, photo_url).to_return( body: @default_image, :status   => 200, :headers  => { 'Content-Type' => "image/jpeg; charset=UTF-8" } )
 

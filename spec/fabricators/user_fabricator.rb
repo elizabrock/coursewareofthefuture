@@ -4,7 +4,7 @@ Fabricator(:user) do
   github_access_token{ "d141ef15f79ca4c6f43a8c688e0434648f277f20" }
   name { Faker::Name.name }
   email{ Faker::Internet.email }
-  remote_photo_url { "http://example.com/image.png" }
+  remote_photo_url { "https://example.com/image.png" }
   photo_confirmed true
 end
 

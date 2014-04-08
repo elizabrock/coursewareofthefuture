@@ -8,9 +8,9 @@ http_interactions:
       string: ''
     headers:
       Accept:
-      - application/vnd.github.beta+json
+      - application/vnd.github.v3+json
       User-Agent:
-      - Octokit Ruby Gem 2.7.2
+      - Octokit Ruby Gem 3.0.0
       Authorization:
       - token d141ef15f79ca4c6f43a8c688e0434648f277f20
       Accept-Encoding:
@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Wed, 26 Mar 2014 14:55:26 GMT
+      - Tue, 08 Apr 2014 19:54:37 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -33,15 +33,15 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4990'
+      - '4978'
       X-Ratelimit-Reset:
-      - '1395848158'
+      - '1396988198'
       Cache-Control:
       - private, max-age=60, s-maxage=60
       Last-Modified:
       - Wed, 26 Mar 2014 01:03:22 GMT
       Etag:
-      - '"84e0d27454ba53841107328fee6b8301"'
+      - '"54043e8bbcb0fb15d73a8f4f86f1fedd"'
       X-Oauth-Scopes:
       - public_repo, user
       X-Accepted-Oauth-Scopes:
@@ -50,9 +50,13 @@ http_interactions:
       - Accept, Authorization, Cookie, X-GitHub-OTP
       - Accept-Encoding
       X-Github-Media-Type:
-      - github.beta; format=json
-      X-Content-Type-Options:
-      - nosniff
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
       Access-Control-Allow-Credentials:
       - 'true'
       Access-Control-Expose-Headers:
@@ -61,9 +65,13 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Github-Request-Id:
-      - 44358582:5FEE:C53C8F:5332EA5E
+      - 44358582:2CF2:214DDE:534453FD
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
       X-Served-By:
-      - 132026e9262a0093e437f99db5f1e499
+      - c046d59f93ede9ab52d5ac29f1ed70f7
     body:
       encoding: UTF-8
       string: '[{"name":"01-cheers","path":"exercises/01-cheers","sha":"8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/01-cheers?ref=master","html_url":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/01-cheers","git_url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","type":"dir","_links":{"self":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/01-cheers?ref=master","git":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","html":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/01-cheers"}},{"name":"02-ruby-koans","path":"exercises/02-ruby-koans","sha":"b3f6b39822ca8b450b5b0d34169016b46d5d4c6f","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/02-ruby-koans?ref=master","html_url":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/02-ruby-koans","git_url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/b3f6b39822ca8b450b5b0d34169016b46d5d4c6f","type":"dir","_links":{"self":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/02-ruby-koans?ref=master","git":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/b3f6b39822ca8b450b5b0d34169016b46d5d4c6f","html":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/02-ruby-koans"}},{"name":"03-some-other-exercise","path":"exercises/03-some-other-exercise","sha":"8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/03-some-other-exercise?ref=master","html_url":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/03-some-other-exercise","git_url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","type":"dir","_links":{"self":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/03-some-other-exercise?ref=master","git":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","html":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/03-some-other-exercise"}},{"name":"04-unfinished-exercise","path":"exercises/04-unfinished-exercise","sha":"fd6b3d30c0e2f274ee08774c93ee760aaf82db1f","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/04-unfinished-exercise?ref=master","html_url":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/04-unfinished-exercise","git_url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/fd6b3d30c0e2f274ee08774c93ee760aaf82db1f","type":"dir","_links":{"self":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/04-unfinished-exercise?ref=master","git":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/fd6b3d30c0e2f274ee08774c93ee760aaf82db1f","html":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/04-unfinished-exercise"}}]'
@@ -77,9 +85,9 @@ http_interactions:
       string: ''
     headers:
       Accept:
-      - application/vnd.github.beta+json
+      - application/vnd.github.v3+json
       User-Agent:
-      - Octokit Ruby Gem 2.7.2
+      - Octokit Ruby Gem 3.0.0
       Authorization:
       - token d141ef15f79ca4c6f43a8c688e0434648f277f20
       Accept-Encoding:
@@ -92,7 +100,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Wed, 26 Mar 2014 14:55:26 GMT
+      - Tue, 08 Apr 2014 19:54:38 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -102,15 +110,15 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4989'
+      - '4977'
       X-Ratelimit-Reset:
-      - '1395848158'
+      - '1396988198'
       Cache-Control:
       - private, max-age=60, s-maxage=60
       Last-Modified:
       - Wed, 26 Mar 2014 01:03:20 GMT
       Etag:
-      - '"217c9b8450d04ba37d7c56021e9f6ecc"'
+      - '"7ccb6183dd91686d8c4bd0d9e500ecaa"'
       X-Oauth-Scopes:
       - public_repo, user
       X-Accepted-Oauth-Scopes:
@@ -119,9 +127,13 @@ http_interactions:
       - Accept, Authorization, Cookie, X-GitHub-OTP
       - Accept-Encoding
       X-Github-Media-Type:
-      - github.beta; format=json
-      X-Content-Type-Options:
-      - nosniff
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
       Access-Control-Allow-Credentials:
       - 'true'
       Access-Control-Expose-Headers:
@@ -130,12 +142,16 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Github-Request-Id:
-      - 44358582:5FEE:C53D16:5332EA5E
+      - 44358582:2CF4:445800:534453FE
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
       X-Served-By:
-      - d818ddef80f4c7d10683dd483558952a
+      - c436b2b44345c72ff906059f604991e7
     body:
       encoding: UTF-8
       string: '{"name":"instructions.md","path":"exercises/02-ruby-koans/instructions.md","sha":"8fb97731350f6d0612caecf36be7210a40ea41c6","size":262,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/02-ruby-koans/instructions.md?ref=master","html_url":"https://github.com/elizabrock/inquizator-test-repo/blob/master/exercises/02-ruby-koans/instructions.md","git_url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/8fb97731350f6d0612caecf36be7210a40ea41c6","type":"file","content":"IyBSdWJ5IEtvYW5zCgpJdCdzIHRpbWUgdG8gZ2V0IHN0YXJ0ZWQgb24gdGhl\nIFtSdWJ5IEtvYW5zXShodHRwOi8vcnVieWtvYW5zLmNvbS8pLgoKRm9sbG93\nIHRoZSBpbnN0cnVjdGlvbnMgb24gdGhlIFJ1YnkgS29hbnMgd2Vic2l0ZSB0\nbyBnZXQgc3RhcnRlZC4KCiMjIFN0cmluZ3MKClN0cmluZ3MgYXJlIGJhc2lj\nYWxseSBhcnJheXMuCgojIyBPYmplY3RzCgpPYmplY3RzIGFyZSBibG9ieS4K\nCiMjIFRyaWFuZ2xlcwoKVHJpYW5nbGVzIGFyZSBzaGFwZXMuCg==\n","encoding":"base64","_links":{"self":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/02-ruby-koans/instructions.md?ref=master","git":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/8fb97731350f6d0612caecf36be7210a40ea41c6","html":"https://github.com/elizabrock/inquizator-test-repo/blob/master/exercises/02-ruby-koans/instructions.md"}}'
     http_version: 
   recorded_at: Sat, 01 Feb 2014 06:00:00 GMT
-recorded_with: VCR 2.8.0
+recorded_with: VCR 2.9.0
