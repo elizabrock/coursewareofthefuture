@@ -16,14 +16,14 @@ module EventsHelper
   end
 
   def add_form(d, course)
-    self_report = SelfReport.find_by(date: d)
-    if self_report
+    return "" unless course.start_date <= d
+    return "" if d > Date.today.end_of_day
+
+    if self_report = current_user.self_reports.find{ |sr| sr.date == d }
       render(partial: "self_reports/completed_self_report", locals: { self_report: self_report, date: d}).to_s
-    elsif d < Time.now.midnight.to_date
+    else
       self_report = SelfReport.new(date: d)
       render(partial: "self_reports/self_report_form", locals: { self_report: self_report, date: d }).to_s
-    else
-      return ""
     end
   end
 end

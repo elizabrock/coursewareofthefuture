@@ -16,11 +16,13 @@ I want to see a calendare that allows me to self-report several metrics.
       | date       | summary         |
       | 2013/03/25 | Federal Holiday |
       | 2013/03/19 | No Class        |
-    And I am signed in as a student in that course
+    And that course has the following user:
+      | name | joe |
     And that user has the following self reports:
       | date       | attended | hours_coding | hours_slept | hours_learning |
       | 2013/03/12 | false    | 5            | 9           | 0              |
       | 2013/03/13 | true     | 2            | 7.5         | 4              |
+    And I am signed in as joe
     And I go to the homepage
     And I follow "Course Calendar"
 
@@ -30,9 +32,22 @@ I want to see a calendare that allows me to self-report several metrics.
   Scenario: Student sees a self-report form for days that need missing reports
     Then I should see "Please enter a self-report" within the date 2013-03-14
     And I should see "Please enter a self-report" within the date 2013-03-11
+    And I should see "Please enter a self-report" within the date 2013-03-15
     And I should not see "Please enter a self-report" within the date 2013-03-12
     And I should not see "Please enter a self-report" within the date 2013-03-13
-    And I should not see "Please enter a self-report" within the date 2013-03-15
+
+  Scenario: Student still sees self-report form is another user has filled out their own report
+    Given 1 student
+    And that user has the following self reports:
+      | date       | attended | hours_coding | hours_slept | hours_learning |
+      | 2013/03/11 | false    | 5            | 9           | 0              |
+    When I follow "Course Calendar"
+    Then I should see "Please enter a self-report" within the date 2013-03-11
+
+  Scenario: Student does not see self-report form for days before the class
+    Then I should not see "Please enter a self-report" within the date 2013-03-01
+    And I should not see "Please enter a self-report" within the date 2013-03-10
+    And I should not see "Please enter a self-report" within the date 2013-03-09
 
   Scenario: Student sees self-report summary for days that have reports
     Then I should see "Attended class" within the date 2013-03-13
@@ -45,11 +60,12 @@ I want to see a calendare that allows me to self-report several metrics.
     And I should see "0 hours of learning" within the date 2013-03-12
 
   Scenario: Student enters self-report form
-    When I choose "Yes" within the form for 2013-03-14
-    And I select "1" from "Hours coding" within the form for 2013-03-14
-    And I select "2" from "Hours learning" within the form for 2013-03-14
-    And I select "3" from "Hours slept" within the form for 2013-03-14
-    And I press "Submit" within the form for 2013-03-14
+    Then I should see "Please enter a self-report" within the date 2013-03-14
+    When I choose "Yes" within the date 2013-03-14
+    And I select "1" from "Hours coding" within the date 2013-03-14
+    And I select "2" from "Hours learning" within the date 2013-03-14
+    And I select "3" from "Hours slept" within the date 2013-03-14
+    And I press "Submit" within the date 2013-03-14
     Then I should see "Your report has been entered"
     And I should not see "Please enter a self-report" within the date 2013-03-14
     And I should see "Attended class" within the date 2013-03-14

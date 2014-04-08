@@ -8,6 +8,7 @@ class QuizSubmission < ActiveRecord::Base
   validates_associated :question_answers
   validates_presence_of :question_answers
   validates_presence_of :quiz
+  validates_presence_of :user
 
   before_validation :populate_from_quiz, on: :create
 
