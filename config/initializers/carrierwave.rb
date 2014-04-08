@@ -1,3 +1,5 @@
+require 'monkey_patch_carrierwave_download'
+
 CarrierWave.configure do |config|
   if Rails.env.test?
     config.storage = :file

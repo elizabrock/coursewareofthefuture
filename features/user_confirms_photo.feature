@@ -1,5 +1,5 @@
 @vcr
-Feature: Student authentication
+Feature: User confirms photo
   As a user
   I want others to see an accurate picture of me
 
@@ -35,7 +35,7 @@ Feature: Student authentication
     Given I am signed in to Github as "joe"
     When I go to the homepage
     And I follow "Sign In with Github"
-    Then my photo should be "55660.jpeg"
+    Then my photo should be "12345.jpeg"
     When I fill in "Web address for your photo" with "http://example.com/image.png"
     And I press "Submit"
     Then I should see "Your profile photo has been updated."
@@ -46,7 +46,7 @@ Feature: Student authentication
     Given I am signed in to Github as "joe"
     When I go to the homepage
     And I follow "Sign In with Github"
-    Then my photo should be "55660.jpeg"
+    Then my photo should be "12345.jpeg"
     When I upload a file "github.png"
     And I press "Submit"
     Then I should see "Your profile photo has been updated."
@@ -58,7 +58,7 @@ Feature: Student authentication
     When I go to the homepage
     And I follow "Sign In with Github"
     And I go to the homepage
-    Then my photo should be "55660.jpeg"
+    Then my photo should be "12345.jpeg"
     When I upload a file "github.png"
     When I fill in "Web address for your photo" with "http://example.com/image.png"
     And I press "Submit"
