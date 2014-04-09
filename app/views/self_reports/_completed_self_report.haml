@@ -1,6 +1,11 @@
-
-%ul
-  %li= self_report.attended? ? "Attended class" : "Missed class"
-  %li #{number_to_human(self_report.hours_learning)} hours of learning
-  %li #{number_to_human(self_report.hours_coding)} hours coding
-  %li #{number_to_human(self_report.hours_slept)} hours of sleep
+%strong Class:
+= self_report.attended? ? "Attended" : "Missed"
+%br
+%strong Learning:
+#{number_to_human(self_report.hours_learning)} hours
+%br
+%strong Coding:
+#{number_to_human(self_report.hours_coding)} hours
+%br
+%strong Sleep:
+#{number_to_human(self_report.hours_slept)} hours

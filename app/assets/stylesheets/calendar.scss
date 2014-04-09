@@ -1,0 +1,25 @@
+.calendar {
+  .label {
+    display: block;
+    & + .label {
+      margin-top: 0.25em;
+    }
+  }
+  td {
+    width: 14%;
+    vertical-align: top;
+    h5 {
+      text-align: left;
+      &.outside-of-class {
+        color: #bbb;
+      }
+    }
+    h6 {
+      margin-top: 0.5em;
+      border-bottom: 1px solid grey;
+    }
+  }
+  .monthName { text-align: center; }
+}
+
+.otherMonth { visibility: hidden; }

@@ -30,11 +30,11 @@ I want to see a calendare that allows me to self-report several metrics.
     Then I should see "Today" within the date 2013-03-15
 
   Scenario: Student sees a self-report form for days that need missing reports
-    Then I should see "Please enter a self-report" within the date 2013-03-14
-    And I should see "Please enter a self-report" within the date 2013-03-11
-    And I should see "Please enter a self-report" within the date 2013-03-15
-    And I should not see "Please enter a self-report" within the date 2013-03-12
-    And I should not see "Please enter a self-report" within the date 2013-03-13
+    Then I should see "Self-Report:" within the date 2013-03-14
+    And I should see "Self-Report:" within the date 2013-03-11
+    And I should see "Self-Report:" within the date 2013-03-15
+    And I should not see "Self-Report:" within the date 2013-03-12
+    And I should not see "Self-Report:" within the date 2013-03-13
 
   Scenario: Student still sees self-report form is another user has filled out their own report
     Given 1 student
@@ -42,33 +42,33 @@ I want to see a calendare that allows me to self-report several metrics.
       | date       | attended | hours_coding | hours_slept | hours_learning |
       | 2013/03/11 | false    | 5            | 9           | 0              |
     When I follow "Course Calendar"
-    Then I should see "Please enter a self-report" within the date 2013-03-11
+    Then I should see "Self-Report:" within the date 2013-03-11
 
   Scenario: Student does not see self-report form for days before the class
-    Then I should not see "Please enter a self-report" within the date 2013-03-01
-    And I should not see "Please enter a self-report" within the date 2013-03-10
-    And I should not see "Please enter a self-report" within the date 2013-03-09
+    Then I should not see "Self-Report:" within the date 2013-03-01
+    And I should not see "Self-Report:" within the date 2013-03-10
+    And I should not see "Self-Report:" within the date 2013-03-09
 
   Scenario: Student sees self-report summary for days that have reports
-    Then I should see "Attended class" within the date 2013-03-13
-    And I should see "2 hours coding" within the date 2013-03-13
-    And I should see "7.5 hours of sleep" within the date 2013-03-13
-    And I should see "4 hours of learning" within the date 2013-03-13
-    And I should see "Missed class" within the date 2013-03-12
-    And I should see "5 hours coding" within the date 2013-03-12
-    And I should see "9 hours of sleep" within the date 2013-03-12
-    And I should see "0 hours of learning" within the date 2013-03-12
+    Then I should see "Class: Attended" within the date 2013-03-13
+    And I should see "Coding: 2 hours" within the date 2013-03-13
+    And I should see "Sleep: 7.5 hours" within the date 2013-03-13
+    And I should see "Learning: 4 hours" within the date 2013-03-13
+    And I should see "Class: Missed" within the date 2013-03-12
+    And I should see "Coding: 5 hours" within the date 2013-03-12
+    And I should see "Sleep: 9 hours" within the date 2013-03-12
+    And I should see "Learning: 0 hours" within the date 2013-03-12
 
   Scenario: Student enters self-report form
-    Then I should see "Please enter a self-report" within the date 2013-03-14
+    Then I should see "Self-Report:" within the date 2013-03-14
     When I choose "Yes" within the date 2013-03-14
     And I select "1" from "Hours coding" within the date 2013-03-14
     And I select "2" from "Hours learning" within the date 2013-03-14
     And I select "3" from "Hours slept" within the date 2013-03-14
     And I press "Submit" within the date 2013-03-14
     Then I should see "Your report has been entered"
-    And I should not see "Please enter a self-report" within the date 2013-03-14
-    And I should see "Attended class" within the date 2013-03-14
-    And I should see "1 hours coding" within the date 2013-03-14
-    And I should see "2 hours of learning" within the date 2013-03-14
-    And I should see "3 hours of sleep" within the date 2013-03-14
+    And I should not see "Self-Report:" within the date 2013-03-14
+    And I should see "Class: Attended" within the date 2013-03-14
+    And I should see "Coding: 1 hours" within the date 2013-03-14
+    And I should see "Learning: 2 hours" within the date 2013-03-14
+    And I should see "Sleep: 3 hours" within the date 2013-03-14

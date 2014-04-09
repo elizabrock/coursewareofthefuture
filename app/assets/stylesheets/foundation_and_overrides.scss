@@ -611,7 +611,7 @@ $include-html-inline-list-classes: true;
 
 // Labels
 
-// $include-html-label-classes: $include-html-classes;
+$include-html-label-classes: true;
 
 // We use these to style the labels
 // $label-padding: rem-calc(4 8 6);
@@ -1235,11 +1235,6 @@ ul#main_navigation {
 
     & > a:hover { color: #000; }
   }
-}
-
-.calendar {
-  td { width: 14% }
-  .monthName { text-align: center; }
 }
 
 form.new_covered_material {
