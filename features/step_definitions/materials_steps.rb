@@ -1,5 +1,5 @@
-Then(/^I should see the materials tree from the inquizator\-test\-repo$/) do
-  expected = [
+def materials_hash
+  [
     { title: "Computer Science",
       children: [
         { title: "Logic",
@@ -51,9 +51,29 @@ Then(/^I should see the materials tree from the inquizator\-test\-repo$/) do
       ]
     }
   ]
+end
+
+Then(/^I should see the materials tree from the inquizator\-test\-repo$/) do
+  expected = materials_hash
   list = first(:css, "ul#upcoming_materials")
   actual = hash_list(list)
   actual.should == expected
+end
+
+Then(/^I should see the materials tree from the inquizator\-test\-repo with no links$/) do
+  expected = materials_hash
+  remove_paths(expected)
+  list = first(:css, "ul#upcoming_materials")
+  actual = hash_list(list)
+  actual.should == expected
+end
+
+def remove_paths(hash_array)
+  return unless hash_array
+  hash_array.each do |hash|
+    hash.delete(:path)
+    remove_paths(hash[:children])
+  end
 end
 
 def hash_list(list)

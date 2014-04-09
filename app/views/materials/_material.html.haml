@@ -1,7 +1,7 @@
 - materials.each do |material|
   - unless covered_material_links.include?(material.link)
     %li
-      - if material.link.present?
+      - if current_user.instructor? and material.link.present?
         = link_to material.pretty_name, material.link
         = simple_form_for CoveredMaterial.new(material_fullpath: material.link), url: course_covered_materials_path(current_course) do |f|
           = f.input :material_fullpath, as: :hidden
