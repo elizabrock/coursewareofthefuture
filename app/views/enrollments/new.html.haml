@@ -3,4 +3,4 @@
 
 %ul
   - enrollment_eligible_courses.each do |course|
-    %li= button_to "Join #{course.title}", course_enrollments_path(course)
+    %li= button_to "Join #{course.title}", course_enrollments_path(course), class: "button"

@@ -5,7 +5,7 @@
   %p= user.goals
   %p= user.background
 - if current_user.instructor? and !user.instructor?
-  = button_to "Make Instructor", instructify_user_path(user)
+  = button_to "Make Instructor", instructify_user_path(user), class: "button"
 
 - if user == current_user
   %p= link_to "Edit My Profile", [:edit, current_user]
