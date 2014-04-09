@@ -3,4 +3,4 @@
 = form_tag new_course_assignment_path(current_course), method: :get do
   %label{ for: "assignment_source" } Assignment
   = select_tag "assignment_source", options_from_collection_for_select(assignment_options, :fullpath, :pretty_name)
-  = submit_tag "Set Milestones"
+  = submit_tag "Set Milestones", class: "button"
