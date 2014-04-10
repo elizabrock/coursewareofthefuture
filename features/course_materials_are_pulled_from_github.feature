@@ -27,3 +27,10 @@ Feature: Course materials are pulled from github
     And I click "Logic"
     Then I should see "Logic is, broadly speaking, the application of reasoning to an activity or concept. In Computer Science, we primarily use deductive reasoning (a.k.a. deductive logic) along with boolean algebra (e.g. two-valued logic)."
     And I should see a "h1" tag with the content "Logic"
+
+  Scenario: Viewing an image
+    Given 1 course
+    And I am signed in as a student in that course
+    When I go to the homepage
+    When I go to "materials/computer-science/logic/wikimedia-commons-venn-and.png" in that course
+    Then I should receive the image "wikimedia-commons-venn-and.png"

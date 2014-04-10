@@ -50,6 +50,10 @@ class Material
     Material.new(result)
   end
 
+  def is_markdown?
+    File.extname(fullpath) == ".md"
+  end
+
   def prettify(string)
     string.titleize.
       gsub(/^\d\d\s/, "").
