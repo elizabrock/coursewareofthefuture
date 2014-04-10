@@ -15,6 +15,9 @@ begin
 
   namespace :cucumber do
     Cucumber::Rake::Task.new({:ok => 'test:prepare'}, 'Run features that should pass') do |t|
+      if ENV['REPORT_COVERAGE']
+        ENV["CODECLIMATE_REPO_TOKEN"] = "987608b798bb220f5268b66965c871090d90331328f3a4c7ae5a5b739ff6848c"
+      end
       t.binary = vendored_cucumber_bin # If nil, the gem's binary is used.
       t.fork = true # You may get faster startup if you set this to false
       t.profile = 'default'
