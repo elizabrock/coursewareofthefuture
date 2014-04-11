@@ -5,10 +5,9 @@
 This will be the new courseware for Nashville Software School.
 
 [![Build Status](https://travis-ci.org/elizabrock/coursewareofthefuture.png?branch=master)](https://travis-ci.org/elizabrock/coursewareofthefuture)
-
-Note: The coverage status is ignoring cucumber.  I'm working on fixing it :(
-
 [![Code Climate](https://codeclimate.com/github/elizabrock/coursewareofthefuture.png)](https://codeclimate.com/github/elizabrock/coursewareofthefuture)
+[![Code Climate](https://codeclimate.com/github/elizabrock/coursewareofthefuture/coverage.png)](https://codeclimate.com/github/elizabrock/coursewareofthefuture)
+
 
 
 ## Deployment Instructions
