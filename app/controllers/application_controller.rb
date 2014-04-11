@@ -8,12 +8,18 @@ class ApplicationController < ActionController::Base
   end
 
   before_filter :authenticate!, unless: :devise_controller?
+  before_filter :set_student_shadowing
   before_filter :require_confirmed_photo!
 
   expose(:active_courses){ Course.active_or_future }
   expose(:current_course){ current_user.try(:courses).try(:find_by_id, (params[:course_id] || params[:id])) }
 
   protected
+
+  def set_student_shadowing
+    return unless current_user.try(:instructor?)
+    current_user.viewing_as_student = session[:as_student]
+  end
 
   def require_instructor!
     unless user_signed_in? and current_user.instructor?

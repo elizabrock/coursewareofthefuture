@@ -26,6 +26,13 @@
         .small-6.columns
           %ul#devise_navigation.inline-list.right
             - if user_signed_in?
+              - if can?(:act_as_student, User)
+                - if current_user.viewing_as_student?
+                  %li Student View
+                  %li= link_to "View As Instructor", destudentify_instructor_path, method: :post
+                - else
+                  %li Instructor View
+                  %li= link_to "View As Student", studentify_instructor_path, method: :post
               %li= link_to "My Profile", current_user
               %li= link_to "Sign Out", destroy_user_session_path, method: :delete
             - else

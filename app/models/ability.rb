@@ -4,9 +4,12 @@ class Ability
   def initialize(user)
     user ||= User.new
 
-    if user.instructor
-      can :manage, :all
-      cannot :edit_goals_and_background, user
+    if user.instructor?
+      can :act_as_student, User
+      if !user.viewing_as_student?
+        can :manage, :all
+        cannot :edit_goals_and_background, user
+      end
     else
       can :create, Enrollment
       can :edit, user

@@ -38,4 +38,10 @@ Coursewareofthefuture::Application.routes.draw do
       patch :update_photo
     end
   end
+  resource :instructor, only: [] do
+    member do
+      post :destudentify
+      post :studentify
+    end
+  end
 end
