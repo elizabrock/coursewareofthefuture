@@ -11,8 +11,8 @@ Feature: User confirms photo
     When I go to the homepage
     And I follow "Sign In with Github"
     And I go to the homepage
-    Then I should see "You must use a photo of your face"
-    And I should not see "This is a picture of me."
+    Then I should see "You must confirm your profile image in order to continue."
+    And I should see "You must use a photo of your face"
 
   Scenario: Student with confirmed photo doesn't need to confirm
     Given the following student:
@@ -26,8 +26,9 @@ Feature: User confirms photo
     When I go to the homepage
     And I follow "Sign In with Github"
     And I go to the homepage
-    And I press "This is a picture of me."
-    Then I should see "Your profile photo has been updated."
+    And I check "This is a picture of me."
+    And I press "Save Changes"
+    Then I should see "Your profile has been updated."
     When I go to the homepage
     Then I should not see "You must use a photo of your face"
 
@@ -38,7 +39,7 @@ Feature: User confirms photo
     Then my photo should be "12345.jpeg"
     When I fill in "Web address for your photo" with "http://example.com/image.png"
     And I press "Submit"
-    Then I should see "Your profile photo has been updated."
+    Then I should see "Your profile has been updated."
     When I go to the homepage
     Then my photo should be "image.png"
 
@@ -49,7 +50,7 @@ Feature: User confirms photo
     Then my photo should be "12345.jpeg"
     When I fill in "Web address for your photo" with "https://example.com/image.png"
     And I press "Submit"
-    Then I should see "Your profile photo has been updated."
+    Then I should see "Your profile has been updated."
     When I go to the homepage
     Then my photo should be "image.png"
 
@@ -60,7 +61,7 @@ Feature: User confirms photo
     Then my photo should be "12345.jpeg"
     When I upload a file "github.png"
     And I press "Submit"
-    Then I should see "Your profile photo has been updated."
+    Then I should see "Your profile has been updated."
     When I go to the homepage
     Then my photo should be "github.png"
 
@@ -73,6 +74,6 @@ Feature: User confirms photo
     When I upload a file "github.png"
     When I fill in "Web address for your photo" with "https://example.com/image.png"
     And I press "Submit"
-    Then I should see "Your profile photo has been updated."
+    Then I should see "Your profile has been updated."
     When I go to the homepage
     Then my photo should be "github.png"
