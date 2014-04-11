@@ -3,7 +3,7 @@
   = f.input :email
   = f.input :name
   = f.input :phone
-  - unless current_user.instructor?
+  - if can?(:edit_goals_and_background, user)
     = f.input :goals
     = f.input :background
   = f.button :submit, "Save Changes"

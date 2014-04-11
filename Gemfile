@@ -2,8 +2,8 @@ ruby '2.1.1'
 #ruby-gemset=coursewareofthefuture
 source 'https://rubygems.org'
 
-# gem 'cancan'
 gem 'calendar_helper'
+gem 'cancan'
 gem 'carrierwave'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'decent_exposure'

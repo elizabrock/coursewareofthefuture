@@ -3,7 +3,7 @@ class HomeController < ApplicationController
 
   def index
     return unless current_user
-    if current_user.instructor?
+    if can?(:create, Course)
       if Course.count == 1
         redirect_to Course.first
       else

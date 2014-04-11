@@ -16,10 +16,6 @@ class User < ActiveRecord::Base
 
   default_scope { order(name: :asc) }
 
-  def student?
-    !instructor?
-  end
-
   def has_confirmed_photo?
     self.photo? && self.photo_confirmed?
   end

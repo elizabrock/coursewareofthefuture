@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   def instructify
-    if current_user.instructor?
+    if can?(:instructify, user)
       user.update_attribute(:instructor, true)
       redirect_to users_path, notice: "#{user.name} is now an instructor."
     else

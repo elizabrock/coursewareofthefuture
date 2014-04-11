@@ -53,7 +53,7 @@ def materials_hash
   ]
 end
 
-Then(/^I should see the materials tree from the inquizator\-test\-repo$/) do
+Then(/^I should see the materials tree from the inquizator\-test\-repo with links$/) do
   expected = materials_hash
   list = first(:css, "ul#upcoming_materials")
   actual = hash_list(list)

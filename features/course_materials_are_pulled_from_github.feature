@@ -7,7 +7,7 @@ Feature: Course materials are pulled from github
     When I go to the homepage
     And I click "Materials"
     Then I should not see any of the exercises from Github
-    And I should see the materials tree from the inquizator-test-repo
+    And I should see the materials tree from the inquizator-test-repo with links
 
   Scenario: Viewing the materials list
     Given 1 course

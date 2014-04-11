@@ -2,23 +2,27 @@
 
 %ul
   - assignments.each do |assignment|
-    %li= link_to assignment.title, course_assignment_path(current_course, assignment)
+    - if can? :view, assignment
+      %li= link_to assignment.title, course_assignment_path(current_course, assignment)
 
   - published_quizzes.each do |quiz|
-    - quiz_submission = current_user.quiz_submissions.find{ |qs| qs.quiz == quiz }
-    - if quiz_submission and quiz_submission.submitted?
-      %li= "#{quiz.title} Quiz (submitted for grading)"
-    - elsif quiz_submission
-      %li= link_to "#{quiz.title} Quiz (incomplete, due #{quiz.deadline.strftime("%-m/%d")})", edit_course_quiz_submission_path(current_course, quiz)
-    - else
-      %li= link_to "#{quiz.title} Quiz (due #{quiz.deadline.strftime("%-m/%d")})", course_quiz_submission_path(current_course, quiz), method: :post
+    - if can? :view, quiz
+      - quiz_submission = current_user.quiz_submissions.find{ |qs| qs.quiz == quiz }
+      - if quiz_submission and quiz_submission.submitted?
+        %li= "#{quiz.title} Quiz (submitted for grading)"
+      - elsif quiz_submission
+        %li= link_to "#{quiz.title} Quiz (incomplete, due #{quiz.deadline.strftime("%-m/%d")})", edit_course_quiz_submission_path(current_course, quiz)
+      - else
+        %li= link_to "#{quiz.title} Quiz (due #{quiz.deadline.strftime("%-m/%d")})", course_quiz_submission_path(current_course, quiz), method: :post
 
-- if current_user.instructor?
+- if can? :manage, Quiz
   %h2 Instructor Information:
   %ul
     - unpublished_quizzes.each do |quiz|
       %li= link_to "#{quiz.title} Quiz (Unpublished)", edit_course_quiz_path(current_course, quiz)
     - published_quizzes.each do |quiz|
       %li= link_to "#{quiz.title} Quiz (#{quiz.quiz_submissions.gradeable.count} completed, #{quiz.quiz_submissions.in_progress.count} in progress)", grade_course_quiz_path(current_course, quiz)
+- if can? :create, Assignment
   = link_to "New Assignment", select_course_assignments_path(current_course), class: "button"
+- if can? :create, Quiz
   = link_to "New Quiz", new_course_quiz_path(current_course), class: "button"
