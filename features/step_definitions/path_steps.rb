@@ -21,8 +21,6 @@ def path_to path_descriptor
     course_path(@course)
   when /the assignments page/
     course_assignments_path(@course)
-  when /the Peers tab/
-    course_enrollments_path(@course)
   else
     path_descriptor
   end
