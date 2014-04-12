@@ -15,8 +15,8 @@ module ApplicationHelper
     end
   end
 
-  def current_if(arg)
-    currently_in?(arg) ? "current" : ""
+  def current_if(*args)
+    args.any?{ |arg| currently_in?(arg) } ? "current" : ""
   end
 
   def currently_in?(arg)

@@ -2,10 +2,10 @@
   %h2 Instructors
   %ul
     - instructors.each do |instructor|
-      %li= link_to instructor.name, instructor
+      %li= link_to instructor.name, user_path(instructor, course_id: current_course.try(:id))
 
 .students
   %h2 Students
   %ul
     - students.each do |student|
-      %li= link_to student.name, student
+      %li= link_to student.name, user_path(student, course_id: current_course.try(:id))

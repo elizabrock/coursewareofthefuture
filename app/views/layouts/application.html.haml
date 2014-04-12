@@ -33,7 +33,7 @@
                 - else
                   %li Instructor View
                   %li= link_to "View As Student", studentify_instructor_path, method: :post
-              %li= link_to "My Profile", current_user
+              %li= link_to "My Profile", user_path(current_user, course_id: current_course.try(:id))
               %li= link_to "Sign Out", destroy_user_session_path, method: :delete
             - else
               %li= link_to "Sign In with Github", user_omniauth_authorize_path(:github)
@@ -45,7 +45,7 @@
               %li= link_to "Course Calendar", course_calendar_path(current_course), id: current_if("events")
               %li= link_to "Materials", course_materials_path(current_course), id: current_if("materials")
               %li= link_to "Assignments", course_assignments_path(current_course), id: current_if("assignments")
-              %li= link_to "Peers", course_enrollments_path(current_course), id: current_if("enrollments")
+              %li= link_to "Peers", course_enrollments_path(current_course), id: current_if("enrollments", "users")
             - if current_user
               %li.right
                 %span
