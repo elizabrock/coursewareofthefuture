@@ -17,6 +17,8 @@ def path_to path_descriptor
     course_path(course)
   when /"(.*)" in that course/
     "/courses/#{@course.id}/#{$1}"
+  when /that course/
+    course_path(@course)
   when /the assignments page/
     course_assignments_path(@course)
   else

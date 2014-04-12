@@ -315,6 +315,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   letter_opener
+  minitest
   octokit
   omniauth-github
   pg
