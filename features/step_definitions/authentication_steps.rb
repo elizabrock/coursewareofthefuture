@@ -21,7 +21,6 @@ Given(/^I am signed in as (.*)$/) do |name|
     sign_into_github_as(user.github_username, user.github_uid)
   else
     user = User.where(name: name).first
-    user = Fabricate(:user, github_username: name) if user.nil?
     sign_into_github_as(user.github_username, user.github_uid)
   end
   visit '/users/auth/github'

@@ -74,3 +74,17 @@ Feature: Student enrolls in course
     And I should be on the Cohort 4b course page
     When I go to the homepage
     Then I should be on the Cohort 4b course page
+
+  Scenario: Enrollments view shows all students enrolled in course.
+    Given 1 course
+    And that course has the following students:
+      | name   | photo_file     |
+      | Pookie | pookie.jpg     |
+      | Bea    | bea.jpg        |
+      | Bert   | arson_girl.jpg |
+    And I am signed in as Bert
+    When I click "Peers"
+    Then I should see the following list with images:
+      | Bea    | bea.jpg        |
+      | Bert   | arson_girl.jpg |
+      | Pookie | pookie.jpg     |

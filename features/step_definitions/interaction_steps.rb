@@ -47,6 +47,14 @@ Then /^(?:|I )should see the following list:$/ do |table|
   end
 end
 
+Then /^(?:|I )should see the following list with images:$/ do |table|
+  table.raw.each_with_index do |content, row|
+    text = content[0]
+    image_path = content[1]
+    page.should have_xpath("//ul/li[#{row+1}][contains(normalize-space(.), '#{text}')]//img[contains(@src, '#{image_path}')]")
+  end
+end
+
 Then /^I should see the following options for "(.*?)":$/ do |field, option_texts|
   field = page.find_field(field)
   options = field.all("option")
