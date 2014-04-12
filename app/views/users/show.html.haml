@@ -1,13 +1,10 @@
 .row
-  .small-2.columns
-    =link_to(image_tag(user.photo, class: "user_profile_photo"), user_path)
-  .small-2.columns
-    .row
-      %h1= user.name
-    .row
-      %p= user.phone
-    .row
-      %p= user.email
+  .small-6.large-2.columns
+    =link_to(image_tag(user.photo, class: "profile_photo"), user_path)
+  .small-6.large-10.columns
+    %h1= user.name
+    %p= user.phone
+    %p= user.email
   .small-8.columns
 .row
   .small-12.columns
@@ -16,7 +13,7 @@
       %p= user.background
 .row
   .small-12.columns
-  - if can?(:instructify, user) and !user.instructor
-    = button_to "Make Instructor", instructify_user_path(user)
-  - if user == current_user
-    %p= link_to "Edit My Profile", [:edit, current_user]
+    - if can?(:instructify, user) and !user.instructor
+      = button_to "Make Instructor", instructify_user_path(user), class: "button small radius"
+    - if user == current_user
+      %p= link_to "Edit My Profile", [:edit, current_user], class: "button small radius"

@@ -1,21 +1,18 @@
 .instructors
   %h2 Instructors
-  %ul
+  %ul.small-block-grid-5
     - instructors.each do |instructor|
       %li
-        .row
-          .small-2.columns
-            = link_to(image_tag(instructor.photo, class: "instructor_profile_photo"))
-          .small-2.columns
-            = link_to instructor.name, user_path(instructor, course_id: current_course.try(:id))
-          .small-8.columns
+        = link_to user_path(instructor, course_id: current_course.try(:id)) do
+          = image_tag(instructor.photo, class: "profile_photo")
+          %p{ style: "text-align: center;"}= instructor.name
+
 
 .students
   %h2 Students
-  %ul
+  %ul.small-block-grid-5
     - students.each do |student|
       %li
-        .row
-          .small-2.columns
-            = link_to(image_tag(student.photo, class: "student_profile_photo"))
-            = link_to student.name, user_path(student, course_id: current_course.try(:id))
+        = link_to user_path(student, course_id: current_course.try(:id)) do
+          = image_tag(student.photo, class: "profile_photo")
+          %p{ style: "text-align: center;"}= student.name
