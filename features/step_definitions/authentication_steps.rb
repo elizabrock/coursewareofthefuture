@@ -4,9 +4,11 @@ Given(/^I am signed in as (.*)$/) do |name|
     case name
     when /for that course/
       @course.users << user
+      go_to = course_path(@course)
     when /for a course/
       @course = Fabricate(:course)
       @course.users << user
+      go_to = course_path(@course)
     when /for those courses/
       user.courses << Course.active_or_future.all
     end
@@ -24,6 +26,7 @@ Given(/^I am signed in as (.*)$/) do |name|
   end
   visit '/users/auth/github'
   @user = User.find_by_github_username(user.github_username)
+  visit go_to if go_to
 end
 
 Given(/^I am signed in to Github as "(.*?)"$/) do |username|

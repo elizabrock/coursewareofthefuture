@@ -1,5 +1,15 @@
 Feature: Instructor manages course calendar
 
+  Scenario: Students shouldn't see "New Event" button
+    Given the following course:
+      | title      | Cohort 4   |
+      | syllabus   | Foobar     |
+      | start_date | 2014/01/24 |
+      | end_date   | 2014/03/24 |
+    And I am signed in as a student in that course
+    And I am on the course calendar for Cohort 4
+    Then I should not see "New Event"
+
   Scenario: Adding days off
     Given the following course:
       | title      | Cohort 4   |

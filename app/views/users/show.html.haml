@@ -10,10 +10,13 @@
       %p= user.email
   .small-8.columns
 .row
-  - if current_user == user or current_user.instructor?
-    %p= user.goals
-    %p= user.background
-  - if current_user.instructor? and !user.instructor?
+  .small-12.columns
+    - if can?(:view_private_details_of, user)
+      %p= user.goals
+      %p= user.background
+.row
+  .small-12.columns
+  - if can?(:instructify, user) and !user.instructor
     = button_to "Make Instructor", instructify_user_path(user)
   - if user == current_user
     %p= link_to "Edit My Profile", [:edit, current_user]

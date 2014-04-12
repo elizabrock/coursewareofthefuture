@@ -1,9 +1,28 @@
 %h2 Edit Your Profile
 = simple_form_for current_user do |f|
-  = f.input :email
-  = f.input :name
-  = f.input :phone
-  - unless current_user.instructor?
-    = f.input :goals
-    = f.input :background
-  = f.button :submit, "Save Changes"
+  .row
+    .small-12.columns
+      = f.input :email
+      = f.input :name
+      = f.input :phone
+      - if can?(:edit_goals_and_background, current_user)
+        = f.input :goals
+        = f.input :background
+  .row
+    .small-12.large-6.columns
+      %h6 Current Photo:
+      = image_tag current_user.photo_url, id: "user_photo"
+    .small-12.large-6.columns
+      %h6 Update your photo:
+      = f.input :photo, as: :file, label: "Upload a photo"
+      %p Or...
+      = f.input :remote_photo_url, label: "Web address for your photo"
+      = f.button :submit, "Submit", class: "tiny"
+  .row
+    .small-12.columns
+      = f.input :photo_confirmed, label: "This is a picture of me."
+      %p
+        %em You must use a photo of your face, or there is no hope of Eliza learning your name.
+  .row
+    .small-12.columns
+      = f.button :submit, "Save Changes"

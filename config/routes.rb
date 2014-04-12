@@ -26,16 +26,15 @@ Coursewareofthefuture::Application.routes.draw do
   resource :enrollment, only: [:new]
   resources :question_grades, only: [:edit, :update]
   resources :self_reports, only: [:new, :create]
-  resources :student_profiles, except: [:destroy], path: :students
   resources :users, except: [:destroy] do
     member do
       post :instructify
     end
   end
-  resource :user, only: [] do
+  resource :instructor, only: [] do
     member do
-      get :confirm_photo
-      patch :update_photo
+      post :destudentify
+      post :studentify
     end
   end
 end

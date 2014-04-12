@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  attr_accessor :viewing_as_student
   mount_uploader :photo, PhotoUploader
   devise :rememberable, :trackable, :omniauthable, :omniauth_providers => [:github]
 
@@ -16,8 +17,8 @@ class User < ActiveRecord::Base
 
   default_scope { order(name: :asc) }
 
-  def student?
-    !instructor?
+  def viewing_as_student?
+    instructor? && @viewing_as_student
   end
 
   def has_confirmed_photo?

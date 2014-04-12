@@ -146,3 +146,8 @@ end
 When (/^I upload a file "(.*?)"$/) do |file|
   attach_file("user_photo", File.join(Rails.root, "/features/support/files/#{file}"))
 end
+
+Then(/^I should receive the image "(.*?)"$/) do |filename|
+  page.response_headers['Content-Type'].should == "image/png"
+  page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")
+end

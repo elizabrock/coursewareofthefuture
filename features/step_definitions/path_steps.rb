@@ -5,7 +5,7 @@ def path_to path_descriptor
   when 'my profile page'
     user_path(@user)
   when /(.*?)'s profile page/
-    user = User.where(username: $1 ).first
+    user = User.where(github_username: $1 ).first
     user_path(user)
   when /the student list page/
     users_path
@@ -15,6 +15,10 @@ def path_to path_descriptor
   when /the (.*) course page/
     course = Course.find_by_title($1)
     course_path(course)
+  when /"(.*)" in that course/
+    "/courses/#{@course.id}/#{$1}"
+  when /that course/
+    course_path(@course)
   when /the assignments page/
     course_assignments_path(@course)
   when /the Peers tab/

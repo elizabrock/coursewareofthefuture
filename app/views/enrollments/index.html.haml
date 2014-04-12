@@ -3,12 +3,13 @@
   %ul
     - instructors.each do |instructor|
       %li
-        .row  
+        .row
           .small-2.columns
             = link_to(image_tag(instructor.photo, class: "instructor_profile_photo"))
           .small-2.columns
-            = link_to instructor.name, instructor
+            = link_to instructor.name, user_path(instructor, course_id: current_course.try(:id))
           .small-8.columns
+
 .students
   %h2 Students
   %ul
@@ -17,4 +18,4 @@
         .row
           .small-2.columns
             = link_to(image_tag(student.photo, class: "student_profile_photo"))
-            = link_to student.name, student
+            = link_to student.name, user_path(student, course_id: current_course.try(:id))

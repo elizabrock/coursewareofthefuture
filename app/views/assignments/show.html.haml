@@ -7,7 +7,7 @@
     %h2
       = milestone.title
       (due #{milestone.deadline.strftime("%-m/%d")})
-    - if index == 0 or current_user.instructor?
+    - if index == 0 or can?(:edit, milestone)
       :markdown
         #{milestone.instructions}
     - if index == 0

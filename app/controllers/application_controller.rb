@@ -8,12 +8,18 @@ class ApplicationController < ActionController::Base
   end
 
   before_filter :authenticate!, unless: :devise_controller?
-  before_filter :require_confirmed_photo!
+  before_filter :set_student_shadowing
+  before_filter :require_profile!
 
   expose(:active_courses){ Course.active_or_future }
   expose(:current_course){ current_user.try(:courses).try(:find_by_id, (params[:course_id] || params[:id])) }
 
   protected
+  def authenticate!
+    unless user_signed_in?
+      redirect_to root_path, alert: "You need to sign in or sign up before continuing."
+    end
+  end
 
   def require_instructor!
     unless user_signed_in? and current_user.instructor?
@@ -21,18 +27,18 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def authenticate!
-    unless user_signed_in?
-      redirect_to root_path, alert: "You need to sign in or sign up before continuing."
-    end
-  end
-
-  def require_confirmed_photo!
+  def require_profile!
     return unless user_signed_in?
     return unless request.method == "GET"
     unless current_user.has_confirmed_photo?
       flash.keep
-      redirect_to confirm_photo_user_path
+      flash.alert = "You must confirm your profile image in order to continue."
+      redirect_to edit_user_path(current_user)
     end
+  end
+
+  def set_student_shadowing
+    return unless current_user.try(:instructor?)
+    current_user.viewing_as_student = session[:as_student]
   end
 end

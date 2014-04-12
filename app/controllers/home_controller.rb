@@ -3,12 +3,8 @@ class HomeController < ApplicationController
 
   def index
     return unless current_user
-    if current_user.instructor?
-      if Course.count == 1
-        redirect_to Course.first
-      else
-        redirect_to courses_path
-      end
+    if can?(:create, Course)
+      redirect_to courses_path
     elsif current_user.courses.empty?
       redirect_to new_enrollment_path
     else
