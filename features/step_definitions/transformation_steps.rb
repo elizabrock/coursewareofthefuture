@@ -15,3 +15,12 @@ Transform /^table:.*source question.*$/ do |table|
     end
   end
 end
+
+Transform /^table:.*photo_file.*$/ do |table|
+  table.tap do |t|
+    t.map_headers!('photo_file' => 'photo')
+    t.map_column!('photo') do |file_name|
+      File.new(File.join(Rails.root, 'features', 'support', 'files', file_name))
+    end
+  end
+end

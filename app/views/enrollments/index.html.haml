@@ -2,10 +2,19 @@
   %h2 Instructors
   %ul
     - instructors.each do |instructor|
-      %li= link_to instructor.name, instructor
-
+      %li
+        .row  
+          .small-2.columns
+            = link_to(image_tag(instructor.photo, class: "instructor_profile_photo"))
+          .small-2.columns
+            = link_to instructor.name, instructor
+          .small-8.columns
 .students
   %h2 Students
   %ul
     - students.each do |student|
-      %li= link_to student.name, student
+      %li
+        .row
+          .small-2.columns
+            = link_to(image_tag(student.photo, class: "student_profile_photo"))
+            = link_to student.name, student
