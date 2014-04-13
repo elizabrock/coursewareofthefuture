@@ -38,7 +38,7 @@ Feature: User confirms photo
     And I follow "Sign In with Github"
     Then my photo should be "12345.jpeg"
     When I fill in "Web address for your photo" with "http://example.com/image.png"
-    And I press "Submit"
+    And I press "Save Changes"
     Then I should see "Your profile has been updated."
     When I go to the homepage
     Then my photo should be "image.png"
@@ -49,7 +49,7 @@ Feature: User confirms photo
     And I follow "Sign In with Github"
     Then my photo should be "12345.jpeg"
     When I fill in "Web address for your photo" with "https://example.com/image.png"
-    And I press "Submit"
+    And I press "Save Changes"
     Then I should see "Your profile has been updated."
     When I go to the homepage
     Then my photo should be "image.png"
@@ -60,7 +60,7 @@ Feature: User confirms photo
     And I follow "Sign In with Github"
     Then my photo should be "12345.jpeg"
     When I upload a file "github.png"
-    And I press "Submit"
+    And I press "Save Changes"
     Then I should see "Your profile has been updated."
     When I go to the homepage
     Then my photo should be "github.png"
@@ -73,7 +73,7 @@ Feature: User confirms photo
     Then my photo should be "12345.jpeg"
     When I upload a file "github.png"
     When I fill in "Web address for your photo" with "https://example.com/image.png"
-    And I press "Submit"
+    And I press "Save Changes"
     Then I should see "Your profile has been updated."
     When I go to the homepage
     Then my photo should be "github.png"

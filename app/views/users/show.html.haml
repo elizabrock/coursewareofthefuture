@@ -5,12 +5,20 @@
     %h1= user.name
     %p= user.phone
     %p= user.email
-  .small-8.columns
 .row
   .small-12.columns
     - if can?(:view_private_details_of, user)
-      %p= user.goals
-      %p= user.background
+      %fieldset
+        %legend Private Details
+        %p
+          %em This information only visible to you and your instructor(s).
+        .row
+          .large-6.columns
+            %h5 Goals:
+            %p= user.goals || "[Missing]"
+          .large-6.columns
+            %h5 Background:
+            %p= user.background || "[Missing]"
 .row
   .small-12.columns
     - if can?(:instructify, user) and !user.instructor
