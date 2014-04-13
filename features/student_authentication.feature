@@ -41,3 +41,23 @@ Feature: Student authentication
   Scenario: No more sign ups
     When I go to the homepage
     Then I should not see "Sign Up"
+
+  Scenario: Fix: revoked authorization breaks github auth
+    Given I am signed in to Github as "joe"
+    When I go to the homepage
+    And I follow "Sign In with Github"
+    Then I should see the following student in the database:
+      | email               | joesmith@example.com                     |
+      | github_uid          | 12345                                    |
+      | github_username     | joe                                      |
+      | name                | Joe Smith                                |
+      | github_access_token | d141ef15f79ca4c6f43a8c688e0434648f277f20 |
+    Given I sign out
+    And the Github token for "joe" has changed to "8675301"
+    When I follow "Sign In with Github"
+    Then I should see the following student in the database:
+      | email               | joesmith@example.com |
+      | github_uid          | 12345                |
+      | github_username     | joe                  |
+      | name                | Joe Smith            |
+      | github_access_token | 8675301              |

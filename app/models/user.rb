@@ -26,14 +26,19 @@ class User < ActiveRecord::Base
   end
 
   def self.find_or_create_for_github_oauth(auth)
-    where(github_uid: auth.uid).first_or_create do |user|
-      user.github_access_token = auth.credentials.token
+    auth_token = auth.credentials.token
+    user = User.where(github_uid: auth.uid).first_or_create do |user|
+      user.github_access_token = auth_token
       user.github_uid = auth.uid
       user.github_username = auth.info.nickname
       user.name = auth.info.name
       user.email = auth.info.email
       user.remote_photo_url = auth.info.image
     end
+    unless user.github_access_token == auth_token
+      user.update_attribute(:github_access_token, auth_token)
+    end
+    user
   end
 
   def octoclient
