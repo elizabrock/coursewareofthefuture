@@ -20,7 +20,7 @@ Coursewareofthefuture::Application.routes.draw do
       member do
         get :grade
       end
-      resource :quiz_submission, only: [:create, :edit, :update], as: :submission, path: :s
+      resource :quiz_submission, except: [:destroy], as: :submission, path: :s
     end
   end
   resource :enrollment, only: [:new]

@@ -1,0 +1,11 @@
+%h1= quiz.title + "Quiz"
+%h2 Result: #{quiz_submission.formatted_grade}
+
+%ol
+  - quiz_submission.question_answers.each do |answer|
+    %li
+      %p= answer.question.question
+      %p Your Answer: #{format_answer(answer.answer)}
+      - if quiz_submission.graded?
+        %p Correct Answer: #{format_answer(answer.question.correct_answer)}
+        %p Score: #{ answer.correct? ? "Correct" : "Incorrect" }

@@ -8,10 +8,13 @@
   - published_quizzes.each do |quiz|
     - if can? :view, quiz
       - quiz_submission = current_user.quiz_submissions.find{ |qs| qs.quiz == quiz }
-      - if quiz_submission and quiz_submission.submitted?
-        %li= "#{quiz.title} Quiz (submitted for grading)"
-      - elsif quiz_submission
-        %li= link_to "#{quiz.title} Quiz (incomplete, due #{quiz.deadline.strftime("%-m/%d")})", edit_course_quiz_submission_path(current_course, quiz)
+      - if quiz_submission
+        - if quiz_submission.graded?
+          %li= link_to "#{quiz.title} Quiz (#{quiz_submission.formatted_grade})", course_quiz_submission_path(current_course, quiz)
+        - elsif quiz_submission.submitted?
+          %li= link_to "#{quiz.title} Quiz (submitted for grading)", course_quiz_submission_path(current_course, quiz)
+        - else
+          %li= link_to "#{quiz.title} Quiz (incomplete, due #{quiz.deadline.strftime("%-m/%d")})", edit_course_quiz_submission_path(current_course, quiz)
       - else
         %li= link_to "#{quiz.title} Quiz (due #{quiz.deadline.strftime("%-m/%d")})", course_quiz_submission_path(current_course, quiz), method: :post
 

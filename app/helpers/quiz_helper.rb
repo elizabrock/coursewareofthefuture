@@ -1,4 +1,13 @@
 module QuizHelper
+
+  def format_answer(answer)
+    if (Question::TRUE_VALUES + Question::FALSE_VALUES).include? answer
+      answer.capitalize
+    else
+      answer
+    end
+  end
+
   def grading_summary(question)
     if question.boolean?
       question.question + " (Automatically Graded)"

@@ -81,3 +81,50 @@ Feature: Instructor grades quizzes
     When I click "What are you happy about?"
     Then "Correct" should be selected within the "jane" fieldset
     And "Incorrect" should be selected within the "sally" fieldset
+
+  Scenario: Finishing grading marks quiz submission as graded
+    When I go to the assignments page
+    And I click "Checkin Quiz (2 completed, 1 in progress)"
+    When I click "What are you happy about?"
+    When I select "Correct" within the "jane" fieldset
+    # Note that I'm not grading Sally's quiz
+    And I press "Save Grades"
+    Then I should see "Grades for 'What are you happy about?' have been updated."
+    And I should see:
+      | Are you happy? (Automatically Graded)        |
+      | What are you happy about? (1 pending grades) |
+      | Is class over? (Automatically Graded)        |
+    And the database should have this quiz submission:
+      | user name | graded | grade |
+      | jane      | true   | 66    |
+    And the database should have this quiz submission:
+      | user name | graded |
+      | sally     | false  |
+    When I click "What are you happy about?"
+    Then "Correct" should be selected within the "jane" fieldset
+    When I select "Incorrect" within the "sally" fieldset
+    And I press "Save Grades"
+    Then the database should have this quiz submissions:
+      | user name | graded | grade |
+      | sally     | true   | 33    |
+
+  Scenario: Updating question updates grade
+    Then the database should have this quiz submission:
+      | user name | graded |
+      | jane      | false  |
+    When I go to the assignments page
+    And I click "Checkin Quiz (2 completed, 1 in progress)"
+    When I click "What are you happy about?"
+    When I select "Correct" within the "jane" fieldset
+    And I press "Save Grades"
+    Then I should see "Grades for 'What are you happy about?' have been updated."
+    And the database should have this quiz submission:
+      | user name | graded | grade |
+      | jane      | true   | 66    |
+    When I click "What are you happy about?"
+    Then "Correct" should be selected within the "jane" fieldset
+    When I select "Incorrect" within the "jane" fieldset
+    And I press "Save Grades"
+    Then the database should have this quiz submission:
+      | user name | graded | grade |
+      | jane      | true   | 33    |

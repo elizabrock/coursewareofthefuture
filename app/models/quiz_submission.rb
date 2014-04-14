@@ -16,6 +16,10 @@ class QuizSubmission < ActiveRecord::Base
   scope :gradeable, ->{ where("submitted_at is not null") }
   scope :in_progress, ->{ where("submitted_at is null") }
 
+  def formatted_grade
+    graded? ? "#{grade}%" : "Pending"
+  end
+
   def populate_from_quiz
     return unless quiz
     quiz.questions.each do |question|
@@ -26,8 +30,16 @@ class QuizSubmission < ActiveRecord::Base
     self
   end
 
+  def update_grade!
+    return unless submitted_at.present?
+    return if question_answers.any?(&:ungraded?)
+    new_grade = ((question_answers.sum(:score) +  question_answers.count) * 100) / (question_answers.count * 2)
+    update_attributes(grade: new_grade, graded: true)
+  end
+
   def submit!
     self.submitted_at = Time.now
+    self.graded = false
     self.question_answers.each(&:prepare_for_submission!)
     self.save
   end
