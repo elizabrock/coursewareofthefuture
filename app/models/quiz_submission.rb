@@ -34,7 +34,9 @@ class QuizSubmission < ActiveRecord::Base
     return unless submitted_at.present?
     return if question_answers.any?(&:ungraded?)
     new_grade = ((question_answers.sum(:score) +  question_answers.count) * 100) / (question_answers.count * 2)
-    update_attributes(grade: new_grade, graded: true)
+    notify_student = new_grade != grade
+    update_attributes!(grade: new_grade, graded: true)
+    notify_student! if notify_student
   end
 
   def submit!
@@ -46,5 +48,11 @@ class QuizSubmission < ActiveRecord::Base
 
   def submitted?
     self.submitted_at.present?
+  end
+
+  private
+
+  def notify_student!
+    QuizMailer.notify_student(self).deliver
   end
 end

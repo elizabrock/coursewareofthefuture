@@ -4,7 +4,7 @@ Fabricator(:quiz_submission) do
 end
 
 Fabricator(:submitted_quiz_submission, from: :quiz_submission) do
-  after_create {|quiz| quiz.question_answers.each{|a| a.answer = "true" }; quiz.submit!; quiz.save! }
+  after_create {|quiz| quiz.question_answers.each{|a| a.update_attribute(:answer, "true") }; quiz.submit!; quiz.save! }
 end
 
 Fabricator(:unfinished_quiz_submission, from: :quiz_submission) do

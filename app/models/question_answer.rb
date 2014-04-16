@@ -10,6 +10,7 @@ class QuestionAnswer < ActiveRecord::Base
 
   scope :for, ->(question){ where(question_id: question.id).limit(1) }
   scope :ungraded, ->{ where("score = 0") }
+  default_scope ->{ order("id ASC") }
 
   def prepare_for_submission!
     @quiz_being_submitted = true
@@ -30,7 +31,7 @@ class QuestionAnswer < ActiveRecord::Base
   end
 
   def ungraded?
-    score == 0
+    score.nil? or score == 0
   end
 
   def correct?

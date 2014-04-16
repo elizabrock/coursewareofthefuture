@@ -314,6 +314,7 @@ DEPENDENCIES
   honeybadger
   jbuilder (~> 1.2)
   jquery-rails
+  launchy
   letter_opener
   minitest
   octokit
