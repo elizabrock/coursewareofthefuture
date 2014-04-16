@@ -1,4 +1,4 @@
-%h1= quiz.title + "Quiz"
+%h1= quiz.title
 
 = simple_form_for quiz_submission, url: course_quiz_submission_path(current_course, quiz) do |f|
   %ol

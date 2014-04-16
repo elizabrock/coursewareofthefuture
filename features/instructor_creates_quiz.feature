@@ -4,7 +4,7 @@ Feature: Instructor creates quiz
     Given I am signed in as an instructor for a course
     When I click "Assignments"
     And I click "New Quiz"
-    And I fill in "Title" with "Baseline Knowledge"
+    And I fill in "Title" with "Baseline Knowledge Quiz"
     And I press "Create Quiz"
     Then I should see "Your quiz has been created. Add questions and then publish it."
     When I click "Assignments"
@@ -16,7 +16,7 @@ Feature: Instructor creates quiz
       | title | Midpoint Checkin |
     And I am signed in as the instructor for that course
     When I click "Assignments"
-    And I click "Midpoint Checkin Quiz (Unpublished)"
+    And I click "Midpoint Checkin (Unpublished)"
     Then I should see "Add another question"
     When I fill in "Question" with "Have you installed ruby 2.1?"
     And I select "Free Text" from "Question Type"
@@ -40,7 +40,7 @@ Feature: Instructor creates quiz
       | title | Midpoint Checkin |
     And I am signed in as the instructor for that course
     When I click "Assignments"
-    And I click "Midpoint Checkin Quiz (Unpublished)"
+    And I click "Midpoint Checkin (Unpublished)"
     Then I should see "Add another question"
     When I fill in "Question" with "Have you installed ruby 2.0?"
     And I select "True/False" from "Question Type"
@@ -73,7 +73,7 @@ Feature: Instructor creates quiz
       | free_text     | What are you happy about? | There is no correct answer. |
       | boolean       | Is class over?            | false                       |
     When I click "Assignments"
-    And I click "Final Checkin Quiz (Unpublished)"
+    And I click "Final Checkin (Unpublished)"
     And I fill in "Are you satisfied?" for "Question" within Q1
     And I fill in "There can't be a correct answer." for "Correct Answer" within Q2
     And I fill in "True" for "Correct Answer" within Q3
@@ -126,8 +126,8 @@ Feature: Instructor creates quiz
     When I fill in "2014/05/14" for "Deadline"
     And I press "Save Changes"
     Then I should see "Your quiz has been published."
-    And I should see "Final Checkin Quiz (due 5/14)"
+    And I should see "Final Checkin (due 5/14)"
     When I sign out
     And sign in as a student in that course
     And I click "Assignments"
-    Then I should see "Final Checkin Quiz (due 5/14)"
+    Then I should see "Final Checkin (due 5/14)"

@@ -4,7 +4,7 @@ Feature: True/False questions are graded automatically
     Given 1 course
     And I am signed in as a student in that course
     And that course has the following quiz:
-      | title | Baseline Knowledge |
+      | title | Baseline Knowledge Quiz |
     And that quiz has the following questions:
       | question_type | question                  | correct_answer              |
       | boolean       | Are you happy?            | true                        |

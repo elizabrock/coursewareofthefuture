@@ -18,8 +18,8 @@ Feature: Student views quiz feedback
       | What are you happy about? | The food! | 1     |
       | Is class over?            | false     | 1     |
     When I click "Assignments"
-    Then I should see "Checkin Quiz (66%)"
-    When I click "Checkin Quiz (66%)"
+    Then I should see "Checkin (66%)"
+    When I click "Checkin (66%)"
     Then I should see "Result: 66%"
     And I should see the following list:
       | Are you happy?            | Your Answer: False     | Correct Answer: True                        | Incorrect |
@@ -34,8 +34,8 @@ Feature: Student views quiz feedback
       | What are you happy about? | The food! | 0     |
       | Is class over?            | false     | 1     |
     When I click "Assignments"
-    Then I should see "Checkin Quiz (submitted for grading)"
-    When I click "Checkin Quiz (submitted for grading)"
+    Then I should see "Checkin (submitted for grading)"
+    When I click "Checkin (submitted for grading)"
     Then I should see "Result: Pending"
     And I should see the following list:
       | Are you happy?            | Your Answer: False     |

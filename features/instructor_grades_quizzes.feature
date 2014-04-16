@@ -17,7 +17,7 @@ Feature: Instructor grades quizzes
       | susie |
     And I am signed in as an instructor for that course
     And that course has the following quiz:
-      | title | Checkin |
+      | title | Checkin Quiz |
     And that quiz has the following questions:
       | question_type | question                  | correct_answer              |
       | boolean       | Are you happy?            | true                        |
