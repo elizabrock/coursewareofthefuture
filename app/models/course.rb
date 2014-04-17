@@ -8,5 +8,6 @@ class Course < ActiveRecord::Base
   has_many :quizzes
   has_many :users, through: :enrollments
 
+  scope :active, ->{ active_or_future.where("courses.start_date <= ?", Date.today) }
   scope :active_or_future, ->{ where("courses.end_date >= ?", Date.today) }
 end

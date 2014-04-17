@@ -1,6 +1,4 @@
 class QuizMailer < ActionMailer::Base
-  default from: "eliza@elizabrocksoftware.com"
-
   def notify_student(quiz_submission)
     @quiz_submission = quiz_submission
     @course = @quiz_submission.quiz.course

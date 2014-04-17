@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   has_many :enrollments
   has_many :courses, through: :enrollments
-  has_many :self_reports
+  has_many :self_reports, inverse_of: :user
   has_many :quiz_submissions
   has_many :quizzes, through: :quiz_submissions
 
