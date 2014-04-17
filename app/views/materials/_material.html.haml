@@ -3,8 +3,9 @@
     %li
       - if can?(:manage, CoveredMaterial) and material.link.present?
         = link_to material.pretty_name, material.link
-        = simple_form_for CoveredMaterial.new(material_fullpath: material.link), url: course_covered_materials_path(current_course) do |f|
+        = simple_form_for CoveredMaterial.new(material_fullpath: material.link, covered_on: Date.today), url: course_covered_materials_path(current_course) do |f|
           = f.input :material_fullpath, as: :hidden
+          = f.input :covered_on, label: "Date Covered"
           = f.button :submit, "Mark as Covered", class: "tiny"
       - else
         %span= material.pretty_name

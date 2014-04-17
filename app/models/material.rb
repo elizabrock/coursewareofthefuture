@@ -84,4 +84,8 @@ class Material
   def find_child(filename)
     @children.find{ |c| c.filename == filename }
   end
+
+  def find_descendant_by_link(link)
+    @children.find{ |c| c.link == link } || @children.map{ |c| c.find_descendant_by_link(link) }.compact.first
+  end
 end

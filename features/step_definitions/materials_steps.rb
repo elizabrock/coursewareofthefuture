@@ -102,9 +102,17 @@ Then(/^I should not see any of the exercises from Github$/) do
   page.should_not have_content("Ruby Koans")
 end
 
-When(/^I mark "(.*?)" as covered$/) do |item|
-  parent = find(:xpath, "//li[./a[contains(normalize-space(.),'#{item}')]]")
+When(/^I mark "(.*?)" as covered$/) do |topic|
+  parent = find(:xpath, "//li[./a[contains(normalize-space(.),'#{topic}')]]")
   within(parent) do
+    click_button "Mark as Covered"
+  end
+end
+
+When(/^I mark "(.*?)" as covered on (.*)$/) do |topic, date|
+  parent = find(:xpath, "//li[./a[contains(normalize-space(.),'#{topic}')]]")
+  within(parent) do
+    fill_in "Date Covered", with: date
     click_button "Mark as Covered"
   end
 end

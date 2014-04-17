@@ -1,7 +1,9 @@
-- materials.each do |material|
-  - if covered_material_links.include?(material.link)
+- covered_materials.each do |covered_material|
+  - material = materials.find_descendant_by_link(covered_material.material_fullpath)
+  - if material
     %li
       = link_to material.pretty_name, material.link
       %small= material.pretty_path
-  = render partial: 'covered_material', locals: { materials: material.children }
-
+      = simple_form_for covered_material, url: course_covered_material_path(current_course, covered_material) do |f|
+        = f.input :covered_on, label: "Date Covered"
+        = f.button :submit, "Mark as Covered", class: "tiny"
