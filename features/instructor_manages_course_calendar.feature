@@ -1,3 +1,4 @@
+@javascript
 Feature: Instructor manages course calendar
 
   Scenario: Students shouldn't see "New Event" button
@@ -19,7 +20,7 @@ Feature: Instructor manages course calendar
     And I am signed in as an instructor for that course
     And I am on the course calendar for Cohort 4
     And I click "Add New Event"
-    And I select 2014 February 24 from "Date"
+    And I fill in "2014/02/24" for "Date"
     And I fill in "Federal Holiday" for "Summary"
     And I press "Create Event"
     Then I should see "Event successfully created."
@@ -36,13 +37,13 @@ Feature: Instructor manages course calendar
     And I am signed in as an instructor for that course
     And I am on the course calendar for Cohort 4
     When I click "Add New Event"
-    And I select 2013 February 19 from "Date"
+    And I fill in "2013/02/19" for "Date"
     And I press "Create Event"
     Then I should see "Event couldn't be created."
     And I should see the error message "can't be blank" on "Summary"
     And I should see the error message "must be during the course" on "Date"
-    When I fill in "Federal Holiday" for "Summary"
-    And I select 2014 February 19 from "Date"
+    When I fill in "2014/02/19" for "Date"
+    And I fill in "Federal Holiday" for "Summary"
     And I press "Create Event"
     Then I should see "Event successfully created."
     And I should be on the course calendar for Cohort 4

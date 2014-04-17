@@ -1,4 +1,4 @@
-@vcr
+@vcr @javascript
 Feature: Instructor chooses assignments from github
 
   Scenario: Happy Path, creating an assignment
@@ -23,9 +23,9 @@ Feature: Instructor chooses assignments from github
       | Strings   |
       | Objects   |
       | Triangles |
-    When I select 2013 March 24 from "Deadline" within the "Strings Milestone" fieldset
-    And I select 2013 April 28 from "Deadline" within the "Objects Milestone" fieldset
-    And I select 2013 May 28 from "Deadline" within the "Triangles Milestone" fieldset
+    When I fill in "2013/03/24" for "Deadline" within the "Strings Milestone" fieldset
+    And I fill in "2013/04/28" for "Deadline" within the "Objects Milestone" fieldset
+    And I fill in "2013/05/28" for "Deadline" within the "Triangles Milestone" fieldset
     And I press "Save Assignment"
     Then I should see "Your assignment has been updated."
     When I click "Assignments"
@@ -56,20 +56,20 @@ Feature: Instructor chooses assignments from github
       | Strings   |
       | Objects   |
       | Triangles |
-    When I select 2013 March 24 from "Deadline" within the "Strings Milestone" fieldset
-    And I select 2014 January 28 from "Deadline" within the "Objects Milestone" fieldset
-    And I select 2014 May 28 from "Deadline" within the "Triangles Milestone" fieldset
+    When I fill in "2013/03/24" for "Deadline" within the "Strings Milestone" fieldset
+    And I fill in "2014/01/28" for "Deadline" within the "Objects Milestone" fieldset
+    And I fill in "2014/05/28" for "Deadline" within the "Triangles Milestone" fieldset
     And I press "Save Assignment"
     Then I should see "Your assignment could not be updated."
     And I should see the error message "Must be in the course timeframe" on "Deadline" within the "Strings Milestone" fieldset
-    And 2013 March 24 should be selected for "Deadline" within the "Strings Milestone" fieldset
+    And "2013/03/24" should be filled in for "Deadline" within the "Strings Milestone" fieldset
     And I should see the error message "Must be in the future" on "Deadline" within the "Objects Milestone" fieldset
-    And 2014 January 28 should be selected for "Deadline" within the "Objects Milestone" fieldset
+    And "2014/01/28" should be filled in for "Deadline" within the "Objects Milestone" fieldset
     And I should see the error message "Must be in the course timeframe" on "Deadline" within the "Triangles Milestone" fieldset
-    And 2013 May 28 should be selected for "Deadline" within the "Triangles Milestone" fieldset
-    When I select 2014 February 1 from "Deadline" within the "Strings Milestone" fieldset
-    And I select 2014 February 2 from "Deadline" within the "Objects Milestone" fieldset
-    And I select 2014 February 3 from "Deadline" within the "Triangles Milestone" fieldset
+    And "2014/05/28" should be filled in for "Deadline" within the "Triangles Milestone" fieldset
+    When I fill in "2014/02/01" for "Deadline" within the "Strings Milestone" fieldset
+    And I fill in "2014/02/02" for "Deadline" within the "Objects Milestone" fieldset
+    And I fill in "2014/02/03" for "Deadline" within the "Triangles Milestone" fieldset
     And I press "Save Assignment"
     Then I should see "Your assignment has been updated."
     And I should see the following:

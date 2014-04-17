@@ -1,3 +1,4 @@
+@javascript
 Feature: Instructor manages courses
 
   Scenario: Creating a course
@@ -6,8 +7,8 @@ Feature: Instructor manages courses
     And I follow "Create New Course"
     And I fill in "Title" with "Cohort 4"
     And I fill in "Syllabus" with "Foobar"
-    And I select 2014 January 24 from "Start Date"
-    And I select 2014 March 24 from "End Date"
+    And I fill in "2014/01/24" for "Start Date"
+    And I fill in "2014/03/24" for "End Date"
     And I fill in "elizabrock/source" for "Source Repository"
     And I press "Create Course"
     Then I should see "Course successfully created"
@@ -28,8 +29,8 @@ Feature: Instructor manages courses
     And I should see the error message "can't be blank" on "Source Repository"
     When I fill in "Title" with "Cohort 4"
     And I fill in "Syllabus" with "Foobar"
-    And I select 2014 January 24 from "Start Date"
-    And I select 2014 March 24 from "End Date"
+    And I fill in "2014/01/24" for "Start Date"
+    And I fill in "2014/03/24" for "End Date"
     And I fill in "elizabrock/source" for "Source Repository"
     And I press "Create Course"
     Then I should see "Course successfully created"

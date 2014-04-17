@@ -83,20 +83,6 @@ When /^(?:|I )select "([^"]*)" (?:for|from) "([^"]*)"$/ do |value, field|
   filtered_options.first.select_option
 end
 
-When(/^I select (\d+) (\w+) (\d+) from "(.*?)"$/) do |year, month, day, label|
-  tag = page.find(:css, "label", text: label)[:for].gsub("_1i","")
-  select year, from: "#{tag}_1i"
-  select month, from: "#{tag}_2i"
-  select day, from: "#{tag}_3i"
-end
-
-When(/^(\d+) (\w+) (\d+) should be selected for "(.*?)"$/) do |year, month, day, label|
-  tag = page.find(:css, "label", text: label)[:for].gsub("_1i","")
-  step %{"#{year}" should be selected for "#{tag}_1i"}
-  step %{"#{month}" should be selected for "#{tag}_2i"}
-  step %{"#{day}" should be selected for "#{tag}_3i"}
-end
-
 Then(/^"(.*?)" should be selected$/) do |descriptor|
   find(:option, descriptor).should be_selected
 end

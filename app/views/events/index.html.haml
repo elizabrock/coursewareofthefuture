@@ -1,9 +1,8 @@
 .row
   .small-12.large-6.columns
     %h1 Course Calendar
-- if can?(:create, Event)
-  .row
-    .small-12.large-6.columns
+  .small-12.large-6.columns
+    - if can?(:create, Event)
       = link_to "Add New Event", new_course_event_path(current_course), class: "button right"
 
 - (current_course.start_date.change(day: 1)..current_course.end_date).select{ |d| d.day == 1 }.each do |first_of_month|
