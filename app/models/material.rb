@@ -8,6 +8,7 @@ class Material
     @filename = File.basename(@fullpath, ".md")
     @path = File.dirname(@fullpath)
     @type = tree_item.type
+    @html_url = tree_item.html_url
     if tree_item.type == "blob"
       @link = "materials/" + @fullpath
     end
@@ -48,6 +49,10 @@ class Material
   def self.lookup(path, source_repository, client)
     result = client.contents(source_repository, path: path)
     Material.new(result)
+  end
+
+  def edit_url
+    @html_url.gsub("blob", "edit")
   end
 
   def is_markdown?
