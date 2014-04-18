@@ -1,3 +1,5 @@
+@javascript
+
 Feature: Student Self Report
 As a student
 I want to see a calendare that allows me to self-report several metrics.

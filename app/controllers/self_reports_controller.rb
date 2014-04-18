@@ -1,8 +1,8 @@
 class SelfReportsController < ApplicationController
   def create
     self_report = current_user.self_reports.build(self_report_params)
-    self_report.save!
-    redirect_to :back, notice: "Your report has been entered"
+    @self_report = self_report
+    self_report.save 
   end
 
   private
