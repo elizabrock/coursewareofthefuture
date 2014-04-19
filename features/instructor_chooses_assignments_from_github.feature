@@ -62,8 +62,6 @@ Feature: Instructor chooses assignments from github
     And I press "Save Assignment"
     Then I should see "Your assignment could not be updated."
     And I should see the error message "Must be in the course timeframe" on "Deadline" within the "Strings Milestone" fieldset
-    And "2013/03/24" should be filled in for "Deadline" within the "Strings Milestone" fieldset
-    And I should see the error message "Must be in the future" on "Deadline" within the "Objects Milestone" fieldset
     And "2014/01/28" should be filled in for "Deadline" within the "Objects Milestone" fieldset
     And I should see the error message "Must be in the course timeframe" on "Deadline" within the "Triangles Milestone" fieldset
     And "2014/05/28" should be filled in for "Deadline" within the "Triangles Milestone" fieldset
