@@ -18,7 +18,7 @@ Feature: Instructor marks materials as covered
     When I mark "Logic" as covered
     Then I should see "logic.md has been marked as covered on 2013/03/12."
     And I should see "Logic" within the materials that have been covered
-    And I should not see "Logic" within the materials to cover
+    And I should see "Covered Logic" within the materials to cover
     When I mark "Basic Control Structures" as covered
     Then I should see "basic-control-structures.md has been marked as covered on 2013/03/12."
     And I should see the following list within the materials that have been covered:
@@ -34,7 +34,7 @@ Feature: Instructor marks materials as covered
     When I mark "Logic" as covered on 2014/03/12
     Then I should see "logic.md has been marked as covered on 2014/03/12."
     And I should see "Logic" within the materials that have been covered
-    And I should not see "Logic" within the materials to cover
+    And I should see "Covered Logic" within the materials to cover
     When I mark "Basic Control Structures" as covered on 2014/03/12
     Then I should see "basic-control-structures.md has been marked as covered"
     And I should see the following list within the materials that have been covered:
@@ -51,7 +51,7 @@ Feature: Instructor marks materials as covered
     When I mark "Logic" as covered
     Then I should see "logic.md has been marked as covered on 2013/03/13."
     And I should see "Logic" within the materials that have been covered
-    And I should not see "Logic" within the materials to cover
+    And I should see "Covered Logic" within the materials to cover
     Given that it is 2013/03/12
     When I click "Materials"
     And I mark "Basic Control Structures" as covered
@@ -77,7 +77,7 @@ Feature: Instructor marks materials as covered
     And I should not see "Logic" within the materials that have been covered
     When I mark "Logic" as covered
     Then I should see "logic.md has been marked as covered"
-    And I should not see "Logic" within the materials to cover
+    And I should see "Covered Logic" within the materials to cover
     And I should see "Logic" within the materials that have been covered
     When I click "HTML"
     And I click "Materials"

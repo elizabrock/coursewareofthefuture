@@ -87,7 +87,7 @@ def hash_list(list)
       li_hash[:title] = link.text
       li_hash[:path] = link["href"]
     else
-      li_hash[:title] = li.find(:xpath, "./span").text
+      li_hash[:title] = li.find(:xpath, "./span[@class='title']").text
     end
     children = hash_list(li.first(:xpath, "./ul"))
     li_hash[:children] = children unless children.blank?
@@ -110,6 +110,7 @@ When(/^I mark "(.*?)" as covered$/) do |topic|
 end
 
 When(/^I mark "(.*?)" as covered on (.*)$/) do |topic, date|
+  step %{I mark "#{topic}" as covered}
   parent = find(:xpath, "//li[./a[contains(normalize-space(.),'#{topic}')]]")
   within(parent) do
     fill_in "Date Covered", with: date

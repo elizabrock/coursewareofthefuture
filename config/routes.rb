@@ -15,7 +15,12 @@ Coursewareofthefuture::Application.routes.draw do
     resources :enrollments, only: [:index, :create]
     resources :events, only: [:new, :create]
     resources :materials, only: [:index, :show], constraints: { id: /.*/ }
-    resources :covered_materials, only: [:create, :update]
+    resources :covered_materials, only: [:create, :update] do
+      member do
+        get :slides
+        get '/:asset_file', to: "covered_materials#asset"
+      end
+    end
     resources :quizzes, except: [:index, :show, :destroy] do
       member do
         get :grade
@@ -37,4 +42,6 @@ Coursewareofthefuture::Application.routes.draw do
       post :studentify
     end
   end
+  get '/theme/css/:filename', to: redirect{ |params, req| "/assets/theme/#{params[:filename]}.#{params[:format]}" }
+  get '/js/*filename', to: redirect{ |params, req| "/assets/theme/#{params[:filename]}.#{params[:format]}" }
 end

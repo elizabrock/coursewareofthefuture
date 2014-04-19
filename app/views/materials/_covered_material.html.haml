@@ -2,9 +2,11 @@
   - material = materials.find_descendant_by_link(covered_material.material_fullpath)
   - if material
     %li
-      - if can?(:manage, CoveredMaterial) and material.link.present?
-        = simple_form_for covered_material, url: course_covered_material_path(current_course, covered_material) do |f|
-          = f.input :covered_on, label: "Date Covered"
-          = f.button :submit, "Mark as Covered", class: "tiny"
-      = link_to material.pretty_name, material.link
-      %small= material.pretty_path
+      - if material.link.present?
+        - if can?(:manage, CoveredMaterial)
+          = simple_form_for covered_material, url: course_covered_material_path(current_course, covered_material) do |f|
+            = f.input :covered_on, label: "Date Covered"
+            = f.button :submit, "Mark as Covered", class: "tiny"
+        = link_to material.pretty_name, material.link
+      - else
+        %small= material.pretty_path

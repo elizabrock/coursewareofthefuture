@@ -1,20 +1,27 @@
 class Material
-  attr_accessor :path, :link, :filename, :children, :fullpath, :content, :type
+  attr_accessor :path, :short_name, :filename, :linkable, :children, :fullpath, :content, :type, :extension
 
   def initialize(tree_item = nil)
     @children = []
     return unless tree_item.present?
+
     @fullpath = tree_item.path
-    @filename = File.basename(@fullpath, ".md")
+    @filename = File.basename(@fullpath)
     @path = File.dirname(@fullpath)
+    @short_name = File.basename(@fullpath, ".md")
+    @extension = File.extname(tree_item.path)
+
+    @linkable = (@extension == ".md")
+
     @type = tree_item.type
     @html_url = tree_item.html_url
-    if tree_item.type == "blob"
-      @link = "materials/" + @fullpath
-    end
     if tree_item.type == "file" and tree_item.content.present?
       @content = Base64.decode64(tree_item.content)
     end
+  end
+
+  def link
+    "materials/" + @fullpath if @linkable
   end
 
   def self.ls(client, source_repository, directory)
@@ -55,6 +62,10 @@ class Material
     @html_url.gsub("blob", "edit")
   end
 
+  def is_leaf?
+    @children.empty?
+  end
+
   def is_markdown?
     File.extname(fullpath) == ".md"
   end
@@ -69,7 +80,7 @@ class Material
   end
 
   def pretty_name
-    prettify(filename)
+    prettify(short_name)
   end
 
   def pretty_path
@@ -79,8 +90,9 @@ class Material
   def add_child(tree_item)
     return if tree_item.type == "blob" and File.extname(tree_item.path) != ".md"
     child = Material.new(tree_item)
-    if child.filename == self.filename
-      self.link = child.link
+    if child.short_name == self.short_name
+      self.fullpath = child.fullpath
+      @linkable = true
     else
       @children << child
     end

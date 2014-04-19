@@ -24,6 +24,7 @@ gem 'rails', '~> 4.1'
 gem 'redcarpet'
 gem 'sass-rails', '~> 4.0'
 gem 'simple_form'
+gem 'slide-em-up', github: 'elizabrock/slide-em-up', branch: 'master', require: false
 gem 'uglifier', '>= 1.3.0'
 # gem 'unicorn'
 
