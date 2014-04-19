@@ -12,13 +12,12 @@ class Ability
         can :manage, :all
         cannot :edit_goals_and_background, user
       end
-    else
-      can :create, Enrollment
-      can :edit, user
-      can :view, Assignment, course_id: user.course_ids, published: true
-      can :view, Milestone
-      can :view, Quiz, course_id: user.course_ids
     end
+    can :create, Enrollment
+    can :edit, user
+    can :view, Assignment, course_id: user.course_ids, published: true
+    can :view, Milestone
+    can :view, Quiz, course_id: user.course_ids
 
     # Define abilities for the passed in user here. For example:
     #
