@@ -3,6 +3,7 @@ class AssignmentsController < ApplicationController
   expose(:assignments){ current_course.assignments }
   expose(:assignment, attributes: :assignment_params)
 
+  expose(:viewable_assignments){ assignments.to_a.delete_if{|a| cannot? :view, a }.sort_by{|a| a.last_deadline.to_i } }
   expose(:published_quizzes){ current_course.quizzes.published }
   expose(:unpublished_quizzes){ current_course.quizzes.unpublished }
 

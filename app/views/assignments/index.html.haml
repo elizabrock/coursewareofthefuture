@@ -1,10 +1,12 @@
 %h1 Assignments
 
 %ul
-  - assignments.each do |assignment|
-    - if can? :view, assignment
-      %li= link_to assignment.title, course_assignment_path(current_course, assignment)
+  - viewable_assignments.each do |assignment|
+    %li= link_to assignment.title_with_deadlines, course_assignment_path(current_course, assignment)
 
+%h2 Quizzes
+
+%ul
   - published_quizzes.each do |quiz|
     - if can? :view, quiz
       - quiz_submission = current_user.quiz_submissions.find{ |qs| qs.quiz == quiz }
