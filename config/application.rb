@@ -27,5 +27,8 @@ module Coursewareofthefuture
     config.action_mailer.default_options = {from: 'eliza@elizabrocksoftware.com'}
     config.action_mailer.delivery_method = :postmark
     config.action_mailer.postmark_settings = { :api_key => ENV["POSTMARK_KEY"] }
+
+
+    config.active_record.schema_format = :sql
   end
 end
