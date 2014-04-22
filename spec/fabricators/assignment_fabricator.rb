@@ -3,3 +3,7 @@ Fabricator(:assignment) do
 end
 
 Fabricator(:published_assignment, from: :assignment)
+
+Fabricator(:unpublished_assignment, from: :assignment) do
+  published false
+end

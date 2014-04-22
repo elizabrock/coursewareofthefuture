@@ -13,6 +13,10 @@ class CoveredMaterial < ActiveRecord::Base
     Material.lookup(fullpath, course.source_repository, client)
   end
 
+  def formatted_title
+    Material.prettify(File.basename(fullpath, ".md"))
+  end
+
   private
 
   def set_covered_on

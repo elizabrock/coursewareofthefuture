@@ -19,8 +19,28 @@ module EventsHelper
       event_strings << ["Last Day of Class", ""]
     end
 
+    events = course.events
     if event = events.find{|e| e.date == d }
-      event_strings << [event.summary, "alert"]
+      event_strings << [event.summary, ""]
+    end
+
+    milestones = course.milestones
+    milestone = milestones.find{|e| e.deadline == d }
+    if milestone and milestone.assignment.published?
+      milestone_description = "#{milestone.assignment.title}: #{milestone.title} Due"
+      event_strings << [ milestone_description, "alert"]
+    end
+
+    quizzes = course.quizzes.published
+    if quiz = quizzes.find{|q| q.deadline == d }
+      quiz_description = "#{quiz.title} Due"
+      event_strings << [ quiz_description, "alert"]
+    end
+
+    covered_materials = course.covered_materials
+    if covered_material = covered_materials.find{|cm| cm.covered_on == d }
+      material_description = "#{covered_material.formatted_title} Covered"
+      event_strings << [ material_description, "secondary"]
     end
 
     output = header

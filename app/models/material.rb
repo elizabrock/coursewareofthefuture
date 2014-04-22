@@ -70,7 +70,7 @@ class Material
     File.extname(fullpath) == ".md"
   end
 
-  def prettify(string)
+  def self.prettify(string)
     string.titleize.
       gsub(/^\d\d\s/, "").
       gsub("To", "to").
@@ -80,11 +80,11 @@ class Material
   end
 
   def pretty_name
-    prettify(short_name)
+    Material.prettify(short_name)
   end
 
   def pretty_path
-    path.split("/").map{|s| prettify(s)}.join(" > ")
+    path.split("/").map{|s| Material.prettify(s)}.join(" > ")
   end
 
   def add_child(tree_item)
