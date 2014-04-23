@@ -29,6 +29,7 @@ Coursewareofthefuture::Application.routes.draw do
     end
   end
   resource :enrollment, only: [:new]
+  resources :milestone_submissions, only: [:create]
   resources :question_grades, only: [:edit, :update]
   resources :self_reports, only: [:new, :create]
   resources :users, except: [:destroy] do

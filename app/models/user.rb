@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 
   has_many :enrollments
   has_many :courses, through: :enrollments
+  has_many :milestones, through: :milestone_submissions
+  has_many :milestone_submissions
   has_many :self_reports, inverse_of: :user
   has_many :quiz_submissions
   has_many :quizzes, through: :quiz_submissions
@@ -17,12 +19,16 @@ class User < ActiveRecord::Base
 
   default_scope { order(name: :asc) }
 
-  def viewing_as_student?
-    instructor? && @viewing_as_student
-  end
-
   def has_confirmed_photo?
     self.photo? && self.photo_confirmed?
+  end
+
+  def repositories
+    octoclient.repositories(self.github_username, sort: :updated)
+  end
+
+  def viewing_as_student?
+    instructor? && @viewing_as_student
   end
 
   def self.find_or_create_for_github_oauth(auth)

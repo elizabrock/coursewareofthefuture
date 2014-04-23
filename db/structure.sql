@@ -196,6 +196,40 @@ ALTER SEQUENCE events_id_seq OWNED BY events.id;
 
 
 --
+-- Name: milestone_submissions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE milestone_submissions (
+    id integer NOT NULL,
+    user_id integer,
+    milestone_id integer,
+    repository character varying(255),
+    status character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: milestone_submissions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE milestone_submissions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: milestone_submissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE milestone_submissions_id_seq OWNED BY milestone_submissions.id;
+
+
+--
 -- Name: milestones; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -496,6 +530,13 @@ ALTER TABLE ONLY events ALTER COLUMN id SET DEFAULT nextval('events_id_seq'::reg
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY milestone_submissions ALTER COLUMN id SET DEFAULT nextval('milestone_submissions_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY milestones ALTER COLUMN id SET DEFAULT nextval('milestones_id_seq'::regclass);
 
 
@@ -579,6 +620,14 @@ ALTER TABLE ONLY enrollments
 
 ALTER TABLE ONLY events
     ADD CONSTRAINT events_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: milestone_submissions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY milestone_submissions
+    ADD CONSTRAINT milestone_submissions_pkey PRIMARY KEY (id);
 
 
 --
@@ -726,4 +775,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140402184035');
 INSERT INTO schema_migrations (version) VALUES ('20140414192538');
 
 INSERT INTO schema_migrations (version) VALUES ('20140417184051');
+
+INSERT INTO schema_migrations (version) VALUES ('20140423123810');
 

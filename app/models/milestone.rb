@@ -1,5 +1,6 @@
 class Milestone < ActiveRecord::Base
   belongs_to :assignment, inverse_of: :milestones
+  has_many :milestone_submissions
 
   validate :deadline_must_be_appropriate, if: :deadline
   validates_presence_of :assignment

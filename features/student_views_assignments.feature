@@ -1,5 +1,6 @@
 Feature: Student views assignments
 
+  @vcr
   Scenario: Student views an assignment
     Given the following course:
       | title      | Cohort 4   |
@@ -20,10 +21,7 @@ Feature: Student views assignments
       | Milestone 1 (due 5/01) |
       | Milestone 2 (due 5/15) |
     And I should see "This milestone is simple" within the Milestone 1 milestone
-    And I should see "Ability to submit these is pending" within the Milestone 1 milestone
-    # ^ This is temporary, pending the ability to submit milestones
     And I should see "Ability to view and submit is pending completion of previous milestones" within the Milestone 2 milestone
-    # ^ This is temporary, pending the ability to submit milestones
 
   Scenario: Viewing the assignment list only shows published assignments
     Given the following course:
