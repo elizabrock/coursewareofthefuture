@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   end
 
   def repositories
-    octoclient.repositories(self.github_username, sort: :updated)
+    octoclient.repositories(self.github_username)
   end
 
   def viewing_as_student?

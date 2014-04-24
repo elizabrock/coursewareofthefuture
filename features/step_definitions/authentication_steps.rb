@@ -18,6 +18,9 @@ Given(/^I am signed in as (.*)$/) do |name|
     if name =~ /in that course/
       @course.users << user
     end
+    if name =~ /with valid credentials/
+      user.update_attribute(github_username: "elizabrock")
+    end
     sign_into_github_as(user.github_username, uid: user.github_uid)
   else
     user = User.where(name: name).first

@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Wed, 23 Apr 2014 13:31:47 GMT
+      - Thu, 24 Apr 2014 17:12:21 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -33,9 +33,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4990'
+      - '4937'
       X-Ratelimit-Reset:
-      - '1398260013'
+      - '1398362780'
       Cache-Control:
       - private, max-age=60, s-maxage=60
       Last-Modified:
@@ -65,13 +65,13 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Github-Request-Id:
-      - 32F1C129:2E49:1EE9BD:5357C0C3
+      - 44358582:4A35:270B2CC:535945F5
       Strict-Transport-Security:
       - max-age=31536000
       X-Content-Type-Options:
       - nosniff
       X-Served-By:
-      - a1d8c69b807c8e21f06cad9da377d1b0
+      - 132026e9262a0093e437f99db5f1e499
     body:
       encoding: UTF-8
       string: '[{"name":"01-cheers","path":"exercises/01-cheers","sha":"8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/01-cheers?ref=master","html_url":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/01-cheers","git_url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","type":"dir","_links":{"self":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/01-cheers?ref=master","git":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","html":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/01-cheers"}},{"name":"02-ruby-koans","path":"exercises/02-ruby-koans","sha":"b3f6b39822ca8b450b5b0d34169016b46d5d4c6f","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/02-ruby-koans?ref=master","html_url":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/02-ruby-koans","git_url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/b3f6b39822ca8b450b5b0d34169016b46d5d4c6f","type":"dir","_links":{"self":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/02-ruby-koans?ref=master","git":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/b3f6b39822ca8b450b5b0d34169016b46d5d4c6f","html":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/02-ruby-koans"}},{"name":"03-some-other-exercise","path":"exercises/03-some-other-exercise","sha":"8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/03-some-other-exercise?ref=master","html_url":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/03-some-other-exercise","git_url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","type":"dir","_links":{"self":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/03-some-other-exercise?ref=master","git":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","html":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/03-some-other-exercise"}},{"name":"04-unfinished-exercise","path":"exercises/04-unfinished-exercise","sha":"fd6b3d30c0e2f274ee08774c93ee760aaf82db1f","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/04-unfinished-exercise?ref=master","html_url":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/04-unfinished-exercise","git_url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/fd6b3d30c0e2f274ee08774c93ee760aaf82db1f","type":"dir","_links":{"self":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/04-unfinished-exercise?ref=master","git":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/fd6b3d30c0e2f274ee08774c93ee760aaf82db1f","html":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/04-unfinished-exercise"}}]'
@@ -100,7 +100,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Wed, 23 Apr 2014 13:31:48 GMT
+      - Thu, 24 Apr 2014 17:12:21 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -110,9 +110,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4989'
+      - '4936'
       X-Ratelimit-Reset:
-      - '1398260013'
+      - '1398362780'
       Cache-Control:
       - private, max-age=60, s-maxage=60
       Last-Modified:
@@ -142,13 +142,13 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Github-Request-Id:
-      - 32F1C129:2E4F:401E0CA:5357C0C4
+      - 44358582:4A36:3F171B9:535945F5
       Strict-Transport-Security:
       - max-age=31536000
       X-Content-Type-Options:
       - nosniff
       X-Served-By:
-      - 03d91026ad8428f4d9966d7434f9d82e
+      - 6d7de9e645814cac34ea2a8d72ba3141
     body:
       encoding: UTF-8
       string: '{"name":"instructions.md","path":"exercises/02-ruby-koans/instructions.md","sha":"8fb97731350f6d0612caecf36be7210a40ea41c6","size":262,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/02-ruby-koans/instructions.md?ref=master","html_url":"https://github.com/elizabrock/inquizator-test-repo/blob/master/exercises/02-ruby-koans/instructions.md","git_url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/8fb97731350f6d0612caecf36be7210a40ea41c6","type":"file","content":"IyBSdWJ5IEtvYW5zCgpJdCdzIHRpbWUgdG8gZ2V0IHN0YXJ0ZWQgb24gdGhl\nIFtSdWJ5IEtvYW5zXShodHRwOi8vcnVieWtvYW5zLmNvbS8pLgoKRm9sbG93\nIHRoZSBpbnN0cnVjdGlvbnMgb24gdGhlIFJ1YnkgS29hbnMgd2Vic2l0ZSB0\nbyBnZXQgc3RhcnRlZC4KCiMjIFN0cmluZ3MKClN0cmluZ3MgYXJlIGJhc2lj\nYWxseSBhcnJheXMuCgojIyBPYmplY3RzCgpPYmplY3RzIGFyZSBibG9ieS4K\nCiMjIFRyaWFuZ2xlcwoKVHJpYW5nbGVzIGFyZSBzaGFwZXMuCg==\n","encoding":"base64","_links":{"self":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/02-ruby-koans/instructions.md?ref=master","git":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/8fb97731350f6d0612caecf36be7210a40ea41c6","html":"https://github.com/elizabrock/inquizator-test-repo/blob/master/exercises/02-ruby-koans/instructions.md"}}'
@@ -156,7 +156,7 @@ http_interactions:
   recorded_at: Fri, 01 Mar 2013 06:00:03 GMT
 - request:
     method: get
-    uri: https://api.github.com/users/bob0/repos?sort=updated
+    uri: https://api.github.com/users/bob0/repos
     body:
       encoding: US-ASCII
       string: ''
@@ -177,7 +177,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Wed, 23 Apr 2014 13:31:48 GMT
+      - Thu, 24 Apr 2014 17:12:22 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -187,9 +187,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4988'
+      - '4935'
       X-Ratelimit-Reset:
-      - '1398260013'
+      - '1398362780'
       Cache-Control:
       - private, max-age=60, s-maxage=60
       Etag:
@@ -217,13 +217,13 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Github-Request-Id:
-      - 32F1C129:2E4F:401E1E4:5357C0C4
+      - 44358582:4A38:6BE684C:535945F6
       Strict-Transport-Security:
       - max-age=31536000
       X-Content-Type-Options:
       - nosniff
       X-Served-By:
-      - 971af40390ac4398fcdd45c8dab0fbe7
+      - 6d7de9e645814cac34ea2a8d72ba3141
     body:
       encoding: UTF-8
       string: '[{"id":4947348,"name":"jquery-ui-touch-punch","full_name":"Bob0/jquery-ui-touch-punch","owner":{"login":"Bob0","id":1938706,"avatar_url":"https://avatars.githubusercontent.com/u/1938706?","gravatar_id":"6a5d9bcf76091b50959fb9eaf795423c","url":"https://api.github.com/users/Bob0","html_url":"https://github.com/Bob0","followers_url":"https://api.github.com/users/Bob0/followers","following_url":"https://api.github.com/users/Bob0/following{/other_user}","gists_url":"https://api.github.com/users/Bob0/gists{/gist_id}","starred_url":"https://api.github.com/users/Bob0/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/Bob0/subscriptions","organizations_url":"https://api.github.com/users/Bob0/orgs","repos_url":"https://api.github.com/users/Bob0/repos","events_url":"https://api.github.com/users/Bob0/events{/privacy}","received_events_url":"https://api.github.com/users/Bob0/received_events","type":"User","site_admin":false},"private":false,"html_url":"https://github.com/Bob0/jquery-ui-touch-punch","description":"A
@@ -232,7 +232,7 @@ http_interactions:
   recorded_at: Fri, 01 Mar 2013 06:00:04 GMT
 - request:
     method: get
-    uri: https://api.github.com/users/bob0/repos?sort=updated
+    uri: https://api.github.com/users/bob0/repos
     body:
       encoding: US-ASCII
       string: ''
@@ -253,7 +253,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Wed, 23 Apr 2014 13:31:48 GMT
+      - Thu, 24 Apr 2014 17:12:23 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -263,9 +263,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4987'
+      - '4934'
       X-Ratelimit-Reset:
-      - '1398260013'
+      - '1398362780'
       Cache-Control:
       - private, max-age=60, s-maxage=60
       Etag:
@@ -293,7 +293,83 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Github-Request-Id:
-      - 32F1C129:2E4C:1734216:5357C0C4
+      - 44358582:4A35:270B4E2:535945F7
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      X-Served-By:
+      - 62a1303ae95931e56e387e87d354bb24
+    body:
+      encoding: UTF-8
+      string: '[{"id":4947348,"name":"jquery-ui-touch-punch","full_name":"Bob0/jquery-ui-touch-punch","owner":{"login":"Bob0","id":1938706,"avatar_url":"https://avatars.githubusercontent.com/u/1938706?","gravatar_id":"6a5d9bcf76091b50959fb9eaf795423c","url":"https://api.github.com/users/Bob0","html_url":"https://github.com/Bob0","followers_url":"https://api.github.com/users/Bob0/followers","following_url":"https://api.github.com/users/Bob0/following{/other_user}","gists_url":"https://api.github.com/users/Bob0/gists{/gist_id}","starred_url":"https://api.github.com/users/Bob0/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/Bob0/subscriptions","organizations_url":"https://api.github.com/users/Bob0/orgs","repos_url":"https://api.github.com/users/Bob0/repos","events_url":"https://api.github.com/users/Bob0/events{/privacy}","received_events_url":"https://api.github.com/users/Bob0/received_events","type":"User","site_admin":false},"private":false,"html_url":"https://github.com/Bob0/jquery-ui-touch-punch","description":"A
+        duck punch for adding touch events to jQuery UI","fork":true,"url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch","forks_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/forks","keys_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/keys{/key_id}","collaborators_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/teams","hooks_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/hooks","issue_events_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/issues/events{/number}","events_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/events","assignees_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/assignees{/user}","branches_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/branches{/branch}","tags_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/tags","blobs_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/refs{/sha}","trees_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/trees{/sha}","statuses_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/statuses/{sha}","languages_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/languages","stargazers_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/stargazers","contributors_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/contributors","subscribers_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/subscribers","subscription_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/subscription","commits_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/commits{/sha}","git_commits_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/commits{/sha}","comments_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/comments{/number}","issue_comment_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/issues/comments/{number}","contents_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/contents/{+path}","compare_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/compare/{base}...{head}","merges_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/merges","archive_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/downloads","issues_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/issues{/number}","pulls_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/pulls{/number}","milestones_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/milestones{/number}","notifications_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/labels{/name}","releases_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/releases{/id}","created_at":"2012-07-08T15:44:54Z","updated_at":"2013-01-11T01:38:14Z","pushed_at":"2012-04-19T19:32:48Z","git_url":"git://github.com/Bob0/jquery-ui-touch-punch.git","ssh_url":"git@github.com:Bob0/jquery-ui-touch-punch.git","clone_url":"https://github.com/Bob0/jquery-ui-touch-punch.git","svn_url":"https://github.com/Bob0/jquery-ui-touch-punch","homepage":"http://touchpunch.furf.com/","size":79,"stargazers_count":1,"watchers_count":1,"language":"JavaScript","has_issues":false,"has_downloads":true,"has_wiki":true,"forks_count":0,"mirror_url":null,"open_issues_count":0,"forks":0,"open_issues":0,"watchers":1,"default_branch":"master","permissions":{"admin":false,"push":false,"pull":true}}]'
+    http_version: 
+  recorded_at: Fri, 01 Mar 2013 06:00:05 GMT
+- request:
+    method: get
+    uri: https://api.github.com/users/bob0/repos
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.1.0
+      Authorization:
+      - token d141ef15f79ca4c6f43a8c688e0434648f277f20
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Thu, 24 Apr 2014 17:12:23 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4933'
+      X-Ratelimit-Reset:
+      - '1398362780'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Etag:
+      - '"065c6f8321b1805c60b5ad37d4f34070"'
+      X-Oauth-Scopes:
+      - public_repo, user
+      X-Accepted-Oauth-Scopes:
+      - ''
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 44358582:4A37:555E34D:535945F7
       Strict-Transport-Security:
       - max-age=31536000
       X-Content-Type-Options:
@@ -305,162 +381,10 @@ http_interactions:
       string: '[{"id":4947348,"name":"jquery-ui-touch-punch","full_name":"Bob0/jquery-ui-touch-punch","owner":{"login":"Bob0","id":1938706,"avatar_url":"https://avatars.githubusercontent.com/u/1938706?","gravatar_id":"6a5d9bcf76091b50959fb9eaf795423c","url":"https://api.github.com/users/Bob0","html_url":"https://github.com/Bob0","followers_url":"https://api.github.com/users/Bob0/followers","following_url":"https://api.github.com/users/Bob0/following{/other_user}","gists_url":"https://api.github.com/users/Bob0/gists{/gist_id}","starred_url":"https://api.github.com/users/Bob0/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/Bob0/subscriptions","organizations_url":"https://api.github.com/users/Bob0/orgs","repos_url":"https://api.github.com/users/Bob0/repos","events_url":"https://api.github.com/users/Bob0/events{/privacy}","received_events_url":"https://api.github.com/users/Bob0/received_events","type":"User","site_admin":false},"private":false,"html_url":"https://github.com/Bob0/jquery-ui-touch-punch","description":"A
         duck punch for adding touch events to jQuery UI","fork":true,"url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch","forks_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/forks","keys_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/keys{/key_id}","collaborators_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/teams","hooks_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/hooks","issue_events_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/issues/events{/number}","events_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/events","assignees_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/assignees{/user}","branches_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/branches{/branch}","tags_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/tags","blobs_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/refs{/sha}","trees_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/trees{/sha}","statuses_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/statuses/{sha}","languages_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/languages","stargazers_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/stargazers","contributors_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/contributors","subscribers_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/subscribers","subscription_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/subscription","commits_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/commits{/sha}","git_commits_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/commits{/sha}","comments_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/comments{/number}","issue_comment_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/issues/comments/{number}","contents_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/contents/{+path}","compare_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/compare/{base}...{head}","merges_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/merges","archive_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/downloads","issues_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/issues{/number}","pulls_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/pulls{/number}","milestones_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/milestones{/number}","notifications_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/labels{/name}","releases_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/releases{/id}","created_at":"2012-07-08T15:44:54Z","updated_at":"2013-01-11T01:38:14Z","pushed_at":"2012-04-19T19:32:48Z","git_url":"git://github.com/Bob0/jquery-ui-touch-punch.git","ssh_url":"git@github.com:Bob0/jquery-ui-touch-punch.git","clone_url":"https://github.com/Bob0/jquery-ui-touch-punch.git","svn_url":"https://github.com/Bob0/jquery-ui-touch-punch","homepage":"http://touchpunch.furf.com/","size":79,"stargazers_count":1,"watchers_count":1,"language":"JavaScript","has_issues":false,"has_downloads":true,"has_wiki":true,"forks_count":0,"mirror_url":null,"open_issues_count":0,"forks":0,"open_issues":0,"watchers":1,"default_branch":"master","permissions":{"admin":false,"push":false,"pull":true}}]'
     http_version: 
-  recorded_at: Fri, 01 Mar 2013 06:00:04 GMT
-- request:
-    method: get
-    uri: https://api.github.com/users/bob0/repos?sort=updated
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept:
-      - application/vnd.github.v3+json
-      User-Agent:
-      - Octokit Ruby Gem 3.1.0
-      Authorization:
-      - token d141ef15f79ca4c6f43a8c688e0434648f277f20
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - GitHub.com
-      Date:
-      - Wed, 23 Apr 2014 13:31:49 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Status:
-      - 200 OK
-      X-Ratelimit-Limit:
-      - '5000'
-      X-Ratelimit-Remaining:
-      - '4986'
-      X-Ratelimit-Reset:
-      - '1398260013'
-      Cache-Control:
-      - private, max-age=60, s-maxage=60
-      Etag:
-      - '"065c6f8321b1805c60b5ad37d4f34070"'
-      X-Oauth-Scopes:
-      - public_repo, user
-      X-Accepted-Oauth-Scopes:
-      - ''
-      Vary:
-      - Accept, Authorization, Cookie, X-GitHub-OTP
-      - Accept-Encoding
-      X-Github-Media-Type:
-      - github.v3; format=json
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Frame-Options:
-      - deny
-      Content-Security-Policy:
-      - default-src 'none'
-      Access-Control-Allow-Credentials:
-      - 'true'
-      Access-Control-Expose-Headers:
-      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
-        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
-      Access-Control-Allow-Origin:
-      - "*"
-      X-Github-Request-Id:
-      - 32F1C129:2E4E:33E6437:5357C0C5
-      Strict-Transport-Security:
-      - max-age=31536000
-      X-Content-Type-Options:
-      - nosniff
-      X-Served-By:
-      - 132026e9262a0093e437f99db5f1e499
-    body:
-      encoding: UTF-8
-      string: '[{"id":4947348,"name":"jquery-ui-touch-punch","full_name":"Bob0/jquery-ui-touch-punch","owner":{"login":"Bob0","id":1938706,"avatar_url":"https://avatars.githubusercontent.com/u/1938706?","gravatar_id":"6a5d9bcf76091b50959fb9eaf795423c","url":"https://api.github.com/users/Bob0","html_url":"https://github.com/Bob0","followers_url":"https://api.github.com/users/Bob0/followers","following_url":"https://api.github.com/users/Bob0/following{/other_user}","gists_url":"https://api.github.com/users/Bob0/gists{/gist_id}","starred_url":"https://api.github.com/users/Bob0/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/Bob0/subscriptions","organizations_url":"https://api.github.com/users/Bob0/orgs","repos_url":"https://api.github.com/users/Bob0/repos","events_url":"https://api.github.com/users/Bob0/events{/privacy}","received_events_url":"https://api.github.com/users/Bob0/received_events","type":"User","site_admin":false},"private":false,"html_url":"https://github.com/Bob0/jquery-ui-touch-punch","description":"A
-        duck punch for adding touch events to jQuery UI","fork":true,"url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch","forks_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/forks","keys_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/keys{/key_id}","collaborators_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/teams","hooks_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/hooks","issue_events_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/issues/events{/number}","events_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/events","assignees_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/assignees{/user}","branches_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/branches{/branch}","tags_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/tags","blobs_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/refs{/sha}","trees_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/trees{/sha}","statuses_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/statuses/{sha}","languages_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/languages","stargazers_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/stargazers","contributors_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/contributors","subscribers_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/subscribers","subscription_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/subscription","commits_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/commits{/sha}","git_commits_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/commits{/sha}","comments_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/comments{/number}","issue_comment_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/issues/comments/{number}","contents_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/contents/{+path}","compare_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/compare/{base}...{head}","merges_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/merges","archive_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/downloads","issues_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/issues{/number}","pulls_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/pulls{/number}","milestones_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/milestones{/number}","notifications_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/labels{/name}","releases_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/releases{/id}","created_at":"2012-07-08T15:44:54Z","updated_at":"2013-01-11T01:38:14Z","pushed_at":"2012-04-19T19:32:48Z","git_url":"git://github.com/Bob0/jquery-ui-touch-punch.git","ssh_url":"git@github.com:Bob0/jquery-ui-touch-punch.git","clone_url":"https://github.com/Bob0/jquery-ui-touch-punch.git","svn_url":"https://github.com/Bob0/jquery-ui-touch-punch","homepage":"http://touchpunch.furf.com/","size":79,"stargazers_count":1,"watchers_count":1,"language":"JavaScript","has_issues":false,"has_downloads":true,"has_wiki":true,"forks_count":0,"mirror_url":null,"open_issues_count":0,"forks":0,"open_issues":0,"watchers":1,"default_branch":"master","permissions":{"admin":false,"push":false,"pull":true}}]'
-    http_version: 
-  recorded_at: Fri, 01 Mar 2013 06:00:04 GMT
-- request:
-    method: get
-    uri: https://api.github.com/users/bob0/repos?sort=updated
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept:
-      - application/vnd.github.v3+json
-      User-Agent:
-      - Octokit Ruby Gem 3.1.0
-      Authorization:
-      - token d141ef15f79ca4c6f43a8c688e0434648f277f20
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - GitHub.com
-      Date:
-      - Wed, 23 Apr 2014 13:31:49 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Status:
-      - 200 OK
-      X-Ratelimit-Limit:
-      - '5000'
-      X-Ratelimit-Remaining:
-      - '4985'
-      X-Ratelimit-Reset:
-      - '1398260013'
-      Cache-Control:
-      - private, max-age=60, s-maxage=60
-      Etag:
-      - '"065c6f8321b1805c60b5ad37d4f34070"'
-      X-Oauth-Scopes:
-      - public_repo, user
-      X-Accepted-Oauth-Scopes:
-      - ''
-      Vary:
-      - Accept, Authorization, Cookie, X-GitHub-OTP
-      - Accept-Encoding
-      X-Github-Media-Type:
-      - github.v3; format=json
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Frame-Options:
-      - deny
-      Content-Security-Policy:
-      - default-src 'none'
-      Access-Control-Allow-Credentials:
-      - 'true'
-      Access-Control-Expose-Headers:
-      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
-        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
-      Access-Control-Allow-Origin:
-      - "*"
-      X-Github-Request-Id:
-      - 32F1C129:2E50:11F6BD9:5357C0C5
-      Strict-Transport-Security:
-      - max-age=31536000
-      X-Content-Type-Options:
-      - nosniff
-      X-Served-By:
-      - 3061975e1f37121b3751604ad153c687
-    body:
-      encoding: UTF-8
-      string: '[{"id":4947348,"name":"jquery-ui-touch-punch","full_name":"Bob0/jquery-ui-touch-punch","owner":{"login":"Bob0","id":1938706,"avatar_url":"https://avatars.githubusercontent.com/u/1938706?","gravatar_id":"6a5d9bcf76091b50959fb9eaf795423c","url":"https://api.github.com/users/Bob0","html_url":"https://github.com/Bob0","followers_url":"https://api.github.com/users/Bob0/followers","following_url":"https://api.github.com/users/Bob0/following{/other_user}","gists_url":"https://api.github.com/users/Bob0/gists{/gist_id}","starred_url":"https://api.github.com/users/Bob0/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/Bob0/subscriptions","organizations_url":"https://api.github.com/users/Bob0/orgs","repos_url":"https://api.github.com/users/Bob0/repos","events_url":"https://api.github.com/users/Bob0/events{/privacy}","received_events_url":"https://api.github.com/users/Bob0/received_events","type":"User","site_admin":false},"private":false,"html_url":"https://github.com/Bob0/jquery-ui-touch-punch","description":"A
-        duck punch for adding touch events to jQuery UI","fork":true,"url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch","forks_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/forks","keys_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/keys{/key_id}","collaborators_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/teams","hooks_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/hooks","issue_events_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/issues/events{/number}","events_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/events","assignees_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/assignees{/user}","branches_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/branches{/branch}","tags_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/tags","blobs_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/refs{/sha}","trees_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/trees{/sha}","statuses_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/statuses/{sha}","languages_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/languages","stargazers_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/stargazers","contributors_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/contributors","subscribers_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/subscribers","subscription_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/subscription","commits_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/commits{/sha}","git_commits_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/commits{/sha}","comments_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/comments{/number}","issue_comment_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/issues/comments/{number}","contents_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/contents/{+path}","compare_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/compare/{base}...{head}","merges_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/merges","archive_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/downloads","issues_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/issues{/number}","pulls_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/pulls{/number}","milestones_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/milestones{/number}","notifications_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/labels{/name}","releases_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/releases{/id}","created_at":"2012-07-08T15:44:54Z","updated_at":"2013-01-11T01:38:14Z","pushed_at":"2012-04-19T19:32:48Z","git_url":"git://github.com/Bob0/jquery-ui-touch-punch.git","ssh_url":"git@github.com:Bob0/jquery-ui-touch-punch.git","clone_url":"https://github.com/Bob0/jquery-ui-touch-punch.git","svn_url":"https://github.com/Bob0/jquery-ui-touch-punch","homepage":"http://touchpunch.furf.com/","size":79,"stargazers_count":1,"watchers_count":1,"language":"JavaScript","has_issues":false,"has_downloads":true,"has_wiki":true,"forks_count":0,"mirror_url":null,"open_issues_count":0,"forks":0,"open_issues":0,"watchers":1,"default_branch":"master","permissions":{"admin":false,"push":false,"pull":true}}]'
-    http_version: 
   recorded_at: Fri, 01 Mar 2013 06:00:05 GMT
 - request:
     method: get
-    uri: https://api.github.com/users/bob0/repos?sort=updated
+    uri: https://api.github.com/users/bob0/repos
     body:
       encoding: US-ASCII
       string: ''
@@ -481,7 +405,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Wed, 23 Apr 2014 13:31:49 GMT
+      - Thu, 24 Apr 2014 17:12:24 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -491,9 +415,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4984'
+      - '4932'
       X-Ratelimit-Reset:
-      - '1398260013'
+      - '1398362780'
       Cache-Control:
       - private, max-age=60, s-maxage=60
       Etag:
@@ -521,22 +445,22 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Github-Request-Id:
-      - 32F1C129:2E4E:33E64F4:5357C0C5
+      - 44358582:4A39:1D601D5:535945F8
       Strict-Transport-Security:
       - max-age=31536000
       X-Content-Type-Options:
       - nosniff
       X-Served-By:
-      - 3061975e1f37121b3751604ad153c687
+      - 6d7de9e645814cac34ea2a8d72ba3141
     body:
       encoding: UTF-8
       string: '[{"id":4947348,"name":"jquery-ui-touch-punch","full_name":"Bob0/jquery-ui-touch-punch","owner":{"login":"Bob0","id":1938706,"avatar_url":"https://avatars.githubusercontent.com/u/1938706?","gravatar_id":"6a5d9bcf76091b50959fb9eaf795423c","url":"https://api.github.com/users/Bob0","html_url":"https://github.com/Bob0","followers_url":"https://api.github.com/users/Bob0/followers","following_url":"https://api.github.com/users/Bob0/following{/other_user}","gists_url":"https://api.github.com/users/Bob0/gists{/gist_id}","starred_url":"https://api.github.com/users/Bob0/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/Bob0/subscriptions","organizations_url":"https://api.github.com/users/Bob0/orgs","repos_url":"https://api.github.com/users/Bob0/repos","events_url":"https://api.github.com/users/Bob0/events{/privacy}","received_events_url":"https://api.github.com/users/Bob0/received_events","type":"User","site_admin":false},"private":false,"html_url":"https://github.com/Bob0/jquery-ui-touch-punch","description":"A
         duck punch for adding touch events to jQuery UI","fork":true,"url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch","forks_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/forks","keys_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/keys{/key_id}","collaborators_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/teams","hooks_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/hooks","issue_events_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/issues/events{/number}","events_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/events","assignees_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/assignees{/user}","branches_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/branches{/branch}","tags_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/tags","blobs_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/refs{/sha}","trees_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/trees{/sha}","statuses_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/statuses/{sha}","languages_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/languages","stargazers_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/stargazers","contributors_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/contributors","subscribers_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/subscribers","subscription_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/subscription","commits_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/commits{/sha}","git_commits_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/commits{/sha}","comments_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/comments{/number}","issue_comment_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/issues/comments/{number}","contents_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/contents/{+path}","compare_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/compare/{base}...{head}","merges_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/merges","archive_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/downloads","issues_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/issues{/number}","pulls_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/pulls{/number}","milestones_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/milestones{/number}","notifications_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/labels{/name}","releases_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/releases{/id}","created_at":"2012-07-08T15:44:54Z","updated_at":"2013-01-11T01:38:14Z","pushed_at":"2012-04-19T19:32:48Z","git_url":"git://github.com/Bob0/jquery-ui-touch-punch.git","ssh_url":"git@github.com:Bob0/jquery-ui-touch-punch.git","clone_url":"https://github.com/Bob0/jquery-ui-touch-punch.git","svn_url":"https://github.com/Bob0/jquery-ui-touch-punch","homepage":"http://touchpunch.furf.com/","size":79,"stargazers_count":1,"watchers_count":1,"language":"JavaScript","has_issues":false,"has_downloads":true,"has_wiki":true,"forks_count":0,"mirror_url":null,"open_issues_count":0,"forks":0,"open_issues":0,"watchers":1,"default_branch":"master","permissions":{"admin":false,"push":false,"pull":true}}]'
     http_version: 
-  recorded_at: Fri, 01 Mar 2013 06:00:05 GMT
+  recorded_at: Fri, 01 Mar 2013 06:00:06 GMT
 - request:
     method: get
-    uri: https://api.github.com/users/bob0/repos?sort=updated
+    uri: https://api.github.com/users/bob0/repos
     body:
       encoding: US-ASCII
       string: ''
@@ -557,7 +481,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Wed, 23 Apr 2014 13:31:50 GMT
+      - Thu, 24 Apr 2014 17:12:24 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -567,9 +491,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4983'
+      - '4931'
       X-Ratelimit-Reset:
-      - '1398260013'
+      - '1398362780'
       Cache-Control:
       - private, max-age=60, s-maxage=60
       Etag:
@@ -597,17 +521,93 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Github-Request-Id:
-      - 32F1C129:2E4F:401E42F:5357C0C5
+      - 44358582:4A37:555E4B8:535945F8
       Strict-Transport-Security:
       - max-age=31536000
       X-Content-Type-Options:
       - nosniff
       X-Served-By:
-      - a1d8c69b807c8e21f06cad9da377d1b0
+      - c046d59f93ede9ab52d5ac29f1ed70f7
     body:
       encoding: UTF-8
       string: '[{"id":4947348,"name":"jquery-ui-touch-punch","full_name":"Bob0/jquery-ui-touch-punch","owner":{"login":"Bob0","id":1938706,"avatar_url":"https://avatars.githubusercontent.com/u/1938706?","gravatar_id":"6a5d9bcf76091b50959fb9eaf795423c","url":"https://api.github.com/users/Bob0","html_url":"https://github.com/Bob0","followers_url":"https://api.github.com/users/Bob0/followers","following_url":"https://api.github.com/users/Bob0/following{/other_user}","gists_url":"https://api.github.com/users/Bob0/gists{/gist_id}","starred_url":"https://api.github.com/users/Bob0/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/Bob0/subscriptions","organizations_url":"https://api.github.com/users/Bob0/orgs","repos_url":"https://api.github.com/users/Bob0/repos","events_url":"https://api.github.com/users/Bob0/events{/privacy}","received_events_url":"https://api.github.com/users/Bob0/received_events","type":"User","site_admin":false},"private":false,"html_url":"https://github.com/Bob0/jquery-ui-touch-punch","description":"A
         duck punch for adding touch events to jQuery UI","fork":true,"url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch","forks_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/forks","keys_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/keys{/key_id}","collaborators_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/teams","hooks_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/hooks","issue_events_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/issues/events{/number}","events_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/events","assignees_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/assignees{/user}","branches_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/branches{/branch}","tags_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/tags","blobs_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/refs{/sha}","trees_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/trees{/sha}","statuses_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/statuses/{sha}","languages_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/languages","stargazers_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/stargazers","contributors_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/contributors","subscribers_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/subscribers","subscription_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/subscription","commits_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/commits{/sha}","git_commits_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/commits{/sha}","comments_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/comments{/number}","issue_comment_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/issues/comments/{number}","contents_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/contents/{+path}","compare_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/compare/{base}...{head}","merges_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/merges","archive_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/downloads","issues_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/issues{/number}","pulls_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/pulls{/number}","milestones_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/milestones{/number}","notifications_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/labels{/name}","releases_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/releases{/id}","created_at":"2012-07-08T15:44:54Z","updated_at":"2013-01-11T01:38:14Z","pushed_at":"2012-04-19T19:32:48Z","git_url":"git://github.com/Bob0/jquery-ui-touch-punch.git","ssh_url":"git@github.com:Bob0/jquery-ui-touch-punch.git","clone_url":"https://github.com/Bob0/jquery-ui-touch-punch.git","svn_url":"https://github.com/Bob0/jquery-ui-touch-punch","homepage":"http://touchpunch.furf.com/","size":79,"stargazers_count":1,"watchers_count":1,"language":"JavaScript","has_issues":false,"has_downloads":true,"has_wiki":true,"forks_count":0,"mirror_url":null,"open_issues_count":0,"forks":0,"open_issues":0,"watchers":1,"default_branch":"master","permissions":{"admin":false,"push":false,"pull":true}}]'
     http_version: 
-  recorded_at: Fri, 01 Mar 2013 06:00:05 GMT
+  recorded_at: Fri, 01 Mar 2013 06:00:06 GMT
+- request:
+    method: get
+    uri: https://api.github.com/users/bob0/repos
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 3.1.0
+      Authorization:
+      - token d141ef15f79ca4c6f43a8c688e0434648f277f20
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Thu, 24 Apr 2014 17:12:24 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4930'
+      X-Ratelimit-Reset:
+      - '1398362780'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Etag:
+      - '"065c6f8321b1805c60b5ad37d4f34070"'
+      X-Oauth-Scopes:
+      - public_repo, user
+      X-Accepted-Oauth-Scopes:
+      - ''
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 44358582:4A35:270B5F1:535945F8
+      Strict-Transport-Security:
+      - max-age=31536000
+      X-Content-Type-Options:
+      - nosniff
+      X-Served-By:
+      - c046d59f93ede9ab52d5ac29f1ed70f7
+    body:
+      encoding: UTF-8
+      string: '[{"id":4947348,"name":"jquery-ui-touch-punch","full_name":"Bob0/jquery-ui-touch-punch","owner":{"login":"Bob0","id":1938706,"avatar_url":"https://avatars.githubusercontent.com/u/1938706?","gravatar_id":"6a5d9bcf76091b50959fb9eaf795423c","url":"https://api.github.com/users/Bob0","html_url":"https://github.com/Bob0","followers_url":"https://api.github.com/users/Bob0/followers","following_url":"https://api.github.com/users/Bob0/following{/other_user}","gists_url":"https://api.github.com/users/Bob0/gists{/gist_id}","starred_url":"https://api.github.com/users/Bob0/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/Bob0/subscriptions","organizations_url":"https://api.github.com/users/Bob0/orgs","repos_url":"https://api.github.com/users/Bob0/repos","events_url":"https://api.github.com/users/Bob0/events{/privacy}","received_events_url":"https://api.github.com/users/Bob0/received_events","type":"User","site_admin":false},"private":false,"html_url":"https://github.com/Bob0/jquery-ui-touch-punch","description":"A
+        duck punch for adding touch events to jQuery UI","fork":true,"url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch","forks_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/forks","keys_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/keys{/key_id}","collaborators_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/teams","hooks_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/hooks","issue_events_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/issues/events{/number}","events_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/events","assignees_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/assignees{/user}","branches_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/branches{/branch}","tags_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/tags","blobs_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/refs{/sha}","trees_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/trees{/sha}","statuses_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/statuses/{sha}","languages_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/languages","stargazers_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/stargazers","contributors_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/contributors","subscribers_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/subscribers","subscription_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/subscription","commits_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/commits{/sha}","git_commits_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/git/commits{/sha}","comments_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/comments{/number}","issue_comment_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/issues/comments/{number}","contents_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/contents/{+path}","compare_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/compare/{base}...{head}","merges_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/merges","archive_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/downloads","issues_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/issues{/number}","pulls_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/pulls{/number}","milestones_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/milestones{/number}","notifications_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/labels{/name}","releases_url":"https://api.github.com/repos/Bob0/jquery-ui-touch-punch/releases{/id}","created_at":"2012-07-08T15:44:54Z","updated_at":"2013-01-11T01:38:14Z","pushed_at":"2012-04-19T19:32:48Z","git_url":"git://github.com/Bob0/jquery-ui-touch-punch.git","ssh_url":"git@github.com:Bob0/jquery-ui-touch-punch.git","clone_url":"https://github.com/Bob0/jquery-ui-touch-punch.git","svn_url":"https://github.com/Bob0/jquery-ui-touch-punch","homepage":"http://touchpunch.furf.com/","size":79,"stargazers_count":1,"watchers_count":1,"language":"JavaScript","has_issues":false,"has_downloads":true,"has_wiki":true,"forks_count":0,"mirror_url":null,"open_issues_count":0,"forks":0,"open_issues":0,"watchers":1,"default_branch":"master","permissions":{"admin":false,"push":false,"pull":true}}]'
+    http_version: 
+  recorded_at: Fri, 01 Mar 2013 06:00:06 GMT
 recorded_with: VCR 2.9.0

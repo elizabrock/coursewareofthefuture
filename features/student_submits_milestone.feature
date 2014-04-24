@@ -25,35 +25,35 @@ Feature: Student submits milestone
     Then I should see the following options for "Assignment Repository":
       |                                 |
       | coursewareofthefuture           |
-      | NSS-futureperfect-rails         |
-      | software-development-curriculum |
-      | slide-em-up                     |
-      | linked_list_cohort_tangerine    |
-      | nss-squawker                    |
-      | LaTeX-Resume                    |
-      | inquizator-test-repo            |
-      | NSS-Syllabus-Cohort-3           |
-      | presentation_nashville_hack_day |
-      | nss-capstone-2-example          |
-      | deadsets                        |
-      | FuturePerfect                   |
-      | NSS-CLI-test-example            |
-      | NSS-Syllabus-Spring-2013        |
-      | nss-cal                         |
-      | NSS-Test-Repo                   |
-      | tapestry                        |
-      | fabrication                     |
-      | Intro-to-Rails-3-Presentation   |
-      | NSS-Syllabus-Fall-2012          |
-      | NSS-Ruby-Koans                  |
-      | tr3w-conversion                 |
-      | testing_cheers                  |
-      | NSS-futureperfect-CLI           |
-      | linked_list_cohort3             |
-      | NSS-basic-rails-blog            |
-      | wedding                         |
       | coveralls-ruby                  |
+      | deadsets                        |
+      | fabrication                     |
+      | FuturePerfect                   |
+      | inquizator-test-repo            |
+      | Intro-to-Rails-3-Presentation   |
+      | LaTeX-Resume                    |
+      | linked_list_cohort3             |
+      | linked_list_cohort_tangerine    |
       | monologue                       |
+      | NSS-basic-rails-blog            |
+      | nss-cal                         |
+      | nss-capstone-2-example          |
+      | NSS-CLI-test-example            |
+      | NSS-futureperfect-CLI           |
+      | NSS-futureperfect-rails         |
+      | NSS-Ruby-Koans                  |
+      | nss-squawker                    |
+      | NSS-Syllabus-Cohort-3           |
+      | NSS-Syllabus-Fall-2012          |
+      | NSS-Syllabus-Spring-2013        |
+      | NSS-Test-Repo                   |
+      | presentation_nashville_hack_day |
+      | slide-em-up                     |
+      | software-development-curriculum |
+      | tapestry                        |
+      | testing_cheers                  |
+      | tr3w-conversion                 |
+      | wedding                         |
     And I should not see "This milestone is hard"
     When I select "software-development-curriculum" from "Assignment Repository"
     And I press "Submit Milestone" within the Milestone 1 milestone
