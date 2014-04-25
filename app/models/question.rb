@@ -13,6 +13,8 @@ class Question < ActiveRecord::Base
 
   accepts_nested_attributes_for :question_answers
 
+  default_scope { order("id ASC") }
+
   def boolean?
     self.question_type == BOOLEAN
   end

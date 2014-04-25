@@ -8,18 +8,6 @@ Feature: Student is reminded of daily reports
       | start_date | 2013/03/11 |
       | end_date   | 2013/06/20 |
     And I am signed in as a student in that course
-
-    And that course has the following events:
-      | date       | summary         |
-      | 2013/03/25 | Federal Holiday |
-      | 2013/03/19 | No Class        |
-    And that course has the following user:
-      | name | joe |
-    And that user has the following self reports:
-      | date       | attended | hours_coding | hours_slept | hours_learning |
-      | 2013/03/12 | false    | 5            | 9           | 0              |
-      | 2013/03/13 | true     | 2            | 7.5         | 4              |
-    And I am signed in as joe
     And I go to the homepage
     And I follow "Course Calendar"
 

@@ -10,7 +10,7 @@ http_interactions:
       Accept:
       - application/vnd.github.v3+json
       User-Agent:
-      - Octokit Ruby Gem 3.0.0
+      - Octokit Ruby Gem 3.1.0
       Authorization:
       - token d141ef15f79ca4c6f43a8c688e0434648f277f20
       Accept-Encoding:
@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Sat, 19 Apr 2014 17:01:06 GMT
+      - Fri, 25 Apr 2014 18:41:12 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -33,9 +33,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4837'
+      - '4953'
       X-Ratelimit-Reset:
-      - '1397928073'
+      - '1398454629'
       Cache-Control:
       - private, max-age=60, s-maxage=60
       Last-Modified:
@@ -65,7 +65,7 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Github-Request-Id:
-      - 44358582:33B0:3C2DA9:5352ABD2
+      - 44358582:4A36:55D4074:535AAC48
       Strict-Transport-Security:
       - max-age=31536000
       X-Content-Type-Options:
