@@ -41,7 +41,7 @@ Feature: Student is reminded of daily reports
     Then I should receive no email
 
   Scenario: Reminder email when there are multiple missing days
-    Given that it is 2013/03/14 8:00PM
+    Given that it is 2013/03/15 8:00PM
     And that user has the following self reports:
       | date       | attended | hours_coding | hours_slept | hours_learning |
       | 2013/03/12 | false    | 5            | 9           | 0              |
