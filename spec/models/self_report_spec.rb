@@ -21,8 +21,7 @@ describe SelfReport do
         unenrolled_student
         old_course_student
         Fabricate(:self_report, user: barely_truant_student, date: 1.day.ago)
-        Fabricate(:self_report, user: uptodate_student, date: 1.day.ago)
-        Fabricate(:self_report, user: uptodate_student, date: Date.today)
+        Fabricate(:self_report, user: uptodate_student, date: 1.day.ago.beginning_of_day)
         do_action
       end
       it { unread_emails_for(truant_student.email).size.should == 1 }
@@ -32,8 +31,7 @@ describe SelfReport do
     end
     context "when no students are missing reports" do
       before do
-        Fabricate(:self_report, user: uptodate_student, date: 1.day.ago)
-        Fabricate(:self_report, user: uptodate_student, date: Date.today)
+        Fabricate(:self_report, user: uptodate_student, date: 1.day.ago.beginning_of_day)
         do_action
       end
       it "shouldn't send any emails" do

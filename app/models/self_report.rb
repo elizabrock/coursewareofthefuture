@@ -7,7 +7,7 @@ class SelfReport < ActiveRecord::Base
   def self.send_student_reminders!
     Course.active.all.each do |course|
       course.users.each do |user|
-        unless user.self_reports.where(date: Date.today).count > 0
+        unless user.self_reports.where(date: 1.day.ago.beginning_of_day).count > 0
           SelfReportsMailer.reminder(user, course).deliver
         end
       end

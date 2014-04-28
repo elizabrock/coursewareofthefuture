@@ -1,3 +1,5 @@
+@javascript
+
 Feature: Student Self Report
 As a student
 I want to see a calendare that allows me to self-report several metrics.
@@ -66,7 +68,6 @@ I want to see a calendare that allows me to self-report several metrics.
     And I select "2" from "Hours learning" within the date 2013-03-14
     And I select "3" from "Hours slept" within the date 2013-03-14
     And I press "Submit" within the date 2013-03-14
-    Then I should see "Your report has been entered"
     And I should not see "Self-Report:" within the date 2013-03-14
     And I should see "Class: Attended" within the date 2013-03-14
     And I should see "Coding: 1 hours" within the date 2013-03-14

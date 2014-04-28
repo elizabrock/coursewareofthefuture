@@ -24,16 +24,16 @@ Feature: Student is reminded of daily reports
     Given that it is 2013/03/11 8:00PM
     And that user has the following self reports:
       | date       | attended | hours_coding | hours_slept | hours_learning |
-      | 2013/03/11 | false    | 5            | 9           | 0              |
+      | 2013/03/10 | false    | 5            | 9           | 0              |
     When the cron job runs
     Then I should receive no email
 
   Scenario: Reminder email when there are multiple missing days
-    Given that it is 2013/03/14 8:00PM
+    Given that it is 2013/03/15 8:00PM
     And that user has the following self reports:
       | date       | attended | hours_coding | hours_slept | hours_learning |
       | 2013/03/12 | false    | 5            | 9           | 0              |
-      | 2013/03/13 | true     | 2            | 7.5         | 4              |
+      | 2013/03/11 | true     | 2            | 7.5         | 4              |
     When the cron job runs
     Then I should receive 1 email
     When I open the email
