@@ -90,5 +90,3 @@ Feature: Users see course navigation when viewing student profiles
     And I click "June Smith"
     Then I should see "June Smith"
     And I should see "june@smith.com"
-    And I should not see "Materials"
-    And I should not see "Calendar"
