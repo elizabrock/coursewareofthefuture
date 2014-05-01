@@ -8,6 +8,7 @@ Feature: Student views assignments
       | end_date   | 2013/06/01 |
     And that it is 2013/05/01
     And I am signed in as a student in that course
+    And I have a valid github username
     And that course has the following assignment:
       | title | Capstone |
     And that assignment has the following milestones:

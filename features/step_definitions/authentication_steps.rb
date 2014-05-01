@@ -13,6 +13,9 @@ Given(/^I am signed in as (.*)$/) do |name|
       user.courses << Course.active_or_future.all
     end
     sign_into_github_as(user.github_username, uid: user.github_uid)
+  elsif name =~ /that student/
+    user = @user
+    sign_into_github_as(user.github_username, uid: user.github_uid)
   elsif name =~ /student/
     user = Fabricate(:student)
     if name =~ /in that course/
@@ -28,7 +31,12 @@ Given(/^I am signed in as (.*)$/) do |name|
   end
   visit '/users/auth/github'
   @user = User.find_by_github_username(user.github_username)
+  @user.should_not be_nil
   visit go_to if go_to
+end
+
+Given(/^I have a valid github username$/) do
+  @user.update_attribute(:github_username, "bob")
 end
 
 Given(/^I am signed in to Github as "(.*?)"$/) do |username|
