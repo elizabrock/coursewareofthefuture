@@ -7,6 +7,8 @@
           = simple_form_for covered_material, url: course_covered_material_path(current_course, covered_material) do |f|
             = f.input :covered_on, label: "Date Covered"
             = f.button :submit, "Mark as Covered", class: "tiny"
+        - else
+          = covered_material.covered_on
         = link_to material.pretty_name, material.link
       - else
         %small= material.pretty_path

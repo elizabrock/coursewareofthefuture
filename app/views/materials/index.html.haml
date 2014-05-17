@@ -1,9 +1,15 @@
 %h1 Course Materials &amp; Outline
 
-%h2 Material We've Covered
-
-%ol#covered_materials
-  = render partial: 'covered_material', locals: { covered_materials: covered_materials }
+.row
+  .small-12.large-6.columns
+    %h2 Material We've Covered
+    %ol#covered_materials
+      = render partial: 'covered_material', locals: { covered_materials: covered_materials }
+  - if can?(:manage, CoveredMaterial)
+    .small-12.large-6.columns
+      %h2 Material To Cover
+      %ol#upcoming_materials
+        = render partial: 'uncovered_materials_as_list', locals: { materials: materials.descendants.delete_if{ |m| covered_material_links.include?(m.link) } }
 
 %h2 Upcoming Material
 %ul#upcoming_materials

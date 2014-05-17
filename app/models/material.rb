@@ -98,6 +98,11 @@ class Material
     end
   end
 
+  def descendants
+    all_descendants = @children + @children.map(&:descendants)
+    all_descendants.flatten.sort_by!{ |m| m.pretty_name }
+  end
+
   def find_child(filename)
     @children.find{ |c| c.filename == filename }
   end
