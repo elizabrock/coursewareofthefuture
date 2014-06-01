@@ -3,6 +3,7 @@
     =link_to(image_tag(user.photo, class: "profile_photo"), user_path)
   .small-6.large-10.columns
     %h1= user.name
+    %p= user.github_username
     %p= user.phone
     %p= user.email
 .row

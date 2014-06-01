@@ -70,9 +70,9 @@ Feature: Student profiles
 
   Scenario: Viewing a student's profile, as a student
     Given the following students:
-      | name       | phone            | email          | goals                       | background         |
-      | Jill Smith | (615) 403 - 5055 | jill@smith.com | I want to learn Javascript. | I know a little C. |
-      | Bob Jones  | (858) 205 - 9255 | bob@jones.com  | I want to learn rails.      | I know a little C. |
+      | name       | phone            | email          | goals                       | background         | github_username |
+      | Jill Smith | (615) 403 - 5055 | jill@smith.com | I want to learn Javascript. | I know a little C. | jill            |
+      | Bob Jones  | (858) 205 - 9255 | bob@jones.com  | I want to learn rails.      | I know a little C. | bob             |
     And I am signed in as Jill Smith
     When I go to the student list page
     And I click "Bob Jones"
@@ -84,8 +84,8 @@ Feature: Student profiles
 
   Scenario: Viewing a student's profile, as an instructor
     Given the following students:
-      | name       | phone            | email          | goals                  | background         |
-      | Bob Jones  | (858) 205 - 9255 | bob@jones.com  | I want to learn rails. | I know a little C. |
+      | name      | phone            | email         | goals                  | background         | github_username |
+      | Bob Jones | (858) 205 - 9255 | bob@jones.com | I want to learn rails. | I know a little C. | bobjones        |
     And I am signed in as an instructor
     When I go to the student list page
     And I click "Bob Jones"
@@ -93,6 +93,7 @@ Feature: Student profiles
     And I should see "bob@jones.com"
     And I should see "I want to learn rails."
     And I should see "I know a little C."
+    And I should see "bobjones"
     And I should not see "Edit My Profile"
 
   Scenario: Editing my own profile, as an instructor
