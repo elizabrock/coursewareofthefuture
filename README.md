@@ -71,6 +71,7 @@ None
 ## Setup Instructions
 
 1. Copy `config/application.yml.example` to `config/application.yml`
+1. Copy `config/database.yml.example` to `config/database.yml`
 2. Fill in the correct Github API key (either get them from Eliza or set one up under developer applications, here: https://github.com/settings/applications)
 3. `rake db:create:all`
 4. `rake db:migrate`
