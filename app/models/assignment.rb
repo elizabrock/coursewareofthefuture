@@ -2,6 +2,8 @@ class Assignment < ActiveRecord::Base
   belongs_to :course
   has_many :milestones, inverse_of: :assignment
 
+  validates_presence_of :course
+
   scope :published, ->{ where(published: true) }
 
   accepts_nested_attributes_for :milestones
