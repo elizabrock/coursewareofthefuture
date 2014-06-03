@@ -13,4 +13,5 @@ end
 
 Fabricator(:instructor, from: :user) do
   instructor true
+  github_username { "bob" }
 end
