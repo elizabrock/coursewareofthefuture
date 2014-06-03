@@ -33,11 +33,13 @@ feature "Student Self Report", js: true do
   end
 
   scenario "Student sees a self-report form for days that need missing reports" do
-    within("td[data-date='2013-03-14']"){ page.should have_content "Self-Report:" }
-    within("td[data-date='2013-03-11']"){ page.should have_content "Self-Report:" }
-    within("td[data-date='2013-03-15']"){ page.should have_content "Self-Report:" }
-    within("td[data-date='2013-03-12']"){ page.should_not have_content "Self-Report:" }
-    within("td[data-date='2013-03-13']"){ page.should_not have_content "Self-Report:" }
+    within("td[data-date='2013-03-14']") do
+      { page.should have_content "Self-Report:" }
+      { page.should have_content "Self-Report:" }
+      { page.should have_content "Self-Report:" }
+      { page.should_not have_content "Self-Report:" }
+      { page.should_not have_content "Self-Report:" }
+    end
   end
 
   scenario "Student still sees self-report form is another user has filled out their own report" do
@@ -48,33 +50,54 @@ feature "Student Self Report", js: true do
   end
 
   scenario "Student does not see self-report form for days before the class" do
-    within("td[data-date='2013-03-01']"){ page.should_not have_content "Self-Report:" }
-    within("td[data-date='2013-03-10']"){ page.should_not have_content "Self-Report:" }
-    within("td[data-date='2013-03-09']"){ page.should_not have_content "Self-Report:" }
+    within("td[data-date='2013-03-01']") do
+      { page.should_not have_content "Self-Report:" }
+      { page.should_not have_content "Self-Report:" }
+      { page.should_not have_content "Self-Report:" }
+    end
   end
 
   scenario "Student sees self-report summary for days that have reports" do
-    within("td[data-date='2013-03-13']"){ page.should have_content "Class: Attended" }
-    within("td[data-date='2013-03-13']"){ page.should have_content "Coding: 2 hours" }
-    within("td[data-date='2013-03-13']"){ page.should have_content "Sleep: 7.5 hours" }
-    within("td[data-date='2013-03-13']"){ page.should have_content "Learning: 4 hours" }
-    within("td[data-date='2013-03-12']"){ page.should have_content "Class: Missed" }
-    within("td[data-date='2013-03-12']"){ page.should have_content "Coding: 5 hours" }
-    within("td[data-date='2013-03-12']"){ page.should have_content "Sleep: 9 hours" }
-    within("td[data-date='2013-03-12']"){ page.should have_content "Learning: 0 hours" }
+    within("td[data-date='2013-03-13']") do
+      { page.should have_content "Class: Attended" }
+      { page.should have_content "Coding: 2 hours" }
+      { page.should have_content "Sleep: 7.5 hours" }
+      { page.should have_content "Learning: 4 hours" }
+      { page.should have_content "Class: Missed" }
+      { page.should have_content "Coding: 5 hours" }
+      { page.should have_content "Sleep: 9 hours" }
+      { page.should have_content "Learning: 0 hours" }
+    end
   end
 
   scenario "Student enters self-report form" do
-    within("td[data-date='2013-03-14']"){ page.should have_content "Self-Report:" }
-    within("td[data-date='2013-03-14']"){ choose "Yes" }
-    within("td[data-date='2013-03-14']"){ page.select("1", from: "Hours coding") }
-    within("td[data-date='2013-03-14']"){ page.select("2", from: "Hours learning") }
-    within("td[data-date='2013-03-14']"){ page.select("3", from: "Hours slept") }
-    within("td[data-date='2013-03-14']"){ click_button "Submit" }
-    within("td[data-date='2013-03-14']"){ page.should_not have_content "Self-Report:" }
-    within("td[data-date='2013-03-14']"){ page.should have_content "Class: Attended" }
-    within("td[data-date='2013-03-14']"){ page.should have_content "Coding: 1 hours" }
-    within("td[data-date='2013-03-14']"){ page.should have_content "Learning: 2 hours" }
-    within("td[data-date='2013-03-14']"){ page.should have_content "Sleep: 3 hours" }
+    within("td[data-date='2013-03-14']") do
+      { page.should have_content "Self-Report:" }
+      { choose "Yes" }
+      { page.select("1", from: "Hours coding") }
+      { page.select("2", from: "Hours learning") }
+      { page.select("3", from: "Hours slept") }
+      { click_button "Submit" }
+      { page.should_not have_content "Self-Report:" }
+      { page.should have_content "Class: Attended" }
+      { page.should have_content "Coding: 1 hours" }
+      { page.should have_content "Learning: 2 hours" }
+      { page.should have_content "Sleep: 3 hours" }
+    end
+  end
+
+  scenario "Student updates a self report" do
+    within("td[data-date='2013-03-13']") do
+      { page.should have_content "Class: Attended"}
+      { page.should have_content "Sleep: 7.5 hours"}
+      { click_button "Edit"}
+      { choose "No"}
+      { page.select("6", from: "Hours Slept")}
+      { click_button "Submit"}
+      { page.should have_content "Class: Missed" }
+      { page.should have_content "Coding: 2 hours" }
+      { page.should have_content "Sleep: 6 hours" }
+      {page.should have_content "Learning: 4 hours" }
+    end
   end
 end
