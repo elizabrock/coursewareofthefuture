@@ -10,6 +10,8 @@ gem 'cancan'
 gem 'carrierwave'
 # Coffeescript
 gem 'coffee-rails', '~> 4.0'
+# Lets rails use d3.js visualization
+gem 'd3-rails'
 # Magic Sauce.  We will get to this.
 gem 'decent_exposure'
 # Authentication
