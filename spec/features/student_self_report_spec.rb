@@ -88,7 +88,7 @@ feature "Student Self Report", js: true do
     within("td[data-date='2013-03-13']") do
       page.should have_content "Class: Attended"
       page.should have_content "Sleep: 7.5 hours"
-      click_button "Edit"
+      click_link "edit"
       choose "No"
       page.select("6", from: "Hours Slept")
       click_button "Submit"
