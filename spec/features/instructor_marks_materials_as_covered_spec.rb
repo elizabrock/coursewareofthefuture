@@ -19,9 +19,7 @@ feature "Instructor marks materials as covered", vcr: true do
       within("ul#upcoming_materials"){ page.should have_content "Logic" }
       within("ol#covered_materials"){ page.should_not have_content "Logic" }
       mark_as_covered("Logic")
-      puts "Hello there?"
       page.should have_content "logic.md has been marked as covered on 2013/03/12."
-      puts "Hello there?"
       within("ol#covered_materials"){ page.should have_content "Logic" }
       within("ul#upcoming_materials"){ page.should have_content "Covered Logic" }
       mark_as_covered("Basic Control Structures")
