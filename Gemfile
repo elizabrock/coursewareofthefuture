@@ -79,8 +79,8 @@ group :test, :development do
   # For debugging:
   gem 'pry-rails'
   # Testing:
-  gem 'rspec-rails', '~> 2.99'
-  gem 'rspec', '~> 2.99'
+  gem 'rspec-rails', '~> 3.0'
+  gem 'rspec', '~> 3.0'
 end
 
 group :test do
