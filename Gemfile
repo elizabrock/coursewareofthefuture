@@ -22,6 +22,7 @@ gem 'fabrication'
 gem 'figaro'
 # Stores files in the cloud
 gem 'fog'
+gem 'forem', :github => "radar/forem", :branch => "rails4"
 # Enables HAML views
 gem 'haml-rails'
 # Error reporting
@@ -51,6 +52,7 @@ gem 'slide-em-up', github: 'elizabrock/slide-em-up', branch: 'master', require: 
 gem 'uglifier', '>= 1.3.0'
 # rails server that handles multiple connections
 gem 'unicorn'
+gem 'will_paginate', '3.0.5'
 
 group :production do
   # Makes the heroku logs more informative:
