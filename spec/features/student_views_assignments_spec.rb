@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature "Student views assignments" do
   scenario "Student views an assignment", vcr: true do

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature "Instructor chooses assignments from github", vcr: true, js: true do
 

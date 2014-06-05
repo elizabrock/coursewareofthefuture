@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature "Student milestones are automatically graded (via. grading script)" do
 
