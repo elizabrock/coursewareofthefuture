@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300);
+
 .calendar {
   .label {
     display: block;
@@ -6,7 +8,6 @@
     }
   }
   td {
-    width: 14%;
     vertical-align: top;
     h5 {
       text-align: left;
@@ -16,10 +17,192 @@
     }
     h6 {
       margin-top: 0.5em;
-      border-bottom: 1px solid grey;
+      border-bottom: 1px solid #6600ff;
     }
   }
-  .monthName { text-align: center; }
+  .monthName {
+
+    text-align: center;
+    // background: #6600ff !important;
+    color: #313131;
+    -webkit-border-top-left-radius: 20px;
+    -webkit-border-top-right-radius: 20px;
+  }
+}
+
+td{
+  width: 14% !important;
 }
 
 .otherMonth { visibility: hidden; }
+
+.calendar .monthName {
+  text-align: center;
+  font-size: 25px;
+  font-family: 'Lato', sans-serif;
+  border-bottom: 1px solid #313131;
+
+}
+
+table {
+  background: white;
+  margin-bottom: 1.25rem;
+  border: solid 1px #313131;
+  border-radius: 20px;
+}
+
+abbr, acronym {
+  display: block;
+  text-align: center !important;
+  margin-left: auto;
+  margin-right: auto;
+  text-transform: uppercase;
+  font-size: 90%;
+  color: #6600ff;
+  // border-left: 1px solid #dddddd;
+  // border-right: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  cursor: help;
+}
+
+.label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 110px;
+  font-weight: normal;
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap;
+  display: inline-block;
+  position: relative;
+  margin-bottom: inherit;
+  padding: 0.25rem 0.5rem 0.375rem;
+  font-size: 0.6875rem;
+  border-radius: 60px !important;
+  border: 0px solid #6600ff;
+  background: transparent;
+  background: linear-gradient(#66D9EF, #1EC8E8) !important;
+  color: white;
+}
+
+
+.label.alert {
+  background: linear-gradient(#FF619A, #F92672) !important;
+  color: white;
+}
+
+
+
+.label.success{
+  background: linear-gradient(#B6FA2F, #A6E22E) !important;
+  border: 0px solid #6600ff;
+  color: white;
+  text-shadow: 0px 0px 25px #6BA100;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lato', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  color: #222222;
+  text-rendering: optimizeLegibility;
+  margin-top: 0.2rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+h1{
+  border-left: 2px solid #6600ff;
+  padding-left: 10px;
+}
+
+h3{
+  color: #f35626;
+  background-image: -webkit-linear-gradient(92deg,#f35626,#feab3a) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  -webkit-animation: hue 60s infinite linear !important;
+}
+
+.button {
+  font-family: 'Lato', sans-serif;
+  border-style: solid;
+  border-width: 0px;
+  cursor: pointer;
+  font-weight: normal;
+  line-height: normal;
+  margin: 0 0 1.25rem;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  display: inline-block;
+  padding-top: .5rem;
+  padding-right: 1rem;
+  padding-bottom: .5rem;
+  padding-left: 1rem;
+  font-size: 1rem;
+  background-color: #6600ff !important;
+  border-color: #6600ff !important;
+  color: white;
+  transition: background-color 300ms ease-out;
+  -webkit-border-bottom-left-radius: 20px;
+  -webkit-border-bottom-right-radius: 20px;
+  -webkit-border-top-right-radius: 20px;
+}
+
+.inline-list > li {
+  list-style: none;
+  float: left;
+  margin-left: 1.375rem;
+  display: block;
+  border-bottom: 1px solid #313131;
+}
+
+a {
+  color: #6600ff;
+  text-decoration: none;
+  line-height: inherit;
+}
+
+ul#main_navigation > li > a:link#current,
+ul#main_navigation > li > a:visited#current{
+  border-bottom: 0px solid #6600ff;
+  border-left: 4px solid #6600ff;
+  padding-bottom: 0px;
+  padding-left: 2px;
+  background: transparent;
+  color: #000;
+}
+
+ul#main_navigation > li > a:hover{
+  border-bottom: 4px solid #6600ff;
+  padding-bottom: 0px;
+  background: transparent;
+  color: #313131 !important;
+}
+
+ul#main_navigation > li {
+margin: 0;
+padding: 0;
+display: inline;
+list-style-type: none;
+}
+
+ul#main_navigation > li > a:link,
+ul#main_navigation > li > a:visited {
+color: #999;
+}
+
+@-webkit-keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+
+  to {
+    -webkit-filter: hue-rotate(-360deg);
+  }
+}
