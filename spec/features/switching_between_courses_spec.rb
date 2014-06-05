@@ -2,15 +2,14 @@ require 'rails_helper'
 
 feature "Switching between courses", vcr: true do
   scenario "switching between courses" do
-    Timecop.travel(Time.new(2013, 03, 24))
     front_end = Fabricate(:course,
                   title: "Front-End Development",
                   source_repository: "elizabrock/NSS-Syllabus-Cohort-3",
-                  start_date: "2014/03/20",
-                  end_date: "2014/06/20",
+                  start_date: 4.days.ago,
+                  end_date: 2.months.from_now,
                   syllabus: "Zed Double You")
-    Fabricate(:event, date: "2014/03/25", summary: "Day Off", course: front_end)
-    Fabricate(:event, date: "2014/03/26", summary: "Not Day Off", course: front_end)
+    Fabricate(:event, date: 1.day.from_now, summary: "Day Off", course: front_end)
+    Fabricate(:event, date: 2.days.from_now, summary: "Not a Day Off", course: front_end)
 
     Fabricate(:student, name: "Jim", courses: [front_end])
     Fabricate(:student, name: "Joe", courses: [front_end])
@@ -18,16 +17,17 @@ feature "Switching between courses", vcr: true do
     fundamentals = Fabricate(:course,
                           title: "Software Development Fundamentals",
                           source_repository: "elizabrock/inquizator-test-repo",
-                          start_date: "2014/02/20",
-                          end_date: "2014/05/20",
+                          start_date: 1.month.ago,
+                          end_date: 2.months.from_now,
                           syllabus: "Foo Bar")
-    Fabricate(:event, date: "2014/03/15", summary: "Grinchmas", course: fundamentals)
-    Fabricate(:event, date: "2014/03/29", summary: "Airing of Grievances", course: fundamentals)
+
+    Fabricate(:event, date: 9.days.ago, summary: "Grinchmas", course: fundamentals)
+    Fabricate(:event, date: 5.days.from_now, summary: "Airing of Grievances", course: fundamentals)
     Fabricate(:student, name: "Susie", courses: [fundamentals])
     Fabricate(:student, name: "Sally", courses: [fundamentals])
 
-    Fabricate(:course, title: "Past Course", start_date: "2012/01/01", end_date: "2012/04/01")
-    Fabricate(:course, title: "Future Course", start_date: "2014/05/06", end_date: "2014/06/07")
+    Fabricate(:course, title: "Past Course", start_date: 18.months.ago, end_date: 1.year.ago)
+    Fabricate(:course, title: "Future Course", start_date: 2.months.from_now, end_date: 4.months.from_now)
 
     signin_as(:instructor)
     visit root_path
@@ -35,6 +35,7 @@ feature "Switching between courses", vcr: true do
 
     page.should have_list(["Front-End Development", "Software Development Fundamentals", "Future Course"])
     page.should_not have_content "Past Course"
+
     click_link "Software Development Fundamentals"
     page.should have_content "Foo Bar"
     click_link "Syllabus"
@@ -48,7 +49,9 @@ feature "Switching between courses", vcr: true do
     page.should_not have_content "Unit 1"
     click_link "Course Calendar"
     page.should have_content "Grinchmas"
+    page.should have_content "Airing of Grievances"
     page.should_not have_content "Day Off"
+
     click_link "Front-End Development"
     page.should have_content "Zed Double You"
     click_link "Syllabus"
@@ -63,6 +66,7 @@ feature "Switching between courses", vcr: true do
     page.should_not have_content "Computer Science"
     click_link "Course Calendar"
     page.should have_content "Day Off"
+    page.should have_content "Not a Day Off"
     page.should_not have_content "Grinchmas"
   end
 end
