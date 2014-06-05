@@ -69,13 +69,16 @@ within(milestone(2)){ page.should have_content "Status: Submitted for Grading" }
 
   scenario "Student has no public repos?" do
     pending
+    fail
   end
 
   scenario "Resubmitting Milestone" do
     pending
+    fail
   end
 
   scenario "User can't submit milestone for a course they aren't enrolled in" do
     pending
+    fail
   end
 end
