@@ -1,3 +1,59 @@
 .profile_photo {
   border-radius: 10px;
 }
+
+#self_report_graph {
+  margin-bottom: 30px;
+
+  g {
+    path {
+      stroke-width: 2;
+      fill: none;
+    }
+
+    #hoursCoding {
+      stroke: forestgreen;
+    }
+
+    #hoursLearning {
+      stroke: firebrick;
+    }
+
+    #hoursSlept {
+      stroke: steelblue;
+    }
+
+    line {
+      stroke: black;
+    }
+
+    .xLabel, .yLabel {
+      font: 10px sans-serif;
+    }
+
+    .xLabel {
+      text-anchor: middle;
+    }
+
+    .yLabel {
+      text-anchor: right;
+    }
+  }
+}
+
+#self_report_legend {
+  .legend {
+  }
+
+  #coding {
+    color: forestgreen;
+  }
+
+  #learning {
+    color: firebrick;
+  }
+
+  #slept {
+    color: steelblue;
+  }
+}
