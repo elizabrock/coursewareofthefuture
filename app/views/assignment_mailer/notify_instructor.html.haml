@@ -1,0 +1,3 @@
+%p #{@student} has submitted something to #{@assignment_title}.
+
+%p= link_to("View Assignment", course_assignment_url(@submission.milestone.assignment.course, @submission.milestone.assignment))

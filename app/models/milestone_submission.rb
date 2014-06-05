@@ -5,4 +5,11 @@ class MilestoneSubmission < ActiveRecord::Base
   validates_presence_of :milestone
   validates_presence_of :repository
   validates_presence_of :user
+
+  after_create :notify_instructors
+
+  def notify_instructors
+    AssignmentMailer.notify_instructor(self).deliver
+  end
+
 end
