@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature "Switching between courses", vcr: true do
   scenario "switching between courses" do

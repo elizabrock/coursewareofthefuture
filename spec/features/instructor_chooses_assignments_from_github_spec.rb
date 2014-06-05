@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature "Instructor chooses assignments from github", vcr: true, js: true do
 
@@ -10,11 +10,11 @@ feature "Instructor chooses assignments from github", vcr: true, js: true do
       Fabricate(:assignment, title: "Capstone", course: course)
 
       instructor = Fabricate(:instructor, courses: [course])
-      instructor.photo_confirmed?.should be_true
+      instructor.photo_confirmed?.should be_truthy
 
       instructor2 = signin_as(instructor)
       instructor2.id.should == instructor.id
-      instructor2.photo_confirmed?.should be_true
+      instructor2.photo_confirmed?.should be_truthy
 
       Course.count.should == 1
 
