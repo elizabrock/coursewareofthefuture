@@ -3,7 +3,7 @@
 }
 
 #self_report_graph {
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 
   g {
     path {
@@ -42,7 +42,13 @@
 }
 
 #self_report_legend {
+  margin-bottom: 40px;
+
   .legend {
+    width: 33%;
+    float: left;
+    margin: 0;
+    text-align: center;
   }
 
   #coding {
