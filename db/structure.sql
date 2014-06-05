@@ -1325,63 +1325,63 @@ INSERT INTO schema_migrations (version) VALUES ('20140417184051');
 
 INSERT INTO schema_migrations (version) VALUES ('20140423123810');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605143650');
+INSERT INTO schema_migrations (version) VALUES ('20140605150044');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605143651');
+INSERT INTO schema_migrations (version) VALUES ('20140605150045');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605143652');
+INSERT INTO schema_migrations (version) VALUES ('20140605150046');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605143653');
+INSERT INTO schema_migrations (version) VALUES ('20140605150047');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605143654');
+INSERT INTO schema_migrations (version) VALUES ('20140605150048');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605143655');
+INSERT INTO schema_migrations (version) VALUES ('20140605150049');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605143656');
+INSERT INTO schema_migrations (version) VALUES ('20140605150050');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605143657');
+INSERT INTO schema_migrations (version) VALUES ('20140605150051');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605143658');
+INSERT INTO schema_migrations (version) VALUES ('20140605150052');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605143659');
+INSERT INTO schema_migrations (version) VALUES ('20140605150053');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605143660');
+INSERT INTO schema_migrations (version) VALUES ('20140605150054');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605143661');
+INSERT INTO schema_migrations (version) VALUES ('20140605150055');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605143662');
+INSERT INTO schema_migrations (version) VALUES ('20140605150056');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605143663');
+INSERT INTO schema_migrations (version) VALUES ('20140605150057');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605143664');
+INSERT INTO schema_migrations (version) VALUES ('20140605150058');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605143665');
+INSERT INTO schema_migrations (version) VALUES ('20140605150059');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605143666');
+INSERT INTO schema_migrations (version) VALUES ('20140605150060');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605143667');
+INSERT INTO schema_migrations (version) VALUES ('20140605150061');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605143668');
+INSERT INTO schema_migrations (version) VALUES ('20140605150062');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605143669');
+INSERT INTO schema_migrations (version) VALUES ('20140605150063');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605143670');
+INSERT INTO schema_migrations (version) VALUES ('20140605150064');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605143671');
+INSERT INTO schema_migrations (version) VALUES ('20140605150065');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605143672');
+INSERT INTO schema_migrations (version) VALUES ('20140605150066');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605143673');
+INSERT INTO schema_migrations (version) VALUES ('20140605150067');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605143674');
+INSERT INTO schema_migrations (version) VALUES ('20140605150068');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605143675');
+INSERT INTO schema_migrations (version) VALUES ('20140605150069');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605143676');
+INSERT INTO schema_migrations (version) VALUES ('20140605150070');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605143677');
+INSERT INTO schema_migrations (version) VALUES ('20140605150071');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605143678');
+INSERT INTO schema_migrations (version) VALUES ('20140605150072');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605143679');
+INSERT INTO schema_migrations (version) VALUES ('20140605150073');
 
