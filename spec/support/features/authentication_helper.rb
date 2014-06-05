@@ -11,7 +11,7 @@ module Features
       user
     end
 
-    def sign_into_github_as(username, uid: nil, token: "702be0ced015bd4102a65ae6aa79ecfe296a2711")
+    def sign_into_github_as(username, uid: nil, token: "e240193da2770489889d10e38b3d7ce1abfad756")
       if uid.nil?
         user = User.find_by_github_username(username)
         uid = user.try(:github_uid) || '12345'

@@ -3,21 +3,21 @@ require 'spec_helper'
 feature "Student views slides" do
 
   scenario "Student is on materials page and views slides", vcr: true do
-    @course = Fabricate(:course, title: "Cohort N", start_date: "2014/01/01", end_date: "2014/02/01")
     Timecop.travel(Time.new(2013, 03, 12))
-    joe = Fabricate(:instructor, github_username: "joe", github_uid: "9876")
-    sign_into_github_as "joe"
-    visit root_path
-    click_link "Sign In with Github"
-    visit course_path(@course)
+    course = Fabricate(:course)
+    signin_as :instructor, courses: [course]
+    visit course_path(course)
     click_link "Materials"
     mark_as_covered("Logic")
+    page.should have_content "logic.md has been marked as covered on 2013/03/12."
 
-    signin_as :student, courses: [course], github_username: "elizabrock"
+    signin_as :student, courses: [course]
     visit root_path
     click_link "Materials"
+    click_link "Logic"
     click_link "View As Slides"
-    current_path.should_include == "/materials/computer-science/logic/logic.md"
+    covered_material = CoveredMaterial.all.find(1)
+    current_path.should == slides_course_covered_material_path(course, covered_material)
   end
 
 end
