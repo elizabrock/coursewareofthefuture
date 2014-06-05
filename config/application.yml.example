@@ -1,8 +1,0 @@
-# Add application configuration variables here, as shown below.
-#
-ACCESS_KEY_ID: AKIAJDJPNRVJ27CVWBDQ
-SECRET_ACCESS_KEY: ASK_ELIZA
-GITHUB_CLIENT_ID: 6420f58670f870ffcda8
-GITHUB_CLIENT_SECRET: ASK_ELIZA
-HONEYBADGER_KEY: comes_from_honeybadger.io
-MATERIALS_REPO: "elizabrock/software-development-curriculum"

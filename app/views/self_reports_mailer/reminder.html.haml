@@ -1,2 +1,26 @@
-%p= SelfReport.random_reminder
-%p= link_to "Enter your self-report!", course_calendar_path(@course)
+%table(width="100%" style="background-color:black; color:white; background-image: url('http://nashvillesoftwareschool.com/wp-content/themes/nashville_software_school/images/chalk_black_low.jpg')")
+  %tr
+    %td 
+      %img(src="http://nashvillesoftwareschool.com/wp-content/themes/nashville_software_school/images/logo2.png")
+      %table(align="center" style="color:white;")
+        %tr
+          %td
+            %p
+              %strong(style="font-size:150%;") DID YOU REMEMBER TO ENTER YOUR SELF REPORT?
+       
+      %table(align="center" style="color:white;")
+        %tr
+          %td
+            %img(src="http://img2.wikia.nocookie.net/__cb20120913234301/adventuretimewithfinnandjake/images/4/41/Squirrel.png" width="86.75" height="67.5")
+          %td
+            %p(style="font-size:110%;")= SelfReport.random_reminder
+        
+     
+      %table
+        %tr
+          %td
+            &nbsp;
+      %table(align="center") 
+        %tr
+          %td
+            %a(href="https://coursewareofthefuture.herokuapp.com/courses/1/calendar" style="color: yellow;") Head to the Course Calendar  ~>
