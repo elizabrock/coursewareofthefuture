@@ -1,12 +1,12 @@
-%strong Class:
-= self_report.attended? ? "Attended" : "Missed"
-%br
-%strong Learning:
-#{number_to_human(self_report.hours_learning)} hours
-%br
-%strong Coding:
-#{number_to_human(self_report.hours_coding)} hours
-%br
-%strong Sleep:
-#{number_to_human(self_report.hours_slept)} hours
-= link_to "edit", edit_self_report_path(self_report.id)  
+.self_report_info
+  %strong Class:
+  = self_report.attended? ? "Attended" : "Missed"
+  %br
+  %strong Coding:
+  #{number_to_human(self_report.hours_coding)} hours
+  %strong Learning:
+  #{number_to_human(self_report.hours_learning)} hours
+  %br
+  %strong Sleep:
+  #{number_to_human(self_report.hours_slept)} hours
+  = link_to "edit", edit_self_report_path(self_report), remote: true, method: :get
