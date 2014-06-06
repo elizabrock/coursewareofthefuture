@@ -5,7 +5,7 @@ class CoveredMaterial < ActiveRecord::Base
     message: "should be covered once per course" }
 
   default_scope ->{ order("covered_on ASC, id ASC") }
-  after_validation :set_covered_on, on: :create
+  before_validation :set_covered_on, on: :create
 
   def fullpath
     material_fullpath.gsub("materials/","")
