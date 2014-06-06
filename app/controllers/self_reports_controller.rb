@@ -9,16 +9,12 @@ class SelfReportsController < ApplicationController
 
   def update
     if self_report.save
-      redirect_to course_calendar_path(current_course)
+      render :show
       flash[:notice] = "Your self report has been updated!"
     else
       render :show
       flash[:alert] = "Your update failed"
     end
-  end
-
-  def edit
-    @self_report = SelfReport.find(params[:id])
   end
 
   private
