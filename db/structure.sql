@@ -680,11 +680,11 @@ ALTER TABLE ONLY self_reports
 
 
 --
--- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: students_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY users
-    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+    ADD CONSTRAINT students_pkey PRIMARY KEY (id);
 
 
 --

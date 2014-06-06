@@ -20,6 +20,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+    render edit_user_path
+  end
+
   def instructify
     if can?(:instructify, user)
       user.update_attribute(:instructor, true)
