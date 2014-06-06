@@ -76,4 +76,10 @@ feature "Student Self Report", js: true do
     within("td[data-date='2013-03-14']"){ page.should have_content "Sleep: 3 hours" }
   end
 
+  scenario "Student enters empty form" do
+    within("td[data-date='2013-03-14']"){ page.should have_content "Self-Report:" }
+    within("td[data-date='2013-03-14']"){ click_button "Submit" }
+    within("td[data-date='2013-03-14']"){ page.should have_content "can't be blank" }
+  end
+
 end

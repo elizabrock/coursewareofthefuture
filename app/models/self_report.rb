@@ -8,6 +8,7 @@ class SelfReport < ActiveRecord::Base
   validates_presence_of :hours_learning
   validates_presence_of :hours_slept
 
+
   def self.random_reminder
     if rand(100) < 80
       "It's that time of day again!"

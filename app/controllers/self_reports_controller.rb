@@ -4,10 +4,14 @@ class SelfReportsController < ApplicationController
     @self_report = self_report
 
     if self_report.save
-      format.js { render action: "show" }
+      render action: "show"
     else
-      format.js { render action: "new" }
+      render action: "new"
     end
+  end
+
+  def show
+      render action: "show"
   end
 
   private
