@@ -1,2 +1,0 @@
-Fabricator(:enrollment) do
-end

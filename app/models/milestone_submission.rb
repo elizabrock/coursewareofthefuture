@@ -8,6 +8,8 @@ class MilestoneSubmission < ActiveRecord::Base
 
   after_create :notify_instructors
 
+  protected
+
   def notify_instructors
     AssignmentMailer.notify_instructor(self).deliver
   end
