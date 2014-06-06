@@ -25,7 +25,7 @@
 
 #material_covered {
   position: absolute;
-  left: -83px;
+  left: 15px;
   top: 60px;
   z-index: 3;
   width: 403;
@@ -33,27 +33,21 @@
 }
 
 #covered_materials{
-//display: none;
 position: absolute;
 top: 23px;
-left: 302px;
+left: 402px;
 width: 600px;
-//border: 1px solid;
 height: 500px;
 padding: 8px 0px 0px 24px;
 }
 
 #material_to_cover {
   position: absolute;
-  top: 123px;
-  left: -583px;
+  top: 182px;
+  left: -485px;
   width: 403px;
   z-index: 3;
   height: 60px;
-  //border-top: 1px solid;
-  //border-left: 1px solid;
-  //border-right: 1px solid;
-  //background: -webkit-radial-gradient(50% 50%, ellipse cover, #d6fbfc 0%, #94cbce 100%);
   background: gainsboro;
 }
 
@@ -61,23 +55,18 @@ padding: 8px 0px 0px 24px;
 display: none;
 position: absolute;
 top: 23px;
-left: -198px;
+left: -108px;
 width: 600px;
 padding: 10px 0px 0px 30px;
-//border: 1px solid;
-//background: -webkit-radial-gradient(50% 50%, ellipse cover, rgb(214, 251, 252) 0%, rgb(148, 203, 206) 100%);
 }
 
 #upcoming_material{
   position: absolute;
-  top: 255px;
-  left: -83px;
+  top: 198px;
+  left: 15px;
   width: 403px;
-  padding: 3px 0px 3px 5px;
+  padding: 3px 0px 3px 1px;
   z-index: 2;
-  //border-bottom: 1px solid;
-  //border-left: 1px solid;
-  //border-right: 1px solid;
   background: gainsboro;
 }
 
@@ -85,13 +74,11 @@ padding: 10px 0px 0px 30px;
 display: none;
 position: absolute;
 top: 95px;
-left: 302px;
+left: 402px;
 width: 600px;
-//border: 1px solid;
 }
 
 .material_wrapper {
-  //border: 1px solid;
   padding: 1px 0px 5px 25px;
 }
 
