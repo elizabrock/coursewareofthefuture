@@ -8,16 +8,16 @@ feature "Instructor views course as student", vcr: true do
     signin_as :instructor, courses: [course]
     visit course_path(course)
     click_link "Materials"
-    page.should have_materials_tree("inquizator-test-repo", links: true)
+    page.should have_content "Material We've Covered"
     click_link "View As Student"
     page.should have_content "Student View"
-    page.should have_materials_tree("inquizator-test-repo", links: false)
+    page.should_not have_content "Material To Cover"
     click_link "Assignments"
     page.should have_content "Student View"
     page.should_not have_content "New Assignment"
     click_link "Materials"
     page.should have_content "Student View"
-    page.should have_materials_tree("inquizator-test-repo", links: false)
+    page.should have_content "Upcoming Material"
   end
 
   scenario "Exiting student view" do
@@ -26,9 +26,9 @@ feature "Instructor views course as student", vcr: true do
     click_link "Materials"
     click_link "View As Student"
     page.should have_content "Student View"
-    page.should have_materials_tree("inquizator-test-repo", links: false)
+    page.should have_content "Upcoming Material"
     click_link "View As Instructor"
-    page.should have_materials_tree("inquizator-test-repo", links: true)
+    page.should have_content "Material To Cover"
   end
 
   scenario "Impersonation isn't visible to students" do
