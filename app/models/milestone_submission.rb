@@ -11,7 +11,6 @@ class MilestoneSubmission < ActiveRecord::Base
   protected
 
   def notify_instructors
-    AssignmentMailer.notify_instructor(self).deliver
+    MilestoneSubmissionMailer.notify_instructors(self).deliver
   end
-
 end
