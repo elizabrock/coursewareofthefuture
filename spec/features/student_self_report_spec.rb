@@ -89,11 +89,15 @@ feature "Student Self Report", js: true do
       page.should have_content "Class: Attended"
       page.should have_content "Sleep: 7.5 hours"
       click_link "edit"
-      choose "No"
-      page.select("6", from: "Hours Slept")
-      click_button "Submit"
-      page.should have_content "Class: Missed"
-      page.should have_content "Coding: 2 hours"
+    end
+    page.should have_content "Attended class"
+    page.select("3", from: "Hours coding")
+    page.select("6", from: "Hours slept")
+    page.select("4", from: "Hours learning")
+    click_button "Submit"
+    within("td[data-date='2013-03-13']") do
+      page.should have_content "Class: Attended"
+      page.should have_content "Coding: 3 hours"
       page.should have_content "Sleep: 6 hours"
       page.should have_content "Learning: 4 hours"
     end
