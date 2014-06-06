@@ -11,21 +11,22 @@ feature "Instructor marks materials as covered", vcr: true do
   end
 
   scenario "Instructor marks item as covered, date defaults to today" do
-    Timecop.travel(Time.new(2013, 03, 12))
-    course = Fabricate(:course)
-    signin_as :instructor, courses: [course]
-    visit course_path(course)
-    click_link "Materials"
-    within("ul#upcoming_materials"){ page.should have_content "Logic" }
-    within("ol#covered_materials"){ page.should_not have_content "Logic" }
-    mark_as_covered("Logic")
-    page.should have_content "logic.md has been marked as covered on 2013/03/12."
-    within("ol#covered_materials"){ page.should have_content "Logic" }
-    within("ul#upcoming_materials"){ page.should have_content "Covered Logic" }
-    mark_as_covered("Basic Control Structures")
-    page.should have_content "basic-control-structures.md has been marked as covered on 2013/03/12."
-    within("ol#covered_materials") do
-      page.should have_list(["Logic", "Basic Control Structures"])
+    Timecop.travel(Time.new(2013, 03, 12)) do
+      course = Fabricate(:course)
+      signin_as :instructor, courses: [course]
+      visit course_path(course)
+      click_link "Materials"
+      within("ul#upcoming_materials"){ page.should have_content "Logic" }
+      within("ol#covered_materials"){ page.should_not have_content "Logic" }
+      mark_as_covered("Logic")
+      page.should have_content "logic.md has been marked as covered on 2013/03/12."
+      within("ol#covered_materials"){ page.should have_content "Logic" }
+      within("ul#upcoming_materials"){ page.should have_content "Covered Logic" }
+      mark_as_covered("Basic Control Structures")
+      page.should have_content "basic-control-structures.md has been marked as covered on 2013/03/12."
+      within("ol#covered_materials") do
+        page.should have_list(["Logic", "Basic Control Structures"])
+      end
     end
   end
 
@@ -48,28 +49,31 @@ feature "Instructor marks materials as covered", vcr: true do
   end
 
   scenario "Instructor changes the date an item was covered" do
-    Timecop.travel(Time.new(2013, 03, 13))
-    course = Fabricate(:course)
-    signin_as :instructor, courses: [course]
-    visit course_path(course)
-    click_link "Materials"
-    within("ul#upcoming_materials"){ page.should have_content "Logic" }
-    within("ol#covered_materials"){ page.should_not have_content "Logic" }
-    mark_as_covered("Logic")
-    page.should have_content "logic.md has been marked as covered on 2013/03/13."
-    within("ol#covered_materials"){ page.should have_content "Logic" }
-    within("ul#upcoming_materials"){ page.should have_content "Covered Logic" }
-    Timecop.travel(Time.new(2013, 03, 12))
-    click_link "Materials"
-    mark_as_covered("Basic Control Structures")
-    page.should have_content "basic-control-structures.md has been marked as covered on 2013/03/12."
-    within("ol#covered_materials") do
-      page.should have_list(["Logic", "Basic Control Structures"])
+    Timecop.travel(Time.new(2013, 03, 13)) do
+      course = Fabricate(:course)
+      signin_as :instructor, courses: [course]
+      visit course_path(course)
+      click_link "Materials"
+      within("ul#upcoming_materials"){ page.should have_content "Logic" }
+      within("ol#covered_materials"){ page.should_not have_content "Logic" }
+      mark_as_covered("Logic")
+      page.should have_content "logic.md has been marked as covered on 2013/03/13."
+      within("ol#covered_materials"){ page.should have_content "Logic" }
+      within("ul#upcoming_materials"){ page.should have_content "Covered Logic" }
     end
-    mark_as_covered("Logic", on: "2013/03/11")
-    page.should have_content "logic.md has been marked as covered on 2013/03/11."
-    within("ol#covered_materials") do
-      page.should have_list(["Logic", "Basic Control Structures"])
+
+    Timecop.travel(Time.new(2013, 03, 12)) do
+      click_link "Materials"
+      mark_as_covered("Basic Control Structures")
+      page.should have_content "basic-control-structures.md has been marked as covered on 2013/03/12."
+      within("ol#covered_materials") do
+        page.should have_list(["Logic", "Basic Control Structures"])
+      end
+      mark_as_covered("Logic", on: "2013/03/11")
+      page.should have_content "logic.md has been marked as covered on 2013/03/11."
+      within("ol#covered_materials") do
+        page.should have_list(["Logic", "Basic Control Structures"])
+      end
     end
   end
 

@@ -29,3 +29,4 @@ Coursewareofthefuture::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 end
+OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE

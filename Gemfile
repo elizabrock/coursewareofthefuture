@@ -71,6 +71,9 @@ end
 group :development do
   # Sent email in development environment will open in your browser:
   gem 'letter_opener'
+
+  # Creates viewable ERD
+  gem 'rails-erd'
 end
 
 group :test, :development do

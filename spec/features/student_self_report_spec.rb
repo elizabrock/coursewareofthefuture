@@ -26,6 +26,10 @@ feature "Student Self Report", js: true do
     click_link "Course Calendar"
   end
 
+  after do
+    Timecop.return
+  end
+
   scenario "Student sees 'today' in calendar under today's date." do
     within("td[data-date='2013-03-15']"){ page.should have_content "Today" }
   end

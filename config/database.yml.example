@@ -52,6 +52,3 @@ production:
   encoding: unicode
   database: coursewareofthefuture_production
   pool: 5
-
-cucumber:
-  <<: *test

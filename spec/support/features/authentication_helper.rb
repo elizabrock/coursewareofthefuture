@@ -16,7 +16,7 @@ module Features
         user = user_or_username
       end
 
-      token = user_or_username.try(:github_access_token) || token || "d141ef15f79ca4c6f43a8c688e0434648f277f20"
+      token = user_or_username.try(:github_access_token) || token || ENV["GITHUB_ACCESS_TOKEN"]
       username = user_or_username.try(:github_username) || user_or_username
       uid = user_or_username.try(:github_uid) || '12345'
       email = user.try(:email) || "#{username}smith@example.com"
