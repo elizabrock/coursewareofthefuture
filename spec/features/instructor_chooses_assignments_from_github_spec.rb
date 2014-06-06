@@ -26,6 +26,7 @@ feature "Instructor chooses assignments from github", vcr: true, js: true do
                   options: ["Cheers", "Ruby Koans", "Some Other Exercise", "Unfinished Exercise"])
       select "Ruby Koans", from: "Assignment"
       click_button "Set Milestones"
+      page.should have_content("publishing makes an assignment visible to students")
       page.should have_content("Strings")
       page.should have_content("Objects")
       page.should have_content("Triangles")
@@ -70,6 +71,7 @@ feature "Instructor chooses assignments from github", vcr: true, js: true do
       click_link "New Assignment"
       select "Ruby Koans", from: "Assignment"
       click_button "Set Milestones"
+      page.should have_content("publishing makes an assignment visible to students")
       page.should have_content("Strings")
       page.should have_content("Objects")
       page.should have_content("Triangles")

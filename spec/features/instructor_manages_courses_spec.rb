@@ -6,6 +6,8 @@ feature "Instructor manages courses", js: true do
     signin_as(:instructor)
     visit root_path
     click_link "Create New Course"
+    page.should have_content "Input as either markdown or html"
+    page.should have_content "Must be of the form username/repo"
     fill_in "Title", with: "Cohort 4"
     fill_in "Syllabus", with: "Foobar"
     fill_in "Start Date", with: "2014/01/24"
@@ -21,6 +23,8 @@ feature "Instructor manages courses", js: true do
     signin_as(:instructor)
     visit root_path
     click_link "Create New Course"
+    page.should have_content "Input as either markdown or html"
+    page.should have_content "Must be of the form username/repo"
     click_button "Create Course"
     page.should have_content "Course couldn't be created"
     page.should have_error_message("can't be blank", on: "Title")
