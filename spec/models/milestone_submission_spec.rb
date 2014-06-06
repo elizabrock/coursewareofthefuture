@@ -1,5 +1,5 @@
 require 'spec_helper'
-#include Rails.application.routes.url_helpers
+include Rails.application.routes.url_helpers
 
 describe MilestoneSubmission do
   it { should belong_to :milestone }
@@ -16,6 +16,7 @@ describe MilestoneSubmission do
       course.users << [student, instructor]
       milestone = Fabricate(:milestone, assignment: assignment, deadline: Time.new)
       milestone_submission = Fabricate(:milestone_submission, user: student, milestone: milestone, repository: "foo/bar")
+      Rails.application.routes.url_helpers.course_assignment_url(course, assignment, :host => "localhost:3000")
     end
     it "should have sent only one email to the instructor" do
       unread_emails_for(instructor.email).size.should == 1
