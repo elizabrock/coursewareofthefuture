@@ -18,12 +18,10 @@ feature "Student Self Report", js: true do
     Fabricate(:event, date: "2013/03/19", summary: "No Class", course: course)
     joe = signin_as :student, name: "joe", courses: [course]
     Fabricate(:self_report,
-              date: "2013/03/12",
-              attended: false,
+              date: "2013/03/12", attended: false,
               hours_coding: 5, hours_slept: 9, hours_learning: 0, user: joe)
     Fabricate(:self_report,
-              date: "2013/03/13",
-              attended: true,
+              date: "2013/03/13", attended: true,
               hours_coding: 2, hours_slept: 7.5, hours_learning: 4, user: joe)
     click_link "Course Calendar"
   end
@@ -77,4 +75,5 @@ feature "Student Self Report", js: true do
     within("td[data-date='2013-03-14']"){ page.should have_content "Learning: 2 hours" }
     within("td[data-date='2013-03-14']"){ page.should have_content "Sleep: 3 hours" }
   end
+
 end
