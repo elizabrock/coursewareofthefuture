@@ -11,13 +11,13 @@
       = f.collection_radio_buttons :attended, [[true, 'Yes'] ,[false, 'No']], :first, :last
   .row
     .small-12.columns
-      = f.input :hours_coding, as: :select, collection: 0..10
+      = f.input :hours_coding, as: :select, collection: 0..10, selected: self_report.hours_coding.to_i
   .row
     .small-12.columns
-      = f.input :hours_learning, as: :select, collection: 0..10
+      = f.input :hours_learning, as: :select, collection: 0..10, selected: self_report.hours_learning.to_i
   .row
     .small-12.columns
-      = f.input :hours_slept, as: :select, collection: 0..10
+      = f.input :hours_slept, as: :select, collection: 0..10, selected: self_report.hours_slept.to_i
   .row
     .small-12.columns
       = f.button :submit, value: "Submit"
