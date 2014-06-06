@@ -5,7 +5,7 @@ addons:
   postgresql: "9.3"
 before_script:
   - cp config/database.yml.example config/database.yml
-  - echo "GITHUB_ACCESS_TOKEN: de5fe0eb7731f43b6d2a565ef23a6dd7fd8c0700" > config/application.yml
+  - echo 'GITHUB_ACCESS_TOKEN: de5fe0eb7731f43b6d2a565ef23a6dd7fd8c0700' > config/application.yml
   - psql -c 'create database coursewareofthefuture_test;' -U postgres
   - psql -U postgres -q -d coursewareofthefuture_test -f db/structure.sql
 
