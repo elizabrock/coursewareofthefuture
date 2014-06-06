@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature "Instructor manages courses", js: true do
 
@@ -38,10 +38,9 @@ feature "Instructor manages courses", js: true do
     end
 
   scenario "Only the information for the active course is shown to students" do
-    Timecop.travel(Time.new(2013, 02, 24))
-    Fabricate(:course, title: "Cohort 3", end_date: "2013/01/14")
-    Fabricate(:course, title: "Cohort 4", end_date: "2014/02/28")
-    Fabricate(:course, title: "Cohort 5", end_date: "2014/04/14")
+    Fabricate(:course, title: "Cohort 3", end_date: 1.month.ago)
+    Fabricate(:course, title: "Cohort 4", end_date: 4.days.from_now)
+    Fabricate(:course, title: "Cohort 5", end_date: 2.months.from_now)
     signin_as :student
     visit root_path
     page.should have_button("Join Cohort 4")

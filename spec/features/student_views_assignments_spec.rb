@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature "Student views assignments" do
   scenario "Student views an assignment", vcr: true do
@@ -6,7 +6,6 @@ feature "Student views assignments" do
       title: "Cohort 4",
       start_date: "2013/04/28",
       end_date: "2013/06/01")
-    Timecop.travel(Time.new(2013, 05, 01))
     signin_as :student, courses: [course], github_username: "elizabrock"
     assignment = Fabricate(:assignment, title: "Capstone", course: course)
     Fabricate(:milestone, title: "Milestone 1", deadline: "2013/05/01", instructions: "This milestone is simple", assignment: assignment)
