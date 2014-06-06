@@ -41,6 +41,9 @@ feature "Course materials are pulled from github", vcr: true do
   end
 
   scenario "Viewing a large image" do
+    file = File.open('spec/support/files/data-storage-and-formats.jpg')
+    original_encoded_image = file.read
+
     course = Fabricate(:course)
     signin_as :student, courses: [course]
     visit root_path
@@ -48,5 +51,8 @@ feature "Course materials are pulled from github", vcr: true do
     filename = "data-storage-and-formats.jpg"
     page.response_headers['Content-Type'].should == "image/jpeg"
     page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")
+
+    pending
+    page.body.should eq(original_encoded_image)
   end
 end

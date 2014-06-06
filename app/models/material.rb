@@ -60,14 +60,12 @@ class Material
       result = client.contents(source_repository, path: path)
       Material.new(result)
     rescue Octokit::Forbidden
-      puts "rescued"
 
       directory = File.dirname(path)
       materials = Material.ls(client, source_repository, directory)
       material = materials.find{|material| material.fullpath == path}
       sha = material.sha
       blob = client.blob(source_repository, sha)
-      #puts blob.content
       blob.path = path
       
       Material.new(blob)
