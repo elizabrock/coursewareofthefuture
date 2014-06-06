@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   default_scope { order(name: :asc) }
 
   def has_confirmed_photo?
-    self.photo? && self.photo_confirmed?
+    self.photo.present? && self.photo_confirmed?
   end
 
   def repositories

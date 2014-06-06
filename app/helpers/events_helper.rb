@@ -59,7 +59,7 @@ module EventsHelper
       render(partial: "self_reports/completed_self_report", locals: { self_report: self_report, date: d}).to_s
     else
       self_report = SelfReport.new(date: d)
-      render(partial: "self_reports/self_report_form", locals: { self_report: self_report, date: d }).to_s
+      render(partial: "self_reports/_form", locals: { self_report: self_report, date: d }).to_s
     end
   end
 end

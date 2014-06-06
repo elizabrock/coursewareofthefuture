@@ -71,6 +71,7 @@ None
 ## Setup Instructions
 
 1. Copy `config/application.yml.example` to `config/application.yml`
+1. Copy `config/database.yml.example` to `config/database.yml`
 2. Fill in the correct Github API key (either get them from Eliza or set one up under developer applications, here: https://github.com/settings/applications)
 3. `rake db:create:all`
 4. `rake db:migrate`
@@ -83,3 +84,18 @@ None
 2. `git remote add heroku <heroku_git_url>`
 3. `git push heroku master`
 4. `heroku run rake db:migrate`
+
+
+## Research Notes:
+
+https://hud.iron.io/tq/projects/53594f0efaed5a000900008e/tasks/53596fb09979ed0d7d025a43/activity?from_date=04%2F23%2F2014&status%5B%5D=error&to_date=04%2F24%2F2014
+
+https://hud.iron.io/tq/projects/53594f0efaed5a000900008e/get_started#
+
+http://dev.iron.io/worker/webhooks/
+
+Trees:
+
+http://www.jqueryrain.com/2014/03/jquery-tabelizer-multi-level-grouping-indicators-tables/
+
+http://www.jqueryrain.com/2012/07/nicetree-jquery-tree-plugin/

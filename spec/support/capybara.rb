@@ -1,0 +1,5 @@
+require 'capybara/rspec'
+
+Capybara.configure do |config|
+  config.match = :prefer_exact
+end

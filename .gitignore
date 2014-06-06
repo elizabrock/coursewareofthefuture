@@ -21,3 +21,5 @@ coverage/*
 
 # Ignore uploads
 /public/uploads
+
+config/database.yml
