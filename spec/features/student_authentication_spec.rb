@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature "Student authentication" do
   # As a student
@@ -22,7 +22,7 @@ feature "Student authentication" do
       github_uid: "12345",
       github_username: "joe",
       name: "Joe Smith",
-      github_access_token: "d141ef15f79ca4c6f43a8c688e0434648f277f20",
+      github_access_token: ENV["GITHUB_ACCESS_TOKEN"],
     ).count.should == 1
     User.count.should == 1
   end
@@ -58,7 +58,7 @@ feature "Student authentication" do
       github_uid: "12345",
       github_username: "joe",
       name: "Joe Smith",
-      github_access_token: "d141ef15f79ca4c6f43a8c688e0434648f277f20",
+      github_access_token: ENV["GITHUB_ACCESS_TOKEN"],
     ).count.should == 1
     click_link "Sign Out"
 

@@ -1,4 +1,5 @@
 Fabricator(:assignment) do
+  course
   published true
 end
 

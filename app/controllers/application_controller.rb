@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   before_filter :require_profile!
 
   expose(:active_courses){ Course.active_or_future }
-  expose(:current_course){ current_user.try(:courses).try(:find_by_id, (params[:course_id] || params[:id])) }
+  expose(:current_course){ current_user.try(:courses).try(:find_by_id, params[:course_id]) }
 
   protected
   def authenticate!
