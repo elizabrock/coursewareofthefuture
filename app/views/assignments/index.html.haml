@@ -28,6 +28,6 @@
     - published_quizzes.each do |quiz|
       %li= link_to "#{quiz.title} (#{quiz.quiz_submissions.gradeable.count} completed, #{quiz.quiz_submissions.in_progress.count} in progress)", grade_course_quiz_path(current_course, quiz)
 - if can? :create, Assignment
-  = link_to "New Assignment", select_course_assignments_path(current_course), class: "button"
+  = link_to "New Assignment", new_course_assignment_path(current_course), class: "button"
 - if can? :create, Quiz
   = link_to "New Quiz", new_course_quiz_path(current_course), class: "button"

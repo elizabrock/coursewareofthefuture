@@ -264,6 +264,39 @@ ALTER SEQUENCE milestones_id_seq OWNED BY milestones.id;
 
 
 --
+-- Name: prereadings; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE prereadings (
+    id integer NOT NULL,
+    url character varying(255),
+    assignment_id integer,
+    note text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: prereadings_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE prereadings_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: prereadings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE prereadings_id_seq OWNED BY prereadings.id;
+
+
+--
 -- Name: question_answers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -544,6 +577,13 @@ ALTER TABLE ONLY milestones ALTER COLUMN id SET DEFAULT nextval('milestones_id_s
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY prereadings ALTER COLUMN id SET DEFAULT nextval('prereadings_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY question_answers ALTER COLUMN id SET DEFAULT nextval('question_answers_id_seq'::regclass);
 
 
@@ -636,6 +676,14 @@ ALTER TABLE ONLY milestone_submissions
 
 ALTER TABLE ONLY milestones
     ADD CONSTRAINT milestones_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: prereadings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY prereadings
+    ADD CONSTRAINT prereadings_pkey PRIMARY KEY (id);
 
 
 --

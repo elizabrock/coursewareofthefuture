@@ -9,14 +9,14 @@ class AssignmentsController < ApplicationController
 
   before_filter :require_instructor!, except: [:index, :show]
 
-  def new
-    source = params[:assignment_source]
-    begin
-      assignment.populate_from_github(source, current_user.octoclient)
-    rescue Octokit::NotFound
-      redirect_to :back, alert: "Could not retrieve instructions.md in #{source}.  Please confirm that the instructions.md is ready and then try again."
-    end
-  end
+  # def new
+  #   source = params[:assignment_source]
+  #   begin
+  #     assignment.populate_from_github(source, current_user.octoclient)
+  #   rescue Octokit::NotFound
+  #     redirect_to :back, alert: "Could not retrieve instructions.md in #{source}.  Please confirm that the instructions.md is ready and then try again."
+  #   end
+  # end
 
   def create
     if assignment.save
@@ -30,6 +30,6 @@ class AssignmentsController < ApplicationController
   private
 
   def assignment_params
-    params.require(:assignment).permit(:title, :summary, :published, milestones_attributes: [:id, :title, :instructions, :deadline])
+    params.require(:assignment).permit(:title, :summary, :published, prereading_attributes: [:id, :assignment_id, :url, :note], milestones_attributes: [:id, :title, :instructions, :deadline])
   end
 end

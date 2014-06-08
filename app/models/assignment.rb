@@ -1,6 +1,8 @@
 class Assignment < ActiveRecord::Base
   belongs_to :course
   has_many :milestones, inverse_of: :assignment
+  has_many :prereadings
+  accepts_nested_attributes_for :prereadings
 
   validates_presence_of :course
 

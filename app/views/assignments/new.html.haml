@@ -4,11 +4,16 @@
   = f.input :title
   = f.input :summary
   = f.input :published
-  = f.simple_fields_for :milestones do |m|
+  = f.simple_fields_for :prereading do |r|
     %fieldset
-      %legend #{m.object.title} Milestone
-      = m.input :title
-      = m.input :instructions
-      = m.input :deadline
+      %legend Pre Reading
+      = r.input :url
+      = r.input :note
+  / = f.simple_fields_for :milestones do |m|
+  /   %fieldset
+  /     %legend #{m.object.title} Milestone
+  /     = m.input :title
+  /     = m.input :instructions
+  /     = m.input :deadline
   = f.button :submit, "Save Assignment"
 
