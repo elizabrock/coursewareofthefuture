@@ -5,9 +5,15 @@
   $(document).ready(initialize);
 
   function initialize(){
+    $('.title').next('ul').hide();
     $('#upcoming_material').click(show1);
     $('#material_to_cover').click(show2);
     $('#material_covered').click(show3);
+    $('.material_wrapper').on('click', '.title', showTree);
+  }
+
+  function showTree(){
+    $(this).nextAll('ul').fadeToggle(400);
   }
 
   function show1(){
