@@ -9,9 +9,9 @@ module ApplicationHelper
 
   def link_to_course(course)
     if can?(:manage, course) and !current_user.courses.include?(course)
-      link_to course.title, course_enrollments_path(course), method: :post
+      link_to course.title, main_app.course_enrollments_path(course), method: :post
     else
-      link_to course.title, course
+      link_to course.title, main_app.course_path(course)
     end
   end
 

@@ -19,6 +19,14 @@ class User < ActiveRecord::Base
 
   default_scope { order(name: :asc) }
 
+  def forem_avatar
+    self.photo
+  end
+
+  def forem_name
+    self.name
+  end
+
   def has_confirmed_photo?
     self.photo.present? && self.photo_confirmed?
   end
