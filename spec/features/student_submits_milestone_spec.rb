@@ -6,7 +6,6 @@ feature "Student submits milestone", vcr: true do
     signin_as(:student,
               name: "Eliza",
               github_username: "elizabrock",
-              github_access_token: "d141ef15f79ca4c6f43a8c688e0434648f277f20",
               courses: [course])
     assignment = Fabricate(:assignment, title: "Capstone", course: course)
     Fabricate(:milestone, title: "Milestone 1", deadline: Date.today, instructions: "This milestone is simple", assignment: assignment)

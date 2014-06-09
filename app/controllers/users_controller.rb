@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   expose(:instructors){ User.instructors }
   expose(:students){ User.students }
   expose(:user)
+  expose(:self_reports, ancestor: :user)
+  expose(:self_report)
 
   skip_before_filter :require_profile!, only: :edit
 
