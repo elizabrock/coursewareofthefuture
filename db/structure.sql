@@ -270,11 +270,10 @@ ALTER SEQUENCE milestones_id_seq OWNED BY milestones.id;
 
 CREATE TABLE prerequisites (
     id integer NOT NULL,
-    url character varying(255),
     assignment_id integer,
-    note text,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    material_fullpath character varying(255)
 );
 
 
@@ -830,4 +829,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140423123810');
 INSERT INTO schema_migrations (version) VALUES ('20140607233822');
 
 INSERT INTO schema_migrations (version) VALUES ('20140609151348');
+
+INSERT INTO schema_migrations (version) VALUES ('20140609160111');
 

@@ -21,10 +21,22 @@ RSpec::Matchers.define :have_options_for do |field, options|
     actual_options.should == expected_options
   end
 
-  failure_message_for_should do |page|
+  failure_message do |page|
     expected_options = options[:options]
     actual_options = page.all("option").map{|o| [o.text]}.flatten
     "expected that #{actual_options} would be a precise match for #{expected_options}"
+  end
+end
+
+RSpec::Matchers.define :have_checkboxes do |expected_checkboxes|
+  match do |page|
+    actual_checkboxes = page.all("input[type=checkbox]").map{|o| [o.text]}.flatten
+    actual_checkboxes.should include(expected_checkboxes)
+  end
+
+  failure_message do |page|
+    actual_checkboxes = page.all("input[type=checkbox]").map{|o| [o.text]}.flatten
+    "expected that #{expected_checkboxes} checkboxes would be present, but only #{actual_checkboxes} checkboxes could be found"
   end
 end
 

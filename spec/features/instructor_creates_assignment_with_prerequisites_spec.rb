@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-feature "Instructor chooses prerequisites from github", vcr: true, js: true do
+feature "Instructor creates assignment with prerequisites", vcr: true, js: true do
 
   scenario "Happy Path, creating an assignment with prerequisites" do
     Timecop.travel(Time.new(2013, 03, 01)) do
@@ -12,8 +12,7 @@ feature "Instructor chooses prerequisites from github", vcr: true, js: true do
       signin_as(:instructor, courses: [course])
       visit new_course_assignment_path(course)
 
-      page.should have_options_for("Prerequisites",
-                  options: materials_list)
+      page.should have_checkboxes(materials_list)
 
       check "Logic"
       check "Garbage Collection"

@@ -41,6 +41,10 @@ feature "Student views assignments" do
       page.should have_content("Garbage Collection")
       page.should_not have_content("Booleans and Bits")
     end
+
+    click_link "Logic"
+    current_path.should == "/materials/computer-science/logic.md"
+    page.should have_content "Logic is, broadly speaking, the application of reasoning to an activity or concept. In Computer Science, we primarily use deductive reasoning (a.k.a. deductive logic) along with boolean algebra (e.g. two-valued logic)."
   end
 
   scenario "Viewing the assignment list only shows published assignments" do

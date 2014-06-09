@@ -1,11 +1,11 @@
 %h1= assignment.title
 :markdown
   #{assignment.summary}
-- assignment.prerequisites.each_with_index do |reading|
-  .reading
-    %h3= link_to "Reading", reading.url
-    %h3= reading.note
 
+%h2 Assignment Prerequisites
+%ul
+  - assignment.prerequisites.each_with_index do |prerequisite|
+    %li= prerequisite.material_fullpath
 
 - only_submitted_milestones_displayed = true
 - assignment.milestones.each_with_index do |milestone|

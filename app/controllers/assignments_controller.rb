@@ -15,7 +15,7 @@ class AssignmentsController < ApplicationController
     begin
       assignment.populate_from_github(source, current_user.octoclient)
     rescue Octokit::NotFound
-      redirect_to :back, alert: "Could not retrieve instructions.md in #{source}.  Please confirm that the instructions.md is ready and then try again."
+      redirect_to select_course_assignments_path(current_course), alert: "Could not retrieve instructions.md in #{source}.  Please confirm that the instructions.md is ready and then try again."
     end
   end
 
