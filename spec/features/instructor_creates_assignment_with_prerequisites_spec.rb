@@ -9,7 +9,7 @@ feature "Instructor chooses prerequisites from github", vcr: true, js: true do
                          start_date: "2013/02/28", end_date: "2013/06/01")
 
       Fabricate(:assignment, title: "Capstone", course: course)
-      signin_as(:instructor, courses: [:course])
+      signin_as(:instructor, courses: [course])
       visit new_course_assignment_path(course)
 
       page.should have_options_for("Prerequisites",

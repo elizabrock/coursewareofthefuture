@@ -3,16 +3,16 @@
     =link_to(image_tag(user.photo, class: "profile_photo"), user_path)
   .small-6.large-10.columns
     %h1= user.name
-    %p= user.github_username
+    %p= link_to(user.github_username, "http://www.github.com/"+user.github_username)
     %p= user.phone
-    %p= user.email
+    %p= mail_to(user.email)
 .row
   .small-12.columns
     - if can?(:view_private_details_of, user)
       %fieldset
         %legend Private Details
         %p
-          %em This information only visible to you and your instructor(s).
+          %em This information is only visible to you and your instructor(s).
         .row
           .large-6.columns
             %h5 Goals:
@@ -20,6 +20,15 @@
           .large-6.columns
             %h5 Background:
             %p= user.background || "[Missing]"
+.row
+  .small-12.columns
+    - if can?(:view_private_details_of, user)
+      #self_reports{ data: {data: self_reports.to_json} }
+      %svg#self_report_graph
+      #self_report_legend
+        #slept.legend Hours Slept
+        #coding.legend Hours Coding
+        #learning.legend Hours Learning
 .row
   .small-12.columns
     - if can?(:instructify, user) and !user.instructor

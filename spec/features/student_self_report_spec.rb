@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature "Student Self Report", js: true do
   # As a student
@@ -26,6 +26,10 @@ feature "Student Self Report", js: true do
               attended: true,
               hours_coding: 2, hours_slept: 7.5, hours_learning: 4, user: joe)
     click_link "Course Calendar"
+  end
+
+  after do
+    Timecop.return
   end
 
   scenario "Student sees 'today' in calendar under today's date." do

@@ -1,3 +1,65 @@
 .profile_photo {
   border-radius: 10px;
 }
+
+#self_report_graph {
+  margin-bottom: 15px;
+
+  g {
+    path {
+      stroke-width: 2;
+      fill: none;
+    }
+
+    #hoursCoding {
+      stroke: forestgreen;
+    }
+
+    #hoursLearning {
+      stroke: firebrick;
+    }
+
+    #hoursSlept {
+      stroke: steelblue;
+    }
+
+    line {
+      stroke: black;
+    }
+
+    g.axis .tick text {
+      font: 10px sans-serif;
+    }
+
+    .xLabel {
+      text-anchor: middle;
+    }
+
+    .yLabel {
+      text-anchor: right;
+    }
+  }
+}
+
+#self_report_legend {
+  margin-bottom: 40px;
+
+  .legend {
+    width: 33%;
+    float: left;
+    margin: 0;
+    text-align: center;
+  }
+
+  #coding {
+    color: forestgreen;
+  }
+
+  #learning {
+    color: firebrick;
+  }
+
+  #slept {
+    color: steelblue;
+  }
+}
