@@ -4,7 +4,7 @@
   = f.input :title
   = f.input :summary
   = f.input :published
-  = f.simple_fields_for :prereading do |r|
+  = f.simple_fields_for :prerequisite do |r|
     %fieldset
       %legend Pre Reading
       = r.input :url

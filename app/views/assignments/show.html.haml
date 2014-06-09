@@ -1,7 +1,7 @@
 %h1= assignment.title
 :markdown
   #{assignment.summary}
-- assignment.prereadings.each_with_index do |reading|
+- assignment.prerequisites.each_with_index do |reading|
   .reading
     %h3= link_to "Reading", reading.url
     %h3= reading.note

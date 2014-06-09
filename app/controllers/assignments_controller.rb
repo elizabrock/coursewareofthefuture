@@ -31,6 +31,8 @@ class AssignmentsController < ApplicationController
   private
 
   def assignment_params
-    params.require(:assignment).permit(:title, :summary, :published, prereadings_attributes: [:id, :assignment_id, :url, :note], milestones_attributes: [:id, :title, :instructions, :deadline])
+    params.require(:assignment).permit(:title, :summary, :published,
+                                       prerequisites_attributes: [:id, :material_fullpath],
+                                       milestones_attributes: [:id, :title, :instructions, :deadline])
   end
 end
