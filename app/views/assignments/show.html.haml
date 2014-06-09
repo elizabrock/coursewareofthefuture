@@ -1,10 +1,11 @@
 %h1= assignment.title
 :markdown
   #{assignment.summary}
+%ul.reading='Required Readings'
 - assignment.prereadings.each_with_index do |reading|
-  .reading
-    %h3= link_to "Reading", reading.url
-    %h3= reading.note
+  %li= link_to reading.note, reading.url
+  %p
+
 
 
 - only_submitted_milestones_displayed = true

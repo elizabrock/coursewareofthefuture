@@ -3,7 +3,7 @@ module Features
 
     def signin_as(user_type, options = {})
       user = (user_type.is_a? Symbol) ? Fabricate(user_type, options) : user_type
-      sign_into_github_as(user.github_username, uid: user.github_uid)
+      sign_into_github_as(user)
       visit user_omniauth_authorize_path("github")
       if user.instructor?
         visit course_path(user.courses.first) unless user.courses.empty?
@@ -11,15 +11,23 @@ module Features
       user
     end
 
-    def sign_into_github_as(username, uid: nil, token: "d141ef15f79ca4c6f43a8c688e0434648f277f20")
-      if uid.nil?
-        user = User.find_by_github_username(username)
-        uid = user.try(:github_uid) || '12345'
+    def sign_into_github_as(user_or_username, token: nil)
+      if user_or_username.is_a? User
+        user = user_or_username
       end
+
+      token = user_or_username.try(:github_access_token) || token || ENV["GITHUB_ACCESS_TOKEN"]
+      username = user_or_username.try(:github_username) || user_or_username
+      uid = user_or_username.try(:github_uid) || '12345'
+      email = user.try(:email) || "#{username}smith@example.com"
 
       photo_url = "https://avatars.github.com/#{uid}?s=460"
       @default_image ||= File.read(Rails.root.join('spec', 'support', 'files', 'arson_girl.jpg'))
-      stub_request(:get, photo_url).to_return( body: @default_image, :status   => 200, :headers  => { 'Content-Type' => "image/jpeg; charset=UTF-8" } )
+
+      stub_request(:get, photo_url).
+        to_return( body: @default_image,
+                  :status   => 200,
+                  :headers  => { 'Content-Type' => "image/jpeg; charset=UTF-8" } )
 
       OmniAuth.config.add_mock(:github, {
         uid: uid,
@@ -28,7 +36,7 @@ module Features
         },
         info: {
           nickname: username,
-          email: "#{username}smith@example.com",
+          email: email,
           name: "#{username.capitalize} Smith",
           image: photo_url,
         },
