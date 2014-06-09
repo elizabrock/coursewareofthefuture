@@ -3,6 +3,7 @@ require 'spec_helper'
 describe SelfReport do
   it { should validate_presence_of :user }
   it { should validate_presence_of :date }
+  it { should validate_uniqueness_of :date }
 
   describe ".send_student_reminders!" do
     def do_action
