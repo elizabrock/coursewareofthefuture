@@ -20,6 +20,6 @@ class SelfReportsController < ApplicationController
   private
 
   def self_report_params
-    params.require(:self_report).permit(:attended, :hours_coding, :hours_learning, :hours_slept, :date, :id)
+    params.require(:self_report).permit(:attended, :hours_coding, :hours_learning, :hours_slept, :date)
   end
 end
