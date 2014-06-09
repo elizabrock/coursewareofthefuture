@@ -66,6 +66,20 @@ def materials_hash
   ]
 end
 
+def materials_list
+  material_titles(materials_hash)
+end
+
+def material_titles(list)
+  return unless list
+  fullpaths = []
+  list.each do |item_hash|
+    fullpaths << item_hash[:title]
+    fullpaths << material_titles(item_hash[:children])
+  end
+  fullpaths.flatten.compact
+end
+
 def remove_paths(hash_array)
   return unless hash_array
   hash_array.each do |hash|

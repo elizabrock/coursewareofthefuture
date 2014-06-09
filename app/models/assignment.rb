@@ -1,8 +1,8 @@
 class Assignment < ActiveRecord::Base
   belongs_to :course
   has_many :milestones, inverse_of: :assignment
-  has_many :prereadings, inverse_of: :assignment
-  accepts_nested_attributes_for :prereadings
+  has_many :prerequisites, inverse_of: :assignment
+  accepts_nested_attributes_for :prerequisites
 
   validates_presence_of :course
 
@@ -30,7 +30,7 @@ class Assignment < ActiveRecord::Base
   end
 
   def populate_from_github(path, client)
-    markdown = Material.lookup(path + "/instructions.md", course.source_repository, client).content
+    markdown = Material.lookup("#{path}/instructions.md", course.source_repository, client).content
     sections = markdown.split("##").each do |section|
       title, body = section.split("\n",2)
       title.gsub!(/#+\s*/,"")

@@ -8,8 +8,6 @@
     %fieldset
       %legend Prerequisites
       %p Checkboxes will go here
-      = r.input :url
-      = r.input :note
   = f.simple_fields_for :milestones do |m|
     %fieldset
       %legend #{m.object.title} Milestone
