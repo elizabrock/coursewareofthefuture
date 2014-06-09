@@ -9,11 +9,11 @@
       %legend Pre Reading
       = r.input :url
       = r.input :note
-  / = f.simple_fields_for :milestones do |m|
-  /   %fieldset
-  /     %legend #{m.object.title} Milestone
-  /     = m.input :title
-  /     = m.input :instructions
-  /     = m.input :deadline
+  = f.simple_fields_for :milestones do |m|
+    %fieldset
+      %legend #{m.object.title} Milestone
+      = m.input :title
+      = m.input :instructions
+      = m.input :deadline
   = f.button :submit, "Save Assignment"
 
