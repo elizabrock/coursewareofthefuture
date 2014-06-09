@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature "Course materials are pulled from github", vcr: true do
   scenario "Viewing the materials list" do

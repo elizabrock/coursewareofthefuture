@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
   expose(:course, attributes: :course_params)
+  expose(:current_course){ current_user.courses.find_by_id params[:id] }
 
   before_filter :require_instructor!, except: [:show]
 

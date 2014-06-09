@@ -3,9 +3,9 @@
     =link_to(image_tag(user.photo, class: "profile_photo"), user_path)
   .small-6.large-10.columns
     %h1= user.name
-    %p= user.github_username
+    %p= link_to(user.github_username, "http://www.github.com/"+user.github_username)
     %p= user.phone
-    %p= user.email
+    %p= mail_to(user.email)
 .row
   .small-12.columns
     - if can?(:view_private_details_of, user)
