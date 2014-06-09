@@ -6,9 +6,9 @@
   = f.input :published
   = f.simple_fields_for :prerequisite do |r|
     %fieldset
-      %legend Pre Reading
-      = r.input :url
-      = r.input :note
+      %legend Prerequisites
+      %p Will go here
+
   = f.simple_fields_for :milestones do |m|
     %fieldset
       %legend #{m.object.title} Milestone

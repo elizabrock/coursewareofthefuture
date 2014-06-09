@@ -8,15 +8,7 @@ feature "Instructor chooses assignments from github", vcr: true, js: true do
                          title: "Cohort 4",
                          start_date: "2013/02/28", end_date: "2013/06/01")
       Fabricate(:assignment, title: "Capstone", course: course)
-
-      instructor = Fabricate(:instructor, courses: [course])
-      instructor.photo_confirmed?.should be_true
-
-      instructor2 = signin_as(instructor)
-      instructor2.id.should == instructor.id
-      instructor2.photo_confirmed?.should be_true
-
-      Course.count.should == 1
+      signin_as(:instructor, courses: [:course])
 
       visit root_path
       visit course_path(course)

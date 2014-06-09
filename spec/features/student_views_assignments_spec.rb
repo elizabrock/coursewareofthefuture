@@ -20,6 +20,30 @@ feature "Student views assignments" do
     within(milestone(2)){ page.should have_content "Ability to view and submit is pending completion of previous milestones" }
   end
 
+  scenario "Student views an assignment with prerequisites", vcr: true do
+    course = Fabricate(:course,
+      title: "Cohort 4",
+      start_date: "2013/04/28",
+      end_date: "2013/06/01")
+    signin_as :student, courses: [course], github_username: "elizabrock"
+
+    assignment = Fabricate(:assignment, title: "Capstone", course: course)
+    Fabricate(:milestone, assignment: assignment)
+
+    Fabricate(:prerequisite, assignment: assignment,
+              material_fullpath: "materials/computer-science/logic/logic.md")
+    Fabricate(:prerequisite, assignment: assignment,
+              material_fullpath: "materials/computer-science/programming/advanced-programming/garbage-collection.md")
+
+    visit course_assignment_path(course, assignment)
+
+    within(".prerequisites") do
+      page.should have_content("Logic")
+      page.should have_content("Garbage Collection")
+      page.should_not have_content("Booleans and Bits")
+    end
+  end
+
   scenario "Viewing the assignment list only shows published assignments" do
     course = Fabricate(:course, title: "Cohort 4")
     Fabricate(:assignment, title: "Foobar", published: false, course: course)
