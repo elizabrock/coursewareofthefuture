@@ -52,7 +52,7 @@ gem 'slide-em-up', github: 'elizabrock/slide-em-up', branch: 'master', require: 
 # Compresses javacript and css:
 gem 'uglifier', '>= 1.3.0'
 # rails server that handles multiple connections
-# gem 'unicorn'
+gem 'unicorn'
 
 group :production do
   # Makes the heroku logs more informative:
@@ -73,6 +73,9 @@ end
 group :development do
   # Sent email in development environment will open in your browser:
   gem 'letter_opener'
+
+  # Creates viewable ERD
+  gem 'rails-erd'
 end
 
 group :test, :development do
@@ -81,8 +84,8 @@ group :test, :development do
   # For debugging:
   gem 'pry-rails'
   # Testing:
-  gem 'rspec-rails'
-  gem 'rspec'
+  gem 'rspec-rails', '~> 3.0'
+  gem 'rspec', '~> 3.0'
 end
 
 group :test do

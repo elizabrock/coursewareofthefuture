@@ -5,6 +5,6 @@
 .row
   .large-6.columns
     = simple_form_for event, url: course_events_path(current_course) do |f|
-      = f.input :summary
+      = f.input :summary, hint: "Please describe the event"
       = f.input :date, label: "Event Date", as: :date
       = f.button :submit, "Create Event", class: "right"
