@@ -4,10 +4,10 @@ describe MilestoneSubmissionMailer do
 
   context "#notify_instructors" do
 
-    let(:student){ Fabricate(:student, name: "Lisa Smith") }
-    let(:instructor1){ Fabricate(:instructor) }
+    let!(:instructor1){ Fabricate(:instructor) }
     let(:instructor2){ Fabricate(:instructor) }
     let(:instructor3){ Fabricate(:instructor) }
+    let(:student){ Fabricate(:student, name: "Lisa Smith") }
     let(:course){ Fabricate(:course) }
     let(:assignment){ Fabricate(:assignment, title: "Test Assignment", course: course) }
 
