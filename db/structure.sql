@@ -413,7 +413,6 @@ CREATE TABLE schema_migrations (
 -- Name: self_reports; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
-
 CREATE TABLE self_reports (
     id integer NOT NULL,
     created_at timestamp without time zone,
