@@ -17,7 +17,15 @@ class User < ActiveRecord::Base
   validates_format_of :email, with: /\A[^@]+@[^@]+\z/, message: "must be an email address"
   validates_presence_of :github_access_token
 
+  after_create :check_for_first_user
+
   default_scope { order(name: :asc) }
+
+  def check_for_first_user
+    if (User.all.length == 1)
+      User.first.update_attributes(instructor: true)
+    end
+  end
 
   def has_confirmed_photo?
     self.photo.present? && self.photo_confirmed?
