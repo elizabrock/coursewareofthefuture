@@ -38,5 +38,23 @@ feature "Course materials are pulled from github", vcr: true do
     filename = "wikimedia-commons-venn-and.png"
     page.response_headers['Content-Type'].should == "image/png"
     page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")
+
+    original_encoded_image = File.read('spec/support/files/wikimedia-commons-venn-and.png', encoding: "ascii-8bit")
+    actual_encoded_image = page.body
+    actual_encoded_image.should eq(original_encoded_image)
+  end
+
+  scenario "Viewing a large image" do
+    course = Fabricate(:course)
+    signin_as :student, courses: [course]
+    visit root_path
+    visit course_path(course) + "/materials/life-skills/data-storage-and-formats.jpg"
+    filename = "data-storage-and-formats.jpg"
+    page.response_headers['Content-Type'].should == "image/jpeg"
+    page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")
+
+    original_encoded_image = File.read('spec/support/files/data-storage-and-formats.jpg', encoding: "ascii-8bit")
+    actual_encoded_image = page.body
+    actual_encoded_image.should eq(original_encoded_image)
   end
 end
