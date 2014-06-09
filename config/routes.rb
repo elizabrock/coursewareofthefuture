@@ -31,7 +31,7 @@ Coursewareofthefuture::Application.routes.draw do
   resource :enrollment, only: [:new]
   resources :milestone_submissions, only: [:create]
   resources :question_grades, only: [:edit, :update]
-  resources :self_reports, only: [:new, :create, :edit, :update]
+  resources :self_reports, except: [:destroy]
   resources :users, except: [:destroy] do
     member do
       post :instructify
