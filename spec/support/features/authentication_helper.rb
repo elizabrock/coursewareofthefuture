@@ -2,6 +2,7 @@ module Features
   module AuthenticationHelpers
 
     def signin_as(user_type, options = {})
+      Fabricate(:instructor)
       user = (user_type.is_a? Symbol) ? Fabricate(user_type, options) : user_type
       sign_into_github_as(user)
       visit user_omniauth_authorize_path("github")
