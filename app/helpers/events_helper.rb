@@ -20,25 +20,25 @@ module EventsHelper
     end
 
     events = course.events
-    if event = events.find{|e| e.date == d }
+    if event = events.find{|e| e.date.to_date == d }
       event_strings << [event.summary, ""]
     end
 
     milestones = course.milestones
-    milestone = milestones.find{|e| e.deadline == d }
+    milestone = milestones.find{|e| e.deadline.to_date == d }
     if milestone and milestone.assignment.published?
       milestone_description = "#{milestone.assignment.title}: #{milestone.title} Due"
       event_strings << [ milestone_description, "alert"]
     end
 
     quizzes = course.quizzes.published
-    if quiz = quizzes.find{|q| q.deadline == d }
+    if quiz = quizzes.find{|q| q.deadline.to_date == d }
       quiz_description = "#{quiz.title} Due"
       event_strings << [ quiz_description, "alert"]
     end
 
     covered_materials = course.covered_materials
-    if covered_material = covered_materials.find{|cm| cm.covered_on == d }
+    if covered_material = covered_materials.find{|cm| cm.covered_on.to_date == d }
       material_description = "#{covered_material.formatted_title} Covered"
       event_strings << [ material_description, "secondary"]
     end

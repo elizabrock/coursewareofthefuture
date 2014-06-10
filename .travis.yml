@@ -4,6 +4,8 @@ rvm:
 addons:
   postgresql: "9.3"
 before_script:
+  - cp config/database.yml.example config/database.yml
+  - cp config/application.travis.yml config/application.yml
   - psql -c 'create database coursewareofthefuture_test;' -U postgres
   - psql -U postgres -q -d coursewareofthefuture_test -f db/structure.sql
 

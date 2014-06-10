@@ -1,5 +1,5 @@
 class Material
-  attr_accessor :path, :short_name, :filename, :linkable, :children, :fullpath, :content, :type, :extension
+  attr_accessor :sha, :path, :short_name, :filename, :linkable, :children, :fullpath, :content, :type, :extension
 
   def initialize(tree_item = nil)
     @children = []
@@ -13,9 +13,11 @@ class Material
 
     @linkable = (@extension == ".md")
 
+    @sha = tree_item.sha
+
     @type = tree_item.type
     @html_url = tree_item.html_url
-    if tree_item.type == "file" and tree_item.content.present?
+    if tree_item.content.present?
       @content = Base64.decode64(tree_item.content)
     end
   end
@@ -54,8 +56,20 @@ class Material
   end
 
   def self.lookup(path, source_repository, client)
-    result = client.contents(source_repository, path: path)
-    Material.new(result)
+    begin
+      result = client.contents(source_repository, path: path)
+      Material.new(result)
+    rescue Octokit::Forbidden
+
+      directory = File.dirname(path)
+      materials = Material.ls(client, source_repository, directory)
+      material = materials.find{|material| material.fullpath == path}
+      sha = material.sha
+      blob = client.blob(source_repository, sha)
+      blob.path = path
+
+      Material.new(blob)
+    end
   end
 
   def edit_url

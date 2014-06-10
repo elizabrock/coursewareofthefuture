@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature "Student Self Report", js: true do
   # As a student
@@ -28,6 +28,10 @@ feature "Student Self Report", js: true do
     click_link "Course Calendar"
   end
 
+  after do
+    Timecop.return
+  end
+
   scenario "Student sees 'today' in calendar under today's date." do
     within("td[data-date='2013-03-15']"){ page.should have_content "Today" }
   end
@@ -42,7 +46,7 @@ feature "Student Self Report", js: true do
 
   scenario "Student still sees self-report form is another user has filled out their own report" do
     student = Fabricate(:student)
-    Fabricate(:self_report, date: "2013/03/11", attended: false, hours_coding: 5, hours_slept: 9, hours_learning: 0, user: student)
+    Fabricate(:self_report, date: "2013/03/11", user: student)
     click_link "Course Calendar"
     within("td[data-date='2013-03-11']"){ page.should have_content "Self-Report:" }
   end
@@ -97,6 +101,14 @@ feature "Student Self Report", js: true do
       page.should have_content "Coding: 3 hours"
       page.should have_content "Sleep: 6 hours"
       page.should have_content "Learning: 4 hours"
+    end
+  end
+
+  scenario "Student enters empty form" do
+    within("td[data-date='2013-03-14']") do
+      page.should have_content "Self-Report:"
+      click_button "Submit"
+      page.should have_content "can't be blank"
     end
   end
 end

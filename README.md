@@ -72,11 +72,24 @@ None
 
 1. Copy `config/application.yml.example` to `config/application.yml`
 1. Copy `config/database.yml.example` to `config/database.yml`
-2. Fill in the correct Github API key (either get them from Eliza or set one up under developer applications, here: https://github.com/settings/applications)
+2. Fill in the correct Github API key and a valid Github access token (see below)
 3. `rake db:create:all`
 4. `rake db:migrate`
+3.  Copy a valid `github_access_token` from a local User (e.g. from logging in on localhost) and save it as `GITHUB_ACCESS_TOKEN` in application.yml.
 5. `rake`
 6. Confirm that rake passed.  If it didn't, that means your setup is missing something.
+
+
+### Developer keys
+
+Either get them from Eliza, or set up your own keys, as below:
+
+1. Go to https://github.com/settings/applications and create an application
+  * Homepage URL: http://localhost:3000
+  * Authorization callback URL: http://localhost:3000/users/auth/github/callback
+2. Copy the application keys into your application.yml:
+  * Client ID = GITHUB\_CLIENT\_ID
+  * Client Secret = GITHUB\_CLIENT\_SECRET
 
 ## Deployment Instructions
 

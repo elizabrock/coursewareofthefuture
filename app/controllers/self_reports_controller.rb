@@ -3,8 +3,11 @@ class SelfReportsController < ApplicationController
   expose(:self_report, attributes: :self_report_params)
 
   def create
-    self_report.save
-    render :show
+    if self_report.save
+      render action: "show"
+    else
+      render action: "new"
+    end
   end
 
   def update
@@ -12,7 +15,7 @@ class SelfReportsController < ApplicationController
       render :show
       flash[:notice] = "Your self report has been updated!"
     else
-      render :show
+      render :edit
       flash[:alert] = "Your update failed"
     end
   end

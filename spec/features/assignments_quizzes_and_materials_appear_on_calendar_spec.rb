@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature "Assignments quizzes and materials appear on calendar" do
 
