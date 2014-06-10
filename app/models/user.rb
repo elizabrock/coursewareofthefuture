@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :rememberable, :trackable, :omniauthable, :omniauth_providers => [:github]
 
   scope :instructors, ->{ where(instructor: true) }
+  scope :forem_admin, ->{ where(instructor: true) }
   scope :students, ->{ where("instructor = false or instructor is null") }
 
   has_many :enrollments
@@ -19,16 +20,8 @@ class User < ActiveRecord::Base
 
   default_scope { order(name: :asc) }
 
-  def forem_avatar
-    self.photo
-  end
-
   def forem_name
     self.name
-  end
-
-  def forem_admin?
-    forem_admin
   end
 
   def has_confirmed_photo?

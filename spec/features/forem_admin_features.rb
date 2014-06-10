@@ -3,7 +3,7 @@ require 'spec_helper'
 feature "Forem admin creates forum categories" do
 
   scenario "Viewing forem admin area as forem admin" do
-    signin_as :forem_admin
+    signin_as :instructor
     visit root_path
     click_link "Forum Admin"
     page.should have_content "Admin Area"
