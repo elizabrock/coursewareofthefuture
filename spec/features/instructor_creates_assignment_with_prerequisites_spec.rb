@@ -10,21 +10,14 @@ feature "Instructor creates assignment with prerequisites", vcr: true, js: true 
 
       Fabricate(:assignment, title: "Capstone", course: course)
       signin_as(:instructor, courses: [course])
-      visit new_course_assignment_path(course)
-
-      page.should have_checkboxes(materials_list)
-
-      check "Logic"
-      check "Garbage Collection"
+      visit select_course_assignments_path(course)
 
       select "Ruby Koans", from: "Assignment"
       click_button "Set Milestones"
-
-      within_fieldset("Prerequisites") do
-        page.should have_content("Logic")
-        page.should have_content("Garbage Collection")
-        page.should_not have_content("Basic Control Structures")
-      end
+      save_and_open_page
+      page.should have_checkboxes(materials_list)
+      check "Logic"
+      check "Garbage Collection"
 
       within_fieldset("Strings Milestone") do
         fill_in "Deadline", with: "2013/03/24"

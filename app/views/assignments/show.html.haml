@@ -5,7 +5,7 @@
 %h2 Assignment Prerequisites
 %ul
   - assignment.prerequisites.each_with_index do |prerequisite|
-    %li= prerequisite.material_fullpath
+    %li= prerequisite.url
 
 - only_submitted_milestones_displayed = true
 - assignment.milestones.each_with_index do |milestone|
