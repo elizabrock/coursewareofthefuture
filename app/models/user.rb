@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
     self.name
   end
 
+  def forem_admin?
+    forem_admin
+  end
+
   def has_confirmed_photo?
     self.photo.present? && self.photo_confirmed?
   end

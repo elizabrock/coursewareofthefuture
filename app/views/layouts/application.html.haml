@@ -32,7 +32,8 @@
                 - else
                   %li Instructor View
                   %li= link_to "View As Student", studentify_instructor_path, method: :post
-                  %li= link_to "Fourm Admin", forem.admin_root_url
+              - if current_user.forem_admin
+                %li= link_to "Forum Admin", forem.admin_root_path
               %li= link_to "My Profile", main_app.user_path(current_user, course_id: current_course.try(:id))
               %li= link_to "Sign Out", main_app.destroy_user_session_path, method: :delete
             - else
