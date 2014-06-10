@@ -1,26 +1,26 @@
-%table(width="100%" style="background-color:black; color:white; background-image: url('http://nashvillesoftwareschool.com/wp-content/themes/nashville_software_school/images/chalk_black_low.jpg')")
+%table{ width: "100%", style: "background-color:black; color:white; background-image: url(#{image_url('chalk_black_low.jpg')})" }
   %tr
-    %td 
-      %img(src="localhost:3000/assets/images/logo2.png")
+    %td
+      = image_tag "logo2.png"
       %table(align="center" style="color:white;")
         %tr
           %td
             %p
               %strong(style="font-size:150%;") DID YOU REMEMBER TO ENTER YOUR SELF REPORT?
-       
+
       %table(align="center" style="color:white;")
         %tr
           %td
-            %img(width="86.75" height="67.5")= image_url("Squirrel.png")
+            = image_tag "Squirrel.png", width: "86.75", height: "67.5"
           %td
             %p(style="font-size:110%;")= SelfReport.random_reminder
-        
-     
+
+
       %table
         %tr
           %td
             &nbsp;
-      %table(align="center") 
+      %table(align="center")
         %tr
           %td
-            %p(style="color: yellow;")= link_to "Head to the Course Calendar  ~>", "https://coursewareofthefuture.herokuapp.com" + course_calendar_path(@course)
+            %p(style="color: yellow;")= link_to "Head to the Course Calendar  ~>", course_calendar_url(@course)
