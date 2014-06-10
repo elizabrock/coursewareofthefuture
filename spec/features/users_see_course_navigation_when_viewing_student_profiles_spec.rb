@@ -48,7 +48,6 @@ feature "Users see course navigation when viewing student profiles" do
     visit root_path
     click_link "My Profile"
     current_path.should == user_path(me)
-    page.should_not have_content "Materials"
     page.should_not have_content "Calendar"
   end
 

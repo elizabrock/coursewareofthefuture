@@ -22,3 +22,63 @@
     display: none;
   }
 }
+
+#material_covered {
+  position: absolute;
+  left: 15px;
+  top: 60px;
+  z-index: 3;
+  width: 403;
+  height: 65px;
+}
+
+#covered_materials{
+position: absolute;
+top: 23px;
+left: 402px;
+width: 600px;
+height: 500px;
+padding: 8px 0px 0px 24px;
+}
+
+#material_to_cover {
+  position: absolute;
+  top: 182px;
+  left: -485px;
+  width: 403px;
+  z-index: 3;
+  height: 60px;
+  background: gainsboro;
+}
+
+#material_to_cover_yet {
+display: none;
+position: absolute;
+top: 23px;
+left: -108px;
+width: 600px;
+padding: 10px 0px 0px 30px;
+}
+
+#upcoming_material{
+  position: absolute;
+  top: 198px;
+  left: 15px;
+  width: 403px;
+  padding: 3px 0px 3px 1px;
+  z-index: 2;
+  background: gainsboro;
+}
+
+#upcoming_materials{
+display: none;
+position: absolute;
+top: 95px;
+left: 402px;
+width: 600px;
+}
+
+.material_wrapper {
+  padding: 1px 0px 5px 25px;
+}
+
