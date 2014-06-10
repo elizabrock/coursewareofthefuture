@@ -20,10 +20,6 @@ module ApplicationHelper
   end
 
   def currently_in?(arg)
-    if arg.is_a? Regexp
-      arg =~ request.fullpath
-    else
-      params[:controller] == arg
-    end
+    params[:controller] == arg
   end
 end
