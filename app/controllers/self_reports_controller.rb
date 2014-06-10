@@ -4,9 +4,9 @@ class SelfReportsController < ApplicationController
 
   def create
     if self_report.save
-      render action: "show"
+      render :show
     else
-      render action: "new"
+      render :new
     end
   end
 

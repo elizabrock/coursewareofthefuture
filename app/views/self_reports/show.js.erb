@@ -1,5 +1,5 @@
 $('td[data-date="<%=self_report.date.strftime("%Y-%m-%d")%>"]')
   .bind("ajax:success", function() {
     $('td[data-date="<%=self_report.date.strftime("%Y-%m-%d")%>"] form')
-    .replaceWith("<%= escape_javascript(render(:partial => "completed_self_report", locals: {self_report: self_report})) %>");
+    .replaceWith("<%= escape_javascript(render self_report) %>");
 })
