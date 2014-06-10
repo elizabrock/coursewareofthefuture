@@ -17,14 +17,8 @@ feature "Student Self Report", js: true do
     Fabricate(:event, date: "2013/03/25", summary: "Federal Holiday", course: course)
     Fabricate(:event, date: "2013/03/19", summary: "No Class", course: course)
     joe = signin_as :student, name: "joe", courses: [course]
-    Fabricate(:self_report,
-              date: "2013/03/12",
-              attended: false,
-              hours_coding: 5, hours_slept: 9, hours_learning: 0, user: joe)
-    Fabricate(:self_report,
-              date: "2013/03/13",
-              attended: true,
-              hours_coding: 2, hours_slept: 7.5, hours_learning: 4, user: joe)
+    Fabricate(:self_report, date: "2013/03/12", user: joe)
+    Fabricate(:self_report, date: "2013/03/13", user: joe)
     click_link "Course Calendar"
   end
 
@@ -46,7 +40,7 @@ feature "Student Self Report", js: true do
 
   scenario "Student still sees self-report form is another user has filled out their own report" do
     student = Fabricate(:student)
-    Fabricate(:self_report, date: "2013/03/11", attended: false, hours_coding: 5, hours_slept: 9, hours_learning: 0, user: student)
+    Fabricate(:self_report, date: "2013/03/11", user: student)
     click_link "Course Calendar"
     within("td[data-date='2013-03-11']"){ page.should have_content "Self-Report:" }
   end
@@ -58,14 +52,10 @@ feature "Student Self Report", js: true do
   end
 
   scenario "Student sees self-report summary for days that have reports" do
-    within("td[data-date='2013-03-13']"){ page.should have_content "Class: Attended" }
-    within("td[data-date='2013-03-13']"){ page.should have_content "Coding: 2 hours" }
-    within("td[data-date='2013-03-13']"){ page.should have_content "Sleep: 7.5 hours" }
-    within("td[data-date='2013-03-13']"){ page.should have_content "Learning: 4 hours" }
-    within("td[data-date='2013-03-12']"){ page.should have_content "Class: Missed" }
-    within("td[data-date='2013-03-12']"){ page.should have_content "Coding: 5 hours" }
-    within("td[data-date='2013-03-12']"){ page.should have_content "Sleep: 9 hours" }
-    within("td[data-date='2013-03-12']"){ page.should have_content "Learning: 0 hours" }
+    within("td[data-date='2013-03-13']"){ page.should have_content "Class: Missed" }
+    within("td[data-date='2013-03-13']"){ page.should have_content "Coding: 5 hours" }
+    within("td[data-date='2013-03-13']"){ page.should have_content "Sleep: 8 hours" }
+    within("td[data-date='2013-03-13']"){ page.should have_content "Learning: 5 hours" }
   end
 
   scenario "Student enters self-report form" do
@@ -81,4 +71,11 @@ feature "Student Self Report", js: true do
     within("td[data-date='2013-03-14']"){ page.should have_content "Learning: 2 hours" }
     within("td[data-date='2013-03-14']"){ page.should have_content "Sleep: 3 hours" }
   end
+
+  scenario "Student enters empty form" do
+    within("td[data-date='2013-03-14']"){ page.should have_content "Self-Report:" }
+    within("td[data-date='2013-03-14']"){ click_button "Submit" }
+    within("td[data-date='2013-03-14']"){ page.should have_content "can't be blank" }
+  end
+
 end

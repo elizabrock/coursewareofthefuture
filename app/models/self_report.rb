@@ -3,6 +3,11 @@ class SelfReport < ActiveRecord::Base
 
   validates_presence_of :user
   validates_presence_of :date
+  validates_inclusion_of :attended, :in => [true, false]
+  validates_presence_of :hours_coding
+  validates_presence_of :hours_learning
+  validates_presence_of :hours_slept
+
 
   validates_uniqueness_of :date, scope: :user
 
