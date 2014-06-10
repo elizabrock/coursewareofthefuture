@@ -4,7 +4,7 @@ class CoveredMaterialsController < ApplicationController
   expose(:covered_materials){ current_course.covered_materials }
   expose(:covered_material, attributes: :covered_material_params)
 
-  before_filter :require_instructor!
+  before_filter :require_instructor!, except: [:slides]
 
   def slides
     presentation = SlideEmUp::Presentation.new(contents: covered_material.material(current_user.octoclient).content, "theme" => "rmcgibbo_slidedeck")

@@ -1,17 +1,15 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature "Student submits milestone", vcr: true do
   background do
-    Timecop.travel(Time.new(2013, 05, 01))
     course = Fabricate(:course)
     signin_as(:student,
               name: "Eliza",
               github_username: "elizabrock",
-              github_access_token: "d141ef15f79ca4c6f43a8c688e0434648f277f20",
               courses: [course])
     assignment = Fabricate(:assignment, title: "Capstone", course: course)
-    Fabricate(:milestone, title: "Milestone 1", deadline: "2013/05/01", instructions: "This milestone is simple", assignment: assignment)
-    Fabricate(:milestone, title: "Milestone 2", deadline: "2013/05/15", instructions: "This milestone is hard", assignment: assignment)
+    Fabricate(:milestone, title: "Milestone 1", deadline: Date.today, instructions: "This milestone is simple", assignment: assignment)
+    Fabricate(:milestone, title: "Milestone 2", deadline: 15.days.from_now, instructions: "This milestone is hard", assignment: assignment)
     visit root_path
     click_link "Assignments"
     click_link "Capstone"
@@ -69,13 +67,16 @@ within(milestone(2)){ page.should have_content "Status: Submitted for Grading" }
 
   scenario "Student has no public repos?" do
     pending
+    fail
   end
 
   scenario "Resubmitting Milestone" do
     pending
+    fail
   end
 
   scenario "User can't submit milestone for a course they aren't enrolled in" do
     pending
+    fail
   end
 end

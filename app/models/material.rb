@@ -17,7 +17,7 @@ class Material
 
     @type = tree_item.type
     @html_url = tree_item.html_url
-    if tree_item.type == "file" and tree_item.content.present?
+    if tree_item.content.present?
       @content = Base64.decode64(tree_item.content)
     end
   end
@@ -67,7 +67,7 @@ class Material
       sha = material.sha
       blob = client.blob(source_repository, sha)
       blob.path = path
-      
+
       Material.new(blob)
     end
   end

@@ -17,7 +17,13 @@ class User < ActiveRecord::Base
   validates_format_of :email, with: /\A[^@]+@[^@]+\z/, message: "must be an email address"
   validates_presence_of :github_access_token
 
+  before_create :check_for_first_user
+
   default_scope { order(name: :asc) }
+
+  def check_for_first_user
+    self.instructor = true if User.all.empty?
+  end
 
   def has_confirmed_photo?
     self.photo.present? && self.photo_confirmed?
@@ -48,6 +54,6 @@ class User < ActiveRecord::Base
   end
 
   def octoclient
-    @octoclient ||= Octokit::Client.new(:access_token => github_access_token)
+    Octokit::Client.new(access_token: github_access_token)
   end
 end
