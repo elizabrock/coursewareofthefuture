@@ -16,3 +16,7 @@ Fabricator(:instructor, from: :user) do
   instructor true
   github_username { "bob" }
 end
+
+Fabricator(:forem_admin, from: :user) do
+  forem_admin true
+end

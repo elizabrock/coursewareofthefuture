@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :rememberable, :trackable, :omniauthable, :omniauth_providers => [:github]
 
   scope :instructors, ->{ where(instructor: true) }
+  scope :forem_admin, ->{ where(instructor: true) }
   scope :students, ->{ where("instructor = false or instructor is null") }
 
   has_many :enrollments
@@ -20,6 +21,10 @@ class User < ActiveRecord::Base
   before_create :check_for_first_user
 
   default_scope { order(name: :asc) }
+
+  def forem_name
+    self.name
+  end
 
   def check_for_first_user
     self.instructor = true if User.all.empty?
