@@ -11,6 +11,7 @@ feature "Switching between courses", vcr: true do
     Fabricate(:event, date: 1.day.from_now, summary: "Day Off", course: front_end)
     Fabricate(:event, date: 2.days.from_now, summary: "Not a Day Off", course: front_end)
 
+    Fabricate(:instructor)
     Fabricate(:student, name: "Jim", courses: [front_end])
     Fabricate(:student, name: "Joe", courses: [front_end])
 
