@@ -24,7 +24,7 @@ module Coursewareofthefuture
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
-    config.action_mailer.default_options = {from: 'eliza@elizabrocksoftware.com'}
+    config.action_mailer.default_options = {from: ENV["DEFAULT_FROM"]}
     config.action_mailer.delivery_method = :postmark
     config.action_mailer.postmark_settings = { :api_key => ENV["POSTMARK_KEY"] }
 

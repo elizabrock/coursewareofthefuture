@@ -1,6 +1,6 @@
 Forem.user_class = "User"
 Forem.user_profile_links = true
-Forem.email_from_address = ActionMailer::Base
+Forem.email_from_address = ENV["DEFAULT_FROM"]
 # If you do not want to use gravatar for avatars then specify the method to use here:
 Forem.avatar_user_method = 'photo'
 Forem.per_page = 20
