@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature "Student profiles" do
   # As an instructor
@@ -11,6 +11,10 @@ feature "Student profiles" do
   # - phone number
   # - goals
   # - background
+
+  before do
+    Fabricate(:instructor, name: "test safety instructor")
+  end
 
   let!(:course0){ Fabricate(:course, title: "Nullth Course") }
   let!(:course){ Fabricate(:course, title: "First Course") }

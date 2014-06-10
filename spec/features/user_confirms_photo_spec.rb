@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature "User confirms photo", vcr: true do
   # As a user

@@ -1,5 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe CoveredMaterial do
   it { should belong_to :course }
+  it { should validate_uniqueness_of(:material_fullpath).with_message("should be covered once per course") }
 end

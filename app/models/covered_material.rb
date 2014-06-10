@@ -1,6 +1,8 @@
 class CoveredMaterial < ActiveRecord::Base
   belongs_to :course
   validates_presence_of :covered_on
+  validates :material_fullpath, uniqueness: { scope: :course,
+    message: "should be covered once per course" }
 
   default_scope ->{ order("covered_on ASC, id ASC") }
   before_validation :set_covered_on, on: :create

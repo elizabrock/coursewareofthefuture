@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 feature "Student enrolls in course" do
 
@@ -72,6 +72,7 @@ feature "Student enrolls in course" do
 
   scenario "Enrollments view shows all students enrolled in course." do
     course = Fabricate(:course)
+    Fabricate(:instructor)
     Fabricate(:student, name: "Pookie", photo: File.new('spec/support/files/pookie.jpg'), courses: [course])
     Fabricate(:student, name: "Bea", photo: File.new('spec/support/files/bea.jpg'), courses: [course])
     bert = Fabricate(:student, name: "Bert", photo: File.new('spec/support/files/arson_girl.jpg'), courses: [course])

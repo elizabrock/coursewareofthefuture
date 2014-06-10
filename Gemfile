@@ -10,6 +10,8 @@ gem 'cancan'
 gem 'carrierwave'
 # Coffeescript
 gem 'coffee-rails', '~> 4.0'
+# Lets rails use d3.js visualization
+gem 'd3-rails'
 # Magic Sauce.  We will get to this.
 gem 'decent_exposure'
 # Authentication
@@ -73,6 +75,9 @@ end
 group :development do
   # Sent email in development environment will open in your browser:
   gem 'letter_opener'
+
+  # Creates viewable ERD
+  gem 'rails-erd'
 end
 
 group :test, :development do
@@ -81,8 +86,8 @@ group :test, :development do
   # For debugging:
   gem 'pry-rails'
   # Testing:
-  gem 'rspec-rails'
-  gem 'rspec'
+  gem 'rspec-rails', '~> 3.0'
+  gem 'rspec', '~> 3.0'
 end
 
 group :test do
