@@ -22,9 +22,7 @@ class User < ActiveRecord::Base
   default_scope { order(name: :asc) }
 
   def check_for_first_user
-    if (User.all.empty?)
-      self.instructor = true;
-    end
+    self.instructor = true if User.all.empty?
   end
 
   def has_confirmed_photo?
