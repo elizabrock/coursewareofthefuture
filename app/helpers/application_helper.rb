@@ -29,7 +29,7 @@ module ApplicationHelper
 
   def self_reports_due
     return 0 unless current_course
-    total_possible_reports = (current_course.end_date - current_course.start_date - current_user.self_reports.count).to_i
+    self_reports_due = (current_course.end_date - current_course.start_date - current_user.self_reports.count).to_i
   end
 
 end
