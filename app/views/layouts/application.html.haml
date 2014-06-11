@@ -32,9 +32,8 @@
                 - else
                   %li Instructor View
                   %li= link_to "View As Student", studentify_instructor_path, method: :post
-                  %li= link_to "Forum Admin", forem.admin_root_path
-              %li= link_to "My Profile", main_app.user_path(current_user, course_id: current_course.try(:id))
-              %li= link_to "Sign Out", main_app.destroy_user_session_path, method: :delete
+              %li= link_to "My Profile", user_path(current_user, course_id: current_course.try(:id))
+              %li= link_to "Sign Out", destroy_user_session_path, method: :delete
             - else
               %li= link_to "Sign In with Github", user_omniauth_authorize_path(:github)
       .row
@@ -45,9 +44,9 @@
               %li= link_to "Course Calendar", course_calendar_path(current_course), id: current_if("events")
               %li= link_to "Materials", course_materials_path(current_course), id: current_if("materials")
               %li= link_to "Assignments", course_assignments_path(current_course), id: current_if("assignments")
-              %li= link_to "Fourms", forem.root_path
               %li= link_to "Peers", course_enrollments_path(current_course), id: current_if("enrollments", "users")
             - if current_user
+              %li#self_report_count#self_report_count_icon= self_reports_due
               %li.right
                 %span
                   %a{ "data-dropdown" => "hover1", "data-options" => "is_hover:true" }= current_course.try(:title) || "Choose Course >"

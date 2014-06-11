@@ -26,4 +26,10 @@ module ApplicationHelper
       params[:controller] == arg
     end
   end
+
+  def self_reports_due
+    return 0 unless current_course
+    total_possible_reports = (current_course.end_date - current_course.start_date - current_user.self_reports.count).to_i
+  end
+
 end

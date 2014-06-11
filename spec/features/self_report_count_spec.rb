@@ -19,11 +19,11 @@ feature "Self Report Count" do
       date: 1.day.ago,
       attended: true,
       hours_coding: 2, hours_slept: 7.5, hours_learning: 4, user: joe)
-    visit root_path
+    visit course_path new_course
     page.should have_css('#self_report_count_icon', text:'6')
 
     Fabricate(:self_report, date: 2.days.ago, user: joe)
-    visit root_path
+    visit course_path new_course
     page.should have_css('#self_report_count_icon', text:'5')
   end
 
@@ -39,19 +39,15 @@ feature "Self Report Count" do
     page.should have_css('#self_report_count_icon', text:'11')
   end
 
-#   scenario "self_reports total should reflect current course" do
-#     signin_as joe
-#     # visit new_cours
-#     page.should have_css('#self_report_count_icon', text:'7')
-#     Fabricate(:self_report,
-#       date: 1.day.ago,
-#       attended: true,
-#       hours_coding: 2, hours_slept: 7.5, hours_learning: 4, user: joe)
-#     visit root_path
-#     page.should have_css('#self_report_count_icon', text:'6')
-#     # signout_as joe
-#     signin_as bob
-#     # visit old_course
-#     page.should have_css('#self-report_count_icon', text:'12')
-#   end
+  scenario "self_reports total should reflect current course" do
+    signin_as joe
+    visit course_path old_course
+    page.should have_css('#self_report_count_icon', text:'12')
+    Fabricate(:self_report,
+      date: 1.day.ago,
+      attended: true,
+      hours_coding: 2, hours_slept: 7.5, hours_learning: 4, user: joe)
+    visit course_path old_course
+    page.should have_css('#self_report_count_icon', text:'11')
+  end
 end
