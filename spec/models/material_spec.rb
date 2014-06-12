@@ -135,13 +135,13 @@ describe Material do
     end
     describe "#linkable?" do
       it "should return true for markdown files" do
-        markdown_material.linkable.should be_truthy
+        markdown_material.linkable?.should be_truthy
       end
       it "should be false for directories" do
-        subdirectory_material.linkable.should be_falsey
+        subdirectory_material.linkable?.should be_falsey
       end
       it "should be false for non-markdown files" do
-        image_material.linkable.should be_falsey
+        image_material.linkable?.should be_falsey
       end
     end
     describe "#link" do

@@ -1,8 +1,9 @@
 class Material
-  attr_accessor :sha, :path, :short_name, :filename, :linkable, :children, :fullpath, :content, :type, :extension
+  attr_accessor :sha, :path, :short_name, :filename, :linkable, :children, :fullpath, :type, :extension
 
   def initialize(tree_item = nil)
     @children = []
+    @tree_item = tree_item
     return unless tree_item.present?
 
     @fullpath = tree_item.path
@@ -14,12 +15,18 @@ class Material
     @linkable = (@extension == ".md")
 
     @sha = tree_item.sha
-
     @type = tree_item.type
     @html_url = tree_item.html_url
-    if tree_item.content.present?
-      @content = Base64.decode64(tree_item.content)
+  end
+
+  def content
+    if @tree_item.content.present?
+      Base64.decode64(@tree_item.content)
     end
+  end
+
+  def linkable?
+    @linkable
   end
 
   def link
