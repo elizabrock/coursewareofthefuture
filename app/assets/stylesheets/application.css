@@ -16,7 +16,7 @@
 #self_report_count_icon{
   display: block;
   font-size: 12px;
-  border: outset 7px;
+  border: outset 4px;
   background-color: rgba(255, 0, 0, 0.44);
   width: 30px;
 }
@@ -27,4 +27,5 @@
   bottom: 9px;
   z-index: -1;
   color: blue;
+
 }
