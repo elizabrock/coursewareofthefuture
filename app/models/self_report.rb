@@ -38,7 +38,8 @@ class SelfReport < ActiveRecord::Base
         "Oh, no, it wasn't the Self-Reports. It was Beauty killed the Beast.",
         "I feel the need—the need for a Self-Report!",
         "Carpe diem. Seize the day, boys. Make your Self-Reports extraordinary.",
-        "Nobody puts a Self-Report in a corner."  ].sample
+        "Nobody puts a Self-Report in a corner.",
+        "I got a fever.. And the only prescription.. Is more self-reports."].sample
     end
   end
 
