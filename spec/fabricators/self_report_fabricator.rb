@@ -4,4 +4,5 @@ Fabricator(:self_report) do
   hours_coding 5
   hours_learning 5
   hours_slept 8
+  date { Date.today }
 end
