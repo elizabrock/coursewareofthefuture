@@ -29,25 +29,24 @@ feature "Self Report Count" do
 
   scenario "self-reports total should reflect current user" do
     signin_as bob
-    page.should have_css('#self_report_count_icon', text:'13')
-
+    page.should have_css('#self_report_count_icon', text:'12')
     Fabricate(:self_report,
       date: 1.day.ago,
       attended: true,
       hours_coding: 2, hours_slept: 7.5, hours_learning: 4, user: bob)
     visit root_path
-    page.should have_css('#self_report_count_icon', text:'12')
+    page.should have_css('#self_report_count_icon', text:'11')
   end
 
   scenario "self_reports total should reflect current course" do
     signin_as joe
     visit course_path old_course
-    page.should have_css('#self_report_count_icon', text:'13')
+    page.should have_css('#self_report_count_icon', text:'12')
     Fabricate(:self_report,
       date: 1.day.ago,
       attended: true,
       hours_coding: 2, hours_slept: 7.5, hours_learning: 4, user: joe)
     visit course_path old_course
-    page.should have_css('#self_report_count_icon', text:'12')
+    page.should have_css('#self_report_count_icon', text:'11')
   end
 end
