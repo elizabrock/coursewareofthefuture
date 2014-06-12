@@ -7,9 +7,13 @@ class SelfReport < ActiveRecord::Base
   validates_presence_of :hours_coding
   validates_presence_of :hours_learning
   validates_presence_of :hours_slept
-
-
+  validate :total_cannot_be_more_than_twenty_four
   validates_uniqueness_of :date, scope: :user
+
+  def total_cannot_be_more_than_twenty_four
+    total_hours = [self.hours_slept, self.hours_coding, self.hours_learning]
+    errors.add(:base, "Total hours cannot be greater than 24") unless (total_hours.compact.sum <= 24)
+  end
 
   def self.random_reminder
     if rand(100) < 80

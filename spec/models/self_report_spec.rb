@@ -9,6 +9,31 @@ describe SelfReport do
   it { should validate_presence_of :hours_slept }
   it { should ensure_inclusion_of(:attended).in_array([true, false]) }
 
+  describe "Total hours cannot be more than 24" do
+    let(:over_twenty_four_student){ Fabricate.build(:self_report, hours_coding: 10, hours_learning: 10, hours_slept: 10) }
+    let(:twenty_four_student){ Fabricate(:self_report, hours_coding: 8, hours_learning: 8, hours_slept: 8) }
+    let(:under_twenty_four_student){ Fabricate(:self_report, hours_coding: 5, hours_learning: 5, hours_slept: 5) }
+    context "Total hours are more_than_twenty_four" do
+      it "should not save if over 24 hours" do
+        over_twenty_four_student.save
+        over_twenty_four_student.errors[:base].should == ["Total hours cannot be greater than 24"]
+        SelfReport.count.should == 0
+      end
+    end
+    context "Total hours are equal_to_twenty_four" do
+      it "should save if equaled to 24 hours" do
+        twenty_four_student.save
+        SelfReport.count.should == 1
+      end
+    end
+    context "Total hours are less_than_twenty_four" do
+      it "should save if under 24 hours" do
+        under_twenty_four_student.save
+        SelfReport.count.should == 1
+      end
+    end
+  end
+
   describe ".send_student_reminders!" do
     def do_action
       SelfReport.send_student_reminders!
