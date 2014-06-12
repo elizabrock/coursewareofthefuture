@@ -7,7 +7,7 @@ describe SelfReport do
   it { should validate_presence_of :hours_coding }
   it { should validate_presence_of :hours_learning }
   it { should validate_presence_of :hours_slept }
-  it { should ensure_inclusion_of(:attended).in_array([true, false]) }
+  it { should validate_presence_of :hours_slept }
 
   describe ".send_student_reminders!" do
     def do_action

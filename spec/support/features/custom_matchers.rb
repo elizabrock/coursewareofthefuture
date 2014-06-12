@@ -21,7 +21,7 @@ RSpec::Matchers.define :have_options_for do |field, options|
     actual_options.should == expected_options
   end
 
-  failure_message_for_should do |page|
+  failure_message do |page|
     expected_options = options[:options]
     actual_options = page.all("option").map{|o| [o.text]}.flatten
     "expected that #{actual_options} would be a precise match for #{expected_options}"
