@@ -124,4 +124,18 @@ class Material
   def find_descendant_by_link(link)
     @children.find{ |c| c.link == link } || @children.map{ |c| c.find_descendant_by_link(link) }.compact.first
   end
+
+  def to_hash
+    child_hash_array = []
+    self.children.each do |child|
+      child_hash_array << child.to_hash
+    end
+
+    return child_hash_array if path.nil?
+
+    hash = { title: pretty_name }
+    hash[:path] = link unless link.blank?
+    hash[:children] = child_hash_array unless child_hash_array.empty?
+    hash
+  end
 end
