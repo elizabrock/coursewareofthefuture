@@ -118,15 +118,15 @@ describe Material do
         image_material.directory?.should be_falsey
       end
     end
-    describe "#is_markdown?" do
+    describe "#markdown?" do
       it "should return true for markdown files" do
-        markdown_material.is_markdown?.should be_truthy
+        markdown_material.markdown?.should be_truthy
       end
       it "should be false for directories" do
-        subdirectory_material.is_markdown?.should be_falsey
+        subdirectory_material.markdown?.should be_falsey
       end
       it "should be false for non-markdown files" do
-        image_material.is_markdown?.should be_falsey
+        image_material.markdown?.should be_falsey
       end
     end
     describe "#link" do
@@ -165,11 +165,11 @@ describe Material do
         image_material.content.should be_nil
       end
     end
-    describe "#is_leaf?" do
+    describe "#leaf?" do
       it "should be true" do
-        markdown_material.is_leaf?.should == true
-        subdirectory_material.is_leaf?.should == true
-        image_material.is_leaf?.should == true
+        markdown_material.leaf?.should == true
+        subdirectory_material.leaf?.should == true
+        image_material.leaf?.should == true
       end
     end
     describe "#extension" do

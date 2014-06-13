@@ -6,7 +6,7 @@ class MaterialsController < ApplicationController
   expose(:covered_material){ covered_materials.where(material_fullpath: material.link).first }
 
   def show
-    if material.is_markdown?
+    if material.markdown?
       render :show
     else
       send_data material.content, filename: material.filename, disposition: :inline

@@ -4,6 +4,6 @@ module MaterialsHelper
   end
 
   def edit_material_url(material)
-    material.html_url.gsub("blob", "edit") if material.is_markdown?
+    material.html_url.gsub("blob", "edit") if material.markdown?
   end
 end

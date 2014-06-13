@@ -39,7 +39,7 @@ class Material
   end
 
   def incorporate_child(child)
-    return unless child.is_markdown? or child.directory?
+    return unless child.markdown? or child.directory?
     if self.pretty_name == child.pretty_name
       @shadow = child
     else
@@ -87,20 +87,18 @@ class Material
     @item.html_url
   end
 
-  # FIXME: No need for is_
-  def is_leaf?
+  def leaf?
     self.children.empty?
   end
 
-  # FIXME: No need for is_
-  def is_markdown?
+  def markdown?
     extension == ".md"
   end
 
   def link
     if @shadow.present?
       @shadow.link
-    elsif is_markdown?
+    elsif self.markdown?
       "materials/" + self.fullpath
     else
       nil
