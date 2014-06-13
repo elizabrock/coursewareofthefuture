@@ -1,6 +1,6 @@
 module MaterialsHelper
   def pretty_path_for(material)
-    material.path.split("/").map{|s| Material.prettify(s)}.join(" > ")
+    material.directory.split("/").map{|s| Material.prettify(s)}.join(" > ")
   end
 
   def edit_material_url(material)

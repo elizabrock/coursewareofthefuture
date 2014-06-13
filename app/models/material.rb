@@ -1,5 +1,4 @@
 class Material
-  # FIXME: fullpath should really be fullfilename or fullfilepath!
   attr_accessor :children
 
   ROOT = "."
@@ -105,8 +104,7 @@ class Material
     end
   end
 
-  # FIXME: This should be renamed "directory"
-  def path
+  def directory
     File.dirname(self.fullpath)
   end
 
@@ -156,7 +154,7 @@ class Material
 
   def self.insert_into_tree(material, root, skip_files_matching)
     return if material.fullpath.match(skip_files_matching)
-    parent = root.find(material.path)
+    parent = root.find(material.directory)
     unless parent
       puts material.fullpath
     end

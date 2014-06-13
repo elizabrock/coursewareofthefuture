@@ -79,11 +79,11 @@ describe Material do
         image_material.sha.should == "a67b582e31761e238a7226a521169810d9298f12"
       end
     end
-    describe "#path" do
+    describe "#directory" do
       it "should return the item's directory" do
-        markdown_material.path.should == "computer-science/logic"
-        subdirectory_material.path.should == "computer-science"
-        image_material.path.should == "computer-science/logic"
+        markdown_material.directory.should == "computer-science/logic"
+        subdirectory_material.directory.should == "computer-science"
+        image_material.directory.should == "computer-science/logic"
       end
     end
     describe "#fullpath" do
