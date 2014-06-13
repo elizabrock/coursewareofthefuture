@@ -99,15 +99,6 @@ describe Material do
         image_material.filename.should == "wikimedia-commons-venn-and.png"
       end
     end
-    describe "#short_name" do
-      it "should return the markdown or directory name without extension" do
-        markdown_material.short_name.should == "logic"
-        subdirectory_material.short_name.should == "logic"
-      end
-      it "should return the image name with extension" do
-        image_material.short_name.should == "wikimedia-commons-venn-and.png"
-      end
-    end
     describe "#pretty_name" do
       it "should return the a humanized name for the file" do
         markdown_material.pretty_name.should == "Logic"
@@ -122,6 +113,17 @@ describe Material do
         image_material.pretty_path.should == "Computer Science > Logic"
       end
     end
+    describe "#directory?" do
+      it "should return false for markdown files" do
+        markdown_material.directory?.should be_falsey
+      end
+      it "should be true for directories" do
+        subdirectory_material.directory?.should be_truthy
+      end
+      it "should be false for non-markdown files" do
+        image_material.directory?.should be_falsey
+      end
+    end
     describe "#is_markdown?" do
       it "should return true for markdown files" do
         markdown_material.is_markdown?.should be_truthy
@@ -131,17 +133,6 @@ describe Material do
       end
       it "should be false for non-markdown files" do
         image_material.is_markdown?.should be_falsey
-      end
-    end
-    describe "#linkable?" do
-      it "should return true for markdown files" do
-        markdown_material.linkable?.should be_truthy
-      end
-      it "should be false for directories" do
-        subdirectory_material.linkable?.should be_falsey
-      end
-      it "should be false for non-markdown files" do
-        image_material.linkable?.should be_falsey
       end
     end
     describe "#link" do
@@ -193,17 +184,6 @@ describe Material do
         markdown_material.is_leaf?.should == true
         subdirectory_material.is_leaf?.should == true
         image_material.is_leaf?.should == true
-      end
-    end
-    describe "#type" do
-      it "should return blob for markdown files" do
-        markdown_material.type.should == "blob"
-      end
-      it "should be tree for directories" do
-        subdirectory_material.type.should == "tree"
-      end
-      it "should be blob for non-markdown files" do
-        image_material.type.should == "blob"
       end
     end
     describe "#extension" do

@@ -1,5 +1,6 @@
+-# FIXME: This should be a partial in the covered materials folder!!
 - covered_materials.each do |covered_material|
-  - material = materials.find_descendant_by_link(covered_material.material_fullpath)
+  - material = materials.find(covered_material.fullpath)
   - if material
     %li
       - if material.link.present?
