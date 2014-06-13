@@ -2,10 +2,10 @@ require 'rails_helper'
 
 describe Material do
 
-  describe ".ls", vcr: true do
+  describe ".list", vcr: true do
     let(:user){ Fabricate(:user) }
-    let(:materials){ Material.ls(user.octoclient, "elizabrock/inquizator-test-repo", "exercises") }
-    it "should lookup all the materials in that subdirectory" do
+    let(:materials){ Material.list(user.octoclient, "elizabrock/inquizator-test-repo", "exercises") }
+    it "should retrieve all the materials in that subdirectory" do
       expected_materials = [{:title=>"Cheers"}, {:title=>"Ruby Koans"}, {:title=>"Some Other Exercise"}, {:title=>"Unfinished Exercise"}]
       materials.map(&:to_hash).should == expected_materials
     end
@@ -19,10 +19,10 @@ describe Material do
       actual_materials.should == materials_hash
     end
   end
-  describe ".lookup", vcr: true do
+  describe ".retrieve", vcr: true do
     context "with a regular file" do
       let(:user){ Fabricate(:user) }
-      let(:material){ Material.lookup("computer-science/logic/logic.md", "elizabrock/inquizator-test-repo", user.octoclient) }
+      let(:material){ Material.retrieve("computer-science/logic/logic.md", "elizabrock/inquizator-test-repo", user.octoclient) }
       it "should include the full material content" do
         filename = Rails.root.join('spec', 'support', 'files', 'logic.md')
         actual_file_content = File.read(filename, encoding: "ascii-8bit")
@@ -31,7 +31,7 @@ describe Material do
     end
     context "with a huge file" do
       let(:user){ Fabricate(:user) }
-      let(:material){ Material.lookup("life-skills/data-storage-and-formats.jpg", "elizabrock/inquizator-test-repo", user.octoclient) }
+      let(:material){ Material.retrieve("life-skills/data-storage-and-formats.jpg", "elizabrock/inquizator-test-repo", user.octoclient) }
       it "should include the full material content" do
         actual_file_content = File.read('spec/support/files/data-storage-and-formats.jpg', encoding: "ascii-8bit")
         material.content.should == actual_file_content
@@ -70,6 +70,7 @@ describe Material do
     let(:markdown_material){ Material.new(markdown_tree_item) }
     let(:subdirectory_material){ Material.new(subdirectory_tree_item) }
     let(:image_material){ Material.new(image_tree_item) }
+    # FIXME: Allow for this functionality:
     # let(:local_material){ Material.new("computer-science/logic/logic.md") }
     describe "#sha" do
       it "should return the shas from the API" do
@@ -150,19 +151,11 @@ describe Material do
       it "should return github edit url for markdown files" do
         markdown_material.edit_url.should == "https://github.com/elizabrock/inquizator-test-repo/edit/master/computer-science/logic/logic.md"
       end
-      # FIXME
-      # it "should be nil for directories" do
-      #   subdirectory_material.edit_url.should be_nil
-      # end
-      it "shouldn't be nil for directories" do
-        subdirectory_material.edit_url.should == "https://github.com/elizabrock/inquizator-test-repo/tree/master/computer-science/logic"
+      it "should be nil for directories" do
+        subdirectory_material.edit_url.should be_nil
       end
-      # FIXME
-      # it "should be nil for non-markdown files" do
-      #   image_material.edit_url.should be_nil
-      # end
-      it "shouldn't be nil for non-markdown files" do
-        image_material.edit_url.should == "https://github.com/elizabrock/inquizator-test-repo/edit/master/computer-science/logic/wikimedia-commons-venn-and.png"
+      it "should be nil for non-markdown files" do
+        image_material.edit_url.should be_nil
       end
     end
     describe "#children" do

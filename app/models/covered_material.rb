@@ -12,7 +12,7 @@ class CoveredMaterial < ActiveRecord::Base
   end
 
   def material(client)
-    Material.lookup(fullpath, course.source_repository, client)
+    Material.retrieve(fullpath, course.source_repository, client)
   end
 
   def formatted_title

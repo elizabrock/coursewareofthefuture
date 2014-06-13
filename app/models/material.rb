@@ -9,19 +9,18 @@ class Material
     @item = item
   end
 
-  # FIXME: Pick a better name
-  def self.ls(client, repository, directory)
+  def self.list(client, repository, directory)
     contents = client.contents(repository, path: directory)
     contents.map{ |item| Material.new(item) }
   end
 
-  def self.lookup(filepath, repository, client)
+  def self.retrieve(filepath, repository, client)
     begin
       result = client.contents(repository, path: filepath)
       Material.new(result)
     rescue Octokit::Forbidden
       directory = File.dirname(filepath)
-      sibling_materials = Material.ls(client, repository, directory)
+      sibling_materials = Material.list(client, repository, directory)
       material = sibling_materials.find{|material| material.fullpath == filepath}
       blob = client.blob(repository, material.sha)
       blob.path = filepath
@@ -61,8 +60,9 @@ class Material
     @item.type == "tree"
   end
 
+  # FIXME: This should be a view helper
   def edit_url
-    @item.html_url.gsub("blob", "edit")
+    @item.html_url.gsub("blob", "edit") if is_markdown?
   end
 
   def extension
