@@ -107,13 +107,6 @@ describe Material do
         image_material.pretty_name.should == "Wikimedia Commons Venn and.Png"
       end
     end
-    describe "#pretty_path" do
-      it "should return the a humanized name for the file's directory" do
-        markdown_material.pretty_path.should == "Computer Science > Logic"
-        subdirectory_material.pretty_path.should == "Computer Science"
-        image_material.pretty_path.should == "Computer Science > Logic"
-      end
-    end
     describe "#directory?" do
       it "should return false for markdown files" do
         markdown_material.directory?.should be_falsey
@@ -147,15 +140,15 @@ describe Material do
         image_material.link.should be_nil
       end
     end
-    describe "#edit_url" do
-      it "should return github edit url for markdown files" do
-        markdown_material.edit_url.should == "https://github.com/elizabrock/inquizator-test-repo/edit/master/computer-science/logic/logic.md"
+    describe "#html_url" do
+      it "should return github url for markdown files" do
+        markdown_material.html_url.should == "https://github.com/elizabrock/inquizator-test-repo/blob/master/computer-science/logic/logic.md"
       end
-      it "should be nil for directories" do
-        subdirectory_material.edit_url.should be_nil
+      it "should return github url for directories" do
+        subdirectory_material.html_url.should == "https://github.com/elizabrock/inquizator-test-repo/tree/master/computer-science/logic"
       end
-      it "should be nil for non-markdown files" do
-        image_material.edit_url.should be_nil
+      it "should return github url for non-markdown files" do
+        image_material.html_url.should == "https://github.com/elizabrock/inquizator-test-repo/blob/master/computer-science/logic/wikimedia-commons-venn-and.png"
       end
     end
     describe "#children" do

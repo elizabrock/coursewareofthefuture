@@ -11,4 +11,4 @@
         - else
           = covered_material.covered_on
         = link_to material.pretty_name, material.link
-      %small= material.pretty_path
+      %small= pretty_path_for(material)

@@ -60,11 +60,6 @@ class Material
     @item.type == "tree"
   end
 
-  # FIXME: This should be a view helper
-  def edit_url
-    @item.html_url.gsub("blob", "edit") if is_markdown?
-  end
-
   def extension
     File.extname(self.fullpath)
   end
@@ -86,6 +81,10 @@ class Material
 
   def fullpath
     @item.try(:path) || ROOT
+  end
+
+  def html_url
+    @item.html_url
   end
 
   # FIXME: No need for is_
@@ -127,11 +126,6 @@ class Material
 
     short_name = File.basename(self.fullpath, ".md")
     Material.prettify(short_name)
-  end
-
-  # FIXME: This should be in a view helper
-  def pretty_path
-    path.split("/").map{|s| Material.prettify(s)}.join(" > ")
   end
 
   def sha

@@ -1,5 +1,5 @@
 - if can?(:manage, CoveredMaterial)
-  = link_to "Edit on Github", material.edit_url, class: "button right"
+  = link_to "Edit on Github", edit_material_url(material), class: "button right"
 - if covered_material
   = link_to "View As Slides", slides_course_covered_material_path(current_course, covered_material), class: "button right"
 :markdown
