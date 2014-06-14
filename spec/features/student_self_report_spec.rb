@@ -108,7 +108,19 @@ feature "Student Self Report", js: true do
     within("td[data-date='2013-03-14']") do
       page.should have_content "Self-Report:"
       click_button "Submit"
-      page.should have_content "can't be blank"
+      page.should have_content "must be selected"
+      page.should have_content "Total hours must be greater than 0"
+    end
+  end
+
+  scenario "Student enters form with more than 24 hours" do
+    within("td[data-date='2013-03-14']") do
+      choose "Yes"
+      page.select("9", from: "Hours coding")
+      page.select("9", from: "Hours learning")
+      page.select("9", from: "Hours slept")
+      click_button "Submit"
+      page.should have_content "Total hours cannot be greater than 24"
     end
   end
 end

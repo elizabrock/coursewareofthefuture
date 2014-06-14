@@ -13,10 +13,8 @@ class SelfReportsController < ApplicationController
   def update
     if self_report.save
       render :show
-      flash[:notice] = "Your self report has been updated!"
     else
       render :edit
-      flash[:alert] = "Your update failed"
     end
   end
 

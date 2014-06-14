@@ -6,7 +6,8 @@ class SelfReport < ActiveRecord::Base
   validates_presence_of :hours_coding
   validates_presence_of :hours_learning
   validates_presence_of :hours_slept
-  validate :total_cannot_be_more_than_twenty_four
+  validates_inclusion_of :attended, :in => [true, false], message: "must be selected"
+  validate :total_hours
   validates_presence_of :user
 
   def self.random_reminder
@@ -49,8 +50,12 @@ class SelfReport < ActiveRecord::Base
 
   private
 
-  def total_cannot_be_more_than_twenty_four
-    total_hours = [self.hours_slept, self.hours_coding, self.hours_learning]
-    errors.add(:base, "Total hours cannot be greater than 24") unless (total_hours.compact.sum <= 24)
+  def total_hours
+    total_hours = [hours_slept, hours_coding, hours_learning].compact.sum
+    if total_hours > 24
+      errors.add(:base, "Total hours cannot be greater than 24")
+    elsif total_hours <= 0
+      errors.add(:base, "Total hours must be greater than 0")
+    end
   end
 end
