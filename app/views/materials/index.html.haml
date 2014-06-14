@@ -3,8 +3,8 @@
 .row
   .small-12.large-6.columns
     %h2 Material We've Covered
-    %ol#covered_materials
-      = render partial: 'covered_material', locals: { covered_materials: covered_materials }
+    %ol#covered_materials= render covered_materials
+
   - if can?(:manage, CoveredMaterial)
     .small-12.large-6.columns
       %h2 Material To Cover

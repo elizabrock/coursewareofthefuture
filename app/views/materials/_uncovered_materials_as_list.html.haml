@@ -1,5 +1,5 @@
 - materials.each do |material|
-  - if material.link.present? or material.is_leaf?
+  - if material.link.present? or material.leaf?
     %li
       - if covered_material_links.include?(material.link)
         %span.button.tiny.secondary.disabled Covered
@@ -8,8 +8,8 @@
           = f.input :material_fullpath, as: :hidden
           = f.input :covered_on, label: "Date Covered"
           = f.button :submit, "Mark as Covered", class: "tiny"
-      - else material.is_leaf?
+      - else material.leaf?
         %span.button.tiny.alert.disabled To Be Written
       = link_to material.pretty_name, material.link
       .material_directory
-        %small= material.pretty_path
+        %small= pretty_path_for(material)

@@ -1,19 +1,13 @@
 class SelfReport < ActiveRecord::Base
   belongs_to :user, inverse_of: :self_reports
 
-  validates_presence_of :user
   validates_presence_of :date
-  validates_inclusion_of :attended, :in => [true, false]
+  validates_uniqueness_of :date, scope: :user
   validates_presence_of :hours_coding
   validates_presence_of :hours_learning
   validates_presence_of :hours_slept
   validate :total_cannot_be_more_than_twenty_four
-  validates_uniqueness_of :date, scope: :user
-
-  def total_cannot_be_more_than_twenty_four
-    total_hours = [self.hours_slept, self.hours_coding, self.hours_learning]
-    errors.add(:base, "Total hours cannot be greater than 24") unless (total_hours.compact.sum <= 24)
-  end
+  validates_presence_of :user
 
   def self.random_reminder
     if rand(100) < 80
@@ -51,5 +45,12 @@ class SelfReport < ActiveRecord::Base
         end
       end
     end
+  end
+
+  private
+
+  def total_cannot_be_more_than_twenty_four
+    total_hours = [self.hours_slept, self.hours_coding, self.hours_learning]
+    errors.add(:base, "Total hours cannot be greater than 24") unless (total_hours.compact.sum <= 24)
   end
 end

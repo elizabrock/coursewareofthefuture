@@ -6,12 +6,11 @@
       = simple_form_for CoveredMaterial.new(material_fullpath: material.link, covered_on: Date.today), url: course_covered_materials_path(current_course) do |f|
         = f.input :material_fullpath, as: :hidden
         = f.button :submit, "Mark as Covered", class: "tiny"
-    - elsif material.is_leaf?
-      %span.button.tiny.secondary.disabled TBC
+    - elsif material.leaf?
+      %span.button.tiny.secondary.disabled To Be Covered
 
     - if material.link and can?(:manage, CoveredMaterial)
       = link_to material.pretty_name, material.link
     - else
       %span.title= material.pretty_name
-
     %ul= render partial: 'material', locals: { materials: material.children }

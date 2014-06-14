@@ -13,7 +13,7 @@ class CoveredMaterialsController < ApplicationController
 
   def asset
     path = File.dirname(covered_material.fullpath) + "/" + params[:asset_file] + "." + params[:format]
-    material = Material.lookup(path, current_course.source_repository, current_user.octoclient)
+    material = Material.retrieve(path, current_course.source_repository, current_user.octoclient)
     send_data material.content, filename: material.filename, disposition: :inline
   end
 
