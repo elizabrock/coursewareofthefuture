@@ -40,7 +40,7 @@ Coursewareofthefuture::Application.routes.draw do
   resources :milestone_submissions, only: [:create]
   resources :question_grades, only: [:edit, :update]
   resources :read_materials, only: [:create]
-  resources :self_reports, only: [:new, :create]
+  resources :self_reports, except: [:destroy]
   resources :users, except: [:destroy] do
     member do
       post :instructify

@@ -1,0 +1,29 @@
+%div
+  = simple_form_for self_report, html: { id: self_report.date }, defaults: {input_html: {class: 'tiny radius'}}, remote: true do |f|
+    = f.hidden_field :date
+    - unless self_report.errors.empty?
+      .row
+        .small-12.columns
+          .alert-box.alert
+            - if self_report.errors.include?(:base)
+              %p= self_report.errors.full_messages_for(:base).join("")
+            - else
+              %p All fields are required.
+    .row
+      .small-12.columns
+        %h6 Self-Report:
+    .row
+      .small-12.columns
+        = f.input :attended, label: "Attended class", as: :radio_buttons, collection: [['Yes', true], ['No', false]]
+    .row
+      .small-12.columns
+        = f.input :hours_coding, as: :select, collection: 0..10, selected: self_report.hours_coding.to_i
+    .row
+      .small-12.columns
+        = f.input :hours_learning, as: :select, collection: 0..10, selected: self_report.hours_learning.to_i
+    .row
+      .small-12.columns
+        = f.input :hours_slept, as: :select, collection: 0..10, selected: self_report.hours_slept.to_i
+    .row
+      .small-12.columns
+        = f.button :submit, value: "Submit"
