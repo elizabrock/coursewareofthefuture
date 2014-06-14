@@ -73,4 +73,20 @@ feature "Instructor manages course calendar", js: true do
     page.should have_calendar_entry("2014-01-10", text: "No Class")
     page.should have_calendar_entry("2013-10-15", text: "Federal Holiday")
   end
+
+  scenario "Fix: displaying multiple events a day" do
+    course = Fabricate(:course,
+                title: "Cohort 4",
+                syllabus: "Foobar",
+                start_date: "2013/09/12",
+                end_date: "2014/01/15")
+    signin_as :student, courses: [course]
+
+    Fabricate(:event, date: "2013/10/15", summary: "Federal Holiday", course: course)
+    Fabricate(:event, date: "2013/10/15", summary: "No Class", course: course)
+
+    visit course_calendar_path(course)
+    page.should have_calendar_entry("2013-10-15", text: "Federal Holiday")
+    page.should have_calendar_entry("2013-10-15", text: "No Class")
+  end
 end

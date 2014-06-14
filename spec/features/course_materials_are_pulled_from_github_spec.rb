@@ -50,8 +50,8 @@ feature "Course materials are pulled from github", vcr: true do
     visit root_path
     visit course_path(course) + "/materials/life-skills/data-storage-and-formats.jpg"
     filename = "data-storage-and-formats.jpg"
-    page.response_headers['Content-Type'].should == "image/jpeg"
     page.response_headers['Content-Disposition'].should include("filename=\"#{filename}\"")
+    page.response_headers['Content-Type'].should == "image/jpeg"
 
     original_encoded_image = File.read('spec/support/files/data-storage-and-formats.jpg', encoding: "ascii-8bit")
     actual_encoded_image = page.body

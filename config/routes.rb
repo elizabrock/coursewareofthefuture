@@ -1,4 +1,12 @@
 Coursewareofthefuture::Application.routes.draw do
+
+  # This line mounts Forem's routes at /forums by default.
+  # This means, any requests to the /forums URL of your application will go to Forem::ForumsController#index.
+  # If you would like to change where this extension is mounted, simply change the :at option to something different.
+  #
+  # We ask that you don't use the :as option here, as Forem relies on it being the default of "forem"
+  mount Forem::Engine, :at => '/forums'
+
   root 'home#index'
 
   devise_for :users, controllers: { omniauth_callbacks: :omniauth_callbacks }
@@ -31,6 +39,7 @@ Coursewareofthefuture::Application.routes.draw do
   resource :enrollment, only: [:new]
   resources :milestone_submissions, only: [:create]
   resources :question_grades, only: [:edit, :update]
+  resources :read_materials, only: [:create]
   resources :self_reports, except: [:destroy]
   resources :users, except: [:destroy] do
     member do

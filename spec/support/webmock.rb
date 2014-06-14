@@ -2,11 +2,6 @@ require 'webmock/rspec'
 
 WebMock.disable_net_connect! :allow_localhost => true
 
-at_exit do
-  # To allow reporting to Code Climate
-  WebMock.disable!
-end
-
 image = File.read(Rails.root.join('spec', 'support', 'files', 'arson_girl.jpg'))
 
 RSpec.configure do |config|

@@ -17,6 +17,11 @@ module Features
       end
     end
 
+    def mark_as_read(topic)
+      parent = find(:xpath, "//li[./a[contains(normalize-space(.),'#{topic}')]]")
+      within(parent){ click_button "Mark as Read" }
+    end
+
     def mark_as_covered(topic, options = {})
       parent = find(:xpath, "//li[./a[contains(normalize-space(.),'#{topic}')]]")
       within(parent){ click_button "Mark as Covered" }

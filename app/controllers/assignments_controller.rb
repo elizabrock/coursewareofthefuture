@@ -1,5 +1,5 @@
 class AssignmentsController < ApplicationController
-  expose(:assignment_options){ Material.ls(current_user.octoclient, current_course.source_repository, "exercises") }
+  expose(:assignment_options){ Material.list(current_user.octoclient, current_course.source_repository, "exercises") }
   expose(:assignments){ current_course.assignments }
   expose(:assignment, attributes: :assignment_params)
 

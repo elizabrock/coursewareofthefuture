@@ -12,6 +12,10 @@ feature "Student profiles" do
   # - goals
   # - background
 
+  before do
+    Fabricate(:instructor, name: "test safety instructor")
+  end
+
   let!(:course0){ Fabricate(:course, title: "Nullth Course") }
   let!(:course){ Fabricate(:course, title: "First Course") }
 

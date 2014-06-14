@@ -197,6 +197,302 @@ ALTER SEQUENCE events_id_seq OWNED BY events.id;
 
 
 --
+-- Name: forem_categories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE forem_categories (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    slug character varying(255)
+);
+
+
+--
+-- Name: forem_categories_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE forem_categories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: forem_categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE forem_categories_id_seq OWNED BY forem_categories.id;
+
+
+--
+-- Name: forem_forums; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE forem_forums (
+    id integer NOT NULL,
+    name character varying(255),
+    description text,
+    category_id integer,
+    views_count integer DEFAULT 0,
+    slug character varying(255)
+);
+
+
+--
+-- Name: forem_forums_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE forem_forums_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: forem_forums_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE forem_forums_id_seq OWNED BY forem_forums.id;
+
+
+--
+-- Name: forem_groups; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE forem_groups (
+    id integer NOT NULL,
+    name character varying(255)
+);
+
+
+--
+-- Name: forem_groups_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE forem_groups_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: forem_groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE forem_groups_id_seq OWNED BY forem_groups.id;
+
+
+--
+-- Name: forem_memberships; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE forem_memberships (
+    id integer NOT NULL,
+    group_id integer,
+    member_id integer
+);
+
+
+--
+-- Name: forem_memberships_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE forem_memberships_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: forem_memberships_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE forem_memberships_id_seq OWNED BY forem_memberships.id;
+
+
+--
+-- Name: forem_moderator_groups; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE forem_moderator_groups (
+    id integer NOT NULL,
+    forum_id integer,
+    group_id integer
+);
+
+
+--
+-- Name: forem_moderator_groups_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE forem_moderator_groups_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: forem_moderator_groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE forem_moderator_groups_id_seq OWNED BY forem_moderator_groups.id;
+
+
+--
+-- Name: forem_posts; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE forem_posts (
+    id integer NOT NULL,
+    topic_id integer,
+    text text,
+    user_id integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    reply_to_id integer,
+    state character varying(255) DEFAULT 'pending_review'::character varying,
+    notified boolean DEFAULT false
+);
+
+
+--
+-- Name: forem_posts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE forem_posts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: forem_posts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE forem_posts_id_seq OWNED BY forem_posts.id;
+
+
+--
+-- Name: forem_subscriptions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE forem_subscriptions (
+    id integer NOT NULL,
+    subscriber_id integer,
+    topic_id integer
+);
+
+
+--
+-- Name: forem_subscriptions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE forem_subscriptions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: forem_subscriptions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE forem_subscriptions_id_seq OWNED BY forem_subscriptions.id;
+
+
+--
+-- Name: forem_topics; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE forem_topics (
+    id integer NOT NULL,
+    forum_id integer,
+    user_id integer,
+    subject character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    locked boolean DEFAULT false NOT NULL,
+    pinned boolean DEFAULT false,
+    hidden boolean DEFAULT false,
+    last_post_at timestamp without time zone,
+    state character varying(255) DEFAULT 'pending_review'::character varying,
+    views_count integer DEFAULT 0,
+    slug character varying(255)
+);
+
+
+--
+-- Name: forem_topics_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE forem_topics_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: forem_topics_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE forem_topics_id_seq OWNED BY forem_topics.id;
+
+
+--
+-- Name: forem_views; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE forem_views (
+    id integer NOT NULL,
+    user_id integer,
+    viewable_id integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    count integer DEFAULT 0,
+    viewable_type character varying(255),
+    current_viewed_at timestamp without time zone,
+    past_viewed_at timestamp without time zone
+);
+
+
+--
+-- Name: forem_views_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE forem_views_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: forem_views_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE forem_views_id_seq OWNED BY forem_views.id;
+
+
+--
 -- Name: milestone_submissions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -262,6 +558,38 @@ CREATE SEQUENCE milestones_id_seq
 --
 
 ALTER SEQUENCE milestones_id_seq OWNED BY milestones.id;
+
+
+--
+-- Name: prerequisites; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE prerequisites (
+    id integer NOT NULL,
+    assignment_id integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    material_fullpath character varying(255)
+);
+
+
+--
+-- Name: prerequisites_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE prerequisites_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: prerequisites_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE prerequisites_id_seq OWNED BY prerequisites.id;
 
 
 --
@@ -401,6 +729,38 @@ ALTER SEQUENCE quizzes_id_seq OWNED BY quizzes.id;
 
 
 --
+-- Name: read_materials; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE read_materials (
+    id integer NOT NULL,
+    user_id integer,
+    material_fullpath character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: read_materials_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE read_materials_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: read_materials_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE read_materials_id_seq OWNED BY read_materials.id;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -469,7 +829,10 @@ CREATE TABLE users (
     background text,
     instructor boolean,
     photo_confirmed boolean DEFAULT false,
-    photo character varying(255)
+    photo character varying(255),
+    forem_admin boolean DEFAULT false,
+    forem_state character varying(255) DEFAULT 'pending_review'::character varying,
+    forem_auto_subscribe boolean DEFAULT false
 );
 
 
@@ -531,6 +894,69 @@ ALTER TABLE ONLY events ALTER COLUMN id SET DEFAULT nextval('events_id_seq'::reg
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY forem_categories ALTER COLUMN id SET DEFAULT nextval('forem_categories_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY forem_forums ALTER COLUMN id SET DEFAULT nextval('forem_forums_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY forem_groups ALTER COLUMN id SET DEFAULT nextval('forem_groups_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY forem_memberships ALTER COLUMN id SET DEFAULT nextval('forem_memberships_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY forem_moderator_groups ALTER COLUMN id SET DEFAULT nextval('forem_moderator_groups_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY forem_posts ALTER COLUMN id SET DEFAULT nextval('forem_posts_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY forem_subscriptions ALTER COLUMN id SET DEFAULT nextval('forem_subscriptions_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY forem_topics ALTER COLUMN id SET DEFAULT nextval('forem_topics_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY forem_views ALTER COLUMN id SET DEFAULT nextval('forem_views_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY milestone_submissions ALTER COLUMN id SET DEFAULT nextval('milestone_submissions_id_seq'::regclass);
 
 
@@ -539,6 +965,13 @@ ALTER TABLE ONLY milestone_submissions ALTER COLUMN id SET DEFAULT nextval('mile
 --
 
 ALTER TABLE ONLY milestones ALTER COLUMN id SET DEFAULT nextval('milestones_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY prerequisites ALTER COLUMN id SET DEFAULT nextval('prerequisites_id_seq'::regclass);
 
 
 --
@@ -567,6 +1000,13 @@ ALTER TABLE ONLY quiz_submissions ALTER COLUMN id SET DEFAULT nextval('quiz_subm
 --
 
 ALTER TABLE ONLY quizzes ALTER COLUMN id SET DEFAULT nextval('quizzes_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY read_materials ALTER COLUMN id SET DEFAULT nextval('read_materials_id_seq'::regclass);
 
 
 --
@@ -624,6 +1064,78 @@ ALTER TABLE ONLY events
 
 
 --
+-- Name: forem_categories_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY forem_categories
+    ADD CONSTRAINT forem_categories_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: forem_forums_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY forem_forums
+    ADD CONSTRAINT forem_forums_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: forem_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY forem_groups
+    ADD CONSTRAINT forem_groups_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: forem_memberships_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY forem_memberships
+    ADD CONSTRAINT forem_memberships_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: forem_moderator_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY forem_moderator_groups
+    ADD CONSTRAINT forem_moderator_groups_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: forem_posts_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY forem_posts
+    ADD CONSTRAINT forem_posts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: forem_subscriptions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY forem_subscriptions
+    ADD CONSTRAINT forem_subscriptions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: forem_topics_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY forem_topics
+    ADD CONSTRAINT forem_topics_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: forem_views_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY forem_views
+    ADD CONSTRAINT forem_views_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: milestone_submissions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -637,6 +1149,14 @@ ALTER TABLE ONLY milestone_submissions
 
 ALTER TABLE ONLY milestones
     ADD CONSTRAINT milestones_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: prereadings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY prerequisites
+    ADD CONSTRAINT prereadings_pkey PRIMARY KEY (id);
 
 
 --
@@ -672,6 +1192,14 @@ ALTER TABLE ONLY quizzes
 
 
 --
+-- Name: read_materials_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY read_materials
+    ADD CONSTRAINT read_materials_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: self_reports_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -685,6 +1213,118 @@ ALTER TABLE ONLY self_reports
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT students_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_forem_categories_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_forem_categories_on_slug ON forem_categories USING btree (slug);
+
+
+--
+-- Name: index_forem_forums_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_forem_forums_on_slug ON forem_forums USING btree (slug);
+
+
+--
+-- Name: index_forem_groups_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_forem_groups_on_name ON forem_groups USING btree (name);
+
+
+--
+-- Name: index_forem_memberships_on_group_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_forem_memberships_on_group_id ON forem_memberships USING btree (group_id);
+
+
+--
+-- Name: index_forem_moderator_groups_on_forum_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_forem_moderator_groups_on_forum_id ON forem_moderator_groups USING btree (forum_id);
+
+
+--
+-- Name: index_forem_posts_on_reply_to_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_forem_posts_on_reply_to_id ON forem_posts USING btree (reply_to_id);
+
+
+--
+-- Name: index_forem_posts_on_state; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_forem_posts_on_state ON forem_posts USING btree (state);
+
+
+--
+-- Name: index_forem_posts_on_topic_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_forem_posts_on_topic_id ON forem_posts USING btree (topic_id);
+
+
+--
+-- Name: index_forem_posts_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_forem_posts_on_user_id ON forem_posts USING btree (user_id);
+
+
+--
+-- Name: index_forem_topics_on_forum_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_forem_topics_on_forum_id ON forem_topics USING btree (forum_id);
+
+
+--
+-- Name: index_forem_topics_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_forem_topics_on_slug ON forem_topics USING btree (slug);
+
+
+--
+-- Name: index_forem_topics_on_state; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_forem_topics_on_state ON forem_topics USING btree (state);
+
+
+--
+-- Name: index_forem_topics_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_forem_topics_on_user_id ON forem_topics USING btree (user_id);
+
+
+--
+-- Name: index_forem_views_on_updated_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_forem_views_on_updated_at ON forem_views USING btree (updated_at);
+
+
+--
+-- Name: index_forem_views_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_forem_views_on_user_id ON forem_views USING btree (user_id);
+
+
+--
+-- Name: index_forem_views_on_viewable_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_forem_views_on_viewable_id ON forem_views USING btree (viewable_id);
 
 
 --
@@ -778,4 +1418,72 @@ INSERT INTO schema_migrations (version) VALUES ('20140414192538');
 INSERT INTO schema_migrations (version) VALUES ('20140417184051');
 
 INSERT INTO schema_migrations (version) VALUES ('20140423123810');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605150044');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605150045');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605150046');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605150047');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605150048');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605150049');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605150050');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605150051');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605150052');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605150053');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605150054');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605150055');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605150056');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605150057');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605150058');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605150059');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605150060');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605150061');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605150062');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605150063');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605150064');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605150065');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605150066');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605150067');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605150068');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605150069');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605150070');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605150071');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605150072');
+
+INSERT INTO schema_migrations (version) VALUES ('20140605150073');
+
+INSERT INTO schema_migrations (version) VALUES ('20140607233822');
+
+INSERT INTO schema_migrations (version) VALUES ('20140609151348');
+
+INSERT INTO schema_migrations (version) VALUES ('20140609160111');
+
+INSERT INTO schema_migrations (version) VALUES ('20140610200914');
 

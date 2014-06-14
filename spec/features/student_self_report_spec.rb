@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature "Student Self Report", js: true do
   # As a student
-  # I want to see a calendare that allows me to self-report several metrics.
+  # I want to see a calendar that allows me to self-report several metrics.
   #
   #   - self-report form should be available for each day in the past between course start date and end date
   #   - should see 'today' and other events marked on the calendar

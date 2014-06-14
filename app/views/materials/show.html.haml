@@ -1,7 +1,15 @@
 - if can?(:manage, CoveredMaterial)
-  = link_to "Edit on Github", material.edit_url, class: "button right"
+  = link_to "Edit on Github", edit_material_url(material), class: "button right"
+
+- unless read_material_fullpaths.include?(material.fullpath)
+  = simple_form_for read_material do |f|
+    = hidden_field_tag :course_id, current_course.id
+    = f.hidden_field :material_fullpath
+    = f.button :submit, "Mark as Read"
+
 - if covered_material
   = link_to "View As Slides", slides_course_covered_material_path(current_course, covered_material), class: "button right"
+
 :markdown
   #{ material.content }
 

@@ -1,2 +1,26 @@
-%p= SelfReport.random_reminder
-%p= link_to "Enter your self-report!", course_calendar_path(@course)
+%table{ width: "100%", style: "background-color:black; color:white; background-image: url(#{image_url('chalk_black_low.jpg')})" }
+  %tr
+    %td
+      = image_tag "logo2.png"
+      %table(align="center" style="color:white;")
+        %tr
+          %td
+            %p
+              %strong(style="font-size:150%;") DID YOU REMEMBER TO ENTER YOUR SELF REPORT?
+
+      %table(align="center" style="color:white;")
+        %tr
+          %td
+            = image_tag "Squirrel.png", width: "86.75", height: "67.5"
+          %td
+            %p(style="font-size:110%;")= SelfReport.random_reminder
+
+
+      %table
+        %tr
+          %td
+            &nbsp;
+      %table(align="center")
+        %tr
+          %td
+            %p(style="color: yellow;")= link_to "Head to the Course Calendar  ~>", course_calendar_url(@course)
