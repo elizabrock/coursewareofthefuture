@@ -70,8 +70,6 @@ describe Material do
     let(:markdown_material){ Material.new(markdown_tree_item) }
     let(:subdirectory_material){ Material.new(subdirectory_tree_item) }
     let(:image_material){ Material.new(image_tree_item) }
-    # FIXME: Allow for this functionality:
-    # let(:local_material){ Material.new("computer-science/logic/logic.md") }
     describe "#sha" do
       it "should return the shas from the API" do
         markdown_material.sha.should == "6e590dd772840ca2fc20faf9c764c6737c742a61"

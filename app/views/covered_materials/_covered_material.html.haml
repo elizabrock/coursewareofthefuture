@@ -8,4 +8,6 @@
       - else
         = covered_material.covered_on
       = link_to material.pretty_name, material.link
+    - if read_material_fullpaths.include?(material.fullpath)
+      (read)
     %small= pretty_path_for(material)

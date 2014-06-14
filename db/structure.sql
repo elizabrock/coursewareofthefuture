@@ -561,6 +561,38 @@ ALTER SEQUENCE milestones_id_seq OWNED BY milestones.id;
 
 
 --
+-- Name: prerequisites; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE prerequisites (
+    id integer NOT NULL,
+    assignment_id integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    material_fullpath character varying(255)
+);
+
+
+--
+-- Name: prerequisites_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE prerequisites_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: prerequisites_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE prerequisites_id_seq OWNED BY prerequisites.id;
+
+
+--
 -- Name: question_answers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -694,6 +726,38 @@ CREATE SEQUENCE quizzes_id_seq
 --
 
 ALTER SEQUENCE quizzes_id_seq OWNED BY quizzes.id;
+
+
+--
+-- Name: read_materials; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE read_materials (
+    id integer NOT NULL,
+    user_id integer,
+    material_fullpath character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: read_materials_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE read_materials_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: read_materials_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE read_materials_id_seq OWNED BY read_materials.id;
 
 
 --
@@ -907,6 +971,13 @@ ALTER TABLE ONLY milestones ALTER COLUMN id SET DEFAULT nextval('milestones_id_s
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY prerequisites ALTER COLUMN id SET DEFAULT nextval('prerequisites_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY question_answers ALTER COLUMN id SET DEFAULT nextval('question_answers_id_seq'::regclass);
 
 
@@ -929,6 +1000,13 @@ ALTER TABLE ONLY quiz_submissions ALTER COLUMN id SET DEFAULT nextval('quiz_subm
 --
 
 ALTER TABLE ONLY quizzes ALTER COLUMN id SET DEFAULT nextval('quizzes_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY read_materials ALTER COLUMN id SET DEFAULT nextval('read_materials_id_seq'::regclass);
 
 
 --
@@ -1074,6 +1152,14 @@ ALTER TABLE ONLY milestones
 
 
 --
+-- Name: prereadings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY prerequisites
+    ADD CONSTRAINT prereadings_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: question_answers_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1103,6 +1189,14 @@ ALTER TABLE ONLY quiz_submissions
 
 ALTER TABLE ONLY quizzes
     ADD CONSTRAINT quizzes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: read_materials_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY read_materials
+    ADD CONSTRAINT read_materials_pkey PRIMARY KEY (id);
 
 
 --
@@ -1384,4 +1478,12 @@ INSERT INTO schema_migrations (version) VALUES ('20140605150071');
 INSERT INTO schema_migrations (version) VALUES ('20140605150072');
 
 INSERT INTO schema_migrations (version) VALUES ('20140605150073');
+
+INSERT INTO schema_migrations (version) VALUES ('20140607233822');
+
+INSERT INTO schema_migrations (version) VALUES ('20140609151348');
+
+INSERT INTO schema_migrations (version) VALUES ('20140609160111');
+
+INSERT INTO schema_migrations (version) VALUES ('20140610200914');
 

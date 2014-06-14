@@ -39,11 +39,7 @@ class Material
 
   def incorporate_child(child)
     return unless child.markdown? or child.directory?
-    if self.pretty_name == child.pretty_name
-      @shadow = child
-    else
-      self.children << child
-    end
+    self.children << child
   end
 
   def content
@@ -67,11 +63,7 @@ class Material
   def find(fullpath)
     all = descendants
     all << self
-    all.find{ |c| c.matches?(fullpath) }
-  end
-
-  def matches?(fullpath)
-    self.fullpath == fullpath || @shadow.try(:matches?, fullpath)
+    all.find{ |c| c.fullpath == fullpath }
   end
 
   def filename
@@ -95,13 +87,7 @@ class Material
   end
 
   def link
-    if @shadow.present?
-      @shadow.link
-    elsif self.markdown?
-      "materials/" + self.fullpath
-    else
-      nil
-    end
+    "materials/" + self.fullpath if self.markdown?
   end
 
   def directory
@@ -134,12 +120,8 @@ class Material
       child_hash_array << child.to_hash
     end
     return child_hash_array if self.fullpath == ROOT
-    if @shadow.present?
-      hash = @shadow.to_hash
-    else
-      hash = { title: pretty_name }
-      hash[:path] = link unless link.blank?
-    end
+    hash = { title: pretty_name }
+    hash[:path] = link unless link.blank?
     hash[:children] = child_hash_array unless child_hash_array.empty?
     hash
   end

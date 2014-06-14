@@ -13,5 +13,4 @@
       = link_to material.pretty_name, material.link
     - else
       %span.title= material.pretty_name
-
     %ul= render partial: 'material', locals: { materials: material.children }
