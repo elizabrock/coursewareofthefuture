@@ -39,7 +39,7 @@ end
 RSpec::Matchers.define :have_error_message do |text, options|
   match do |page|
     field = options[:on]
-    selector = ".//div[contains(@class,'error') and ./label[contains(text(),'#{field}')]]/small[contains(text(),\"#{text}\")]"
+    selector = ".//div[contains(@class,'error') and ./label[contains(text(),'#{field}')]]/span[contains(text(),\"#{text}\")]"
     page.should have_xpath(selector)
   end
 end

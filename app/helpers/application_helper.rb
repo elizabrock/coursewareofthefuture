@@ -8,10 +8,11 @@ module ApplicationHelper
   end
 
   def link_to_course(course)
+    full_title = "#{course.title} (#{course.start_date} - #{course.end_date})"
     if can?(:manage, course) and !current_user.courses.include?(course)
-      link_to course.title, main_app.course_enrollments_path(course), method: :post
+      link_to full_title, main_app.course_enrollments_path(course), method: :post
     else
-      link_to course.title, main_app.course_path(course)
+      link_to full_title, main_app.course_path(course)
     end
   end
 

@@ -41,7 +41,7 @@ feature "Instructor chooses assignments from github", vcr: true, js: true do
     click_button "Save Assignment"
     page.should have_content "Your assignment has been updated."
     click_link "Assignments"
-    page.should have_list ["Capstone", "Ruby Koans"]
+    page.should have_list ["Ruby Koans", "Capstone"]
     click_link "Ruby Koans"
     page.should have_content("Strings (due 3/24)")
     page.should have_content("Objects (due 4/28)")

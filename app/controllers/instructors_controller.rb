@@ -1,5 +1,5 @@
 class InstructorsController < ApplicationController
-  before_filter :require_instructor!
+  before_filter :authenticate!
 
   def destudentify
     session[:as_student] = nil

@@ -8,8 +8,6 @@ This will be the new courseware for Nashville Software School.
 [![Code Climate](https://codeclimate.com/github/elizabrock/coursewareofthefuture.png)](https://codeclimate.com/github/elizabrock/coursewareofthefuture)
 [![Code Climate](https://codeclimate.com/github/elizabrock/coursewareofthefuture/coverage.png)](https://codeclimate.com/github/elizabrock/coursewareofthefuture)
 
-
-
 ## Deployment Instructions
 
 ### First Deployment

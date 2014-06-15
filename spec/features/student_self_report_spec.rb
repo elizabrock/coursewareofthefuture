@@ -33,38 +33,38 @@ feature "Student Self Report", js: true do
   end
 
   scenario "Student sees 'today' in calendar under today's date." do
-    within("td[data-date='2013-03-15']"){ page.should have_content "Today" }
+    within("td[data-date='3/15']"){ page.should have_content "Today" }
   end
 
   scenario "Student sees a self-report form for days that need missing reports" do
-    within("td[data-date='2013-03-14']"){ page.should have_content "Self-Report:" }
-    within("td[data-date='2013-03-11']"){ page.should have_content "Self-Report:" }
-    within("td[data-date='2013-03-15']"){ page.should have_content "Self-Report:" }
-    within("td[data-date='2013-03-12']"){ page.should_not have_content "Self-Report:" }
-    within("td[data-date='2013-03-13']"){ page.should_not have_content "Self-Report:" }
+    within("td[data-date='3/14']"){ page.should have_content "Self-Report:" }
+    within("td[data-date='3/11']"){ page.should have_content "Self-Report:" }
+    within("td[data-date='3/15']"){ page.should have_content "Self-Report:" }
+    within("td[data-date='3/12']"){ page.should_not have_content "Self-Report:" }
+    within("td[data-date='3/13']"){ page.should_not have_content "Self-Report:" }
   end
 
   scenario "Student still sees self-report form is another user has filled out their own report" do
     student = Fabricate(:student)
     Fabricate(:self_report, date: "2013/03/11", user: student)
     click_link "Course Calendar"
-    within("td[data-date='2013-03-11']"){ page.should have_content "Self-Report:" }
+    within("td[data-date='3/11']"){ page.should have_content "Self-Report:" }
   end
 
   scenario "Student does not see self-report form for days before the class" do
-    within("td[data-date='2013-03-01']"){ page.should_not have_content "Self-Report:" }
-    within("td[data-date='2013-03-10']"){ page.should_not have_content "Self-Report:" }
-    within("td[data-date='2013-03-09']"){ page.should_not have_content "Self-Report:" }
+    within("td[data-date='3/01']"){ page.should_not have_content "Self-Report:" }
+    within("td[data-date='3/10']"){ page.should_not have_content "Self-Report:" }
+    within("td[data-date='3/09']"){ page.should_not have_content "Self-Report:" }
   end
 
   scenario "Student sees self-report summary for days that have reports" do
-    within("td[data-date='2013-03-13']") do
+    within("td[data-date='3/13']") do
       page.should have_content "Class: Attended"
       page.should have_content "Coding: 2 hours"
       page.should have_content "Sleep: 7.5 hours"
       page.should have_content "Learning: 4 hours"
     end
-    within("td[data-date='2013-03-12']") do
+    within("td[data-date='3/12']") do
       page.should have_content "Class: Missed"
       page.should have_content "Coding: 5 hours"
       page.should have_content "Sleep: 9 hours"
@@ -73,7 +73,7 @@ feature "Student Self Report", js: true do
   end
 
   scenario "Student enters self-report form" do
-    within("td[data-date='2013-03-14']") do
+    within("td[data-date='3/14']") do
       page.should have_content "Self-Report:"
       choose "Yes"
       page.select("1", from: "Hours coding")
@@ -89,7 +89,7 @@ feature "Student Self Report", js: true do
   end
 
   scenario "Student updates a self report" do
-    within("td[data-date='2013-03-13']") do
+    within("td[data-date='3/13']") do
       page.should have_content "Class: Attended"
       page.should have_content "Sleep: 7.5 hours"
       click_link "edit"
@@ -105,7 +105,7 @@ feature "Student Self Report", js: true do
   end
 
   scenario "Student enters empty form" do
-    within("td[data-date='2013-03-14']") do
+    within("td[data-date='3/14']") do
       page.should have_content "Self-Report:"
       click_button "Submit"
       page.should have_content "must be selected"
@@ -114,7 +114,7 @@ feature "Student Self Report", js: true do
   end
 
   scenario "Student enters form with more than 24 hours" do
-    within("td[data-date='2013-03-14']") do
+    within("td[data-date='3/14']") do
       choose "Yes"
       page.select("9", from: "Hours coding")
       page.select("9", from: "Hours learning")

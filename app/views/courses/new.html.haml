@@ -2,8 +2,8 @@
 
 = simple_form_for course do |f|
   = f.input :title
-  = f.input :syllabus, hint: "Input as either markdown or html"
-  = f.input :source_repository, label: "Source Repository", hint: "Must be of the form username/repo"
+  = f.input :syllabus, hint: "you can use markdown or html for your syllabus"
+  = f.input :source_repository, label: "Source Repository", hint: "must be in the form of username/repo"
   = f.input :start_date, label: "Start Date", as: :date
   = f.input :end_date, label: "End Date", as: :date
   = f.button :submit, "Create Course"

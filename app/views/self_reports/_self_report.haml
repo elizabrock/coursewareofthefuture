@@ -9,4 +9,4 @@
   %br
   %strong Sleep:
   #{number_to_human(self_report.hours_slept)} hours
-  = link_to "edit", edit_self_report_path(self_report), remote: true, method: :get
+  = link_to "edit", edit_self_report_path(self_report), remote: true, method: :get, class: :edit

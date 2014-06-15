@@ -35,6 +35,7 @@ feature "Users see course navigation when viewing student profiles" do
   end
 
   scenario "Navigating to my profile from a non-course page (as a student)" do
+    enrollable_course = Fabricate(:course)
     me = signin_as :student, courses: [course]
     click_link "Enroll in another course"
     click_link "My Profile"

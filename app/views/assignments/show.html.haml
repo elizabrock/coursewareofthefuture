@@ -2,20 +2,11 @@
 :markdown
   #{assignment.summary}
 
-- only_submitted_milestones_displayed = true
-- assignment.milestones.each_with_index do |milestone|
-  .milestone
-    %h2 #{milestone.title} (due #{milestone.deadline.strftime("%-m/%d")})
-    - if only_submitted_milestones_displayed or can?(:edit, milestone)
-      :markdown
-        #{milestone.instructions}
-      - if current_user.milestones.include? milestone
-        %a.button.disabled.secondary Status: Submitted for Grading
-      - else
-        - only_submitted_milestones_displayed = false
-        = simple_form_for milestone.milestone_submissions.new do |f|
-          = f.input :milestone_id, as: :hidden
-          = f.input :repository, label: "Assignment Repository", collection: current_user.repositories.map{|r| r["name"]}
-          = f.button :submit, "Submit Milestone"
-    - else
-      %a.button Ability to view and submit is pending completion of previous milestones
+- can_submit_milestone = true
+- assignment.milestones.each do |milestone|
+  - already_submitted = current_user.milestones.include?(milestone)
+
+  = render partial: "milestones/milestone", locals: { milestone: milestone, already_submitted: already_submitted, can_submit_milestone: can_submit_milestone }
+
+  - if !already_submitted
+    = can_submit_milestone = false

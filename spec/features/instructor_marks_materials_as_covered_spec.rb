@@ -19,11 +19,11 @@ feature "Instructor marks materials as covered", vcr: true do
       within("ul#upcoming_materials"){ page.should have_content "Logic" }
       within("ol#covered_materials"){ page.should_not have_content "Logic" }
       mark_as_covered("Logic")
-      page.should have_content "logic.md has been marked as covered on 2013/03/12."
+      page.should have_content "logic.md has been marked as covered on 3/12."
       within("ol#covered_materials"){ page.should have_content "Logic" }
       within("ul#upcoming_materials"){ page.should have_content "Covered Logic" }
       mark_as_covered("Basic Control Structures")
-      page.should have_content "basic-control-structures.md has been marked as covered on 2013/03/12."
+      page.should have_content "basic-control-structures.md has been marked as covered on 3/12."
       within("ol#covered_materials") do
         page.should have_list(["Logic", "Basic Control Structures"])
       end
@@ -38,7 +38,7 @@ feature "Instructor marks materials as covered", vcr: true do
     within("ul#upcoming_materials"){ page.should have_content "Logic" }
     within("ol#covered_materials"){ page.should_not have_content "Logic" }
     mark_as_covered("Logic", on: "2014/03/12")
-    page.should have_content "logic.md has been marked as covered on 2014/03/12."
+    page.should have_content "logic.md has been marked as covered on 3/12."
     within("ol#covered_materials"){ page.should have_content "Logic" }
     within("ul#upcoming_materials"){ page.should have_content "Covered Logic" }
     mark_as_covered("Basic Control Structures", on: "2014/03/12")
@@ -57,7 +57,7 @@ feature "Instructor marks materials as covered", vcr: true do
       within("ul#upcoming_materials"){ page.should have_content "Logic" }
       within("ol#covered_materials"){ page.should_not have_content "Logic" }
       mark_as_covered("Logic")
-      page.should have_content "logic.md has been marked as covered on 2013/03/13."
+      page.should have_content "logic.md has been marked as covered on 3/13."
       within("ol#covered_materials"){ page.should have_content "Logic" }
       within("ul#upcoming_materials"){ page.should have_content "Covered Logic" }
     end
@@ -65,12 +65,12 @@ feature "Instructor marks materials as covered", vcr: true do
     Timecop.travel(Time.new(2013, 03, 12)) do
       click_link "Materials"
       mark_as_covered("Basic Control Structures")
-      page.should have_content "basic-control-structures.md has been marked as covered on 2013/03/12."
+      page.should have_content "basic-control-structures.md has been marked as covered on 3/12."
       within("ol#covered_materials") do
         page.should have_list(["Logic", "Basic Control Structures"])
       end
       mark_as_covered("Logic", on: "2013/03/11")
-      page.should have_content "logic.md has been marked as covered on 2013/03/11."
+      page.should have_content "logic.md has been marked as covered on 3/11."
       within("ol#covered_materials") do
         page.should have_list(["Logic", "Basic Control Structures"])
       end

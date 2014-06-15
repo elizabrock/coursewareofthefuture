@@ -19,7 +19,7 @@ class CoveredMaterialsController < ApplicationController
 
   def create
     covered_material.save!
-    redirect_to course_materials_path(current_course), notice: "#{covered_material.material_fullpath} has been marked as covered on #{covered_material.covered_on.strftime('%Y/%m/%d')}."
+    redirect_to course_materials_path(current_course), notice: "#{covered_material.material_fullpath} has been marked as covered on #{covered_material.covered_on}."
   end
   alias update create
 

@@ -170,7 +170,7 @@ ALTER SEQUENCE enrollments_id_seq OWNED BY enrollments.id;
 CREATE TABLE events (
     id integer NOT NULL,
     course_id integer,
-    date timestamp without time zone,
+    date date,
     summary character varying(255),
     created_at timestamp without time zone,
     updated_at timestamp without time zone
@@ -535,7 +535,7 @@ CREATE TABLE milestones (
     assignment_id integer,
     title character varying(255),
     instructions text,
-    deadline timestamp without time zone,
+    deadline date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -703,7 +703,7 @@ CREATE TABLE quizzes (
     id integer NOT NULL,
     course_id integer,
     title character varying(255),
-    deadline timestamp without time zone,
+    deadline date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -1486,4 +1486,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140609151348');
 INSERT INTO schema_migrations (version) VALUES ('20140609160111');
 
 INSERT INTO schema_migrations (version) VALUES ('20140610200914');
+
+INSERT INTO schema_migrations (version) VALUES ('20140615162813');
 

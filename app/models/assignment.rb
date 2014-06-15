@@ -18,8 +18,8 @@ class Assignment < ActiveRecord::Base
 
   def title_with_deadlines
     if first_deadline
-      first = first_deadline.strftime("%-m/%d")
-      last = last_deadline.strftime("%-m/%d")
+      first = first_deadline
+      last = last_deadline
       deadlines = (first == last) ? first : [first, last].join(" - ")
       "#{title} (#{deadlines})"
     else

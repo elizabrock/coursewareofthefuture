@@ -29,7 +29,7 @@ feature "Student views quiz feedback" do
     click_link "Assignments"
     page.should have_content "Checkin (66%)"
     click_link "Checkin (66%)"
-    page.should have_content "Result: 66%"
+    page.should have_content "Checkin (66%)"
     page.should have_list ["Are you happy?", "What are you happy about?", "Is class over?"]
     page.should have_list ["Your Answer: False", "Your Answer: The food!", "Your Answer: False"]
     page.should have_list ["Correct Answer: True", "Correct Answer: There is no correct answer.", "Correct Answer: False"]
@@ -45,7 +45,7 @@ feature "Student views quiz feedback" do
     click_link "Assignments"
     page.should have_content "Checkin (submitted for grading)"
     click_link "Checkin (submitted for grading)"
-    page.should have_content "Result: Pending"
+    page.should have_content "Checkin (Pending)"
     page.should have_list ["Are you happy?", "What are you happy about?", "Is class over?"]
     page.should have_list ["Your Answer: False", "Your Answer: The food!", "Your Answer: False"]
     page.should_not have_content "Correct Answer"

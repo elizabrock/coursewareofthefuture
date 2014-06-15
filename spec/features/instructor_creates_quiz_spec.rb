@@ -164,7 +164,7 @@ feature "Instructor creates quiz" do
               correct_answer: "false", quiz: quiz)
     click_link "Assignments"
     click_link "Final Checkin"
-    page.should have_content "Setting a deadline will publish this quiz. Format must be YYYY/MM/DD"
+    page.should have_content "Setting a deadline will publish this quiz."
     fill_in "Deadline", with: "2014/05/14"
     click_button "Save Changes"
     page.should have_content "Your quiz has been published."

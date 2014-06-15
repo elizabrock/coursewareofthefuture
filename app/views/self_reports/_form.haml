@@ -1,4 +1,4 @@
-%div
+%div.self-report-form
   = simple_form_for self_report, html: { id: self_report.date }, defaults: {input_html: {class: 'tiny radius'}}, remote: true do |f|
     = f.hidden_field :date
     - unless self_report.errors.empty?

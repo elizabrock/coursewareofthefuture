@@ -1,0 +1,142 @@
+ul#main_navigation {
+  margin: 1em 0;
+  padding: 0 0 20px 10px;
+  border-bottom: 1px solid #000;
+  .count_icon{
+    color: white;
+    border-radius: 20px;
+    margin-bottom: 5px;
+    padding: 1px 5px;
+    background-color: $alert-color;
+  }
+  & > li {
+    margin: 0;
+    padding: 0;
+    display: inline;
+    list-style-type: none;
+    & > span, & > a:link, & > a:visited {
+      float: left;
+      line-height: 14px;
+      margin: 0 10px 4px 10px;
+      text-decoration: none;
+    }
+
+    & > span > a, & > span > a:hover {
+      color: #313131;
+    }
+
+    & > a:link, & > a:visited {
+      color: #999;
+    }
+
+    & > a:hover, & > a:link#current, & > a:visited#current {
+      padding-bottom: 2px;
+      background: transparent;
+    }
+    & > a:link#current, & > a:visited#current {
+      border-bottom: 4px solid #00A9E0;
+      color: #000;
+    }
+    & > a:hover {
+      border-bottom: 4px solid #313131;
+      color: #313131;
+    }
+
+    & > a:hover { color: #000; }
+  }
+}
+
+form.new_covered_material {
+  display: inline-block;
+}
+
+.label, .alert-box {
+  background: linear-gradient(#1EC8E8, $primary-color);
+}
+
+.alert {
+  background: linear-gradient(#FF619A, $alert-color);
+}
+
+.success {
+  background: linear-gradient($success-color, scale-color($success-color, $lightness: -15%));
+  border: 0px solid #6600ff;
+}
+
+.secondary {
+  background: linear-gradient($secondary-color, scale-color($secondary-color, $lightness: -10%));
+}
+
+button, .button {
+  background: linear-gradient(scale-color($primary-color, $lightness: 25%), scale-color($primary-color, $lightness: -15%));
+
+  @include border-top-left-radius(0);
+  @include border-bottom-left-radius($button-radius);
+  @include border-bottom-right-radius($button-radius);
+  @include border-top-right-radius($button-radius);
+
+  &.small, &.tiny {
+    @include border-top-left-radius(0);
+    @include border-bottom-left-radius($button-radius / 2);
+    @include border-bottom-right-radius($button-radius / 2);
+    @include border-top-right-radius($button-radius / 2);
+  }
+  &.secondary {
+    background: $secondary-color;
+  }
+}
+
+h5 {
+  border-bottom: $hr-border-width $hr-border-style $hr-border-color;
+}
+
+form {
+  &.inline {
+    div {
+      display: inline-block;
+    }
+  }
+
+  div.input {
+    margin-bottom: 1em;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="date"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="month"],
+  input[type="week"],
+  input[type="email"],
+  input[type="number"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="time"],
+  input[type="url"],
+  textarea {
+    margin-bottom: 0.5em;
+  }
+
+  input.radio_buttons, input.boolean {
+    margin: 0 0.5em 0 0;
+  }
+
+  textarea {
+    min-height: 9em;
+  }
+
+  .hint {
+    font-weight: 200;
+    &:before {
+      content: "* ";
+    }
+  }
+
+  .error {
+    font-style: normal;
+    label {
+      color: $body-font-color;
+    }
+  }
+}

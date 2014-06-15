@@ -1,0 +1,88 @@
+@import "compass/css3";
+
+table.calendar {
+  margin-bottom: 1.25rem;
+  border: solid 1px #313131;
+  @include border-top-left-radius(20px);
+  @include border-top-right-radius(20px);
+  width: 100%;
+
+  .label {
+    display: block;
+    white-space: normal;
+    & + .label, & + div {
+      margin-top: 0.25em;
+    }
+  }
+
+  a.edit {
+    text-decoration: dotted;
+    display: inline-block;
+    padding: 0.25em 0;
+  }
+
+  &:first-of-type  td.otherMonth, td.outside-of-class, tr:last-of-type td.otherMonth {
+    visibility: hidden;
+    padding: 0px;
+    line-height: 0px;
+    font-size: 0px;
+  }
+
+  th, td {
+    width: 14.28%;
+  }
+
+  th {
+    padding-left: 0;
+    padding-right: 0;
+    border-bottom: 1px solid #dddddd;
+    border-right: 1px solid #dddddd;
+
+    &:last-of-type {
+      border-right: none;
+    }
+
+    &.monthName {
+      text-align: center;
+      font-size: 1.75em;
+      color: #313131;
+      @include border-top-left-radius(20px);
+      @include border-top-right-radius(20px);
+      padding: 0.5em 0;
+      border-bottom: 1px solid #313131;
+    }
+    abbr {
+      display: block;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      text-transform: uppercase;
+      border-bottom: none;
+      color: mix(#00A9E0, #008CBA);
+    }
+  }
+
+  td {
+    vertical-align: top;
+    height: 9em;
+
+    &.otherMonth, &.outside-of-class h5 {
+      color: #bbb;
+    }
+
+    // Date Header
+    h5 {
+      margin-top: 0;
+      text-align: left;
+    }
+    // Self-Report Header
+    h6 {
+      margin-top: 0.5em;
+      border-bottom: 1px solid #6600ff;
+    }
+    .label {
+      overflow: hidden;
+      width: 100%;
+    }
+  }
+}
