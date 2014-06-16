@@ -35,6 +35,8 @@ gem 'honeybadger'
 gem 'jquery-rails'
 # jquery-ui on rails:
 gem 'jquery-ui-rails'
+# Performance monitoring:
+gem 'newrelic_rpm'
 # Github API gem:
 gem 'octokit'
 # OAuth for Github
