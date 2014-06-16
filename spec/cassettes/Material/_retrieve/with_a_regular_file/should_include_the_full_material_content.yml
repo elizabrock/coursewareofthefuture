@@ -10,7 +10,7 @@ http_interactions:
       Accept:
       - application/vnd.github.v3+json
       User-Agent:
-      - Octokit Ruby Gem 3.1.0
+      - Octokit Ruby Gem 3.1.2
       Authorization:
       - token bb350eb0e5b0da397856cb971b2977f61248a33c
       Accept-Encoding:
@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Sat, 14 Jun 2014 19:06:13 GMT
+      - Mon, 16 Jun 2014 15:11:03 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -33,9 +33,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4932'
+      - '4946'
       X-Ratelimit-Reset:
-      - '1402774946'
+      - '1402932552'
       Cache-Control:
       - private, max-age=60, s-maxage=60
       Last-Modified:
@@ -65,16 +65,16 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Github-Request-Id:
-      - 3284C545:01FC:111C0CC:539C9D25
+      - 44358582:6285:238DF54:539F0907
       Strict-Transport-Security:
       - max-age=31536000
       X-Content-Type-Options:
       - nosniff
       X-Served-By:
-      - 03d91026ad8428f4d9966d7434f9d82e
+      - 62a1303ae95931e56e387e87d354bb24
     body:
       encoding: UTF-8
       string: '{"name":"logic.md","path":"computer-science/logic/logic.md","sha":"6e590dd772840ca2fc20faf9c764c6737c742a61","size":3910,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/computer-science/logic/logic.md?ref=master","html_url":"https://github.com/elizabrock/inquizator-test-repo/blob/master/computer-science/logic/logic.md","git_url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/6e590dd772840ca2fc20faf9c764c6737c742a61","type":"file","content":"IyBMb2dpYwoKTG9naWMgaXMsIGJyb2FkbHkgc3BlYWtpbmcsIHRoZSBhcHBs\naWNhdGlvbiBvZiByZWFzb25pbmcgdG8gYW4gYWN0aXZpdHkgb3IgY29uY2Vw\ndC4gIEluIENvbXB1dGVyIFNjaWVuY2UsIHdlIHByaW1hcmlseSB1c2UgZGVk\ndWN0aXZlIHJlYXNvbmluZyAoYS5rLmEuIGRlZHVjdGl2ZSBsb2dpYykgYWxv\nbmcgd2l0aCBib29sZWFuIGFsZ2VicmEgKGUuZy4gdHdvLXZhbHVlZCBsb2dp\nYykuCgojIFRyYWRpdGlvbmFsIExvZ2ljIFN5bWJvbHMKClRyYWRpdGlvbmFs\nIGxvZ2ljIGFuZCBsb2dpY2FsIHByb29mcywgb2YgdGhlIHNvcnQgeW91IHBy\nb2JhYmx5IGxlYXJuZWQgYWxvbmcgd2l0aCBHZW9tZXRyeSBpbiBncmFkZS1z\nY2hvb2wsIGhhcyBhIGZvcm1hbCBzZXQgb2Ygc3ltYm9scyBhc3NvY2lhdGVk\nIHdpdGggaXQuCgpUaGVzZSBtYXkgc2VlbSBmYW1pbGlhcjoKCiogSW1wbGlj\nYXRpb246IOKHkgoqIEVxdWl2YWxlbmNlOiDih5QKKiBOZWdhdGlvbiAobm90\nKTogwqwgIH4gIOKJoAoqIENvbmp1bmN0aW9uIChhbmQpOiAmIF4KKiBEaXNq\ndW5jdGlvbiAob3IpOiDiiKgKKiBQcmVjZWRlbmNlIEdyb3VwaW5nOiAoKQoK\nT24gdGhlIG90aGVyIGhhbmQsIHRoZXkgbWF5IG5vdCBzZWVtIGZhbWlsaWFy\nLiAgRG9lc24ndCBtYXR0ZXIhIFdlJ3JlIG5vdCBnb2luZyB0byB1c2UgdGhv\nc2Ugc3ltYm9sczsgSSd2ZSBvbmx5IGluY2x1ZGVkIHRoZW0gZm9yIHlvdXIg\ncmVmZXJlbmNlLCBhcyBtb3N0IHRyZWF0aXNlIG9uIHRoZSBzdWJqZWN0IGRv\nIHVzZSB0aGUgZm9ybWFsIHN5bWJvbHMuCgpIZW5jZWZvcnRoLCB3aGVuZXZl\nciBkaXNjdXNzaW5nIGxvZ2ljLCBJJ2xsIGJlIHVzaW5nIHRoZSBtb3JlIHRy\nYWRpdGlvbmFsIHByb2dyYW1taW5nIHN5bWJvbHMgZm9yIGxvZ2ljOgoKKiBF\ncXVpdmFsZW5jZTogPT0KKiBOZWdhdGlvbjogISBvciAhPQoqIENvbmp1bmN0\naW9uOiAmJgoqIERpc2p1bmN0aW9uOiDHgMeACiogUHJlY2VkZW5jZSBHcm91\ncGluZzogKCkKCiMjIEJhc2ljIE9wZXJhdGlvbnMKCk5vdGU6IGlmZiBtZWFu\nICJpZiBhbmQgb25seSBpZiIKCiMjIyBBbmQgLyBDb25qdW5jdGlvbgoKQSAm\nJiBCIGlzIHRydWUgaWZmIEEgaXMgdHJ1ZSBhbmQgQiBpcyB0cnVlLgoKQSB0\ncnV0aCB0YWJsZSBpbGx1c3RyYXRpbmcgdGhpczoKCgl8IEEgfCBCIHwgQSAm\nJiBCIHwKCXwgMCB8IDAgfCAwICAgICAgfAoJfCAwIHwgMSB8IDAgICAgICB8\nCgl8IDEgfCAwIHwgMCAgICAgIHwKCXwgMSB8IDEgfCAxICAgICAgfAoKQSB2\nZW5uIGRpYWdyYW0gaWxsdXN0cmF0aW5nIHRoaXM6CgohW1Zlbm4gRGlhZ3Jh\nbSBvZiBBTkRdKHdpa2ltZWRpYS1jb21tb25zLXZlbm4tYW5kLnBuZyAiQU5E\nIikKCiMjIyBPciAvIERpc2p1bmN0aW9uCgpBIHx8IEIgaXMgdHJ1ZSBpZiBB\nIGlzIHRydWUgb3IgQiBpcyB0cnVlLgoKQSB0cnV0aCB0YWJsZSBpbGx1c3Ry\nYXRpbmcgdGhpczoKCgl8IEEgfCBCIHwgQSB8fCBCIHwKCXwgMCB8IDAgfCAw\nICAgICAgfAoJfCAwIHwgMSB8IDEgICAgICB8Cgl8IDEgfCAwIHwgMSAgICAg\nIHwKCXwgMSB8IDEgfCAxICAgICAgfAoKQSB2ZW5uIGRpYWdyYW0gaWxsdXN0\ncmF0aW5nIHRoaXM6CgohW1Zlbm4gRGlhZ3JhbSBvZiBPUl0od2lraW1lZGlh\nLWNvbW1vbnMtdmVubi1vci5wbmcgIk9SIikKCiMjIyBOb3QgLyBOZWdhdGlv\nbgoKIUEgaXMgdHJ1ZSBpZiBBIGlzIGZhbHNlCgpBIHRydXRoIHRhYmxlIGls\nbHVzdHJhdGluZyB0aGlzOgoKCXwgQSB8ICFBIHwKCXwgMCB8IDEgIHwKCXwg\nMSB8IDAgIHwKCkEgdmVubiBkaWFncmFtIGlsbHVzdHJhdGluZyB0aGlzOgoK\nIVtWZW5uIERpYWdyYW0gb2YgTk9UXSh3aWtpbWVkaWEtY29tbW9ucy12ZW5u\nLW5vdC1hLnBuZyAiTk9UIikKCiMjIyBFcXVhbGl0eQoKQSA9PSBCIGlzIHRy\ndWUgaWYgQSBhbmQgQiBib3RoIGhhdmUgdGhlIHNhbWUgdmFsdWUuCgpBIHRy\ndXRoIHRhYmxlIGlsbHVzdHJhdGluZyB0aGlzOgoKCXwgQSB8IEIgfCBBID09\nIEIgfAoJfCAwIHwgMCB8IDEgICAgICB8Cgl8IDAgfCAxIHwgMCAgICAgIHwK\nCXwgMSB8IDAgfCAwICAgICAgfAoJfCAxIHwgMSB8IDEgICAgICB8CgojIyMg\nUHJlY2VkZW5jZSBHcm91cGluZwoKKCkgaXMgdXNlZCB0byBvdmVycmlkZSB0\naGUgc3RhbmRhcmQgb3JkZXIgb2Ygb3BlcmF0aW9ucy4KCkZvciBleGFtcGxl\nOgoKQSAmJiBCIHx8IEMgIGlzIG5vdCBlcXVpdmFsZW50IHRvIEEgJiYgKEIg\nfHwgQykKCgl8IEEgfCBCIHwgQyB8IEEgJiYgQiB8fCBDIHwgQSAmJiAoQiB8\nfHIgQykgfAoJfCAwIHwgMCB8IDEgfCAxICAgICAgICAgICB8IDAgICAgICAg\nICAgICAgIHwKCXwgMCB8IDEgfCAwIHwgMCAgICAgICAgICAgfCAwICAgICAg\nICAgICAgICB8Cgl8IDAgfCAxIHwgMSB8IDEgICAgICAgICAgIHwgMCAgICAg\nICAgICAgICAgfAoJfCAxIHwgMCB8IDAgfCAwICAgICAgICAgICB8IDAgICAg\nICAgICAgICAgIHwKCXwgMSB8IDAgfCAxIHwgMSAgICAgICAgICAgfCAxICAg\nICAgICAgICAgICB8Cgl8IDEgfCAxIHwgMCB8IDEgICAgICAgICAgIHwgMSAg\nICAgICAgICAgICAgfAoJfCAxIHwgMSB8IDEgfCAxICAgICAgICAgICB8IDEg\nICAgICAgICAgICAgIHwKCgojIyBMYXdzIG9mIEJvb2xlYW4gQWxnZWJyYQoK\nQWdhaW4sIHRoZXNlIG1heSBtb3N0bHkgYmUgdmFndWVseSByZW1lbWJlcmVk\nIGZyb20gR2VvbWV0cnkgYW5kIEFsZ2VicmEgY2xhc3Nlcy4KCklmIHRoZXkg\nZG9uJ3Qgc2VlbSBpbnR1aXRpdmUgdG8geW91LCB0cnkgd3JpdGluZyB0aGVt\nIG91dCBpbiB0cnV0aCB0YWJsZSBmb3JtICh0aGUgdGFibGVzIGFib3ZlIGFy\nZSBleGFtcGxlcyBvZiB0cnV0aCB0YWJsZXMpIQoKIyMjIEFzc29jaWF0aXZp\ndHkKCglBIHx8IChCIHx8IEMpID09IChBIHx8IEIpIHx8IEMKCglBICYmIChC\nICYmIEMpID09IChBICYmIEIpICYmIEMKCiMjIyBDb21tdXRhdGl2aXR5CgoJ\nQSB8fCBCID09IEIgfHwgQQoKCUEgJiYgQiA9PSBCICYmIEEKCiMjIyBEaXN0\ncmlidXRpdml0aXkgb2YgQU5EIG92ZXIgT1IKCglBICYmIChCIHx8IEMpID09\nIChBICYmIEIpIHx8IChCICYmIEMpCgojIyMgSWRlbnRpdHkKCglBIHx8IDAg\nPT0gQQoKCUEgJiYgMSA9PSBBCgojIyMgQW5uaWhhbGF0b3IgZm9yIEFORAoK\nCVggJiYgMCA9PSAwCgojIyBBbm5paGlsYXRvciBmb3IgT1IKCglYIHx8IDEg\nPT0gMQoKIyMjIElkZW1wb3RlbmNlCgoJQSAmJiBBID09IEEKCglBIHx8IEEg\nPT0gQQoKCiMjIyBBYnNvcnB0aW9uCgoJQSAmJiAoQSB8fCBCKSA9PSBBCgoJ\nQSB8fCAoQSAmJiBCKSA9PSBBCgoKIyMgRGVkdWN0aXZlIFJlYXNvbmluZwoK\nRGVkdWN0aXZlIHJlYXNvbmluZyBhbHNvIGFwcGxpZXMgdG8gYm9vbGVhbiBh\nbGdlYnJhLiAgU3RhcnQgYnkgcmVhZGluZyB0aGUgd2lraXBlZGlhIGFydGlj\nbGUgb24gaXQgKFNlZSBiZWxvdyksIGFuZCB0aGVuIHB1dCBpbiBhIHB1bGwg\ncmVxdWVzdCBvbiB0aGlzIHJlcG8gd2l0aCB5b3VyIG5vdGVzIQoKIyMgRnVy\ndGhlciBSZWFkaW5nOgoKKiBbV2lraXBlZGlhOiBMb2dpY10oaHR0cDovL2Vu\nLndpa2lwZWRpYS5vcmcvd2lraS9Mb2dpYykKKiBbV2lraXBlZGlhOiBCb29s\nZWFuIEFsZ2VicmFdKGh0dHA6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvQm9v\nbGVhbl9hbGdlYnJhKQoqIFtXaWtpcGVkaWE6IERlZHVjdGl2ZSBSZWFzb25p\nbmddKGh0dHA6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvRGVkdWN0aXZlX3Jl\nYXNvbmluZykKKiBUaGUgQXJ0aWNsZSBvbiBWZW5uIERpYWdyYW1zCgojIyBT\nb3VyY2VzOgoKKiBbV2lraXBlZGlhOiBMaXN0IG9mIGxvZ2ljIHN5bWJvbHNd\nKGh0dHA6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvTGlzdF9vZl9sb2dpY19z\neW1ib2xzKQoqIFtXaWtpcGVkaWE6IEJvb2xlYW4gQWxnZWJyYV0oaHR0cDov\nL2VuLndpa2lwZWRpYS5vcmcvd2lraS9Cb29sZWFuX2FsZ2VicmEpCg==\n","encoding":"base64","_links":{"self":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/computer-science/logic/logic.md?ref=master","git":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/6e590dd772840ca2fc20faf9c764c6737c742a61","html":"https://github.com/elizabrock/inquizator-test-repo/blob/master/computer-science/logic/logic.md"}}'
     http_version: 
-  recorded_at: Sat, 14 Jun 2014 19:06:13 GMT
+  recorded_at: Mon, 16 Jun 2014 15:11:04 GMT
 recorded_with: VCR 2.9.2
