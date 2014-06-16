@@ -45,7 +45,7 @@
               %li= link_to "Course Calendar", course_calendar_path(current_course), id: current_if("events")
               %li= link_to "Materials", course_materials_path(current_course), id: current_if("materials")
               %li= link_to "Assignments", course_assignments_path(current_course), id: current_if("assignments")
-              %li= link_to "Fourms", forem.root_path
+              %li= link_to "Forums", forem.root_path
               %li= link_to "Peers", course_enrollments_path(current_course), id: current_if("enrollments", "users")
             - if current_user
               %li.right

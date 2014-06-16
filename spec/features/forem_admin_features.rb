@@ -27,6 +27,17 @@ feature "Forem admin creates forum categories" do
     page.should_not have_link "Back to forums"
   end
 
+  scenario "user should be able to get to forums" do
+    Timecop.travel(Time.new(2013, 03, 15))
+    course = Fabricate(:course,
+                       title: "cohort 4",
+                       start_date: "2013/03/11",
+                       end_date: "2013/06/20")
+    joe = signin_as :student, name: "joe", courses: [course]
+    page.should have_link "Forums"
+    Timecop.return
+  end
+
   scenario "forem admin creates forum category" do
     signin_as :forem_admin
     visit forem.admin_root_path
