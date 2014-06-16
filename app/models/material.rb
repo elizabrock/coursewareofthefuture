@@ -51,6 +51,10 @@ class Material
     all_descendants.flatten.sort_by!{ |m| m.pretty_name }
   end
 
+  def directory
+    @directory ||= File.dirname(self.fullpath)
+  end
+
   def directory?
     @item.type == "tree"
   end
@@ -59,19 +63,20 @@ class Material
     File.extname(self.fullpath)
   end
 
-  # FIXME: This is expensive!
-  def find(fullpath)
-    all = descendants
-    all << self
-    all.find{ |c| c.fullpath == fullpath }
+  def find(path)
+    return self if self.filename == path or path.blank?
+
+    subdirectory, remaining_path = path.split("/", 2)
+    matching_child = self.children.find{ |c| c.filename == subdirectory }
+    matching_child.find(remaining_path)
   end
 
   def filename
-    File.basename(self.fullpath)
+    @filename ||= File.basename(self.fullpath)
   end
 
   def fullpath
-    @item.try(:path) || ROOT
+    @fullpath ||= @item.try(:path) || ROOT
   end
 
   def html_url
@@ -88,10 +93,6 @@ class Material
 
   def link
     "materials/" + self.fullpath if self.markdown?
-  end
-
-  def directory
-    File.dirname(self.fullpath)
   end
 
   def self.prettify(name)
@@ -137,9 +138,6 @@ class Material
   def self.insert_into_tree(material, root, skip_files_matching)
     return if material.fullpath.match(skip_files_matching)
     parent = root.find(material.directory)
-    unless parent
-      puts material.fullpath
-    end
     parent.incorporate_child(material)
   end
 end
