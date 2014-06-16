@@ -55,11 +55,13 @@ $primary-color: #00A9E0;
 $secondary-color: #e7e7e7;
 $alert-color: #F92672;
 $success-color: #99D12A;
+$border-color: #313131;
 // $warning-color: #f08a24;
 // $info-color: #a0d3e8;
 
+
 // We use these to make sure border radius matches unless we want it different.
-$global-radius: 3px;
+$global-radius: 4px;
 // $global-rounded: 1000px;
 
 // We use these to control inset shadow shiny edges and depressions.
@@ -1059,7 +1061,7 @@ $include-html-table-classes: true;
 // TABS
 //
 
-// $include-html-tabs-classes: $include-html-classes;
+$include-html-tabs-classes: true;
 
 // $tabs-navigation-padding: rem-calc(16);
 // $tabs-navigation-bg-color: #efefef  ;

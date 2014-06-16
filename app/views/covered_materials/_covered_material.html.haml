@@ -1,13 +1,15 @@
-- if material = materials.find(covered_material.fullpath)
-  %li
-    - if material.link.present?
-      - if can?(:manage, CoveredMaterial)
-        = simple_form_for covered_material, url: course_covered_material_path(current_course, covered_material) do |f|
-          = f.input :covered_on, label: "Date Covered"
-          = f.button :submit, "Mark as Covered", class: "tiny"
-      - else
-        = covered_material.covered_on
-      = link_to material.pretty_name, material.link
-    - if read_material_fullpaths.include?(material.fullpath)
-      (read)
-    %small= pretty_path_for(material)
+%li.material
+  - if can?(:manage, CoveredMaterial)
+    = simple_form_for covered_material, url: [current_course, covered_material] do |f|
+      = f.input :material_fullpath, as: :hidden
+      = f.input :covered_on, label: "Date Covered"
+      = f.button :submit, "Mark as Covered", class: "tiny secondary"
+  .material-summary
+    - unless can?(:manage, CoveredMaterial)
+      %span.covered_on= covered_material.covered_on
+    - unless covered_material.new_record?
+      .covered.label.radius Covered
+    %small.pretty-path= pretty_path_for(covered_material)
+    = link_to covered_material.material_fullpath do
+      %span.title= covered_material.formatted_title
+      %small.read-status= read_material_fullpaths.include?(covered_material.fullpath) ? "(read)" : "(unread)"

@@ -1,14 +1,69 @@
-#covered_materials, #upcoming_materials {
+ul.tabs {
+  // border-bottom: 1px solid $border-color;
+  li.tab-title {
+    margin-bottom: -1px !important;
+    &.active {
+      border: 1px solid $border-color;
+      border-bottom: none;
+    }
+    &:first-of-type, &:first-of-type a {
+      @include border-top-left-radius($global-radius);
+    }
+    &:last-of-type, &:last-of-type a {
+      @include border-top-right-radius($global-radius);
+    }
+  }
+}
+.tabs-content {
+  @include border-bottom-radius($global-radius);
+  border: 1px solid $border-color;
+  .content {
+    padding: 2em;
+  }
+}
+
+#covered_materials, #uncovered_material_list {
+  list-style-type: none;
+  li {
+    clear: right;
+    .material-summary {
+      display: inline-block;
+      height: 3em;
+      margin-right: 1em;
+      a {
+        display: block;
+      }
+    }
+
+    form {
+      display: inline-block;
+      clear: right;
+      label.date {
+        font-size: 50%;
+      }
+
+      input.date {
+        width: 6em;
+      }
+    }
+  }
+}
+
+#covered_materials, #all_materials, #uncovered_material_list {
+
   ul {
     margin-bottom: 0;
   }
+
   form, div.input, input, .button, label {
     width: auto;
     margin:0 0.25em 0 0;
   }
+
   input, label {
     height: auto;
   }
+
   .button {
     padding: 0.5em;
   }
@@ -19,6 +74,28 @@
     display: inline-block;
   }
   .input.hidden {
+    display: none;
+  }
+}
+
+#covered_materials {
+  .label.covered {
+    display: none;
+  }
+}
+
+#all_materials {
+  .pretty-path, .read-status, .covered_on {
+    display: none;
+  }
+
+  form {
+    display: none;
+  }
+}
+
+#uncovered_material_list {
+  .read-status {
     display: none;
   }
 }

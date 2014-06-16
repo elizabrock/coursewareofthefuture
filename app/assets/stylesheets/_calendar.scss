@@ -2,7 +2,7 @@
 
 table.calendar {
   margin-bottom: 1.25rem;
-  border: solid 1px #313131;
+  border: solid 1px $border-color;
   @include border-top-left-radius(20px);
   @include border-top-right-radius(20px);
   width: 100%;
@@ -16,7 +16,6 @@ table.calendar {
   }
 
   a.edit {
-    text-decoration: dotted;
     display: inline-block;
     padding: 0.25em 0;
   }
@@ -45,11 +44,11 @@ table.calendar {
     &.monthName {
       text-align: center;
       font-size: 1.75em;
-      color: #313131;
+      color: $border-color;
       @include border-top-left-radius(20px);
       @include border-top-right-radius(20px);
       padding: 0.5em 0;
-      border-bottom: 1px solid #313131;
+      border-bottom: 1px solid $border-color;
     }
     abbr {
       display: block;

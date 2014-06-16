@@ -1,14 +1,16 @@
-- if can?(:manage, CoveredMaterial)
-  = link_to "Edit on Github", edit_material_url(material), class: "button right"
+%ul.button-group.right
+  - if can?(:manage, CoveredMaterial)
+    %li= link_to "Edit on Github", edit_material_url(material), class: "button secondary"
 
-- unless read_material_fullpaths.include?(material.fullpath)
-  = simple_form_for read_material do |f|
-    = hidden_field_tag :course_id, current_course.id
-    = f.hidden_field :material_fullpath
-    = f.button :submit, "Mark as Read"
+  - unless read_material_fullpaths.include?(material.fullpath)
+    %li
+      = simple_form_for read_material do |f|
+        = hidden_field_tag :course_id, current_course.id
+        = f.hidden_field :material_fullpath
+        = f.button :submit, "Mark as Read", class: "secondary"
 
-- if covered_material
-  = link_to "View As Slides", slides_course_covered_material_path(current_course, covered_material), class: "button right"
+  - if covered_material
+    %li= link_to "View As Slides", slides_course_covered_material_path(current_course, covered_material), class: "button"
 
 :markdown
   #{ material.content }

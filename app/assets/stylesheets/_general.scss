@@ -22,7 +22,7 @@ ul#main_navigation {
     }
 
     & > span > a, & > span > a:hover {
-      color: #313131;
+      color: $border-color;
     }
 
     & > a:link, & > a:visited {
@@ -38,16 +38,28 @@ ul#main_navigation {
       color: #000;
     }
     & > a:hover {
-      border-bottom: 4px solid #313131;
-      color: #313131;
+      border-bottom: 4px solid $border-color;
+      color: $border-color;
     }
 
     & > a:hover { color: #000; }
   }
 }
 
-form.new_covered_material {
-  display: inline-block;
+button, .button {
+  background: linear-gradient(scale-color($primary-color, $lightness: 25%), scale-color($primary-color, $lightness: -15%));
+
+  @include border-top-left-radius(0);
+  @include border-bottom-left-radius($button-radius);
+  @include border-bottom-right-radius($button-radius);
+  @include border-top-right-radius($button-radius);
+
+  &.small, &.tiny {
+    @include border-top-left-radius(0);
+    @include border-bottom-left-radius($button-radius / 2);
+    @include border-bottom-right-radius($button-radius / 2);
+    @include border-top-right-radius($button-radius / 2);
+  }
 }
 
 .label, .alert-box {
@@ -65,25 +77,6 @@ form.new_covered_material {
 
 .secondary {
   background: linear-gradient($secondary-color, scale-color($secondary-color, $lightness: -10%));
-}
-
-button, .button {
-  background: linear-gradient(scale-color($primary-color, $lightness: 25%), scale-color($primary-color, $lightness: -15%));
-
-  @include border-top-left-radius(0);
-  @include border-bottom-left-radius($button-radius);
-  @include border-bottom-right-radius($button-radius);
-  @include border-top-right-radius($button-radius);
-
-  &.small, &.tiny {
-    @include border-top-left-radius(0);
-    @include border-bottom-left-radius($button-radius / 2);
-    @include border-bottom-right-radius($button-radius / 2);
-    @include border-top-right-radius($button-radius / 2);
-  }
-  &.secondary {
-    background: $secondary-color;
-  }
 }
 
 h5 {

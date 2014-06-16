@@ -18,16 +18,16 @@ module Features
     end
 
     def mark_as_read(topic)
-      parent = find(:xpath, "//li[./a[contains(normalize-space(.),'#{topic}')]]")
+      parent = find(:xpath, "//li[./div/a[contains(normalize-space(.),'#{topic}')]]")
       within(parent){ click_button "Mark as Read" }
     end
 
     def mark_as_covered(topic, options = {})
-      parent = find(:xpath, "//li[./a[contains(normalize-space(.),'#{topic}')]]")
+      parent = find(:xpath, "//li[./div/a[contains(normalize-space(.),'#{topic}')]]")
       within(parent){ click_button "Mark as Covered" }
 
       if date = options[:on]
-        parent = find(:xpath, "//li[./a[contains(normalize-space(.),'#{topic}')]]")
+        parent = find(:xpath, "//li[./div/a[contains(normalize-space(.),'#{topic}')]]")
         within(parent) do
           fill_in "Date Covered", with: date
           click_button "Mark as Covered"

@@ -1,14 +1,6 @@
-RSpec::Matchers.define :have_materials_tree do |repo, options|
-  match do |page|
-    with_links = options[:links]
-    expected = materials_hash
-    unless with_links
-      remove_paths(expected)
-    end
-    list = first(:css, "ul#upcoming_materials")
-    actual = hash_list(list)
-    actual.should == expected
-  end
+def hash_of(path)
+  list = first(:css, path)
+  actual = hash_list(list)
 end
 
 def materials_hash
@@ -76,11 +68,11 @@ def materials_hash
   ]
 end
 
-def remove_paths(hash_array)
+def remove_links(hash_array)
   return unless hash_array
   hash_array.each do |hash|
     hash.delete(:path)
-    remove_paths(hash[:children])
+    remove_links(hash[:children])
   end
 end
 
@@ -90,12 +82,12 @@ def hash_list(list)
   list_items = list.all(:xpath, "./li")
   list_items.each do |li|
     li_hash = { }
-    if li.has_xpath?("./a")
-      link = li.find(:xpath, "./a")
-      li_hash[:title] = link.text
+    if li.has_xpath?("./div/a")
+      link = li.find(:xpath, "./div/a")
+      li_hash[:title] = link.find("span").text
       li_hash[:path] = link["href"]
     else
-      li_hash[:title] = li.find(:xpath, "./span[@class='title']").text
+      li_hash[:title] = li.find(:xpath, ".//span[@class='title']").text
     end
     children = hash_list(li.first(:xpath, "./ul"))
     li_hash[:children] = children unless children.blank?

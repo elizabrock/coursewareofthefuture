@@ -6,8 +6,8 @@ feature "Course materials are pulled from github", vcr: true do
     signin_as :instructor, courses: [course]
     visit course_path(course)
     click_link "Materials"
-    page.should_not have_exercise_from_github
-    page.should have_materials_tree("inquizator-test-repo", links: true)
+    page.should_not have_exercises_from_github
+    hash_of("ul#all_materials").should == materials_hash
   end
 
   scenario "Viewing the materials list" do
@@ -15,8 +15,8 @@ feature "Course materials are pulled from github", vcr: true do
     signin_as :student, courses: [course]
     visit root_path
     click_link "Materials"
-    page.should_not have_exercise_from_github
-    page.should have_materials_tree("inquizator-test-repo", links: false)
+    page.should_not have_exercises_from_github
+    hash_of("ul#all_materials").should == remove_links(materials_hash)
   end
 
   scenario "Viewing a single material item" do

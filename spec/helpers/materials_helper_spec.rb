@@ -34,13 +34,13 @@ describe MaterialsHelper do
 
   describe "#pretty_path_for" do
     it "should return the a humanized name for a file's directory" do
-      pretty_path_for(markdown_material).should == "Computer Science > Logic"
+      pretty_path_for(markdown_material).should == "Computer Science > Logic > "
     end
     it "should return the a humanized name for a directory's parent directory" do
-      pretty_path_for(subdirectory_material).should == "Computer Science"
+      pretty_path_for(subdirectory_material).should == "Computer Science > "
     end
     it "should return the a humanized name for an image's directory" do
-      pretty_path_for(image_material).should == "Computer Science > Logic"
+      pretty_path_for(image_material).should == "Computer Science > Logic > "
     end
   end
 end

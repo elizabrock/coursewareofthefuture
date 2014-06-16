@@ -1,6 +1,10 @@
 class MaterialsController < ApplicationController
+  expose(:all_materials){ materials.descendants }
+  expose(:uncovered_materials){ all_materials.delete_if{ |m| !m.leaf? or covered_material_links.include?(m.link) } }
+
   expose(:materials){ Material.root(current_user.octoclient, current_course.source_repository, /^exercises/) }
   expose(:material){ Material.retrieve(params[:id], current_course.source_repository, current_user.octoclient) }
+
   expose(:read_material){ ReadMaterial.new(material_fullpath: material.fullpath) }
 
   expose(:read_material_fullpaths){ current_user.read_materials.map(&:material_fullpath) }

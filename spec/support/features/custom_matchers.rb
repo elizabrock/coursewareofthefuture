@@ -6,7 +6,7 @@ RSpec::Matchers.define :have_calendar_entry do |expected, options|
   end
 end
 
-RSpec::Matchers.define :have_exercise_from_github do
+RSpec::Matchers.define :have_exercises_from_github do
   match do |page|
     page.should_not have_content("Exercises")
     page.should_not have_content("Ruby Koans")
