@@ -25,14 +25,15 @@ module ApplicationHelper
   end
 
   def self_reports_due
+    return @self_reports_due if @self_reports_due.present?
     return 0 unless current_course
 
-    end_date = [Date.today, current_course.end_date].min + 1
+    end_date = [Date.today, current_course.end_date].min
     begin_date = current_course.start_date
 
     expected = (end_date - begin_date).to_i
     actual = current_user.self_reports.where(date: begin_date..end_date).count
 
-    expected - actual
+    @self_reports_due = expected - actual
   end
 end
