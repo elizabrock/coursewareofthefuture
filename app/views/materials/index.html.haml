@@ -1,22 +1,4 @@
 %h1 Course Materials &amp; Outline
 
-%ul.tabs{ "data-tab" => "", "data-options" => "deep_linking:true" }
-  %li.tab-title.active
-    %a{ href: "#panel1" } Material We've Covered
-  %li.tab-title
-    %a{ href: "#panel2" } Full Material List
-
-.tabs-content
-  #panel1.content.active
-    .row
-      .small-12.columns
-        %ul#covered_materials= render partial: "covered_materials/covered_material", collection: covered_materials
-
-        - if can?(:manage, CoveredMaterial)
-          %h5 Still To Cover:
-          %ul#uncovered_material_list
-            = render partial: 'materials/material', collection: uncovered_materials
-
-  #panel2.content
-    %ul#all_materials
-      = render partial: "materials/material", collection: materials.children
+%table#all_materials.controller
+  = render partial: "materials/material", collection: materials.children, locals: { level: 1 }

@@ -30,6 +30,6 @@
 
 %ul.button-group
   - if can? :create, Assignment
-    %li= link_to "New Assignment", select_course_assignments_path(current_course), class: "button"
+    %li= link_to "New Assignment", select_course_assignments_path(current_course), class: "button fi-plus"
   - if can? :create, Quiz
-    %li= link_to "New Quiz", new_course_quiz_path(current_course), class: "button"
+    %li= link_to "New Quiz", new_course_quiz_path(current_course), class: "button fi-plus"

@@ -1,5 +1,6 @@
 module Features
   module ActionHelpers
+
     def div_labeled(label)
       parent = find(:css, "label", text: label).parent
     end
@@ -17,23 +18,24 @@ module Features
       end
     end
 
+    def within_tr_for(topic, &block)
+      tr = find(:xpath, "//tr[.//a/span[@class='title' and contains(normalize-space(.),'#{topic}')]]")
+      within(tr, &block)
+    end
+
     def mark_as_read(topic)
-      parent = find(:xpath, "//li[./div/a[contains(normalize-space(.),'#{topic}')]]")
-      within(parent){ click_button "Mark as Read" }
+      within_tr_for(topic){ click_button "Mark as Read" }
     end
 
     def mark_as_covered(topic, options = {})
-      parent = find(:xpath, "//li[./div/a[contains(normalize-space(.),'#{topic}')]]")
-      within(parent){ click_button "Mark as Covered" }
-
-      if date = options[:on]
-        parent = find(:xpath, "//li[./div/a[contains(normalize-space(.),'#{topic}')]]")
-        within(parent) do
-          fill_in "Date Covered", with: date
-          click_button "Mark as Covered"
+      within_tr_for(topic) do
+        if date = options[:on]
+          fill_in "Date", with: date
         end
+        click_button "Mark as Covered"
       end
     end
+
   end
 end
 

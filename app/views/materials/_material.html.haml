@@ -1,15 +1,31 @@
 - covered_material = covered_materials.find{|cm| cm.material_fullpath == material.link}
-- if covered_material
-  = render covered_material
-- elsif material.leaf?
-  - if can?(:manage, CoveredMaterial) and material.markdown?
-    = render CoveredMaterial.new(material_fullpath: material.link, covered_on: Time.zone.now)
-  - else
-    %li
-      .label.secondary.radius To Be Covered
-      %small.pretty-path= pretty_path_for(material)
+
+%tr{ data: { level: level }, id: "level_#{level}_#{material.local_id}" }
+  %td.title
+    - if covered_material.present? or (can?(:manage, CoveredMaterial) and material.markdown?)
+      = link_to material.link do
+        %span.title= material.pretty_name
+    - else
       %span.title= material.pretty_name
-- else
-  %li
-    %span.title= material.pretty_name
-    %ul= render partial: "materials/material", collection: material.children
+  %td.data
+    - if covered_material.present?
+      - if read_materials_fullpaths.include?(covered_material.fullpath)
+        .read-status.label.radius.secondary.fi-check read
+      - else
+        .read-status.label.radius.alert.fi-asterisk new&nbsp;
+  %td.data
+    - if material.leaf? and material.markdown?
+
+      - covered_material ||= CoveredMaterial.new(material_fullpath: material.link, covered_on: Time.zone.now)
+
+      - status_class = covered_material.new_record? ? "secondary" : "covered_on"
+      - label_copy = covered_material.new_record? ? "Upcoming" : "Covered #{covered_material.covered_on}"
+
+      .label.radius{ class: status_class}
+        = label_copy
+        - if can?(:manage, CoveredMaterial)
+          %a.edit-date-covered.fi-clock{ href: "#", data: { dropdown: "drop#{material.local_id}", options: "is_hover:true"}}
+          .f-dropdown.content{ id: "drop#{material.local_id}", data: { dropdown: { content: "" } } }
+            = render partial: 'covered_materials/form', locals: { covered_material: covered_material }
+
+= render partial: "materials/material", collection: material.children, locals: { level: level+1 }

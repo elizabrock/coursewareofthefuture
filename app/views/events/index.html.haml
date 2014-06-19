@@ -3,7 +3,7 @@
     %h1 Course Calendar
   .small-12.large-6.columns
     - if can?(:create, Event)
-      = link_to "Add New Event", new_course_event_path(current_course), class: "button right"
+      = link_to "Add New Event", new_course_event_path(current_course), class: "button right fi-plus"
 
 - first_of_each_month_of_course.each do |first_of_month|
   = calendar(year: first_of_month.year, month: first_of_month.month){ |d| format_calendar_date(d, current_course) }

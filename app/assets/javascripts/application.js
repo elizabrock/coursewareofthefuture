@@ -12,9 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.tabelizer
 //= require jquery.ui.datepicker
-//= require foundation
+//= require foundation/foundation
+//= require foundation/foundation.alert
+//= require foundation/foundation.dropdown
 //= require d3
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+$(function(){
+  $('table#all_materials').tabelize();
+  $(document).foundation();
+});

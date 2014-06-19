@@ -7,7 +7,7 @@ feature "Course materials are pulled from github", vcr: true do
     visit course_path(course)
     click_link "Materials"
     page.should_not have_exercises_from_github
-    hash_of("ul#all_materials").should == materials_hash
+    hash_of("#all_materials").should == materials_list
   end
 
   scenario "Viewing the materials list" do
@@ -16,7 +16,7 @@ feature "Course materials are pulled from github", vcr: true do
     visit root_path
     click_link "Materials"
     page.should_not have_exercises_from_github
-    hash_of("ul#all_materials").should == remove_links(materials_hash)
+    hash_of("#all_materials").should == remove_links(materials_list)
   end
 
   scenario "Viewing a single material item" do
@@ -28,6 +28,7 @@ feature "Course materials are pulled from github", vcr: true do
     click_link "Logic"
     page.should have_content "Logic is, broadly speaking, the application of reasoning to an activity or concept. In Computer Science, we primarily use deductive reasoning (a.k.a. deductive logic) along with boolean algebra (e.g. two-valued logic)."
     page.should have_css("h1", text: "Logic")
+    page.should have_content "Computer Science > Logic"
   end
 
   scenario "Viewing an image" do

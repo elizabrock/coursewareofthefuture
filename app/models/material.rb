@@ -1,11 +1,15 @@
 class Material
-  attr_accessor :children
+  attr_accessor :children, :local_id
+  @@LAST_ID = 0
 
   ROOT = "."
 
   def initialize(item = nil)
     @children = []
     @item = item
+    # To help with unique IDs when rendering views
+    @@LAST_ID += 1
+    @local_id = @@LAST_ID
   end
 
   def self.list(client, repository, directory)

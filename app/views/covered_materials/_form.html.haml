@@ -1,0 +1,4 @@
+= simple_form_for covered_material, url: [current_course, covered_material] do |f|
+  = f.input :material_fullpath, as: :hidden
+  = f.input :covered_on, label: "Date"
+  = f.button :submit, "Mark as Covered", class: "tiny secondary"
