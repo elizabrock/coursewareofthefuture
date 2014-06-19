@@ -5,8 +5,7 @@
   %ul.button-group.right
     - if can?(:manage, CoveredMaterial)
       %li= link_to "Edit on Github", edit_material_url(material), class: "button secondary fi-page-edit"
-    - if covered_material
-      %li= link_to "View As Slides", slides_course_covered_material_path(current_course, covered_material), class: "button secondary fi-monitor"
+    %li= link_to "View As Slides", course_material_slides_path(current_course, material), class: "button secondary fi-monitor"
 
   - if read_materials_fullpaths.include?(material.fullpath)
     .label.radius.fi-check.read-status Read

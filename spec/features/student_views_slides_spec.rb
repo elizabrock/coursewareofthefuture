@@ -11,7 +11,7 @@ feature "Student views slides" do
     click_link "Materials"
     click_link "Logic"
     click_link "View As Slides"
-    current_path.should == slides_course_covered_material_path(course, covered_material)
+    current_path.should == course_material_slides_path(course, covered_material.fullpath)
   end
 
   scenario "Instructor is on materials page and views slides", vcr: true do
@@ -20,6 +20,15 @@ feature "Student views slides" do
     click_link "Materials"
     click_link "Logic"
     click_link "View As Slides"
-    current_path.should == slides_course_covered_material_path(course, covered_material)
+    current_path.should == course_material_slides_path(course, covered_material.fullpath)
+  end
+
+  scenario "Instructor is on materials page and views slides for material that wasn't covered", vcr: true do
+    signin_as :instructor, courses: [course]
+    visit course_path(course)
+    click_link "Materials"
+    click_link "Truth Tables"
+    click_link "View As Slides"
+    current_path.should == course_material_slides_path(course, "computer-science/logic/truth-tables.md")
   end
 end
