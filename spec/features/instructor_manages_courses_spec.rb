@@ -68,7 +68,6 @@ feature "Instructor manages courses", js: true do
     click_button "Update Course"
     page.should have_content "Course successfully updated"
     Course.where(title: "Homemade Ice Cream Making 101").count.should == 1
-    save_and_open_page
   end
 
 end

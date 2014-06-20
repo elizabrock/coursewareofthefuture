@@ -14,9 +14,6 @@ class CoursesController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
     if course.update_attributes(course_params)
       redirect_to courses_path, notice: "Course successfully updated."
