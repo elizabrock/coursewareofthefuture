@@ -19,7 +19,7 @@ class CoursesController < ApplicationController
       redirect_to courses_path, notice: "Course successfully updated."
     else
       flash.alert = "Course couldn't be updated."
-      render :index
+      render :edit
     end
   end
 
