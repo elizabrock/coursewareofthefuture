@@ -131,6 +131,10 @@ class Material
     hash
   end
 
+  def to_param
+    fullpath
+  end
+
   protected
 
   def item

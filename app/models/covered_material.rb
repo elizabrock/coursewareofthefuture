@@ -15,10 +15,6 @@ class CoveredMaterial < ActiveRecord::Base
     material_fullpath.gsub("materials/", "")
   end
 
-  def material(client)
-    Material.retrieve(fullpath, course.source_repository, client)
-  end
-
   def formatted_title
     Material.prettify(File.basename(fullpath, ".md"))
   end

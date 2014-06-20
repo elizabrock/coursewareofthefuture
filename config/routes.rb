@@ -22,13 +22,12 @@ Coursewareofthefuture::Application.routes.draw do
     get :calendar, to: 'events#index'
     resources :enrollments, only: [:index, :create]
     resources :events, only: [:new, :create]
-    resources :materials, only: [:index, :show], constraints: { id: /.*/ }
-    resources :covered_materials, only: [:create, :update] do
-      member do
-        get :slides
-        get '/:asset_file', to: "covered_materials#asset"
-      end
+    get '/materials/:material_fullpath/slides', to: "slides#show", constraints: { material_fullpath: /.*\.md/ }
+    get '/materials/:material_fullpath.md/:asset_file', to: "slides#asset", constraints: { material_fullpath: /.*/ }
+    resources :materials, only: [:show, :index], constraints: { id: /.*/ } do
+      resource :slides, only: :show
     end
+    resources :covered_materials, only: [:create, :update]
     resources :quizzes, except: [:index, :show, :destroy] do
       member do
         get :grade
