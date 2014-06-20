@@ -14,9 +14,22 @@ class CoursesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if course.update_attributes(course_params)
+      redirect_to course_path(course), notice: "Course successfully updated."
+    else
+      flash.alert = "Course couldn't be updated."
+      render :index
+    end  
+  end
+
   private
 
   def course_params
     params.require(:course).permit(:title, :syllabus, :start_date, :end_date, :source_repository)
   end
+
 end

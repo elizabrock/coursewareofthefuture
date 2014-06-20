@@ -57,4 +57,17 @@ feature "Instructor manages courses", js: true do
     visit root_path
     page.should have_css("em", text: "awesome")
   end
+
+  scenario "Editing a course that already exists" do
+    course = Fabricate(:course, title: "Cohort 4", syllabus: "This is *awesome*.")
+    signin_as(:instructor)
+    visit root_path
+    click_link 'edit'
+    page.should_not have_content("Homemade Ice Cream Making 101")
+    fill_in "Title", with: "Homemade Ice Cream Making 101"
+    click_button "Update Course"
+    page.should have_content "Course successfully updated"
+    Course.where(title: "Homemade Ice Cream Making 101").count.should == 1
+  end
+
 end
