@@ -59,15 +59,16 @@ feature "Instructor manages courses", js: true do
   end
 
   scenario "Editing a course that already exists" do
-    course = Fabricate(:course, title: "Cohort 4", syllabus: "This is *awesome*.")
+    Fabricate(:course, title: "Cohort 4", syllabus: "This is *awesome*.")
     signin_as(:instructor)
-    visit root_path
-    click_link 'edit'
-    page.should_not have_content("Homemade Ice Cream Making 101")
+    visit courses_path
+    click_on 'edit'
+    Course.where(title: "Homemade Ice Cream Making 101").count.should == 0
     fill_in "Title", with: "Homemade Ice Cream Making 101"
     click_button "Update Course"
     page.should have_content "Course successfully updated"
     Course.where(title: "Homemade Ice Cream Making 101").count.should == 1
+    save_and_open_page
   end
 
 end

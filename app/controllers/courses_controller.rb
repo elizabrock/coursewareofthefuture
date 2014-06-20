@@ -19,11 +19,11 @@ class CoursesController < ApplicationController
 
   def update
     if course.update_attributes(course_params)
-      redirect_to course_path(course), notice: "Course successfully updated."
+      redirect_to courses_path, notice: "Course successfully updated."
     else
       flash.alert = "Course couldn't be updated."
       render :index
-    end  
+    end
   end
 
   private
