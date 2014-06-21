@@ -12,6 +12,8 @@ class Ability
         can :manage, :all
         cannot :edit_goals_and_background, user
       end
+      cannot :instructify, user
+      cannot :observify, user
     end
     can :edit, user
     can :view, Assignment, course_id: user.course_ids, published: true

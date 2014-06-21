@@ -20,6 +20,13 @@ feature "Instructor authentication" do
     page.should have_content "Sign In"
   end
 
+  scenario "Instructor can remark self as instructor" do
+    instructor = signin_as(:instructor)
+    visit root_path
+    visit user_path(instructor)
+    page.should_not have_button "Make Instructor"
+  end
+
   scenario "Instructor can create another instructor" do
     Fabricate(:user, name: "Joe Smith")
     Fabricate(:user, name: "Sally Myers")

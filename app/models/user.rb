@@ -4,8 +4,12 @@ class User < ActiveRecord::Base
   devise :rememberable, :trackable, :omniauthable, :omniauth_providers => [:github]
 
   scope :instructors, ->{ where(instructor: true) }
-  scope :forem_admin, ->{ where(instructor: true) }
-  scope :students, ->{ where("instructor = false or instructor is null") }
+  scope :forem_admin, ->{ instructors }
+  scope :observers, ->{ where(observer: true) }
+
+  scope :except_instructors, ->{ where("instructor = false or instructor is null") }
+  scope :except_observers, ->{ where("observer = false or observer is null") }
+  scope :students, ->{ except_instructors.except_observers }
 
   has_many :enrollments
   has_many :courses, through: :enrollments
@@ -25,6 +29,18 @@ class User < ActiveRecord::Base
 
   def forem_name
     self.name
+  end
+
+  def become_instructor!
+    self.instructor = true
+    self.observer = false
+    self.save!
+  end
+
+  def become_observer!
+    self.instructor = false
+    self.observer = true
+    self.save!
   end
 
   def check_for_first_user

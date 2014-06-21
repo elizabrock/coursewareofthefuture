@@ -832,7 +832,8 @@ CREATE TABLE users (
     photo character varying(255),
     forem_admin boolean DEFAULT false,
     forem_state character varying(255) DEFAULT 'pending_review'::character varying,
-    forem_auto_subscribe boolean DEFAULT false
+    forem_auto_subscribe boolean DEFAULT false,
+    observer boolean
 );
 
 
@@ -1488,4 +1489,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140609160111');
 INSERT INTO schema_migrations (version) VALUES ('20140610200914');
 
 INSERT INTO schema_migrations (version) VALUES ('20140615162813');
+
+INSERT INTO schema_migrations (version) VALUES ('20140621162136');
 

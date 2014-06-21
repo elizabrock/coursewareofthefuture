@@ -44,6 +44,7 @@ Coursewareofthefuture::Application.routes.draw do
   resources :users, except: [:destroy] do
     member do
       post :instructify
+      post :observify
     end
   end
   resource :instructor, only: [] do
