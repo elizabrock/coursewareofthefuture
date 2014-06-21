@@ -2,6 +2,11 @@
 :markdown
   #{assignment.summary}
 
+%h2 Assignment Prerequisites
+%ul.prerequisites
+  - assignment.prerequisites.each_with_index do |prerequisite|
+    %li= link_to prerequisite.formatted_title, course_material_path(current_course, prerequisite.fullpath)
+
 - can_submit_milestone = true
 - assignment.milestones.each do |milestone|
   - already_submitted = current_user.milestones.include?(milestone)
@@ -9,4 +14,4 @@
   = render partial: "milestones/milestone", locals: { milestone: milestone, already_submitted: already_submitted, can_submit_milestone: can_submit_milestone }
 
   - if !already_submitted
-    = can_submit_milestone = false
+    - can_submit_milestone = false

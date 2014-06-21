@@ -21,7 +21,7 @@ feature "Course materials are pulled from github", vcr: true do
 
   scenario "Viewing a single material item" do
     course = Fabricate(:course)
-    Fabricate(:covered_material, material_fullpath: "materials/computer-science/logic/logic.md", course: course)
+    Fabricate(:covered_material, material_fullpath: "computer-science/logic/logic.md", course: course)
     signin_as :student, courses: [course]
     visit root_path
     click_link "Materials"

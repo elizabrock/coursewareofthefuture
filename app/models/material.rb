@@ -1,4 +1,8 @@
+require 'materiable'
+
 class Material
+  include Materiable
+
   attr_accessor :children, :local_id
   @@LAST_ID = 0
 
@@ -52,7 +56,7 @@ class Material
 
   def descendants
     all_descendants = @children + @children.map(&:descendants)
-    all_descendants.flatten.sort_by!{ |m| m.pretty_name }
+    all_descendants.flatten.sort_by!{ |m| m.formatted_title }
   end
 
   def directory
@@ -61,10 +65,6 @@ class Material
 
   def directory?
     @item.type == "tree"
-  end
-
-  def extension
-    File.extname(self.fullpath)
   end
 
   def find(path)
@@ -91,14 +91,6 @@ class Material
     self.children.empty?
   end
 
-  def markdown?
-    extension == ".md"
-  end
-
-  def link
-    "materials/" + self.fullpath if self.markdown?
-  end
-
   def self.prettify(name)
     name.titleize.
       gsub(/^\d\d\s/, "").
@@ -106,13 +98,6 @@ class Material
       gsub("And", "and").
       gsub("Erb", "ERB").
       gsub("Actionview", "ActionView")
-  end
-
-  def pretty_name
-    return "" unless self.fullpath.present?
-
-    short_name = File.basename(self.fullpath, ".md")
-    Material.prettify(short_name)
   end
 
   def sha
@@ -125,8 +110,8 @@ class Material
       child_hash_array << child.to_hash
     end
     return child_hash_array if self.fullpath == ROOT
-    hash = { title: pretty_name }
-    hash[:path] = link unless link.blank?
+    hash = { title: formatted_title }
+    hash[:path] = fullpath if markdown?
     hash[:children] = child_hash_array unless child_hash_array.empty?
     hash
   end

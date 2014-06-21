@@ -28,6 +28,17 @@ RSpec::Matchers.define :have_options_for do |field, options|
   end
 end
 
+RSpec::Matchers.define :have_checkboxes do |expected_checkboxes|
+  match do |page|
+    @actual_checkboxes = page.all("label.checkbox").map{|o| o.text}.flatten
+    @actual_checkboxes.should == expected_checkboxes
+  end
+
+  failure_message do |page|
+    "expected that #{expected_checkboxes} checkboxes would be present, but #{@actual_checkboxes} checkboxes were found."
+  end
+end
+
 RSpec::Matchers.define :have_list do |contents|
   match do |page|
     contents.each_with_index do |text, row|

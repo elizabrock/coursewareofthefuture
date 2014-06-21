@@ -6,10 +6,10 @@ feature "Student marks materials as read", vcr: true do
     course = Fabricate(:course_with_instructor)
     signin_as :student, courses: [course]
     Fabricate(:covered_material,
-              material_fullpath: "materials/computer-science/logic/logic.md",
+              material_fullpath: "computer-science/logic/logic.md",
               course: course)
     Fabricate(:covered_material,
-              material_fullpath: "materials/computer-science/logic/set_theory.md",
+              material_fullpath: "computer-science/logic/set_theory.md",
               course: course)
 
     visit course_materials_path(course)
@@ -28,12 +28,12 @@ feature "Student marks materials as read", vcr: true do
   scenario "Marking an item as read in one class changes it's status in other classes" do
     course1 = Fabricate(:course_with_instructor, title: "Javascript")
     Fabricate(:covered_material,
-              material_fullpath: "materials/computer-science/logic/logic.md",
+              material_fullpath: "computer-science/logic/logic.md",
               course: course1)
 
     course2 = Fabricate(:course, title: "HTML")
     Fabricate(:covered_material,
-              material_fullpath: "materials/computer-science/logic/logic.md",
+              material_fullpath: "computer-science/logic/logic.md",
               course: course2)
 
     signin_as(:student, courses: [course1, course2])

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe Material do
-
   describe ".list", vcr: true do
     let(:user){ Fabricate(:user) }
     let(:materials){ Material.list(user.octoclient, "elizabrock/inquizator-test-repo", "exercises") }
@@ -98,11 +97,11 @@ describe Material do
         image_material.filename.should == "wikimedia-commons-venn-and.png"
       end
     end
-    describe "#pretty_name" do
+    describe "#formatted_title" do
       it "should return the a humanized name for the file" do
-        markdown_material.pretty_name.should == "Logic"
-        subdirectory_material.pretty_name.should == "Logic"
-        image_material.pretty_name.should == "Wikimedia Commons Venn and.Png"
+        markdown_material.formatted_title.should == "Logic"
+        subdirectory_material.formatted_title.should == "Logic"
+        image_material.formatted_title.should == "Wikimedia Commons Venn and.Png"
       end
     end
     describe "#directory?" do
@@ -125,17 +124,6 @@ describe Material do
       end
       it "should be false for non-markdown files" do
         image_material.markdown?.should be_falsey
-      end
-    end
-    describe "#link" do
-      it "should return link for markdown files" do
-        markdown_material.link.should == "materials/computer-science/logic/logic.md"
-      end
-      it "should be nil for directories" do
-        subdirectory_material.link.should be_nil
-      end
-      it "should be nil for non-markdown files" do
-        image_material.link.should be_nil
       end
     end
     describe "#html_url" do
