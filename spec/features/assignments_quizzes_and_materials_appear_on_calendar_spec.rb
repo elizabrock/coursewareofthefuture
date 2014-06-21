@@ -51,10 +51,10 @@ feature "Assignments quizzes and materials appear on calendar" do
 
   scenario "Covered Materials" do
     Fabricate(:covered_material,
-              material_fullpath: "materials/computer-science/logic/logic.md",
+              material_fullpath: "computer-science/logic/logic.md",
               covered_on: "2014/01/15", course: course)
     Fabricate(:covered_material,
-              material_fullpath: "materials/computer-science/logic/set_theory.md",
+              material_fullpath: "computer-science/logic/set_theory.md",
               covered_on: "2014/01/20", course: course)
     visit course_calendar_path(course)
     page.should have_calendar_entry("1/15", text: "Logic")
@@ -63,10 +63,10 @@ feature "Assignments quizzes and materials appear on calendar" do
 
   scenario "Fix: multiple covered materials on a day" do
     Fabricate(:covered_material,
-              material_fullpath: "materials/computer-science/logic/logic.md",
+              material_fullpath: "computer-science/logic/logic.md",
               covered_on: "2014/01/15", course: course)
     Fabricate(:covered_material,
-              material_fullpath: "materials/computer-science/logic/set_theory.md",
+              material_fullpath: "computer-science/logic/set_theory.md",
               covered_on: "2014/01/15", course: course)
     visit course_calendar_path(course)
     page.should have_calendar_entry("1/15", text: "Logic")

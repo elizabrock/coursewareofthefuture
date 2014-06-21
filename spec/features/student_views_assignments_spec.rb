@@ -30,9 +30,9 @@ feature "Student views assignments" do
     Fabricate(:milestone, deadline: "2013/05/15", assignment: assignment)
 
     Fabricate(:prerequisite, assignment: assignment,
-              material_fullpath: "materials/computer-science/logic/logic.md")
+              material_fullpath: "computer-science/logic/logic.md")
     Fabricate(:prerequisite, assignment: assignment,
-              material_fullpath: "materials/computer-science/programming/advanced-programming/garbage-collection.md")
+              material_fullpath: "computer-science/programming/advanced-programming/garbage-collection.md")
 
     visit course_assignment_path(course, assignment)
 
@@ -43,7 +43,7 @@ feature "Student views assignments" do
     end
 
     click_link "Logic"
-    current_path.should == "/materials/computer-science/logic.md"
+    current_path.should == "/courses/#{course.id}/materials/computer-science/logic/logic.md"
     page.should have_content "Logic is, broadly speaking, the application of reasoning to an activity or concept. In Computer Science, we primarily use deductive reasoning (a.k.a. deductive logic) along with boolean algebra (e.g. two-valued logic)."
   end
 

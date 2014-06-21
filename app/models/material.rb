@@ -67,10 +67,6 @@ class Material
     @item.type == "tree"
   end
 
-  def extension
-    File.extname(self.fullpath)
-  end
-
   def find(path)
     return self if self.filename == path or path.blank?
 
@@ -95,14 +91,6 @@ class Material
     self.children.empty?
   end
 
-  def markdown?
-    extension == ".md"
-  end
-
-  def link
-    "materials/" + self.fullpath if self.markdown?
-  end
-
   def self.prettify(name)
     name.titleize.
       gsub(/^\d\d\s/, "").
@@ -123,7 +111,7 @@ class Material
     end
     return child_hash_array if self.fullpath == ROOT
     hash = { title: formatted_title }
-    hash[:path] = link unless link.blank?
+    hash[:path] = fullpath if markdown?
     hash[:children] = child_hash_array unless child_hash_array.empty?
     hash
   end

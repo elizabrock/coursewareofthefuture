@@ -6,7 +6,7 @@ class MaterialsController < ApplicationController
   expose(:read_materials_fullpaths){ current_user.read_materials.map(&:material_fullpath) }
 
   expose(:covered_materials){ current_course.covered_materials }
-  expose(:covered_material){ covered_materials.where(material_fullpath: material.link).first }
+  expose(:covered_material){ covered_materials.where(material_fullpath: material.fullpath).first }
 
   def show
     if material.markdown?

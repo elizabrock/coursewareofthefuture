@@ -13,7 +13,7 @@ feature "Instructor creates assignment with prerequisites", vcr: true, js: true 
 
     select "Ruby Koans", from: "Assignment"
     click_button "Set Milestones"
-    save_and_open_page
+    pending
     page.should have_checkboxes(materials_list)
     check "Logic"
     check "Garbage Collection"

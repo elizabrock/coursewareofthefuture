@@ -126,17 +126,6 @@ describe Material do
         image_material.markdown?.should be_falsey
       end
     end
-    describe "#link" do
-      it "should return link for markdown files" do
-        markdown_material.link.should == "materials/computer-science/logic/logic.md"
-      end
-      it "should be nil for directories" do
-        subdirectory_material.link.should be_nil
-      end
-      it "should be nil for non-markdown files" do
-        image_material.link.should be_nil
-      end
-    end
     describe "#html_url" do
       it "should return github url for markdown files" do
         markdown_material.html_url.should == "https://github.com/elizabrock/inquizator-test-repo/blob/master/computer-science/logic/logic.md"

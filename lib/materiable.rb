@@ -3,8 +3,16 @@ module Materiable
     File.dirname(self.fullpath)
   end
 
+  def extension
+    File.extname(self.fullpath)
+  end
+
   def fullpath
-    material_fullpath.gsub("materials/", "")
+    material_fullpath
+  end
+
+  def markdown?
+    extension == ".md"
   end
 
   def formatted_title

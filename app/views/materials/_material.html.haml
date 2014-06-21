@@ -1,9 +1,9 @@
-- covered_material = covered_materials.find{|cm| cm.material_fullpath == material.link}
+- covered_material = covered_materials.find{|cm| cm.material_fullpath == material.fullpath}
 
 %tr{ data: { level: level }, id: "level_#{level}_#{material.local_id}" }
   %td.title
     - if covered_material.present? or (can?(:manage, CoveredMaterial) and material.markdown?)
-      = link_to material.link do
+      = link_to course_material_path(current_course, material.fullpath) do
         %span.title= material.formatted_title
     - else
       %span.title= material.formatted_title
@@ -16,7 +16,7 @@
   %td.data
     - if material.leaf? and material.markdown?
 
-      - covered_material ||= CoveredMaterial.new(material_fullpath: material.link, covered_on: Time.zone.now)
+      - covered_material ||= CoveredMaterial.new(material_fullpath: material.fullpath, covered_on: Time.zone.now)
 
       - status_class = covered_material.new_record? ? "secondary" : "covered_on"
       - label_copy = covered_material.new_record? ? "Upcoming" : "Covered #{covered_material.covered_on}"
