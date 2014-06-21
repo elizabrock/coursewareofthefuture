@@ -23,6 +23,7 @@ class UsersController < ApplicationController
   def instructify
     if can?(:instructify, user)
       user.update_attribute(:instructor, true)
+      user.update_attribute(:forem_admin, true)
       redirect_to users_path, notice: "#{user.name} is now an instructor."
     else
       redirect_to users_path, alert: "You are not authorized."

@@ -15,6 +15,7 @@ feature "Forem admin creates forum categories" do
   end
 
   scenario "viewing forem admin area as non forem admin" do
+    Fabricate(:instructor)
     signin_as :user
     visit root_path
     page.should_not have_link "Forum Admin"
@@ -39,7 +40,7 @@ feature "Forem admin creates forum categories" do
   end
 
   scenario "forem admin creates forum category" do
-    signin_as :forem_admin
+    signin_as :instructor
     visit forem.admin_root_path
     click_link "Manage Forum Categories"
     page.should have_link "Back to Admin"
@@ -71,7 +72,7 @@ feature "Forem admin creates forum categories" do
   end
 
   scenario "forem admin creates a new forum" do
-    signin_as :forem_admin
+    signin_as :instructor
     visit forem.admin_root_path
     click_link "Manage Forum Categories"
     click_link "New Forum Category"
@@ -128,7 +129,7 @@ feature "Forem admin creates forum categories" do
   end
 
   scenario "Admin works with groups" do
-    signin_as :forem_admin
+    signin_as :instructor
     visit forem.admin_root_path
     click_link "Manage Groups"
     page.should have_content "Manage Groups"
@@ -147,7 +148,7 @@ feature "Forem admin creates forum categories" do
   end
 
   scenario "User adds new topic" do
-    signin_as :forem_admin
+    signin_as :instructor
     visit forem.admin_root_path
     click_link "Manage Forum Categories"
     click_link "New Forum Category"
