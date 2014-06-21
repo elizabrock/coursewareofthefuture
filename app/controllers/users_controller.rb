@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   expose(:instructors){ User.instructors }
+  expose(:observers){ User.observers }
   expose(:students){ User.students }
   expose(:user)
   expose(:self_reports, ancestor: :user)
@@ -22,9 +23,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def observify
+    if can?(:observify, user)
+      user.become_observer!
+      redirect_to users_path, notice: "#{user.name} is now an observer."
+    else
+      redirect_to users_path, alert: "You are not authorized."
+    end
+  end
+
   def instructify
     if can?(:instructify, user)
-      user.update_attribute(:instructor, true)
+      user.become_instructor!
       redirect_to users_path, notice: "#{user.name} is now an instructor."
     else
       redirect_to users_path, alert: "You are not authorized."
