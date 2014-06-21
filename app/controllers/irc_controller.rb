@@ -1,0 +1,2 @@
+class IrcController < ApplicationController
+end

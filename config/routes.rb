@@ -36,6 +36,7 @@ Coursewareofthefuture::Application.routes.draw do
     end
   end
   resource :enrollment, only: [:new]
+  resource :irc, only: :show, controller: :irc
   resources :milestone_submissions, only: [:create]
   resources :question_grades, only: [:edit, :update]
   resources :read_materials, only: [:create]
