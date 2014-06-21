@@ -15,7 +15,7 @@ Coursewareofthefuture::Application.routes.draw do
     delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   end
 
-  resources :courses, except: [:edit, :update, :destroy] do
+  resources :courses, except: [:destroy] do
     resources :assignments, except: [:edit, :update, :destroy] do
       get :select, on: :collection
     end
