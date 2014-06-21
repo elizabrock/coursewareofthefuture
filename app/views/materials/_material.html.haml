@@ -4,9 +4,9 @@
   %td.title
     - if covered_material.present? or (can?(:manage, CoveredMaterial) and material.markdown?)
       = link_to material.link do
-        %span.title= material.pretty_name
+        %span.title= material.formatted_title
     - else
-      %span.title= material.pretty_name
+      %span.title= material.formatted_title
   %td.data
     - if covered_material.present?
       - if read_materials_fullpaths.include?(covered_material.fullpath)

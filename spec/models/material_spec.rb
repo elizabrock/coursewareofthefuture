@@ -97,11 +97,11 @@ describe Material do
         image_material.filename.should == "wikimedia-commons-venn-and.png"
       end
     end
-    describe "#pretty_name" do
+    describe "#formatted_title" do
       it "should return the a humanized name for the file" do
-        markdown_material.pretty_name.should == "Logic"
-        subdirectory_material.pretty_name.should == "Logic"
-        image_material.pretty_name.should == "Wikimedia Commons Venn and.Png"
+        markdown_material.formatted_title.should == "Logic"
+        subdirectory_material.formatted_title.should == "Logic"
+        image_material.formatted_title.should == "Wikimedia Commons Venn and.Png"
       end
     end
     describe "#directory?" do
