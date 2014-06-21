@@ -8,7 +8,7 @@ def hash_of(path)
     if tr.has_css?("td.title a")
       link = tr.find("td.title a")
       hash[:title] = link.find("span").text
-      hash[:path] = link["href"].gsub(/\/courses\/\d\/materials\//, "")
+      hash[:path] = link["href"].gsub(/\/courses\/\d+\/materials\//, "")
     else
       hash[:title] = tr.find("span.title").text
     end
@@ -107,6 +107,12 @@ def materials_hash
       ]
     }
   ]
+end
+
+def material_titles
+  materials_list.map do |material|
+    material.has_key?(:path) ? material[:title] : nil
+  end.compact.sort
 end
 
 def remove_links(hash_array)

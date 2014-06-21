@@ -30,13 +30,12 @@ end
 
 RSpec::Matchers.define :have_checkboxes do |expected_checkboxes|
   match do |page|
-    actual_checkboxes = page.all("input[type=checkbox]").map{|o| [o.text]}.flatten
-    actual_checkboxes.should include(expected_checkboxes)
+    @actual_checkboxes = page.all("label.checkbox").map{|o| o.text}.flatten
+    @actual_checkboxes.should == expected_checkboxes
   end
 
   failure_message do |page|
-    actual_checkboxes = page.all("input[type=checkbox]").map{|o| [o.text]}.flatten
-    "expected that #{expected_checkboxes} checkboxes would be present, but only #{actual_checkboxes} checkboxes could be found"
+    "expected that #{expected_checkboxes} checkboxes would be present, but #{@actual_checkboxes} checkboxes were found."
   end
 end
 

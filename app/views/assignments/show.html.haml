@@ -14,4 +14,4 @@
   = render partial: "milestones/milestone", locals: { milestone: milestone, already_submitted: already_submitted, can_submit_milestone: can_submit_milestone }
 
   - if !already_submitted
-    = can_submit_milestone = false
+    - can_submit_milestone = false

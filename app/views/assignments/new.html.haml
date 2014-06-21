@@ -4,9 +4,12 @@
   = f.input :title
   = f.input :summary
   = f.input :published, hint: "publishing makes an assignment visible to students"
-  %fieldset
+  %fieldset.prerequisites
     %legend Prerequisites
-    = f.collection_check_boxes :prerequisites, materials, :fullpath, :formatted_title
+    - material_fullpaths.each do |material_fullpath|
+      %label.checkbox
+        = check_box_tag 'material_fullpaths[]', material_fullpath, prerequisite_fullpaths.include?(material_fullpath), class: "check_boxes"
+        = Prerequisite.new(material_fullpath: material_fullpath).formatted_title
   = f.simple_fields_for :milestones do |m|
     %fieldset
       %legend #{m.object.title} Milestone

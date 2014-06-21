@@ -1,14 +1,15 @@
 class Assignment < ActiveRecord::Base
+  attr_accessor :source
+
   belongs_to :course
   has_many :milestones, inverse_of: :assignment
-  has_many :prerequisites, inverse_of: :assignment
-  accepts_nested_attributes_for :prerequisites
+  has_many :prerequisites
+
+  accepts_nested_attributes_for :milestones
 
   validates_presence_of :course
 
   scope :published, ->{ where(published: true) }
-
-  accepts_nested_attributes_for :milestones
 
   def first_deadline
     @first_deadline ||= milestones.map(&:deadline).min
@@ -29,8 +30,8 @@ class Assignment < ActiveRecord::Base
     end
   end
 
-  def populate_from_github(path, client)
-    markdown = Material.retrieve(path + "/instructions.md", course.source_repository, client).content
+  def populate_from_github(client)
+    markdown = Material.retrieve(source + "/instructions.md", course.source_repository, client).content
     sections = markdown.split("##").each do |section|
       title, body = section.split("\n",2)
       title.gsub!(/#+\s*/,"")

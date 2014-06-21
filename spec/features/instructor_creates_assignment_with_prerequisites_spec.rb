@@ -13,8 +13,9 @@ feature "Instructor creates assignment with prerequisites", vcr: true, js: true 
 
     select "Ruby Koans", from: "Assignment"
     click_button "Set Milestones"
-    pending
-    page.should have_checkboxes(materials_list)
+    within("fieldset.prerequisites") do
+      page.should have_checkboxes(material_titles)
+    end
     check "Logic"
     check "Garbage Collection"
 
@@ -32,8 +33,6 @@ feature "Instructor creates assignment with prerequisites", vcr: true, js: true 
     page.should have_content "Your assignment has been updated."
 
     click_link "Assignments"
-    page.should have_list ["Capstone", "Ruby Koans"]
-
     click_link "Ruby Koans"
 
     within(".prerequisites") do
