@@ -11,5 +11,6 @@
  *= require_self
  *= require foundation_and_overrides
  *= require jquery.ui.datepicker
- *= require_tree .
+ *= require jquery.tabelizer
+ *= require foundation_icons
  */

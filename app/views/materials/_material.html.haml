@@ -1,17 +1,31 @@
-- materials.each do |material|
-  %li
-    - if covered_material_links.include?(material.link)
-      %span.button.tiny.secondary.disabled Covered
-    - elsif can?(:manage, CoveredMaterial) and material.link.present?
-      = simple_form_for CoveredMaterial.new(material_fullpath: material.link, covered_on: Date.today), url: course_covered_materials_path(current_course) do |f|
-        = f.input :material_fullpath, as: :hidden
-        = f.button :submit, "Mark as Covered", class: "tiny"
-    - elsif material.is_leaf?
-      %span.button.tiny.secondary.disabled TBC
+- covered_material = covered_materials.find{|cm| cm.material_fullpath == material.link}
 
-    - if material.link and can?(:manage, CoveredMaterial)
-      = link_to material.pretty_name, material.link
+%tr{ data: { level: level }, id: "level_#{level}_#{material.local_id}" }
+  %td.title
+    - if covered_material.present? or (can?(:manage, CoveredMaterial) and material.markdown?)
+      = link_to material.link do
+        %span.title= material.pretty_name
     - else
       %span.title= material.pretty_name
+  %td.data
+    - if covered_material.present?
+      - if read_materials_fullpaths.include?(covered_material.fullpath)
+        .read-status.label.radius.secondary.fi-check read
+      - else
+        .read-status.label.radius.alert.fi-asterisk new&nbsp;
+  %td.data
+    - if material.leaf? and material.markdown?
 
-    %ul= render partial: 'material', locals: { materials: material.children }
+      - covered_material ||= CoveredMaterial.new(material_fullpath: material.link, covered_on: Time.zone.now)
+
+      - status_class = covered_material.new_record? ? "secondary" : "covered_on"
+      - label_copy = covered_material.new_record? ? "Upcoming" : "Covered #{covered_material.covered_on}"
+
+      .label.radius{ class: status_class}
+        = label_copy
+        - if can?(:manage, CoveredMaterial)
+          %a.edit-date-covered.fi-clock{ href: "#", data: { dropdown: "drop#{material.local_id}", options: "is_hover:true"}}
+          .f-dropdown.content{ id: "drop#{material.local_id}", data: { dropdown: { content: "" } } }
+            = render partial: 'covered_materials/form', locals: { covered_material: covered_material }
+
+= render partial: "materials/material", collection: material.children, locals: { level: level+1 }

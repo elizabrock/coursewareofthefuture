@@ -17,9 +17,20 @@ feature "Student is reminded of daily reports" do
       Cron.run!
       unread_emails_for(student.email).size.should == 1
       open_email(student.email)
-      current_email.should have_subject"Reminder: Enter Your Self-Report"
-      visit_in_email "Enter your self-report!"
+      current_email.should have_subject "Reminder: Enter Your Self-Report"
+      visit_in_email "Head to the Course Calendar"
       current_path.should == course_calendar_path(cohort4)
+    end
+  end
+
+  scenario "Reminder email isn't sent if the student is an observer" do
+    student.become_observer!
+    Timecop.travel(Time.new(2013, 03, 11, 8, 00)) do
+      Cron.run!
+      unread_emails_for(student.email).size.should == 0
+      student.update_attribute(:observer, false)
+      Cron.run!
+      unread_emails_for(student.email).size.should == 1
     end
   end
 
@@ -48,7 +59,7 @@ feature "Student is reminded of daily reports" do
       unread_emails_for(student.email).size.should == 1
       open_email(student.email)
       current_email.should have_subject "Reminder: Enter Your Self-Report"
-      visit_in_email "Enter your self-report!"
+      visit_in_email "Head to the Course Calendar"
       current_path.should == course_calendar_path(cohort4)
     end
   end

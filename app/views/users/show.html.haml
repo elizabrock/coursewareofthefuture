@@ -1,37 +1,44 @@
 .row
-  .small-6.large-2.columns
+  .small-6.medium-2.columns
     =link_to(image_tag(user.photo, class: "profile_photo"), user_path)
-  .small-6.large-10.columns
+  .small-6.medium-10.columns
+    - if can?(:instructify, user)
+      .right= button_to "Make Instructor", instructify_user_path(user), class: "button secondary small radius"
+    - if can?(:observify, user)
+      .right= button_to "Make Observer", observify_user_path(user), class: "button secondary small radius"
     %h1= user.name
-    %p= link_to(user.github_username, "http://www.github.com/"+user.github_username)
-    %p= user.phone
-    %p= mail_to(user.email)
+    %ul.no-bullet
+      %li
+        Github:
+        = link_to("@#{user.github_username}", "http://www.github.com/"+user.github_username)
+      %li
+        Phone:
+        = user.phone
+      %li
+        Email:
+        = mail_to(user.email)
 .row
   .small-12.columns
     - if can?(:view_private_details_of, user)
       %fieldset
         %legend Private Details
+        - if user == current_user
+          .right= link_to "Edit My Profile", [:edit, current_user], class: "button small radius fi-page-edit"
         %p
           %em This information is only visible to you and your instructor(s).
         .row
-          .large-6.columns
+          .large-12.columns
             %h5 Goals:
-            %p= user.goals || "[Missing]"
-          .large-6.columns
+            %p= user.goals.present? ? user.goals : "[Not filled out]"
+          .large-12.columns
             %h5 Background:
-            %p= user.background || "[Missing]"
-.row
-  .small-12.columns
-    - if can?(:view_private_details_of, user)
-      #self_reports{ data: {data: self_reports.to_json} }
-      %svg#self_report_graph
-      #self_report_legend
-        #slept.legend Hours Slept
-        #coding.legend Hours Coding
-        #learning.legend Hours Learning
-.row
-  .small-12.columns
-    - if can?(:instructify, user) and !user.instructor
-      = button_to "Make Instructor", instructify_user_path(user), class: "button small radius"
-    - if user == current_user
-      %p= link_to "Edit My Profile", [:edit, current_user], class: "button small radius"
+            %p= user.background.present? ? user.background : "[Not filled out]"
+        .row
+          .large-12.columns
+            %h5 Self Reports:
+            #self_reports{ data: {data: self_reports.to_json} }
+            %svg#self_report_graph
+            #self_report_legend
+              #slept.legend Hours Slept
+              #coding.legend Hours Coding
+              #learning.legend Hours Learning

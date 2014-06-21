@@ -11,11 +11,16 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.ui.datepicker
 //= require jquery_ujs
-//= require foundation
-//= require turbolinks
+//= require jquery.tabelizer
+//= require jquery.ui.datepicker
+//= require foundation/foundation
+//= require foundation/foundation.alert
+//= require foundation/foundation.dropdown
 //= require d3
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+$(function(){
+  $('table#all_materials').tabelize();
+  $(document).foundation();
+});

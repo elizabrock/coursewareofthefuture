@@ -1,6 +1,6 @@
-$('td[data-date="<%=@self_report.date.strftime("%Y-%m-%d")%>"]')
+$('td[data-date="<%= self_report.date.to_date %>"]')
   .bind("ajax:success", function() {
-    $('td[data-date="<%=@self_report.date.strftime("%Y-%m-%d")%>"] form')
-    .replaceWith("<%= escape_javascript(render(:partial => "self_report_form", :alert => "All fields required.", locals: {self_report: @self_report, date: @self_report.date})) %>");
+    $('td[data-date="<%= self_report.date.to_date %>"] div')
+    .replaceWith("<%= escape_javascript(render(partial: "form")) %>");
 })
 

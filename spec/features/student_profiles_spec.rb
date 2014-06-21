@@ -12,6 +12,10 @@ feature "Student profiles" do
   # - goals
   # - background
 
+  before do
+    Fabricate(:instructor, name: "test safety instructor")
+  end
+
   let!(:course0){ Fabricate(:course, title: "Nullth Course") }
   let!(:course){ Fabricate(:course, title: "First Course") }
 
@@ -24,7 +28,8 @@ feature "Student profiles" do
   scenario "Viewing the student list, as a student" do
     jill = Fabricate(:student, name: "Jill Smith", courses: [course])
     Fabricate(:student, name: "Bob Jones", courses: [course])
-    Fabricate(:instructor, name: "Julia Child")
+    Fabricate(:instructor, name: "Julia Child", courses: [course])
+    Fabricate(:instructor, name: "Other Instructor")
     signin_as jill
     visit root_path
     click_link "Peers"
@@ -33,6 +38,7 @@ feature "Student profiles" do
     end
     within(".instructors") do
       page.should have_content("Julia Child")
+      page.should_not have_content("Other Instructor")
     end
   end
 

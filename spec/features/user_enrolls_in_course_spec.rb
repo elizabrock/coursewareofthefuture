@@ -70,8 +70,30 @@ feature "Student enrolls in course" do
     current_path.should == course_path(cohort4b)
   end
 
+  scenario "Enroll in another course doesn't show up if there are no courses" do
+    Course.destroy_all
+    signin_as :student
+    visit new_enrollment_path
+    page.should_not have_content("Please select a course")
+    page.should have_content("There are no open courses at this time.")
+  end
+
+  scenario "If there are no courses, enrollment page shows appropriate message" do
+    Course.destroy_all
+    signin_as :student
+    visit root_path
+    page.should_not have_link "Enroll in another course"
+  end
+
+  scenario "Enroll in another course doesn't show up if you're enrolled in all courses" do
+    signin_as :student, courses: [cohort4a, cohort4b]
+    visit root_path
+    page.should_not have_link "Enroll in another course"
+  end
+
   scenario "Enrollments view shows all students enrolled in course." do
     course = Fabricate(:course)
+    Fabricate(:instructor)
     Fabricate(:student, name: "Pookie", photo: File.new('spec/support/files/pookie.jpg'), courses: [course])
     Fabricate(:student, name: "Bea", photo: File.new('spec/support/files/bea.jpg'), courses: [course])
     bert = Fabricate(:student, name: "Bert", photo: File.new('spec/support/files/arson_girl.jpg'), courses: [course])
@@ -86,6 +108,5 @@ feature "Student enrolls in course" do
       image_path = content[:image]
       page.should have_xpath("//ul/li[#{row+1}][contains(normalize-space(.), '#{text}')]//img[contains(@src, '#{image_path}')]")
     end
-
   end
 end

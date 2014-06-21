@@ -9,4 +9,4 @@ before_script:
   - psql -c 'create database coursewareofthefuture_test;' -U postgres
   - psql -U postgres -q -d coursewareofthefuture_test -f db/structure.sql
 
-script: 'REPORT_COVERAGE=true bundle exec rake'
+script: 'CODECLIMATE_REPO_TOKEN=987608b798bb220f5268b66965c871090d90331328f3a4c7ae5a5b739ff6848c bundle exec rake'

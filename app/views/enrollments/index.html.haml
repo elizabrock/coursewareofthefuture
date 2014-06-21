@@ -1,18 +1,14 @@
 .instructors
   %h2 Instructors
   %ul.small-block-grid-5
-    - instructors.each do |instructor|
-      %li
-        = link_to user_path(instructor, course_id: current_course.try(:id)) do
-          = image_tag(instructor.photo, class: "profile_photo")
-          %p{ style: "text-align: center;"}= instructor.name
+    = render instructors
 
+.observers
+  %h2 Observers
+  %ul.small-block-grid-5
+    = render observers
 
 .students
   %h2 Students
   %ul.small-block-grid-5
-    - students.each do |student|
-      %li
-        = link_to user_path(student, course_id: current_course.try(:id)) do
-          = image_tag(student.photo, class: "profile_photo")
-          %p{ style: "text-align: center;"}= student.name
+    = render students

@@ -37,8 +37,8 @@ $include-html-grid-classes: true;
 
 // We use these to control various global styles
 // $body-bg: #fff;
-// $body-font-color: #222;
-$body-font-family: "proxima-nova", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-color: #222;
+$body-font-family: "Lato", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: normal;
 // $body-font-style: normal;
 
@@ -51,17 +51,17 @@ $body-font-family: "proxima-nova", "Helvetica Neue", "Helvetica", Helvetica, Ari
 // $default-float: left;
 
 // We use these as default colors throughout
-$happygreen: #43ac6a;
-// $primary-color: $happygreen;
-// $primary-color: #008CBA;
-// $secondary-color: #e7e7e7;
-// $alert-color: #f04124;
-// $success-color: #43AC6A;
+$primary-color: #00A9E0;
+$secondary-color: #e7e7e7;
+$alert-color: #F92672;
+$success-color: #99D12A;
+$border-color: #313131;
 // $warning-color: #f08a24;
 // $info-color: #a0d3e8;
 
+
 // We use these to make sure border radius matches unless we want it different.
-// $global-radius: 3px;
+$global-radius: 4px;
 // $global-rounded: 1000px;
 
 // We use these to control inset shadow shiny edges and depressions.
@@ -165,10 +165,10 @@ $include-html-type-classes: true;
 // $anchor-font-color-hover: scale-color($primary-color, $lightness: -14%);
 
 // We use these to style the <hr> element
-// $hr-border-width: 1px;
-// $hr-border-style: solid;
-// $hr-border-color: #ddd;
-// $hr-margin: rem-calc(20);
+$hr-border-width: 1px;
+$hr-border-style: solid;
+$hr-border-color: #ddd;
+$hr-margin: rem-calc(20);
 
 // We use these to style lists
 // $list-style-position: outside;
@@ -327,10 +327,10 @@ $include-html-button-classes: true;
 // $button-font-family: $body-font-family;
 // $button-font-color: #fff;
 // $button-font-color-alt: #333;
-// $button-font-tny: rem-calc(11);
-// $button-font-sml: rem-calc(13);
-// $button-font-med: rem-calc(16);
-// $button-font-lrg: rem-calc(20);
+$button-font-tny: rem-calc(14);
+$button-font-sml: rem-calc(14);
+$button-font-med: rem-calc(16);
+$button-font-lrg: rem-calc(20);
 // $button-font-weight: normal;
 // $button-font-align: center;
 
@@ -341,8 +341,10 @@ $include-html-button-classes: true;
 // $button-border-width: 1px;
 // $button-border-style: solid;
 
+$button-bg: #008CBA;
+
 // We use this to set the default radius used throughout the core.
-// $button-radius: $global-radius;
+$button-radius: 15px;
 // $button-round: $global-rounded;
 
 // We use this to set default opacity for disabled buttons.
@@ -1196,47 +1198,8 @@ $include-html-table-classes: true;
 $include-html-visibility-classes: true;
 
 @import 'foundation';
-
-#header {
-  // background-color: $happygreen;
-}
-
-ul#main_navigation {
-  margin: 1em 0;
-  padding: 0 0 20px 10px;
-  border-bottom: 1px solid #000;
-  & > li {
-    margin: 0;
-    padding: 0;
-    display: inline;
-    list-style-type: none;
-    & > span, & > a:link, & > a:visited {
-      float: left;
-      line-height: 14px;
-      margin: 0 10px 4px 10px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    & > span > a, & > span > a:hover {
-      color: black;
-    }
-
-    & > a:link, & > a:visited {
-      color: #999;
-    }
-
-    & > a:link#current, & > a:visited#current, & > a:hover {
-      border-bottom: 4px solid #000;
-      padding-bottom: 2px;
-      background: transparent;
-      color: #000;
-    }
-
-    & > a:hover { color: #000; }
-  }
-}
-
-form.new_covered_material {
-  display: inline-block;
-}
+@import "compass/css3";
+@import "general";
+@import "calendar";
+@import "materials";
+@import "users";

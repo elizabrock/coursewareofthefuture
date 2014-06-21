@@ -1,91 +1,106 @@
 class Material
-  attr_accessor :sha, :path, :short_name, :filename, :linkable, :children, :fullpath, :content, :type, :extension
+  attr_accessor :children, :local_id
+  @@LAST_ID = 0
 
-  def initialize(tree_item = nil)
+  ROOT = "."
+
+  def initialize(item = nil)
     @children = []
-    return unless tree_item.present?
-
-    @fullpath = tree_item.path
-    @filename = File.basename(@fullpath)
-    @path = File.dirname(@fullpath)
-    @short_name = File.basename(@fullpath, ".md")
-    @extension = File.extname(tree_item.path)
-
-    @linkable = (@extension == ".md")
-
-    @sha = tree_item.sha
-
-    @type = tree_item.type
-    @html_url = tree_item.html_url
-    if tree_item.content.present?
-      @content = Base64.decode64(tree_item.content)
-    end
+    @item = item
+    # To help with unique IDs when rendering views
+    @@LAST_ID += 1
+    @local_id = @@LAST_ID
   end
 
-  def link
-    "materials/" + @fullpath if @linkable
+  def self.list(client, repository, directory)
+    contents = client.contents(repository, path: directory)
+    contents.map{ |item| Material.new(item) }
   end
 
-  def self.ls(client, source_repository, directory)
-    @source_repository = source_repository
-    client.contents(source_repository, path: directory).map do |path|
-      Material.new(path)
-    end
-  end
-
-  def self.root(client, source_repository, skip = /^$/)
-    @source_repository = source_repository
-    tree = client.tree(source_repository, "master", recursive: true).tree
-    ancestor_material = Material.new()
-    tree.each do |item|
-      path = item.path
-      populate_path_into(item, path, ancestor_material, skip)
-    end
-    ancestor_material
-  end
-
-  def self.populate_path_into(item, path, ancestor_material, skip)
-    return if path.match(skip)
-    subdirectory_or_file, remaining_path = path.split("/", 2)
-    if remaining_path.blank? # Because we are now in this item's parent directory
-      ancestor_material.add_child( item )
-    else
-      closer_ancestor = ancestor_material.find_child(subdirectory_or_file)
-      populate_path_into(item, remaining_path, closer_ancestor, skip)
-    end
-  end
-
-  def self.lookup(path, source_repository, client)
+  def self.retrieve(filepath, repository, client)
     begin
-      result = client.contents(source_repository, path: path)
+      result = client.contents(repository, path: filepath)
       Material.new(result)
     rescue Octokit::Forbidden
-
-      directory = File.dirname(path)
-      materials = Material.ls(client, source_repository, directory)
-      material = materials.find{|material| material.fullpath == path}
-      sha = material.sha
-      blob = client.blob(source_repository, sha)
-      blob.path = path
-
+      directory = File.dirname(filepath)
+      sibling_materials = Material.list(client, repository, directory)
+      material = sibling_materials.find{|material| material.fullpath == filepath}
+      blob = client.blob(repository, material.sha)
+      blob.path = filepath
       Material.new(blob)
     end
   end
 
-  def edit_url
-    @html_url.gsub("blob", "edit")
+  def self.root(client, repository, skip_files_matching)
+    root = Material.new()
+    tree = client.tree(repository, "master", recursive: true).tree
+    materials = tree.map{ |tree_item| Material.new(tree_item) }
+    materials.each do |material|
+      insert_into_tree(material, root, skip_files_matching)
+    end
+    root
   end
 
-  def is_leaf?
-    @children.empty?
+  def incorporate_child(child)
+    return unless child.markdown? or child.directory?
+    self.children << child
   end
 
-  def is_markdown?
-    File.extname(fullpath) == ".md"
+  def content
+    Base64.decode64(@item.content) if @item.content.present?
   end
 
-  def self.prettify(string)
-    string.titleize.
+  def descendants
+    all_descendants = @children + @children.map(&:descendants)
+    all_descendants.flatten.sort_by!{ |m| m.pretty_name }
+  end
+
+  def directory
+    @directory ||= File.dirname(self.fullpath)
+  end
+
+  def directory?
+    @item.type == "tree"
+  end
+
+  def extension
+    File.extname(self.fullpath)
+  end
+
+  def find(path)
+    return self if self.filename == path or path.blank?
+
+    subdirectory, remaining_path = path.split("/", 2)
+    matching_child = self.children.find{ |c| c.filename == subdirectory }
+    matching_child.find(remaining_path)
+  end
+
+  def filename
+    @filename ||= File.basename(self.fullpath)
+  end
+
+  def fullpath
+    @fullpath ||= @item.try(:path) || ROOT
+  end
+
+  def html_url
+    @item.html_url
+  end
+
+  def leaf?
+    self.children.empty?
+  end
+
+  def markdown?
+    extension == ".md"
+  end
+
+  def link
+    "materials/" + self.fullpath if self.markdown?
+  end
+
+  def self.prettify(name)
+    name.titleize.
       gsub(/^\d\d\s/, "").
       gsub("To", "to").
       gsub("And", "and").
@@ -94,34 +109,43 @@ class Material
   end
 
   def pretty_name
+    return "" unless self.fullpath.present?
+
+    short_name = File.basename(self.fullpath, ".md")
     Material.prettify(short_name)
   end
 
-  def pretty_path
-    path.split("/").map{|s| Material.prettify(s)}.join(" > ")
+  def sha
+    @item.sha
   end
 
-  def add_child(tree_item)
-    return if tree_item.type == "blob" and File.extname(tree_item.path) != ".md"
-    child = Material.new(tree_item)
-    if child.short_name == self.short_name
-      self.fullpath = child.fullpath
-      @linkable = true
-    else
-      @children << child
+  def to_hash
+    child_hash_array = []
+    self.children.each do |child|
+      child_hash_array << child.to_hash
     end
+    return child_hash_array if self.fullpath == ROOT
+    hash = { title: pretty_name }
+    hash[:path] = link unless link.blank?
+    hash[:children] = child_hash_array unless child_hash_array.empty?
+    hash
   end
 
-  def descendants
-    all_descendants = @children + @children.map(&:descendants)
-    all_descendants.flatten.sort_by!{ |m| m.pretty_name }
+  def to_param
+    fullpath
   end
 
-  def find_child(filename)
-    @children.find{ |c| c.filename == filename }
+  protected
+
+  def item
+    @item
   end
 
-  def find_descendant_by_link(link)
-    @children.find{ |c| c.link == link } || @children.map{ |c| c.find_descendant_by_link(link) }.compact.first
+  private
+
+  def self.insert_into_tree(material, root, skip_files_matching)
+    return if material.fullpath.match(skip_files_matching)
+    parent = root.find(material.directory)
+    parent.incorporate_child(material)
   end
 end

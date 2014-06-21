@@ -1,4 +1,4 @@
-%h2 Grading
+%h3 Grading
 %ol
   - quiz.questions.each do |question|
     %li= grading_summary(question)
@@ -13,7 +13,7 @@
 
   .large-6.columns
     #incomplete_quizzes.panel
-      %h3 Incompleted Quizzes
+      %h3 Incomplete Quizzes
       %ul
         - quiz_submissions.in_progress.each do |qs|
           %li= qs.user.name

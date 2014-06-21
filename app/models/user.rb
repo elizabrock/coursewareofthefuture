@@ -4,12 +4,18 @@ class User < ActiveRecord::Base
   devise :rememberable, :trackable, :omniauthable, :omniauth_providers => [:github]
 
   scope :instructors, ->{ where(instructor: true) }
-  scope :students, ->{ where("instructor = false or instructor is null") }
+  scope :forem_admin, ->{ instructors }
+  scope :observers, ->{ where(observer: true) }
+
+  scope :except_instructors, ->{ where("instructor = false or instructor is null") }
+  scope :except_observers, ->{ where("observer = false or observer is null") }
+  scope :students, ->{ except_instructors.except_observers }
 
   has_many :enrollments
   has_many :courses, through: :enrollments
   has_many :milestones, through: :milestone_submissions
   has_many :milestone_submissions
+  has_many :read_materials
   has_many :self_reports, inverse_of: :user
   has_many :quiz_submissions
   has_many :quizzes, through: :quiz_submissions
@@ -17,7 +23,29 @@ class User < ActiveRecord::Base
   validates_format_of :email, with: /\A[^@]+@[^@]+\z/, message: "must be an email address"
   validates_presence_of :github_access_token
 
+  before_create :check_for_first_user
+
   default_scope { order(name: :asc) }
+
+  def forem_name
+    self.name
+  end
+
+  def become_instructor!
+    self.instructor = true
+    self.observer = false
+    self.save!
+  end
+
+  def become_observer!
+    self.instructor = false
+    self.observer = true
+    self.save!
+  end
+
+  def check_for_first_user
+    self.instructor = true if User.all.empty?
+  end
 
   def has_confirmed_photo?
     self.photo.present? && self.photo_confirmed?

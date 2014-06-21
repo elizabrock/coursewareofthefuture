@@ -1,0 +1,25 @@
+#all_materials {
+  border: none;
+
+  td.title .label {
+    background: none;
+    color: $body-font-color;
+    font-size: 1em;
+  }
+
+  td.data {
+    text-align: left;
+  }
+  .f-dropdown.content.open {
+    min-width: 14em;
+  }
+}
+
+.material {
+  .breadcrumbs {
+    margin-bottom: 0.5em;
+  }
+  .content {
+    clear: left;
+  }
+}

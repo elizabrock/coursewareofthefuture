@@ -1,12 +1,12 @@
 %h1 Assignments
 
-%ul
+%ul.no-bullet
   - viewable_assignments.each do |assignment|
     %li= link_to assignment.title_with_deadlines, course_assignment_path(current_course, assignment)
 
 %h2 Quizzes
 
-%ul
+%ul.no-bullet
   - published_quizzes.each do |quiz|
     - if can? :view, quiz
       - quiz_submission = current_user.quiz_submissions.find{ |qs| qs.quiz == quiz }
@@ -16,18 +16,20 @@
         - elsif quiz_submission.submitted?
           %li= link_to "#{quiz.title} (submitted for grading)", course_quiz_submission_path(current_course, quiz)
         - else
-          %li= link_to "#{quiz.title} (incomplete, due #{quiz.deadline.strftime("%-m/%d")})", edit_course_quiz_submission_path(current_course, quiz)
+          %li= link_to "#{quiz.title} (incomplete, due #{quiz.deadline})", edit_course_quiz_submission_path(current_course, quiz)
       - else
-        %li= link_to "#{quiz.title} (due #{quiz.deadline.strftime("%-m/%d")})", course_quiz_submission_path(current_course, quiz), method: :post
+        %li= link_to "#{quiz.title} (due #{quiz.deadline})", course_quiz_submission_path(current_course, quiz), method: :post
 
 - if can? :manage, Quiz
   %h2 Instructor Information:
-  %ul
+  %ul.no-bullet
     - unpublished_quizzes.each do |quiz|
       %li= link_to "#{quiz.title} (Unpublished)", edit_course_quiz_path(current_course, quiz)
     - published_quizzes.each do |quiz|
       %li= link_to "#{quiz.title} (#{quiz.quiz_submissions.gradeable.count} completed, #{quiz.quiz_submissions.in_progress.count} in progress)", grade_course_quiz_path(current_course, quiz)
-- if can? :create, Assignment
-  = link_to "New Assignment", select_course_assignments_path(current_course), class: "button"
-- if can? :create, Quiz
-  = link_to "New Quiz", new_course_quiz_path(current_course), class: "button"
+
+%ul.button-group
+  - if can? :create, Assignment
+    %li= link_to "New Assignment", select_course_assignments_path(current_course), class: "button fi-plus"
+  - if can? :create, Quiz
+    %li= link_to "New Quiz", new_course_quiz_path(current_course), class: "button fi-plus"

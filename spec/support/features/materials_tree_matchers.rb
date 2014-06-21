@@ -1,14 +1,47 @@
-RSpec::Matchers.define :have_materials_tree do |repo, options|
-  match do |page|
-    with_links = options[:links]
-    expected = materials_hash
-    unless with_links
-      remove_paths(expected)
+def hash_of(path)
+  table = first(:css, path)
+  result = []
+  return result unless table
+  data_trs = table.all("tr").to_a
+  data_trs.each do |tr|
+    hash = { level: tr["data-level"] }
+    if tr.has_css?("td.title a")
+      link = tr.find("td.title a")
+      hash[:title] = link.find("span").text
+      hash[:path] = link["href"]
+    else
+      hash[:title] = tr.find("span.title").text
     end
-    list = first(:css, "ul#upcoming_materials")
-    actual = hash_list(list)
-    actual.should == expected
+    result << hash
   end
+  result
+end
+
+def materials_list
+  [
+    { level: "1", title: "Computer Science" },
+    { level: "2", title: "Logic" },
+    { level: "3", title: "Logic", path: "materials/computer-science/logic/logic.md"},
+    { level: "3", title: "Truth Tables", path: "materials/computer-science/logic/truth-tables.md" },
+    { level: "2", title: "Programming" },
+    { level: "3", title: "Advanced Programming" },
+    { level: "4", title: "Garbage Collection", path: "materials/computer-science/programming/advanced-programming/garbage-collection.md" },
+    { level: "3", title: "Basic Programming" },
+    { level: "4", title: "Control Structures" },
+    { level: "5", title: "Basic Control Structures", path: "materials/computer-science/programming/basic-programming/control-structures/basic-control-structures.md" },
+    { level: "4", title: "Data Structures and Types" },
+    { level: "5", title: "Booleans and Bits" },
+    { level: "6", title: "Booleans and Bits", path: "materials/computer-science/programming/basic-programming/data-structures-and-types/booleans-and-bits/booleans-and-bits.md" },
+    { level: "3", title: "Functional Programming" },
+    { level: "4", title: "Introduction to Functional Programming", path: "materials/computer-science/programming/functional-programming/introduction-to-functional-programming.md" },
+    { level: "1", title: "Life Skills" },
+    { level: "2", title: "Life Skills", path: "materials/life-skills/life-skills.md" },
+    { level: "1", title: "Rails" },
+    { level: "2", title: "ActionView" },
+    { level: "3", title: "ERB and Haml", path: "materials/rails/actionview/erb-and-haml.md" },
+    { level: "2", title: "Ruby Ecosystem" },
+    { level: "3", title: "Nyan Cat", path: "materials/rails/ruby-ecosystem/nyan-cat.md" }
+  ]
 end
 
 def materials_hash
@@ -16,9 +49,11 @@ def materials_hash
     { title: "Computer Science",
       children: [
         { title: "Logic",
-          path: "materials/computer-science/logic/logic.md",
-          children: [ { title: "Truth Tables",
-                        path: "materials/computer-science/logic/truth-tables.md" } ]
+          children: [
+            { title: "Logic",
+              path: "materials/computer-science/logic/logic.md"},
+            { title: "Truth Tables",
+              path: "materials/computer-science/logic/truth-tables.md" } ]
         },
         { title: "Programming",
           children: [
@@ -37,7 +72,11 @@ def materials_hash
                 { title: "Data Structures and Types",
                   children: [
                     { title: "Booleans and Bits",
-                      path: "materials/computer-science/programming/basic-programming/data-structures-and-types/booleans-and-bits/booleans-and-bits.md" }
+                      children: [
+                        { title: "Booleans and Bits",
+                          path: "materials/computer-science/programming/basic-programming/data-structures-and-types/booleans-and-bits/booleans-and-bits.md" }
+                      ]
+                    }
                   ]
                 }
               ]
@@ -52,7 +91,11 @@ def materials_hash
         }
       ]
     },
-    { title: "Life Skills", path: "materials/life-skills/life-skills.md" },
+    { title: "Life Skills",
+      children: [
+        { title: "Life Skills", path: "materials/life-skills/life-skills.md" },
+      ]
+    },
     { title: "Rails",
       children: [
         { title: "ActionView",
@@ -66,45 +109,10 @@ def materials_hash
   ]
 end
 
-def materials_list
-  material_titles(materials_hash)
-end
-
-def material_titles(list)
-  return unless list
-  fullpaths = []
-  list.each do |item_hash|
-    fullpaths << item_hash[:title]
-    fullpaths << material_titles(item_hash[:children])
-  end
-  fullpaths.flatten.compact
-end
-
-def remove_paths(hash_array)
+def remove_links(hash_array)
   return unless hash_array
   hash_array.each do |hash|
     hash.delete(:path)
-    remove_paths(hash[:children])
+    remove_links(hash[:children])
   end
-end
-
-def hash_list(list)
-  result = []
-  return result unless list
-  list_items = list.all(:xpath, "./li")
-  list_items.each do |li|
-    li_hash = { }
-    if li.has_xpath?("./a")
-      link = li.find(:xpath, "./a")
-      li_hash[:title] = link.text
-      li_hash[:path] = link["href"]
-    else
-      li_hash[:title] = li.find(:xpath, "./span[@class='title']").text
-    end
-    children = hash_list(li.first(:xpath, "./ul"))
-    li_hash[:children] = children unless children.blank?
-    # e.g. li_hash = { title: title, path: path, children: children }
-    result << li_hash
-  end
-  result
 end

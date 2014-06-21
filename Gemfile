@@ -10,6 +10,8 @@ gem 'cancan'
 gem 'carrierwave'
 # Coffeescript
 gem 'coffee-rails', '~> 4.0'
+# For CSS3 sass mixins:
+gem 'compass-rails'
 # Lets rails use d3.js visualization
 gem 'd3-rails'
 # Magic Sauce.  We will get to this.
@@ -24,6 +26,7 @@ gem 'fabrication'
 gem 'figaro'
 # Stores files in the cloud
 gem 'fog'
+gem 'forem', :github => "radar/forem", :branch => "rails4"
 # Enables HAML views
 gem 'haml-rails'
 # Error reporting
@@ -32,6 +35,8 @@ gem 'honeybadger'
 gem 'jquery-rails'
 # jquery-ui on rails:
 gem 'jquery-ui-rails'
+# Performance monitoring:
+gem 'newrelic_rpm'
 # Github API gem:
 gem 'octokit'
 # OAuth for Github
@@ -53,14 +58,12 @@ gem 'slide-em-up', github: 'elizabrock/slide-em-up', branch: 'master', require: 
 gem 'uglifier', '>= 1.3.0'
 # rails server that handles multiple connections
 gem 'unicorn'
+gem 'will_paginate', '3.0.5'
 
 group :production do
   # Makes the heroku logs more informative:
   gem 'rails_12factor'
 end
-
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'

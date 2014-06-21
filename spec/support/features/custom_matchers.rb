@@ -6,7 +6,7 @@ RSpec::Matchers.define :have_calendar_entry do |expected, options|
   end
 end
 
-RSpec::Matchers.define :have_exercise_from_github do
+RSpec::Matchers.define :have_exercises_from_github do
   match do |page|
     page.should_not have_content("Exercises")
     page.should_not have_content("Ruby Koans")
@@ -51,7 +51,7 @@ end
 RSpec::Matchers.define :have_error_message do |text, options|
   match do |page|
     field = options[:on]
-    selector = ".//div[contains(@class,'error') and ./label[contains(text(),'#{field}')]]/small[contains(text(),\"#{text}\")]"
+    selector = ".//div[contains(@class,'error') and ./label[contains(text(),'#{field}')]]/span[contains(text(),\"#{text}\")]"
     page.should have_xpath(selector)
   end
 end

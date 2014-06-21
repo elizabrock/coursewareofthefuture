@@ -1,75 +1,86 @@
-- if can?(:manage, CoveredMaterial)
-  = link_to "Edit on Github", material.edit_url, class: "button right"
-- if covered_material
-  = link_to "View As Slides", slides_course_covered_material_path(current_course, covered_material), class: "button right"
-:markdown
-  #{ material.content }
+.material
+  .breadcrumbs
+    %small= pretty_path_for(material)
 
-%hr
-%h2 Discussion:
-%em Coming Soon!
--# :preserve
-    <div class="large-6 columns">
+  %ul.button-group.right
+    - if can?(:manage, CoveredMaterial)
+      %li= link_to "Edit on Github", edit_material_url(material), class: "button secondary fi-page-edit"
+    %li= link_to "View As Slides", course_material_slides_path(current_course, material), class: "button secondary fi-monitor"
 
-      <!-- Feed Entry -->
-      <div class="row">
-        <div class="large-2 columns small-3"><img src="https://placehold.it/80x80&text=[img]" /></div>
-        <div class="large-10 columns">
-          <p><strong>Some Person said:</strong> Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong.</p>
-          <ul class="inline-list">
-            <li><a href="">Reply</a></li>
-            <li><a href="">Share</a></li>
-          </ul>
+  - if read_materials_fullpaths.include?(material.fullpath)
+    .label.radius.fi-check.read-status Read
+  - else
+    = link_to "Mark as Read", read_materials_path(course_id: current_course.id, read_material: { material_fullpath: material.fullpath }), class: "label alert fi-asterisk", method: :post
 
+  .content
+    :markdown
+      #{ material.content }
 
-          <h6>2 Comments</h6>
-          <div class="row">
-            <div class="large-2 columns small-3"><img src="https://placehold.it/50x50&text=[img]" /></div>
-            <div class="large-10 columns"><p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit</p></div>
-          </div>
-          <div class="row">
-            <div class="large-2 columns small-3"><img src="https://placehold.it/50x50&text=[img]" /></div>
-            <div class="large-10 columns"><p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit</p></div>
-          </div>
-        </div>
-      </div>
-      <!-- End Feed Entry -->
+  %hr
+  %h2 Discussion:
+  %em Coming Soon!
+  -# :preserve
+      <div class="large-6 columns">
 
-      <hr />
-
-      <!-- Feed Entry -->
-      <div class="row">
-        <div class="large-2 columns small-3"><img src="https://placehold.it/80x80&text=[img]" /></div>
-        <div class="large-10 columns">
-          <p><strong>Some Person said:</strong> Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong.</p>
-          <ul class="inline-list">
-            <li><a href="">Reply</a></li>
-            <li><a href="">Share</a></li>
-          </ul>
-        </div>
-      </div>
-      <!-- End Feed Entry -->
-
-      <hr />
-
-      <!-- Feed Entry -->
-      <div class="row">
-        <div class="large-2 columns small-3"><img src="https://placehold.it/80x80&text=[img]" /></div>
-        <div class="large-10 columns">
-          <p><strong>Some Person said:</strong> Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong.</p>
-          <ul class="inline-list">
-            <li><a href="">Reply</a></li>
-            <li><a href="">Share</a></li>
-          </ul>
+        <!-- Feed Entry -->
+        <div class="row">
+          <div class="large-2 columns small-3"><img src="https://placehold.it/80x80&text=[img]" /></div>
+          <div class="large-10 columns">
+            <p><strong>Some Person said:</strong> Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong.</p>
+            <ul class="inline-list">
+              <li><a href="">Reply</a></li>
+              <li><a href="">Share</a></li>
+            </ul>
 
 
-          <h6>2 Comments</h6>
-          <div class="row">
-            <div class="large-2 columns small-3"><img src="https://placehold.it/50x50&text=[img]" /></div>
-            <div class="large-10 columns"><p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit</p></div>
+            <h6>2 Comments</h6>
+            <div class="row">
+              <div class="large-2 columns small-3"><img src="https://placehold.it/50x50&text=[img]" /></div>
+              <div class="large-10 columns"><p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit</p></div>
+            </div>
+            <div class="row">
+              <div class="large-2 columns small-3"><img src="https://placehold.it/50x50&text=[img]" /></div>
+              <div class="large-10 columns"><p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit</p></div>
+            </div>
           </div>
         </div>
-      </div>
-      <!-- End Feed Entry -->
+        <!-- End Feed Entry -->
 
-    </div>
+        <hr />
+
+        <!-- Feed Entry -->
+        <div class="row">
+          <div class="large-2 columns small-3"><img src="https://placehold.it/80x80&text=[img]" /></div>
+          <div class="large-10 columns">
+            <p><strong>Some Person said:</strong> Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong.</p>
+            <ul class="inline-list">
+              <li><a href="">Reply</a></li>
+              <li><a href="">Share</a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- End Feed Entry -->
+
+        <hr />
+
+        <!-- Feed Entry -->
+        <div class="row">
+          <div class="large-2 columns small-3"><img src="https://placehold.it/80x80&text=[img]" /></div>
+          <div class="large-10 columns">
+            <p><strong>Some Person said:</strong> Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit, dolore aliqua non est magna in labore pig pork biltong.</p>
+            <ul class="inline-list">
+              <li><a href="">Reply</a></li>
+              <li><a href="">Share</a></li>
+            </ul>
+
+
+            <h6>2 Comments</h6>
+            <div class="row">
+              <div class="large-2 columns small-3"><img src="https://placehold.it/50x50&text=[img]" /></div>
+              <div class="large-10 columns"><p>Bacon ipsum dolor sit amet nulla ham qui sint exercitation eiusmod commodo, chuck duis velit. Aute in reprehenderit</p></div>
+            </div>
+          </div>
+        </div>
+        <!-- End Feed Entry -->
+
+      </div>

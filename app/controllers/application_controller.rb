@@ -13,6 +13,12 @@ class ApplicationController < ActionController::Base
 
   expose(:active_courses){ Course.active_or_future }
   expose(:current_course){ current_user.try(:courses).try(:find_by_id, params[:course_id]) }
+  expose(:enrollment_eligible_courses){ active_courses - current_user.courses }
+
+  def forem_user
+    current_user
+  end
+  helper_method :forem_user
 
   protected
   def authenticate!
@@ -22,7 +28,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_instructor!
-    unless user_signed_in? and current_user.instructor?
+    unless user_signed_in? and current_user.instructor? and !current_user.viewing_as_student?
       redirect_to root_path, alert: "You must be authenticated as an instructor to access this material."
     end
   end

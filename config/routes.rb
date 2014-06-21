@@ -1,4 +1,12 @@
 Coursewareofthefuture::Application.routes.draw do
+
+  # This line mounts Forem's routes at /forums by default.
+  # This means, any requests to the /forums URL of your application will go to Forem::ForumsController#index.
+  # If you would like to change where this extension is mounted, simply change the :at option to something different.
+  #
+  # We ask that you don't use the :as option here, as Forem relies on it being the default of "forem"
+  mount Forem::Engine, :at => '/forums'
+
   root 'home#index'
 
   devise_for :users, controllers: { omniauth_callbacks: :omniauth_callbacks }
@@ -14,13 +22,12 @@ Coursewareofthefuture::Application.routes.draw do
     get :calendar, to: 'events#index'
     resources :enrollments, only: [:index, :create]
     resources :events, only: [:new, :create]
-    resources :materials, only: [:index, :show], constraints: { id: /.*/ }
-    resources :covered_materials, only: [:create, :update] do
-      member do
-        get :slides
-        get '/:asset_file', to: "covered_materials#asset"
-      end
+    get '/materials/:material_fullpath/slides', to: "slides#show", constraints: { material_fullpath: /.*\.md/ }
+    get '/materials/:material_fullpath.md/:asset_file', to: "slides#asset", constraints: { material_fullpath: /.*/ }
+    resources :materials, only: [:show, :index], constraints: { id: /.*/ } do
+      resource :slides, only: :show
     end
+    resources :covered_materials, only: [:create, :update]
     resources :quizzes, except: [:index, :show, :destroy] do
       member do
         get :grade
@@ -29,12 +36,15 @@ Coursewareofthefuture::Application.routes.draw do
     end
   end
   resource :enrollment, only: [:new]
+  resource :irc, only: :show, controller: :irc
   resources :milestone_submissions, only: [:create]
   resources :question_grades, only: [:edit, :update]
-  resources :self_reports, only: [:new, :create]
+  resources :read_materials, only: [:create]
+  resources :self_reports, except: [:destroy]
   resources :users, except: [:destroy] do
     member do
       post :instructify
+      post :observify
     end
   end
   resource :instructor, only: [] do

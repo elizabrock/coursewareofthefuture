@@ -1,0 +1,17 @@
+.milestone
+  %h2 #{milestone.title} (due #{milestone.deadline})
+
+  - if already_submitted or can?(:edit, milestone)
+    :markdown
+      #{milestone.instructions}
+    %span.button.disabled.small.secondary Status: Submitted for Grading
+  - elsif can_submit_milestone
+    :markdown
+      #{milestone.instructions}
+    = simple_form_for milestone.milestone_submissions.new, html: { class: "inline" } do |f|
+      = f.input :milestone_id, as: :hidden
+      = f.input :repository, label: "Assignment Repository", collection: current_user.repositories.map{|r| r["name"]}
+      = f.button :submit, "Submit Milestone", class: "tiny"
+  - else
+    %a.button Ability to view and submit is pending completion of previous milestones
+

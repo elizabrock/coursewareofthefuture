@@ -1,20 +1,25 @@
 class SelfReportsController < ApplicationController
-  def create
-    self_report = current_user.self_reports.build(self_report_params)
-    @self_report = self_report
+  expose(:self_reports){ current_user.self_reports }
+  expose(:self_report, attributes: :self_report_params)
 
+  def create
     if self_report.save
-      render action: "show"
+      render :show
     else
-      render action: "new"
+      render :new
     end
   end
 
-  def show
-      render action: "show"
+  def update
+    if self_report.save
+      render :show
+    else
+      render :edit
+    end
   end
 
   private
+
   def self_report_params
     params.require(:self_report).permit(:attended, :hours_coding, :hours_learning, :hours_slept, :date)
   end

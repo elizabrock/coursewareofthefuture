@@ -20,8 +20,8 @@ class Assignment < ActiveRecord::Base
 
   def title_with_deadlines
     if first_deadline
-      first = first_deadline.strftime("%-m/%d")
-      last = last_deadline.strftime("%-m/%d")
+      first = first_deadline
+      last = last_deadline
       deadlines = (first == last) ? first : [first, last].join(" - ")
       "#{title} (#{deadlines})"
     else
@@ -30,7 +30,7 @@ class Assignment < ActiveRecord::Base
   end
 
   def populate_from_github(path, client)
-    markdown = Material.lookup("#{path}/instructions.md", course.source_repository, client).content
+    markdown = Material.retrieve(path + "/instructions.md", course.source_repository, client).content
     sections = markdown.split("##").each do |section|
       title, body = section.split("\n",2)
       title.gsub!(/#+\s*/,"")

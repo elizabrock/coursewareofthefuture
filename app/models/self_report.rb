@@ -1,15 +1,14 @@
 class SelfReport < ActiveRecord::Base
   belongs_to :user, inverse_of: :self_reports
 
-  validates_presence_of :user
   validates_presence_of :date
-  validates_inclusion_of :attended, :in => [true, false]
+  validates_uniqueness_of :date, scope: :user
   validates_presence_of :hours_coding
   validates_presence_of :hours_learning
   validates_presence_of :hours_slept
-
-
-  validates_uniqueness_of :date, scope: :user
+  validates_inclusion_of :attended, :in => [true, false], message: "must be selected"
+  validate :total_hours
+  validates_presence_of :user
 
   def self.random_reminder
     if rand(100) < 80
@@ -34,17 +33,29 @@ class SelfReport < ActiveRecord::Base
         "Oh, no, it wasn't the Self-Reports. It was Beauty killed the Beast.",
         "I feel the need—the need for a Self-Report!",
         "Carpe diem. Seize the day, boys. Make your Self-Reports extraordinary.",
-        "Nobody puts a Self-Report in a corner."  ].sample
+        "Nobody puts a Self-Report in a corner.",
+        "I got a fever.. And the only prescription.. Is more self-reports."].sample
     end
   end
 
   def self.send_student_reminders!
     Course.active.all.each do |course|
-      course.users.each do |user|
+      course.users.except_observers.each do |user|
         unless user.self_reports.where(date: 1.day.ago.beginning_of_day).count > 0
           SelfReportsMailer.reminder(user, course).deliver
         end
       end
+    end
+  end
+
+  private
+
+  def total_hours
+    total_hours = [hours_slept, hours_coding, hours_learning].compact.sum
+    if total_hours > 24
+      errors.add(:base, "Total hours cannot be greater than 24")
+    elsif total_hours <= 0
+      errors.add(:base, "Total hours must be greater than 0")
     end
   end
 end

@@ -28,7 +28,7 @@ feature "Instructor manages course calendar", js: true do
 
     page.should have_content "Event successfully created."
     current_path.should == course_calendar_path(cohort4)
-    page.should have_calendar_entry("2014-02-24", text: "Federal Holiday")
+    page.should have_calendar_entry("2/24", text: "Federal Holiday")
   end
 
   scenario "Sad path of adding days off" do
@@ -50,7 +50,7 @@ feature "Instructor manages course calendar", js: true do
     click_button "Create Event"
     page.should have_content "Event successfully created."
     current_path.should == course_calendar_path(cohort4)
-    page.should have_calendar_entry("2014-02-19", text: "Federal Holiday")
+    page.should have_calendar_entry("2/19", text: "Federal Holiday")
   end
 
   scenario "Viewing course calendar" do
@@ -68,9 +68,25 @@ feature "Instructor manages course calendar", js: true do
     page.should have_content("November")
     page.should have_content("December")
     page.should have_content("January")
-    page.should have_calendar_entry("2013-09-12", text: "First Day of Class")
-    page.should have_calendar_entry("2014-01-15", text: "Last Day of Class")
-    page.should have_calendar_entry("2014-01-10", text: "No Class")
-    page.should have_calendar_entry("2013-10-15", text: "Federal Holiday")
+    page.should have_calendar_entry("9/12", text: "First Day of Class")
+    page.should have_calendar_entry("1/15", text: "Last Day of Class")
+    page.should have_calendar_entry("1/10", text: "No Class")
+    page.should have_calendar_entry("10/15", text: "Federal Holiday")
+  end
+
+  scenario "Fix: displaying multiple events a day" do
+    course = Fabricate(:course,
+                title: "Cohort 4",
+                syllabus: "Foobar",
+                start_date: "2013/09/12",
+                end_date: "2014/01/15")
+    signin_as :student, courses: [course]
+
+    Fabricate(:event, date: "2013/10/15", summary: "Federal Holiday", course: course)
+    Fabricate(:event, date: "2013/10/15", summary: "No Class", course: course)
+
+    visit course_calendar_path(course)
+    page.should have_calendar_entry("10/15", text: "Federal Holiday")
+    page.should have_calendar_entry("10/15", text: "No Class")
   end
 end

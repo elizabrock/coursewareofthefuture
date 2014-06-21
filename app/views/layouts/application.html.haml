@@ -7,8 +7,7 @@
     = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tags
     - unless Rails.env.test?
-      <script type="text/javascript" src="//use.typekit.net/dtg5jaa.js"></script>
-      <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+      <link href='https://fonts.googleapis.com/css?family=Lato:200,300,400' rel='stylesheet' type='text/css'>
   %body
     - if notice
       .alert-box.success= notice
@@ -41,18 +40,22 @@
           %ul#main_navigation
             - if current_course
               %li= link_to "Syllabus", course_path(current_course), id: current_if("courses")
-              %li= link_to "Course Calendar", course_calendar_path(current_course), id: current_if("events")
+              %li
+                = link_to course_calendar_path(current_course), id: current_if("events") do
+                  Course Calendar
+                  - if self_reports_due > 0
+                    %span.count_icon= self_reports_due
               %li= link_to "Materials", course_materials_path(current_course), id: current_if("materials")
               %li= link_to "Assignments", course_assignments_path(current_course), id: current_if("assignments")
               %li= link_to "Peers", course_enrollments_path(current_course), id: current_if("enrollments", "users")
-            - if current_user
+              %li= link_to "IRC", irc_path(course_id: current_course.try(:id)), id: current_if("irc")
               %li.right
                 %span
                   %a{ "data-dropdown" => "hover1", "data-options" => "is_hover:true" }= current_course.try(:title) || "Choose Course >"
                   %ul#hover1.f-dropdown{ "data-dropdown-content" => "" }
                     - (accessible_courses - [current_course]).each do |course|
                       %li= link_to_course course
-                    - if can?(:create, Enrollment)
+                    - unless enrollment_eligible_courses.empty?
                       %li= link_to "Enroll in another course", new_enrollment_path
     #contents.row
       .small-12.columns

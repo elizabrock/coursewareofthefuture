@@ -2,4 +2,4 @@
 $ ->
   $("input.datepicker").each (i) ->
     $(this).datepicker
-      dateFormat: "yy/mm/dd"
+      dateFormat: "yy-mm-dd"

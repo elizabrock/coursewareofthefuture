@@ -1,7 +1,8 @@
 %h1 Course Enrollment
-%p Please select a course below to join it.
-%p If there are no courses listed, there are no courses currently available to join.
-
-%ul
-  - enrollment_eligible_courses.each do |course|
-    %li= button_to "Join #{course.title}", course_enrollments_path(course), class: "button"
+- if enrollment_eligible_courses.empty?
+  %p There are no open courses at this time.
+- else
+  %p Please select a course below to join it.
+  %ul
+    - enrollment_eligible_courses.each do |course|
+      %li= button_to "Join #{course.title}", course_enrollments_path(course), class: "button"
