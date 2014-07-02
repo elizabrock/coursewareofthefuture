@@ -2,4 +2,5 @@
 
 = simple_form_for quiz, url: course_quizzes_path(current_course) do |f|
   = f.input :title
+  = f.input :deadline
   = f.button :submit, "Create Quiz"

@@ -1,9 +1,10 @@
-%h1 Edit Quiz
+%h1 Finalize Quiz
 
 = simple_form_for quiz, url: course_quiz_path(current_course, quiz) do |f|
   = f.input :title
+  = f.input :deadline
   - unless quiz.questions.first.new_record?
-    = f.input :deadline, hint: "Setting a deadline will publish this quiz."
+    = f.input :published, hint: "publishing makes an assignment visible to students"
 
   = f.simple_fields_for :questions do |q|
     %fieldset
@@ -14,4 +15,5 @@
           = q.input :question_type, label: "Question Type", collection: [["Free Text", Question::FREE_TEXT], ["True/False", Question::BOOLEAN]], include_blank: true
         .small-12.medium-6.columns
           = q.input :correct_answer, label: "Correct Answer"
+
   = f.button :submit, "Save Changes"

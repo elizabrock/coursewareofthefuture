@@ -10,7 +10,7 @@ feature "Instructor creates quiz" do
     click_button "Create Quiz"
     page.should have_content "Your quiz has been created. Add questions and then publish it."
     click_link "Assignments"
-    page.should have_content "Baseline Knowledge Quiz (Unpublished)"
+    page.should have_content "Baseline Knowledge Quiz (unpublished)"
   end
 
   scenario "Free Text Questions" do
@@ -18,7 +18,7 @@ feature "Instructor creates quiz" do
     Fabricate(:unpublished_quiz, title: "Midpoint Checkin", course: course)
     signin_as(:instructor, courses: [course])
     click_link "Assignments"
-    click_link "Midpoint Checkin (Unpublished)"
+    click_link "Midpoint Checkin (unpublished)"
     page.should have_content "Add another question"
     fill_in "Question", with: "Have you installed ruby 2.1?"
 
@@ -49,7 +49,7 @@ feature "Instructor creates quiz" do
     Fabricate(:unpublished_quiz, title: "Midpoint Checkin", course: course)
     signin_as(:instructor, courses: [course])
     click_link "Assignments"
-    click_link "Midpoint Checkin (Unpublished)"
+    click_link "Midpoint Checkin (unpublished)"
     page.should have_content "Add another question"
     fill_in "Question", with: "Have you installed ruby 2.0?"
     page.select("True/False", from: "Question Type")
@@ -95,7 +95,7 @@ feature "Instructor creates quiz" do
               question: "Is class over?",
               correct_answer: "false", quiz: quiz)
     click_link "Assignments"
-    click_link "Final Checkin (Unpublished)"
+    click_link "Final Checkin (unpublished)"
     within(page.find(:xpath, "//fieldset[position()=1]")) do
       fill_in "Question", with: "Are you satisfied?"
     end
@@ -149,7 +149,6 @@ feature "Instructor creates quiz" do
     quiz = Fabricate(:unpublished_quiz, title: "Final Checkin", course: course)
     click_link "Assignments"
     click_link "Final Checkin"
-    page.should_not have_content "Deadline"
     Fabricate(:question,
               question_type: "boolean",
               question: "Are you happy?",
@@ -164,11 +163,28 @@ feature "Instructor creates quiz" do
               correct_answer: "false", quiz: quiz)
     click_link "Assignments"
     click_link "Final Checkin"
-    page.should have_content "Setting a deadline will publish this quiz."
+    page.should_not have_content "Setting a deadline will publish this quiz."
     fill_in "Deadline", with: "2014/05/14"
+    click_button "Save Changes"
+    page.should_not have_content "Your quiz has been published."
+    visit course_assignments_path(course)
+    page.should have_content "Final Checkin (unpublished, due 5/14)"
+
+    click_link "Sign Out"
+    signin_as :student, courses: [course]
+    click_link "Assignments"
+    page.should_not have_content "Final Checkin"
+
+    click_link "Sign Out"
+    signin_as :instructor, courses: [course]
+
+    click_link "Assignments"
+    click_link "Final Checkin"
+    check "Publish"
     click_button "Save Changes"
     page.should have_content "Your quiz has been published."
     page.should have_content "Final Checkin (due 5/14)"
+
     click_link "Sign Out"
     signin_as :student, courses: [course]
     click_link "Assignments"

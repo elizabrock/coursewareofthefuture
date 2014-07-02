@@ -24,9 +24,9 @@
   %h2 Instructor Information:
   %ul.no-bullet
     - unpublished_quizzes.each do |quiz|
-      %li= link_to "#{quiz.title} (Unpublished)", edit_course_quiz_path(current_course, quiz)
+      %li= link_to quiz.title_for_instructor, edit_course_quiz_path(current_course, quiz)
     - published_quizzes.each do |quiz|
-      %li= link_to "#{quiz.title} (#{quiz.quiz_submissions.gradeable.count} completed, #{quiz.quiz_submissions.in_progress.count} in progress)", grade_course_quiz_path(current_course, quiz)
+      %li= link_to quiz.title_for_instructor, grade_course_quiz_path(current_course, quiz)
 
 %ul.button-group
   - if can? :create, Assignment

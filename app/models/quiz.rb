@@ -7,10 +7,16 @@ class Quiz < ActiveRecord::Base
   validates_presence_of :course
   accepts_nested_attributes_for :questions, reject_if: :all_blank
 
-  scope :published,   ->{ where("deadline is not null") }
-  scope :unpublished, ->{ where("deadline is null") }
+  scope :published,   ->{ where(published: true) }
+  scope :unpublished, ->{ where("published is null or published = false") }
 
-  def published?
-    self.deadline.present?
+  def title_for_instructor
+    if published?
+      "#{title} (#{quiz_submissions.gradeable.count} completed, #{quiz_submissions.in_progress.count} in progress)"
+    elsif deadline.present?
+      "#{title} (unpublished, due #{deadline})"
+    else
+      "#{title} (unpublished)"
+    end
   end
 end

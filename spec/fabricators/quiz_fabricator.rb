@@ -2,6 +2,7 @@ Fabricator(:quiz) do
   course
   title "Foo"
   deadline { 3.days.from_now }
+  published true
 end
 
 Fabricator(:populated_quiz, from: :quiz) do
@@ -13,4 +14,5 @@ end
 
 Fabricator(:unpublished_quiz, from: :quiz) do
   deadline nil
+  published false
 end

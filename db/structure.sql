@@ -705,7 +705,8 @@ CREATE TABLE quizzes (
     title character varying(255),
     deadline date,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    published boolean
 );
 
 
@@ -1493,4 +1494,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140615162813');
 INSERT INTO schema_migrations (version) VALUES ('20140621162136');
 
 INSERT INTO schema_migrations (version) VALUES ('20140621175940');
+
+INSERT INTO schema_migrations (version) VALUES ('20140702215950');
 
