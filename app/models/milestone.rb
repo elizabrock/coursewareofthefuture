@@ -4,7 +4,7 @@ class Milestone < ActiveRecord::Base
 
   validate :deadline_must_be_appropriate, if: :deadline
   validates_presence_of :assignment
-  validates_presence_of :deadline
+  validates_presence_of :deadline, if: ->{ assignment.published? }
 
   private
 

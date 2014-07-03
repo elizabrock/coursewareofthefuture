@@ -18,7 +18,7 @@
         - else
           %li= link_to "#{quiz.title} (incomplete, due #{quiz.deadline})", edit_course_quiz_submission_path(current_course, quiz)
       - else
-        %li= link_to "#{quiz.title} (due #{quiz.deadline})", course_quiz_submission_path(current_course, quiz), method: :post
+        %li= link_to "#{quiz.title} (due #{quiz.deadline})", edit_course_quiz_submission_path(current_course, quiz)
 
 - if can? :manage, Quiz
   %h2 Instructor Information:
@@ -30,6 +30,6 @@
 
 %ul.button-group
   - if can? :create, Assignment
-    %li= link_to "New Assignment", select_course_assignments_path(current_course), class: "button fi-plus"
+    %li= link_to "New Assignment", new_course_assignment_path(current_course), class: "button fi-plus"
   - if can? :create, Quiz
     %li= link_to "New Quiz", new_course_quiz_path(current_course), class: "button fi-plus"

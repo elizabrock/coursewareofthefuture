@@ -2,13 +2,7 @@ class QuizSubmissionsController < ApplicationController
   expose(:quizzes){ current_course.quizzes }
   expose(:quiz)
   expose(:quiz_submissions){ current_user.quiz_submissions }
-  expose(:quiz_submission){ quiz_submissions.for(quiz).first }
-
-  def create
-    quiz_submission = quiz_submissions.build(quiz: quiz)
-    quiz_submission.save!
-    redirect_to edit_course_quiz_submission_path(current_course, quiz)
-  end
+  expose(:quiz_submission){ quiz_submissions.for(quiz).first || quiz_submissions.create(quiz: quiz) }
 
   def update
     quiz_submission.update_attributes(quiz_submission_params)

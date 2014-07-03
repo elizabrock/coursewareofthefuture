@@ -6,6 +6,7 @@ class Ability
 
     can :view_private_details_of, user
     can :edit_goals_and_background, user
+
     if user.instructor?
       can :act_as_student, User
       unless user.viewing_as_student?
@@ -15,10 +16,11 @@ class Ability
       cannot :instructify, user
       cannot :observify, user
     end
+
     can :edit, user
     can :view, Assignment, course_id: user.course_ids, published: true
     can :view, Milestone
-    can :view, Quiz, course_id: user.course_ids
+    can :view, Quiz, course_id: user.course_ids, published: true
 
     # See the cancan wiki for details on how to define abilities:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities

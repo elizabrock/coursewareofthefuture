@@ -49,23 +49,25 @@ module EventsHelper
     covered_materials = course.covered_materials.find_all{|cm| cm.covered_on == d }
     covered_materials.collect do |covered_material|
       material_description = "#{covered_material.formatted_title} Covered"
-      { summary: material_description, class: "secondary"}
+      { summary: link_to(material_description, course_material_path(course, covered_material.material_fullpath)), class: "secondary"}
     end
   end
 
   def populate_milestones(d, course)
-    milestones = course.milestones.find_all{|m| m.deadline == d and m.assignment.published? }
+    milestones = course.milestones.find_all{|m| m.deadline == d and can?(:view, m.assignment) }
     milestones.collect do |milestone|
       milestone_description = "#{milestone.assignment.title}: #{milestone.title} Due"
-      { summary: milestone_description, class: "alert"}
+      link = milestone.assignment.published? ? course_assignment_path(course, milestone.assignment) : edit_course_assignment_path(course, milestone.assignment)
+      { summary: link_to(milestone_description, link), class: "alert"}
     end
   end
 
   def populate_quizzes(d, course)
-    quizzes = course.quizzes.published.find_all{|q| q.deadline == d }
+    quizzes = course.quizzes.find_all{|q| q.deadline == d && can?(:view, q) }
     quizzes.collect do |quiz|
       quiz_description = "#{quiz.title} Due"
-      { summary: quiz_description, class: "alert"}
+      link = quiz.published? ? edit_course_quiz_submission_path(course, quiz) : edit_course_quiz_path(course, quiz)
+      { summary: link_to(quiz_description, link), class: "alert"}
     end
   end
 end

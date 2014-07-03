@@ -1,19 +1,6 @@
-%h1 Finalize Assignment
+%h1 Select an Assignment
 
 = simple_form_for assignment, url: course_assignments_path(current_course) do |f|
-  = f.input :title
-  = f.input :summary
-  = f.input :published, hint: "publishing makes an assignment visible to students"
-  %fieldset.prerequisites
-    %legend Prerequisites
-    - material_fullpaths.each do |material_fullpath|
-      %label.checkbox
-        = check_box_tag 'material_fullpaths[]', material_fullpath, prerequisite_fullpaths.include?(material_fullpath), class: "check_boxes"
-        = Prerequisite.new(material_fullpath: material_fullpath).formatted_title
-  = f.simple_fields_for :milestones do |m|
-    %fieldset
-      %legend #{m.object.title} Milestone
-      = m.input :title
-      = m.input :instructions
-      = m.input :deadline
-  = f.button :submit, "Save Assignment"
+  %label{ for: "assignment_source" } Assignment
+  = select_tag "assignment[source]", options_from_collection_for_select(assignment_options, :fullpath, :formatted_title)
+  = f.button :submit, "Set Milestones"

@@ -22,24 +22,31 @@ class AssignmentsController < ApplicationController
 
   before_filter :require_instructor!, except: [:index, :show]
 
-  def new
+  def create
     assignment.assign_attributes(assignment_params)
     begin
       assignment.populate_from_github(current_user.octoclient)
+      assignment.save!
+      redirect_to edit_course_assignment_path(current_course, assignment)
     rescue Octokit::NotFound
-      redirect_to select_course_assignments_path(current_course), alert: "Could not retrieve instructions.md in #{assignment.source}.  Please confirm that the instructions.md is ready and then try again."
+      redirect_to new_course_assignment_path(current_course), alert: "Could not retrieve instructions.md in #{assignment.source}.  Please confirm that the instructions.md is ready and then try again."
     end
   end
 
-  def create
+  def update
     (params[:material_fullpaths] || []).each do |material_fullpath|
       assignment.prerequisites.build(material_fullpath: material_fullpath)
     end
     if assignment.save
-      redirect_to course_assignment_path(current_course, assignment), notice: "Your assignment has been updated."
+      if assignment.published?
+        redirect_to course_assignment_path(current_course, assignment), notice: "Your assignment has been published."
+      else
+        redirect_to edit_course_assignment_path(current_course, assignment), notice: "Your assignment has been updated."
+      end
     else
-      flash.alert = "Your assignment could not be updated."
-      render :new
+      attempted_status = assignment.published ? "published" : "updated"
+      flash.alert = "Your assignment could not be #{attempted_status}."
+      render :edit
     end
   end
 
@@ -47,6 +54,6 @@ class AssignmentsController < ApplicationController
 
   def assignment_params
     params.require(:assignment).permit(:title, :summary, :published, :source,
-                                       milestones_attributes: [:title, :instructions, :deadline])
+                                       milestones_attributes: [:id, :title, :instructions, :deadline])
   end
 end

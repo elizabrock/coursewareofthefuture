@@ -8,6 +8,7 @@ class Assignment < ActiveRecord::Base
   accepts_nested_attributes_for :milestones
 
   validates_presence_of :course
+  validates_associated :milestones
 
   scope :published, ->{ where(published: true) }
 

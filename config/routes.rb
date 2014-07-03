@@ -16,9 +16,7 @@ Coursewareofthefuture::Application.routes.draw do
   end
 
   resources :courses, except: [:destroy] do
-    resources :assignments, except: [:edit, :update, :destroy] do
-      get :select, on: :collection
-    end
+    resources :assignments, except: [:destroy]
     get :calendar, to: 'events#index'
     resources :enrollments, only: [:index, :create]
     resources :events, only: [:new, :create]
@@ -32,7 +30,7 @@ Coursewareofthefuture::Application.routes.draw do
       member do
         get :grade
       end
-      resource :quiz_submission, except: [:destroy], as: :submission, path: :s
+      resource :quiz_submission, only: [:edit, :update, :show], as: :submission, path: :s
     end
   end
   resource :enrollment, only: [:new]

@@ -9,7 +9,7 @@ feature "Instructor creates assignment with prerequisites", vcr: true, js: true 
 
     Fabricate(:assignment, title: "Capstone", course: course)
     signin_as(:instructor, courses: [course])
-    visit select_course_assignments_path(course)
+    visit new_course_assignment_path(course)
 
     select "Ruby Koans", from: "Assignment"
     click_button "Set Milestones"

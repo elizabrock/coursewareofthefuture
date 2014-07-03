@@ -9,6 +9,7 @@ class DateTimeInput < SimpleForm::Inputs::Base
   def input
     input_html_options[:class] << "datepicker"
     input_html_options[:id] = "#{input_class}_datepicker#{@@i}"
+    input_html_options[:value] = @builder.object.send(attribute_name).try(:strftime, '%Y/%m/%d')
     @builder.text_field(attribute_name, input_html_options)
   end
 end
