@@ -53,7 +53,7 @@ feature "Student views assignments" do
     end
 
     click_link "Logic"
-    current_path.should == "/courses/#{course.id}/materials/computer-science/logic/logic.md"
+    current_path.should == "/courses/#{course.id}/materials/computer-science%2Flogic%2Flogic.md"
     page.should have_content "Logic is, broadly speaking, the application of reasoning to an activity or concept. In Computer Science, we primarily use deductive reasoning (a.k.a. deductive logic) along with boolean algebra (e.g. two-valued logic)."
   end
 

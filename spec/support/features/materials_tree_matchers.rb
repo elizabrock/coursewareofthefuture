@@ -8,7 +8,7 @@ def hash_of(path)
     if tr.has_css?("td.title a")
       link = tr.find("td.title a")
       hash[:title] = link.find("span").text
-      hash[:path] = link["href"].gsub(/\/courses\/\d+\/materials\//, "")
+      hash[:path] = link["href"].gsub(/\/courses\/\d+\/materials\//, "").gsub("%2F", "/")
     else
       hash[:title] = tr.find("span.title").text
     end
