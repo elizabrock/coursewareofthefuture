@@ -21,11 +21,6 @@ class ApplicationController < ActionController::Base
       map(&:fullpath)
   end
 
-  def forem_user
-    current_user
-  end
-  helper_method :forem_user
-
   protected
   def authenticate!
     unless user_signed_in?

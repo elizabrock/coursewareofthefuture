@@ -26,7 +26,6 @@ gem 'fabrication'
 gem 'figaro'
 # Stores files in the cloud
 gem 'fog'
-gem 'forem', :github => "radar/forem", :branch => "rails4"
 # Enables HAML views
 gem 'haml-rails'
 # Error reporting
