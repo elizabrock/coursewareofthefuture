@@ -1,6 +1,11 @@
 .milestone
   %h2 #{milestone.title} (due #{milestone.deadline})
 
+  %h2 Milestone Corequisites
+  %ul.corequisites
+    - milestone.corequisites.each do |corequisite|
+      %li= link_to corequisite.formatted_title, course_material_path(current_course, corequisite.fullpath)
+
   - if already_submitted or can?(:edit, milestone)
     :markdown
       #{milestone.instructions}

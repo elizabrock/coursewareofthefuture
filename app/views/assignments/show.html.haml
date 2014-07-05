@@ -2,11 +2,6 @@
 :markdown
   #{assignment.summary}
 
-%h2 Assignment Prerequisites
-%ul.prerequisites
-  - assignment.prerequisites.each_with_index do |prerequisite|
-    %li= link_to prerequisite.formatted_title, course_material_path(current_course, prerequisite.fullpath)
-
 - can_submit_milestone = true
 - assignment.milestones.each do |milestone|
   - already_submitted = current_user.milestones.include?(milestone)

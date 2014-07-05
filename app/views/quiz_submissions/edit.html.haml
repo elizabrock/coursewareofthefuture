@@ -1,1 +1,15 @@
-= render 'form'
+%h1= quiz.title
+
+%h2 Corequisites:
+%ul.corequisites
+  - quiz.corequisites.each do |corequisite|
+    %li= link_to corequisite.formatted_title, course_material_path(current_course, corequisite.fullpath)
+
+= simple_form_for quiz_submission, url: course_quiz_submission_path(current_course, quiz) do |f|
+  %ol
+    = f.simple_fields_for :question_answers do |g|
+      %li
+        = g.input :question_id, as: :hidden
+        = g.input :answer, as: simple_form_type_for(g.object.question), label: g.object.question.question
+  = f.button :submit, "Save Progress"
+  = f.button :submit, "Finish Quiz"

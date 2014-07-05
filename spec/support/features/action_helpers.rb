@@ -2,11 +2,11 @@ module Features
   module ActionHelpers
 
     def div_labeled(label)
-      parent = find(:css, "label", text: label).parent
+      parent = find(:css, "label", text: label).find(:xpath, "..")
     end
 
     def milestone(identifier)
-      find("h2, legend", text: "#{identifier}").parent
+      find("h2, legend", text: "#{identifier}").find(:xpath, "..")
     end
 
     def populate_quiz_submission(quiz_submission, list_of_answers)

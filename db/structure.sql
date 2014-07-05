@@ -537,7 +537,8 @@ CREATE TABLE milestones (
     instructions text,
     deadline date,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    corequisite_fullpaths text[]
 );
 
 
@@ -558,38 +559,6 @@ CREATE SEQUENCE milestones_id_seq
 --
 
 ALTER SEQUENCE milestones_id_seq OWNED BY milestones.id;
-
-
---
--- Name: prerequisites; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE prerequisites (
-    id integer NOT NULL,
-    assignment_id integer,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    material_fullpath character varying(255)
-);
-
-
---
--- Name: prerequisites_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE prerequisites_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: prerequisites_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE prerequisites_id_seq OWNED BY prerequisites.id;
 
 
 --
@@ -706,7 +675,8 @@ CREATE TABLE quizzes (
     deadline date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    published boolean
+    published boolean,
+    corequisite_fullpaths text[]
 );
 
 
@@ -973,13 +943,6 @@ ALTER TABLE ONLY milestones ALTER COLUMN id SET DEFAULT nextval('milestones_id_s
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY prerequisites ALTER COLUMN id SET DEFAULT nextval('prerequisites_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY question_answers ALTER COLUMN id SET DEFAULT nextval('question_answers_id_seq'::regclass);
 
 
@@ -1151,14 +1114,6 @@ ALTER TABLE ONLY milestone_submissions
 
 ALTER TABLE ONLY milestones
     ADD CONSTRAINT milestones_pkey PRIMARY KEY (id);
-
-
---
--- Name: prereadings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY prerequisites
-    ADD CONSTRAINT prereadings_pkey PRIMARY KEY (id);
 
 
 --
@@ -1496,4 +1451,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140621162136');
 INSERT INTO schema_migrations (version) VALUES ('20140621175940');
 
 INSERT INTO schema_migrations (version) VALUES ('20140702215950');
+
+INSERT INTO schema_migrations (version) VALUES ('20140703184009');
+
+INSERT INTO schema_migrations (version) VALUES ('20140703184558');
 

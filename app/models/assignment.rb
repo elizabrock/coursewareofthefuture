@@ -3,7 +3,6 @@ class Assignment < ActiveRecord::Base
 
   belongs_to :course
   has_many :milestones, inverse_of: :assignment
-  has_many :prerequisites
 
   accepts_nested_attributes_for :milestones
 

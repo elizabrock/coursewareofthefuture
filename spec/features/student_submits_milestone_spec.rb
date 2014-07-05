@@ -53,16 +53,16 @@ feature "Student submits milestone", vcr: true do
       ])
     page.should_not have_content "This milestone is hard"
     select "software-development-curriculum", from: "Assignment Repository"
-within(milestone(1)){ click_button "Submit Milestone" }
+    within(milestone(1)){ click_button "Submit Milestone" }
     page.should have_content "Milestone 1 has been submitted for grading"
-within(milestone(1)){ page.should have_content "Status: Submitted for Grading" }
+    within(milestone(1)){ page.should have_content "Status: Submitted for Grading" }
     # page.should have_content "Assignment Repository: elizabrock/software-development-curriculum"
     page.should have_content "This milestone is hard"
     select "software-development-curriculum", from: "Assignment Repository"
-within(milestone(2)){ click_button "Submit Milestone" }
+    within(milestone(2)){ click_button "Submit Milestone" }
     page.should have_content "Milestone 2 has been submitted for grading"
-within(milestone(1)){ page.should have_content "Status: Submitted for Grading" }
-within(milestone(2)){ page.should have_content "Status: Submitted for Grading" }
+    within(milestone(1)){ page.should have_content "Status: Submitted for Grading" }
+    within(milestone(2)){ page.should have_content "Status: Submitted for Grading" }
   end
 
   scenario "Student has no public repos?" do

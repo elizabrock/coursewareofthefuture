@@ -4,16 +4,13 @@
   = f.input :title
   = f.input :summary
   = f.input :published, hint: "publishing makes an assignment visible to students"
-  %fieldset.prerequisites
-    %legend Prerequisites
-    - material_fullpaths.each do |material_fullpath|
-      %label.checkbox
-        = check_box_tag 'material_fullpaths[]', material_fullpath, prerequisite_fullpaths.include?(material_fullpath), class: "check_boxes"
-        = Prerequisite.new(material_fullpath: material_fullpath).formatted_title
   = f.simple_fields_for :milestones do |m|
     %fieldset
       %legend #{m.object.title} Milestone
       = m.input :title
       = m.input :instructions
       = m.input :deadline, as: :date
+      %fieldset.corequisites
+        %legend Corequisites
+        = m.input :corequisite_fullpaths, as: :check_boxes, collection: material_fullpaths.map{ |mf| [Corequisite.new(mf).formatted_title, mf] }
   = f.button :submit, "Save Assignment"

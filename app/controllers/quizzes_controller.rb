@@ -32,6 +32,8 @@ class QuizzesController < ApplicationController
   private
 
   def quiz_params
-    params.require(:quiz).permit(:title, :deadline, :published, questions_attributes: [:id, :question, :question_type, :correct_answer])
+    params.require(:quiz).permit(:title, :deadline, :published,
+                                 corequisite_fullpaths: [],
+                                 questions_attributes: [:id, :question, :question_type, :correct_answer])
   end
 end

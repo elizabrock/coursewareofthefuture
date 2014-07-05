@@ -2,21 +2,8 @@ class AssignmentsController < ApplicationController
   expose(:assignment_options){ Material.list(current_user.octoclient, current_course.source_repository, "exercises") }
   expose(:assignments){ current_course.assignments }
   expose(:assignment, attributes: :assignment_params)
-
-  expose(:prerequisite_fullpaths){ assignment.prerequisites.map(&:fullpath) }
-  expose(:materials) do
-    Material.root(current_user.octoclient, current_course.source_repository, /^exercises/).
-      descendants.
-      find_all{ |m| m.leaf? }
-  end
-  expose(:material_fullpaths) do
-    Material.root(current_user.octoclient, current_course.source_repository, /^exercises/).
-      descendants.
-      find_all{ |m| m.leaf? }.
-      map(&:fullpath)
-  end
-
   expose(:viewable_assignments){ assignments.to_a.delete_if{|a| cannot? :view, a }.sort_by{|a| a.last_deadline || 1.year.from_now } }
+
   expose(:published_quizzes){ current_course.quizzes.published }
   expose(:unpublished_quizzes){ current_course.quizzes.unpublished }
 
@@ -34,9 +21,6 @@ class AssignmentsController < ApplicationController
   end
 
   def update
-    (params[:material_fullpaths] || []).each do |material_fullpath|
-      assignment.prerequisites.build(material_fullpath: material_fullpath)
-    end
     if assignment.save
       if assignment.published?
         redirect_to course_assignment_path(current_course, assignment), notice: "Your assignment has been published."
@@ -54,6 +38,6 @@ class AssignmentsController < ApplicationController
 
   def assignment_params
     params.require(:assignment).permit(:title, :summary, :published, :source,
-                                       milestones_attributes: [:id, :title, :instructions, :deadline])
+                                       milestones_attributes: [:id, :title, :instructions, :deadline, corequisite_fullpaths: [] ])
   end
 end

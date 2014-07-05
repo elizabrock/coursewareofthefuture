@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "Instructor creates quiz" do
+feature "Instructor creates quiz", vcr: true do
 
   scenario "Creating the initial quiz" do
     signin_as(:instructor, courses: [Fabricate(:course)])
@@ -26,18 +26,18 @@ feature "Instructor creates quiz" do
     fill_in "Correct Answer", with: "I am a little teapot"
     click_button "Save Changes"
     page.should have_content "Your quiz has been updated."
-    within(page.find(:xpath, "//fieldset[position()=1]")) do
+    within(page.find(:xpath, "//fieldset[position()=2]")) do
      page.should have_content "Have you installed ruby 2.1?"
      page.should have_content "I am a little teapot"
     end
     page.should have_content "Add another question"
-    within(page.find(:xpath, "//fieldset[position()=1]")) do
+    within(page.find(:xpath, "//fieldset[position()=2]")) do
       fill_in "Question", with: "Which ruby version are you running?"
       fill_in "Correct Answer", with: "ruby 2.1.1-p76"
     end
     click_button "Save Changes"
     page.should have_content "Your quiz has been updated"
-    within(page.find(:xpath, "//fieldset[position()=1]")) do
+    within(page.find(:xpath, "//fieldset[position()=2]")) do
       page.should have_content "Which ruby version are you running?"
       page.should have_content "ruby 2.1.1-p76"
     end
@@ -58,12 +58,12 @@ feature "Instructor creates quiz" do
     # select "False", from: "Correct Answer"
     click_button "Save Changes"
     page.should have_content "Your quiz has been updated"
-    within(page.find(:xpath, "//fieldset[position()=1]")) do
+    within(page.find(:xpath, "//fieldset[position()=2]")) do
       page.should have_content "Have you installed ruby 2.0?"
       page.should have_content "False"
     end
     page.should have_content "Add another question"
-    within(page.find(:xpath, "//fieldset[position()=1]")) do
+    within(page.find(:xpath, "//fieldset[position()=2]")) do
       fill_in "Question", with: "Have you installed ruby 2.1?"
       fill_in "Correct Answer", with: "True"
     end
@@ -71,7 +71,7 @@ feature "Instructor creates quiz" do
     # within(page.find(:xpath, "//fieldset[position()=1]")){ select "True", from: "Correct Answer" }
     click_button "Save Changes"
     page.should have_content "Your quiz has been updated"
-    within(page.find(:xpath, "//fieldset[position()=1]")) do
+    within(page.find(:xpath, "//fieldset[position()=2]")) do
       page.should have_content "Have you installed ruby 2.1?"
       page.should have_content "True"
     end
@@ -96,13 +96,13 @@ feature "Instructor creates quiz" do
               correct_answer: "false", quiz: quiz)
     click_link "Assignments"
     click_link "Final Checkin (unpublished)"
-    within(page.find(:xpath, "//fieldset[position()=1]")) do
+    within(page.find(:xpath, "//fieldset[position()=2]")) do
       fill_in "Question", with: "Are you satisfied?"
     end
-    within(page.find(:xpath, "//fieldset[position()=2]")) do
+    within(page.find(:xpath, "//fieldset[position()=3]")) do
       fill_in "Correct Answer", with: "There can't be a correct answer."
     end
-    within(page.find(:xpath, "//fieldset[position()=3]")) do
+    within(page.find(:xpath, "//fieldset[position()=4]")) do
       fill_in "Correct Answer", with: "True"
     end
     # TODO: Make a proper selector via. JS:

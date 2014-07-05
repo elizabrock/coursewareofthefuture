@@ -6,11 +6,21 @@ class Milestone < ActiveRecord::Base
   validates_presence_of :assignment
   validates_presence_of :deadline, if: ->{ assignment.published? }
 
+  before_create :set_default_corequisite_fullpaths
+
+  def corequisites
+    corequisite_fullpaths.map{ |fp| Corequisite.new(fp) }
+  end
+
   private
 
   def deadline_must_be_appropriate
     if assignment.course.start_date > deadline or deadline > assignment.course.end_date.end_of_day
       errors.add(:deadline, "Must be in the course timeframe of #{assignment.course.start_date} to #{assignment.course.end_date}")
     end
+  end
+
+  def set_default_corequisite_fullpaths
+    self.corequisite_fullpaths ||= []
   end
 end

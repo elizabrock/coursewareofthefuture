@@ -14,6 +14,12 @@ class ApplicationController < ActionController::Base
   expose(:active_courses){ Course.active_or_future }
   expose(:current_course){ current_user.try(:courses).try(:find_by_id, params[:course_id]) }
   expose(:enrollment_eligible_courses){ active_courses - current_user.courses }
+  expose(:material_fullpaths) do
+    Material.root(current_user.octoclient, current_course.source_repository, /^exercises/).
+      descendants.
+      find_all{ |m| m.leaf? }.
+      map(&:fullpath)
+  end
 
   def forem_user
     current_user

@@ -7,8 +7,14 @@ class Quiz < ActiveRecord::Base
   validates_presence_of :course
   accepts_nested_attributes_for :questions, reject_if: :all_blank
 
+  before_create :set_default_corequisite_fullpaths
+
   scope :published,   ->{ where(published: true) }
   scope :unpublished, ->{ where("published is null or published = false") }
+
+  def corequisites
+    corequisite_fullpaths.map{ |fp| Corequisite.new(fp) }
+  end
 
   def title_for_instructor
     if published?
@@ -18,5 +24,11 @@ class Quiz < ActiveRecord::Base
     else
       "#{title} (unpublished)"
     end
+  end
+
+  private
+
+  def set_default_corequisite_fullpaths
+    self.corequisite_fullpaths ||= []
   end
 end
