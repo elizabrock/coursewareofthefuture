@@ -49,7 +49,7 @@ feature "Student submits milestone", vcr: true do
       "SavingsMultipliedRedux",
       "slide-em-up",
       "software-development-curriculum",
-      "squmblr"
+      "software-development-curriculum-mark-two"
       ])
     page.should_not have_content "This milestone is hard"
     select "software-development-curriculum", from: "Assignment Repository"

@@ -57,25 +57,15 @@ gem 'slide-em-up', github: 'elizabrock/slide-em-up', branch: 'master', require: 
 gem 'uglifier', '>= 1.3.0'
 # rails server that handles multiple connections
 gem 'unicorn'
-gem 'will_paginate', '3.0.5'
 
 group :production do
   # Makes the heroku logs more informative:
   gem 'rails_12factor'
 end
 
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
-
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
-end
-
 group :development do
   # Sent email in development environment will open in your browser:
   gem 'letter_opener'
-
   # Creates viewable ERD
   gem 'rails-erd'
 end

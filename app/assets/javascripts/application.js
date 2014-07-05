@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.tabelizer
-//= require jquery.ui.datepicker
+//= require jquery-ui/datepicker
 //= require foundation/foundation
 //= require foundation/foundation.alert
 //= require foundation/foundation.dropdown

@@ -10,7 +10,7 @@ http_interactions:
       Accept:
       - application/vnd.github.v3+json
       User-Agent:
-      - Octokit Ruby Gem 3.1.2
+      - Octokit Ruby Gem 3.2.0
       Authorization:
       - token bb350eb0e5b0da397856cb971b2977f61248a33c
       Accept-Encoding:
@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 03 Jul 2014 18:07:17 GMT
+      - Sat, 05 Jul 2014 20:32:36 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -33,15 +33,15 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4986'
+      - '4887'
       X-Ratelimit-Reset:
-      - '1404413245'
+      - '1404593772'
       Cache-Control:
       - private, max-age=60, s-maxage=60
       Last-Modified:
       - Thu, 05 Jun 2014 15:07:28 GMT
       Etag:
-      - '"a3efccae89ea84f31299d18658207f0f"'
+      - '"6dda18502c2f37adfc5b992ee45b510d"'
       X-Oauth-Scopes:
       - public_repo, user
       X-Accepted-Oauth-Scopes:
@@ -65,18 +65,18 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Github-Request-Id:
-      - 3284C545:485B:720D64:53B59BD5
+      - 4C7D085D:485A:4946CEA:53B860E4
       Strict-Transport-Security:
       - max-age=31536000; includeSubdomains
       X-Content-Type-Options:
       - nosniff
       X-Served-By:
-      - 62a1303ae95931e56e387e87d354bb24
+      - 3061975e1f37121b3751604ad153c687
     body:
       encoding: UTF-8
-      string: '[{"name":"01-cheers","path":"exercises/01-cheers","sha":"8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/01-cheers?ref=master","html_url":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/01-cheers","git_url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","type":"dir","_links":{"self":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/01-cheers?ref=master","git":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","html":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/01-cheers"}},{"name":"02-ruby-koans","path":"exercises/02-ruby-koans","sha":"b3f6b39822ca8b450b5b0d34169016b46d5d4c6f","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/02-ruby-koans?ref=master","html_url":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/02-ruby-koans","git_url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/b3f6b39822ca8b450b5b0d34169016b46d5d4c6f","type":"dir","_links":{"self":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/02-ruby-koans?ref=master","git":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/b3f6b39822ca8b450b5b0d34169016b46d5d4c6f","html":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/02-ruby-koans"}},{"name":"03-some-other-exercise","path":"exercises/03-some-other-exercise","sha":"8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/03-some-other-exercise?ref=master","html_url":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/03-some-other-exercise","git_url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","type":"dir","_links":{"self":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/03-some-other-exercise?ref=master","git":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","html":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/03-some-other-exercise"}},{"name":"04-unfinished-exercise","path":"exercises/04-unfinished-exercise","sha":"fd6b3d30c0e2f274ee08774c93ee760aaf82db1f","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/04-unfinished-exercise?ref=master","html_url":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/04-unfinished-exercise","git_url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/fd6b3d30c0e2f274ee08774c93ee760aaf82db1f","type":"dir","_links":{"self":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/04-unfinished-exercise?ref=master","git":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/fd6b3d30c0e2f274ee08774c93ee760aaf82db1f","html":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/04-unfinished-exercise"}}]'
+      string: '[{"name":"01-cheers","path":"exercises/01-cheers","sha":"8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/01-cheers?ref=master","html_url":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/01-cheers","git_url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","type":"dir","_links":{"self":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/01-cheers?ref=master","git":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","html":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/01-cheers"}},{"name":"02-ruby-koans","path":"exercises/02-ruby-koans","sha":"3c98f96cd950d34afa5b4c5dfbf2248d0c31e30f","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/02-ruby-koans?ref=master","html_url":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/02-ruby-koans","git_url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/3c98f96cd950d34afa5b4c5dfbf2248d0c31e30f","type":"dir","_links":{"self":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/02-ruby-koans?ref=master","git":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/3c98f96cd950d34afa5b4c5dfbf2248d0c31e30f","html":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/02-ruby-koans"}},{"name":"03-some-other-exercise","path":"exercises/03-some-other-exercise","sha":"8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/03-some-other-exercise?ref=master","html_url":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/03-some-other-exercise","git_url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","type":"dir","_links":{"self":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/03-some-other-exercise?ref=master","git":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","html":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/03-some-other-exercise"}},{"name":"04-unfinished-exercise","path":"exercises/04-unfinished-exercise","sha":"fd6b3d30c0e2f274ee08774c93ee760aaf82db1f","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/04-unfinished-exercise?ref=master","html_url":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/04-unfinished-exercise","git_url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/fd6b3d30c0e2f274ee08774c93ee760aaf82db1f","type":"dir","_links":{"self":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/04-unfinished-exercise?ref=master","git":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/fd6b3d30c0e2f274ee08774c93ee760aaf82db1f","html":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/04-unfinished-exercise"}}]'
     http_version: 
-  recorded_at: Thu, 03 Jul 2014 18:07:16 GMT
+  recorded_at: Sat, 05 Jul 2014 20:32:37 GMT
 - request:
     method: get
     uri: https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/04-unfinished-exercise/instructions.md
@@ -87,7 +87,7 @@ http_interactions:
       Accept:
       - application/vnd.github.v3+json
       User-Agent:
-      - Octokit Ruby Gem 3.1.2
+      - Octokit Ruby Gem 3.2.0
       Authorization:
       - token bb350eb0e5b0da397856cb971b2977f61248a33c
       Accept-Encoding:
@@ -100,7 +100,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 03 Jul 2014 18:07:17 GMT
+      - Sat, 05 Jul 2014 20:32:37 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -110,9 +110,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4985'
+      - '4886'
       X-Ratelimit-Reset:
-      - '1404413245'
+      - '1404593772'
       X-Oauth-Scopes:
       - public_repo, user
       X-Accepted-Oauth-Scopes:
@@ -133,7 +133,7 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Github-Request-Id:
-      - 3284C545:485A:667ABB:53B59BD5
+      - 4C7D085D:485B:592FD67:53B860E5
       Strict-Transport-Security:
       - max-age=31536000; includeSubdomains
       X-Content-Type-Options:
@@ -142,7 +142,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"message":"Not Found","documentation_url":"https://developer.github.com/v3"}'
     http_version: 
-  recorded_at: Thu, 03 Jul 2014 18:07:16 GMT
+  recorded_at: Sat, 05 Jul 2014 20:32:37 GMT
 - request:
     method: get
     uri: https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises
@@ -153,7 +153,7 @@ http_interactions:
       Accept:
       - application/vnd.github.v3+json
       User-Agent:
-      - Octokit Ruby Gem 3.1.2
+      - Octokit Ruby Gem 3.2.0
       Authorization:
       - token bb350eb0e5b0da397856cb971b2977f61248a33c
       Accept-Encoding:
@@ -166,7 +166,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 03 Jul 2014 18:07:17 GMT
+      - Sat, 05 Jul 2014 20:32:37 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -176,15 +176,15 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4984'
+      - '4885'
       X-Ratelimit-Reset:
-      - '1404413245'
+      - '1404593772'
       Cache-Control:
       - private, max-age=60, s-maxage=60
       Last-Modified:
       - Thu, 05 Jun 2014 15:07:28 GMT
       Etag:
-      - '"a3efccae89ea84f31299d18658207f0f"'
+      - '"6dda18502c2f37adfc5b992ee45b510d"'
       X-Oauth-Scopes:
       - public_repo, user
       X-Accepted-Oauth-Scopes:
@@ -208,16 +208,16 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Github-Request-Id:
-      - 3284C545:4859:55343F:53B59BD5
+      - 4C7D085D:485A:4946DEE:53B860E5
       Strict-Transport-Security:
       - max-age=31536000; includeSubdomains
       X-Content-Type-Options:
       - nosniff
       X-Served-By:
-      - c046d59f93ede9ab52d5ac29f1ed70f7
+      - c436b2b44345c72ff906059f604991e7
     body:
       encoding: UTF-8
-      string: '[{"name":"01-cheers","path":"exercises/01-cheers","sha":"8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/01-cheers?ref=master","html_url":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/01-cheers","git_url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","type":"dir","_links":{"self":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/01-cheers?ref=master","git":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","html":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/01-cheers"}},{"name":"02-ruby-koans","path":"exercises/02-ruby-koans","sha":"b3f6b39822ca8b450b5b0d34169016b46d5d4c6f","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/02-ruby-koans?ref=master","html_url":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/02-ruby-koans","git_url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/b3f6b39822ca8b450b5b0d34169016b46d5d4c6f","type":"dir","_links":{"self":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/02-ruby-koans?ref=master","git":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/b3f6b39822ca8b450b5b0d34169016b46d5d4c6f","html":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/02-ruby-koans"}},{"name":"03-some-other-exercise","path":"exercises/03-some-other-exercise","sha":"8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/03-some-other-exercise?ref=master","html_url":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/03-some-other-exercise","git_url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","type":"dir","_links":{"self":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/03-some-other-exercise?ref=master","git":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","html":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/03-some-other-exercise"}},{"name":"04-unfinished-exercise","path":"exercises/04-unfinished-exercise","sha":"fd6b3d30c0e2f274ee08774c93ee760aaf82db1f","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/04-unfinished-exercise?ref=master","html_url":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/04-unfinished-exercise","git_url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/fd6b3d30c0e2f274ee08774c93ee760aaf82db1f","type":"dir","_links":{"self":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/04-unfinished-exercise?ref=master","git":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/fd6b3d30c0e2f274ee08774c93ee760aaf82db1f","html":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/04-unfinished-exercise"}}]'
+      string: '[{"name":"01-cheers","path":"exercises/01-cheers","sha":"8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/01-cheers?ref=master","html_url":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/01-cheers","git_url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","type":"dir","_links":{"self":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/01-cheers?ref=master","git":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","html":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/01-cheers"}},{"name":"02-ruby-koans","path":"exercises/02-ruby-koans","sha":"3c98f96cd950d34afa5b4c5dfbf2248d0c31e30f","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/02-ruby-koans?ref=master","html_url":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/02-ruby-koans","git_url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/3c98f96cd950d34afa5b4c5dfbf2248d0c31e30f","type":"dir","_links":{"self":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/02-ruby-koans?ref=master","git":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/3c98f96cd950d34afa5b4c5dfbf2248d0c31e30f","html":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/02-ruby-koans"}},{"name":"03-some-other-exercise","path":"exercises/03-some-other-exercise","sha":"8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/03-some-other-exercise?ref=master","html_url":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/03-some-other-exercise","git_url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","type":"dir","_links":{"self":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/03-some-other-exercise?ref=master","git":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","html":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/03-some-other-exercise"}},{"name":"04-unfinished-exercise","path":"exercises/04-unfinished-exercise","sha":"fd6b3d30c0e2f274ee08774c93ee760aaf82db1f","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/04-unfinished-exercise?ref=master","html_url":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/04-unfinished-exercise","git_url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/fd6b3d30c0e2f274ee08774c93ee760aaf82db1f","type":"dir","_links":{"self":"https://api.github.com/repos/elizabrock/inquizator-test-repo/contents/exercises/04-unfinished-exercise?ref=master","git":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/fd6b3d30c0e2f274ee08774c93ee760aaf82db1f","html":"https://github.com/elizabrock/inquizator-test-repo/tree/master/exercises/04-unfinished-exercise"}}]'
     http_version: 
-  recorded_at: Thu, 03 Jul 2014 18:07:16 GMT
+  recorded_at: Sat, 05 Jul 2014 20:32:38 GMT
 recorded_with: VCR 2.9.2
