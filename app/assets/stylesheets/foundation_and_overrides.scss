@@ -268,7 +268,9 @@ $include-html-alert-classes: true;
 
 // Block Grid
 
-$include-html-grid-classes: true;
+$include-html-block-grid-classes: true;
+$include-xl-html-block-grid-classes: true;
+$block-grid-media-queries: true;
 
 // We use this to control the maximum number of block grid elements per row
 // $block-grid-elements: 12;

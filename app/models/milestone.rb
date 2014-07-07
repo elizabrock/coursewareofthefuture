@@ -9,7 +9,7 @@ class Milestone < ActiveRecord::Base
   before_create :set_default_corequisite_fullpaths
 
   def corequisites
-    corequisite_fullpaths.map{ |fp| Corequisite.new(fp) }
+    corequisite_fullpaths.find_all{|fp| !fp.blank? }.map{ |fp| Corequisite.new(fp) }
   end
 
   private

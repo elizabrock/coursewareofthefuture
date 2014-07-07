@@ -19,7 +19,7 @@ gem 'decent_exposure'
 # Authentication
 gem 'devise'
 # Foundation / Styling
-gem 'foundation-rails'
+gem 'foundation-rails', '~> 5.2'
 # Object factories
 gem 'fabrication'
 # Stores environment variables

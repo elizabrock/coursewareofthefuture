@@ -335,7 +335,7 @@ DEPENDENCIES
   faker
   figaro
   fog
-  foundation-rails
+  foundation-rails (~> 5.2)
   haml-rails
   honeybadger
   jquery-rails
