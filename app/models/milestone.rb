@@ -6,6 +6,8 @@ class Milestone < ActiveRecord::Base
   validates_presence_of :assignment
   validates_presence_of :deadline, if: ->{ assignment.published? }
 
+  default_scope ->{ order("deadline ASC") }
+
   before_create :set_default_corequisite_fullpaths
 
   def corequisites
