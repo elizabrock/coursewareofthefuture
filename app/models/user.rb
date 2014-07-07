@@ -22,8 +22,6 @@ class User < ActiveRecord::Base
   validates_format_of :email, with: /\A[^@]+@[^@]+\z/, message: "must be an email address"
   validates_presence_of :github_access_token
 
-  before_create :check_for_first_user
-
   default_scope { order(name: :asc) }
 
   def become_instructor!
@@ -36,10 +34,6 @@ class User < ActiveRecord::Base
     self.instructor = false
     self.observer = true
     self.save!
-  end
-
-  def check_for_first_user
-    self.instructor = true if User.all.empty?
   end
 
   def has_confirmed_photo?
