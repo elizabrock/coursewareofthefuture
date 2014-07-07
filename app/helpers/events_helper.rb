@@ -49,7 +49,7 @@ module EventsHelper
     covered_materials = course.covered_materials.find_all{|cm| cm.covered_on == d }
     covered_materials.collect do |covered_material|
       material_description = "#{covered_material.formatted_title} Covered"
-      { summary: link_to(material_description, course_material_path(course, covered_material.material_fullpath)), class: "secondary"}
+      { summary: link_to(material_description, material_path_for(covered_material)), class: "secondary"}
     end
   end
 

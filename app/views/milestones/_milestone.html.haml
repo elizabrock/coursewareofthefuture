@@ -4,7 +4,7 @@
   %h2 Milestone Corequisites
   %ul.corequisites
     - milestone.corequisites.each do |corequisite|
-      %li= link_to corequisite.formatted_title, course_material_path(current_course, corequisite.fullpath)
+      %li= link_to corequisite.formatted_title, material_path_for(corequisite)
 
   - if already_submitted or can?(:edit, milestone)
     :markdown

@@ -1,4 +1,9 @@
 module MaterialsHelper
+
+  def material_path_for(material)
+    course_material_path(current_course, material.fullpath).gsub("%2F", "/")
+  end
+
   def pretty_path_for(material)
     material.directory.split("/").map{|s| Material.prettify(s)}.join(" > ") + " > "
   end

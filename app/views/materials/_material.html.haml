@@ -3,7 +3,7 @@
 %tr{ data: { level: level }, id: "level_#{level}_#{material.local_id}" }
   %td.title
     - if covered_material.present? or (can?(:manage, CoveredMaterial) and material.markdown?)
-      = link_to course_material_path(current_course, material.fullpath) do
+      = link_to material_path_for(material) do
         %span.title= material.formatted_title
     - else
       %span.title= material.formatted_title

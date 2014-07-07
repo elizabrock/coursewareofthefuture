@@ -3,7 +3,7 @@
 %h2 Corequisites:
 %ul.corequisites
   - quiz.corequisites.each do |corequisite|
-    %li= link_to corequisite.formatted_title, course_material_path(current_course, corequisite.fullpath)
+    %li= link_to corequisite.formatted_title, material_path_for(corequisite)
 
 = simple_form_for quiz_submission, url: course_quiz_submission_path(current_course, quiz) do |f|
   %ol

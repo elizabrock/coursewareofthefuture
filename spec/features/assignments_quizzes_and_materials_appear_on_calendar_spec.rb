@@ -109,7 +109,7 @@ feature "Assignments quizzes and materials appear on calendar", vcr: true do
     page.should have_calendar_entry("1/20", text: "Set Theory")
 
     click_link "Logic"
-    current_path.should == course_material_path(course, logic.material_fullpath)
+    current_path.should == course_material_path(course, logic.material_fullpath).gsub("%2F","/")
   end
 
   scenario "Fix: multiple covered materials on a day" do
