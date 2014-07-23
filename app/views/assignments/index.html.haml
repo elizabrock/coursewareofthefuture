@@ -5,8 +5,9 @@
     %li
       = link_to assignment.title_with_deadlines, course_assignment_path(current_course, assignment)
       - if can? :manage, assignment
-        - assignment.milestones.each do |milestone|
-          = link_to milestone.title_for_instructor, course_assignment_milestone_path(current_course, assignment, milestone)
+        %ul
+          - assignment.milestones.each do |milestone|
+            %li= link_to milestone.title_for_instructor, course_assignment_milestone_path(current_course, assignment, milestone)
 
 %h2 Quizzes
 
