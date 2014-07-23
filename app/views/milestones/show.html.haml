@@ -1,0 +1,27 @@
+.milestone
+  %h2 #{milestone.title} (due #{milestone.deadline})
+
+  %h2 Milestone Corequisites
+  %ul.corequisites
+    - milestone.corequisites.each do |corequisite|
+      %li= link_to corequisite.formatted_title, material_path_for(corequisite)
+
+  :markdown
+    #{milestone.instructions}
+
+.row
+  .medium-6.columns
+    #milestone_submissions.panel
+      %h3 Milestone Submissions:
+      %ol
+        - milestone_submissions.each do |milestone_submission|
+          %li= link_to milestone_submission.user.name, repository_url(milestone_submission.repository)
+
+  .medium-6.columns
+    #missing_submissions.panel
+      %h3 Missing Submissions:
+      - missing_users = current_course.users - milestone_submissions.map(&:user)
+      %ol
+        - missing_users.each do |user|
+          %li= user.name
+

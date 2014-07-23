@@ -8,7 +8,9 @@ Coursewareofthefuture::Application.routes.draw do
   end
 
   resources :courses, except: [:destroy] do
-    resources :assignments, except: [:destroy]
+    resources :assignments, except: [:destroy] do
+      resources :milestones, only: [:show]
+    end
     get :calendar, to: 'events#index'
     resources :enrollments, only: [:index, :create]
     resources :events, only: [:new, :create]

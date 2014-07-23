@@ -14,6 +14,12 @@ class Milestone < ActiveRecord::Base
     corequisite_fullpaths.find_all{|fp| !fp.blank? }.map{ |fp| Corequisite.new(fp) }
   end
 
+  def title_for_instructor
+    student_count = assignment.course.enrollments.count
+    submitted_count = milestone_submissions.count
+    "#{title} (#{submitted_count} completed, #{student_count - submitted_count} incomplete, due #{deadline})"
+  end
+
   private
 
   def deadline_must_be_appropriate
