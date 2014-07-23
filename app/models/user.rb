@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
   end
 
   def repositories
-    octoclient.repositories(self.github_username)
+    octoclient.repositories(self.github_username, per_page: 1000)
   end
 
   def viewing_as_student?

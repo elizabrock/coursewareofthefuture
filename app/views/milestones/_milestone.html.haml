@@ -16,6 +16,8 @@
     = simple_form_for milestone.milestone_submissions.new, html: { class: "inline" } do |f|
       = f.input :milestone_id, as: :hidden
       = f.input :repository, label: "Assignment Repository", collection: current_user.repositories.map{|r| r["name"]}
+      - if current_user.repositories.count == 0
+        .error.label You must have public repos in order to submit milestones
       = f.button :submit, "Submit Milestone", class: "tiny"
   - else
     %a.button Ability to view and submit is pending completion of previous milestones
