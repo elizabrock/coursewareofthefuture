@@ -2,7 +2,7 @@
 
 %tr{ data: { level: level }, id: "level_#{level}_#{material.local_id}" }
   %td.title
-    - if covered_material.present? or (can?(:manage, CoveredMaterial) and material.markdown?)
+    - if material.markdown?
       = link_to material_path_for(material) do
         %span.title= material.formatted_title
     - else
@@ -17,7 +17,6 @@
     - if material.leaf? and material.markdown?
 
       - covered_material ||= CoveredMaterial.new(material_fullpath: material.fullpath, covered_on: Time.zone.now)
-
       - status_class = covered_material.new_record? ? "secondary" : "covered_on"
       - label_copy = covered_material.new_record? ? "Upcoming" : "Covered #{covered_material.covered_on}"
 

@@ -114,11 +114,3 @@ def material_titles
     material.has_key?(:path) ? material[:title] : nil
   end.compact.sort
 end
-
-def remove_links(hash_array)
-  return unless hash_array
-  hash_array.each do |hash|
-    hash.delete(:path)
-    remove_links(hash[:children])
-  end
-end

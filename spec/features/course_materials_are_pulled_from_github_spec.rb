@@ -16,7 +16,7 @@ feature "Course materials are pulled from github", vcr: true do
     visit root_path
     click_link "Materials"
     page.should_not have_exercises_from_github
-    hash_of("#all_materials").should == remove_links(materials_list)
+    hash_of("#all_materials").should == materials_list
   end
 
   scenario "Viewing a single material item" do

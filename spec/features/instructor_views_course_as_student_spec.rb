@@ -11,13 +11,13 @@ feature "Instructor views course as student", vcr: true do
     hash_of("#all_materials").should == materials_list
     click_link "View As Student"
     page.should have_content "Student View"
-    hash_of("#all_materials").should == remove_links(materials_list)
+    hash_of("#all_materials").should == materials_list
     click_link "Assignments"
     page.should have_content "Student View"
     page.should_not have_content "New Assignment"
     click_link "Materials"
     page.should have_content "Student View"
-    hash_of("#all_materials").should == remove_links(materials_list)
+    hash_of("#all_materials").should == materials_list
   end
 
   scenario "Exiting student view" do
@@ -26,7 +26,7 @@ feature "Instructor views course as student", vcr: true do
     click_link "Materials"
     click_link "View As Student"
     page.should have_content "Student View"
-    hash_of("#all_materials").should == remove_links(materials_list)
+    hash_of("#all_materials").should == materials_list
     click_link "View As Instructor"
     hash_of("#all_materials").should == materials_list
   end
