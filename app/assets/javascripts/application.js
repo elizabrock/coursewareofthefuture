@@ -17,6 +17,7 @@
 //= require foundation/foundation
 //= require foundation/foundation.alert
 //= require foundation/foundation.dropdown
+//= require foundation/foundation.reveal
 //= require d3
 //= require_tree .
 

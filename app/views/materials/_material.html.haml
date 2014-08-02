@@ -23,8 +23,8 @@
       .label.radius{ class: status_class}
         = label_copy
         - if can?(:manage, CoveredMaterial)
-          %a.edit-date-covered.fi-clock{ href: "#", data: { dropdown: "drop#{material.local_id}", options: "is_hover:true"}}
-          .f-dropdown.content{ id: "drop#{material.local_id}", data: { dropdown: { content: "" } } }
+          %a.edit-date-covered.fi-clock{ href: "#", data: { reveal: { id: "reveal#{material.local_id}" } } }
+          .reveal-modal{ id: "reveal#{material.local_id}", data: { reveal: "" } }
             = render partial: 'covered_materials/form', locals: { covered_material: covered_material }
 
 = render partial: "materials/material", collection: material.children, locals: { level: level+1 }
