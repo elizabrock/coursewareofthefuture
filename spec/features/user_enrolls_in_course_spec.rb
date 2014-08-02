@@ -2,8 +2,8 @@ require 'rails_helper'
 
 feature "Student enrolls in course" do
 
-  let!(:cohort4a){ Fabricate(:course, title: "Cohort 4a", syllabus: "This is part A") }
-  let!(:cohort4b){ Fabricate(:course, title: "Cohort 4b", syllabus: "This is part B") }
+  let!(:cohort4a){ Fabricate(:course, title: "Cohort 4a") }
+  let!(:cohort4b){ Fabricate(:course, title: "Cohort 4b") }
   let!(:cohort1a){ Fabricate(:past_course, title: "Cohort 1a") }
   let!(:cohort1b){ Fabricate(:past_course, title: "Cohort 1b") }
 
@@ -12,13 +12,13 @@ feature "Student enrolls in course" do
     visit root_path
     page.should have_content "Which course are you teaching today?"
     click_link "Cohort 4a"
-    page.should have_content "This is part A"
+    current_path.should == course_path(cohort4a)
     click_link "Inquizator"
     click_link "Cohort 4a"
-    page.should have_content "This is part A"
+    current_path.should == course_path(cohort4a)
     click_link "Inquizator"
     click_link "Cohort 4b"
-    page.should have_content "This is part B"
+    current_path.should == course_path(cohort4b)
   end
 
   scenario "Student enrolling in a course" do

@@ -9,7 +9,6 @@ describe Course do
   it { should have_many :quizzes }
   it { should have_many :users }
   it { should validate_presence_of :title }
-  it { should validate_presence_of :syllabus }
   it { should validate_presence_of :start_date }
   it { should validate_presence_of :end_date }
   it { should validate_presence_of :source_repository }

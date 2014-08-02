@@ -39,9 +39,8 @@
         .small-12.columns
           %ul#main_navigation
             - if current_course
-              %li= link_to "Syllabus", course_path(current_course), id: current_if("courses")
               %li
-                = link_to course_calendar_path(current_course), id: current_if("events") do
+                = link_to course_calendar_path(current_course), id: current_if("courses") do
                   Course Calendar
                   - if self_reports_due > 0
                     %span.count_icon= self_reports_due

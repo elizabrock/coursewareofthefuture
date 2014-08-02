@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature "Users see course navigation when viewing student profiles" do
 
-  let!(:course){ Fabricate(:course, title: "Knitting", syllabus: "Knitting 101 Syllabus") }
+  let!(:course){ Fabricate(:course, title: "Knitting") }
 
   scenario "When you haven't visited the course yet (e.g. direct link)" do
     signin_as :student
@@ -19,8 +19,6 @@ feature "Users see course navigation when viewing student profiles" do
     current_path.should == user_path(me)
     page.should have_content "Materials"
     page.should have_content "Calendar"
-    click_link "Syllabus"
-    page.should have_content "Knitting 101 Syllabus"
   end
 
   scenario "Navigating to my instructor profile while looking at a course" do
@@ -30,8 +28,6 @@ feature "Users see course navigation when viewing student profiles" do
     current_path.should == user_path(me)
     page.should have_content "Materials"
     page.should have_content "Calendar"
-    click_link "Syllabus"
-    page.should have_content "Knitting 101 Syllabus"
   end
 
   scenario "Navigating to my profile from a non-course page (as a student)" do
@@ -63,8 +59,6 @@ feature "Users see course navigation when viewing student profiles" do
     page.should have_content "june@smith.com"
     page.should have_content "Materials"
     page.should have_content "Calendar"
-    click_link "Syllabus"
-    page.should have_content "Knitting 101 Syllabus"
   end
 
   scenario "When an instructor navigates to a student via. the peers page" do
@@ -78,8 +72,6 @@ feature "Users see course navigation when viewing student profiles" do
     page.should have_content "june@smith.com"
     page.should have_content "Materials"
     page.should have_content "Calendar"
-    click_link "Syllabus"
-    page.should have_content "Knitting 101 Syllabus"
   end
 
   scenario "When you've navigated to a student via. the full student list" do

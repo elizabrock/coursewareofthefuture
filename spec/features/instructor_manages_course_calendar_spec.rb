@@ -5,7 +5,6 @@ feature "Instructor manages course calendar", js: true do
   scenario "Students shouldn't see 'New Event' button" do
     cohort4 = Fabricate(:course,
               title: "Cohort 4",
-              syllabus: "Foobar",
               start_date: "2014/01/24",
               end_date: "2014/03/24")
     signin_as :student, courses: [cohort4]
@@ -16,7 +15,6 @@ feature "Instructor manages course calendar", js: true do
   scenario "Adding days off" do
     cohort4 = Fabricate(:course,
               title: "Cohort 4",
-              syllabus: "Foobar",
               start_date: "2014/01/24",
               end_date: "2014/03/24")
     signin_as :instructor, courses: [cohort4]
@@ -34,7 +32,6 @@ feature "Instructor manages course calendar", js: true do
   scenario "Sad path of adding days off" do
     cohort4 = Fabricate(:course,
               title: "Cohort 4",
-              syllabus: "Foobar",
               start_date: "2014/01/24",
               end_date: "2014/03/24")
     signin_as :instructor, courses: [cohort4]
@@ -56,14 +53,12 @@ feature "Instructor manages course calendar", js: true do
   scenario "Viewing course calendar" do
     course = Fabricate(:course,
               title: "Cohort 4",
-              syllabus: "Foobar",
               start_date: "2013/09/12",
               end_date: "2014/01/15")
     Fabricate(:event, date: "2013/10/15", summary: "Federal Holiday", course: course)
     Fabricate(:event, date: "2014/01/10", summary: "No Class", course: course)
     signin_as :student, courses: [course]
     visit root_path
-    click_link "Course Calendar"
     page.should have_content("October")
     page.should have_content("November")
     page.should have_content("December")
@@ -77,7 +72,6 @@ feature "Instructor manages course calendar", js: true do
   scenario "Fix: displaying multiple events a day" do
     course = Fabricate(:course,
                 title: "Cohort 4",
-                syllabus: "Foobar",
                 start_date: "2013/09/12",
                 end_date: "2014/01/15")
     signin_as :student, courses: [course]

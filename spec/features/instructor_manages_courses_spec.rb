@@ -6,16 +6,14 @@ feature "Instructor manages courses", js: true do
     signin_as(:instructor)
     visit root_path
     click_link "Create New Course"
-    page.should have_content "you can use markdown or html for your syllabus"
     page.should have_content "must be in the form of username/repo"
     fill_in "Title", with: "Cohort 4"
-    fill_in "Syllabus", with: "Foobar"
     fill_in "Start Date", with: "2014/01/24"
     fill_in "End Date", with: "2014/03/24"
     fill_in "Source Repository", with: "elizabrock/source"
     click_button "Create Course"
     page.should have_content "Course successfully created"
-    Course.where(title: "Cohort 4", syllabus: "Foobar",
+    Course.where(title: "Cohort 4",
                  start_date: "2014/01/24", end_date: "2014/03/24").count.should == 1
   end
 
@@ -23,21 +21,18 @@ feature "Instructor manages courses", js: true do
     signin_as(:instructor)
     visit root_path
     click_link "Create New Course"
-    page.should have_content "you can use markdown or html for your syllabus"
     page.should have_content "must be in the form of username/repo"
     click_button "Create Course"
     page.should have_content "Course couldn't be created"
     page.should have_error_message("can't be blank", on: "Title")
-    page.should have_error_message("can't be blank", on: "Syllabus")
     page.should have_error_message("can't be blank", on: "Source Repository")
     fill_in "Title", with: "Cohort 4"
-    fill_in "Syllabus", with: "Foobar"
     fill_in "Start Date", with: "2014/01/24"
     fill_in "End Date", with: "2014/03/24"
     fill_in "Source Repository", with: "elizabrock/source"
     click_button "Create Course"
     page.should have_content "Course successfully created"
-    Course.where(title: "Cohort 4", syllabus: "Foobar",
+    Course.where(title: "Cohort 4",
                  start_date: "2014/01/24", end_date: "2014/03/24").count.should == 1
     end
 
@@ -51,15 +46,8 @@ feature "Instructor manages courses", js: true do
     page.should have_button("Join Cohort 5")
   end
 
-  scenario "Students see markdown formatted syllabus" do
-    course = Fabricate(:course, title: "Cohort 4", syllabus: "This is *awesome*.")
-    signin_as :student, courses: [course]
-    visit root_path
-    page.should have_css("em", text: "awesome")
-  end
-
   scenario "Editing a course that already exists" do
-    Fabricate(:course, title: "Cohort 4", syllabus: "This is *awesome*.")
+    Fabricate(:course, title: "Cohort 4")
     signin_as(:instructor)
     visit courses_path
     click_on 'edit'

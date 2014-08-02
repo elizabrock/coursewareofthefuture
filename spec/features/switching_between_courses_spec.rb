@@ -6,8 +6,7 @@ feature "Switching between courses", vcr: true do
                   title: "Front-End Development",
                   source_repository: "elizabrock/NSS-Syllabus-Cohort-3",
                   start_date: 4.days.ago,
-                  end_date: 2.months.from_now,
-                  syllabus: "Zed Double You")
+                  end_date: 2.months.from_now)
     Fabricate(:event, date: 1.day.from_now, summary: "Day Off", course: front_end)
     Fabricate(:event, date: 2.days.from_now, summary: "Not a Day Off", course: front_end)
 
@@ -19,8 +18,7 @@ feature "Switching between courses", vcr: true do
                           title: "Software Development Fundamentals",
                           source_repository: "elizabrock/inquizator-test-repo",
                           start_date: 1.month.ago,
-                          end_date: 2.months.from_now,
-                          syllabus: "Foo Bar")
+                          end_date: 2.months.from_now)
 
     Fabricate(:event, date: 9.days.ago, summary: "Grinchmas", course: fundamentals)
     Fabricate(:event, date: 5.days.from_now, summary: "Airing of Grievances", course: fundamentals)
@@ -38,9 +36,8 @@ feature "Switching between courses", vcr: true do
     page.should_not have_content "Past Course"
 
     click_link "Software Development Fundamentals"
-    page.should have_content "Foo Bar"
-    click_link "Syllabus"
-    page.should have_content "Foo Bar"
+    page.should have_content "Grinchmas"
+    page.should have_content "Airing of Grievances"
     click_link "Peers"
     page.should have_list ["Sally", "Susie"]
     page.should_not have_content("Jim")
@@ -54,9 +51,9 @@ feature "Switching between courses", vcr: true do
     page.should_not have_content "Day Off"
 
     click_link "Front-End Development"
-    page.should have_content "Zed Double You"
-    click_link "Syllabus"
-    page.should have_content "Zed Double You"
+    page.should have_content "Day Off"
+    page.should have_content "Not a Day Off"
+    page.should_not have_content "Grinchmas"
     click_link "Peers"
     page.should have_content "Jim"
     page.should have_content "Joe"

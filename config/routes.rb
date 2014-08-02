@@ -11,7 +11,7 @@ Coursewareofthefuture::Application.routes.draw do
     resources :assignments, except: [:destroy] do
       resources :milestones, only: [:show]
     end
-    get :calendar, to: 'events#index'
+    get :calendar, to: 'courses#show'
     resources :enrollments, only: [:index, :create]
     resources :events, only: [:new, :create]
     get '/materials/:material_fullpath/slides', to: "slides#show", constraints: { material_fullpath: /.*\.md/ }
