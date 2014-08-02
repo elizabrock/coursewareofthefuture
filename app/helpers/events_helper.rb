@@ -2,6 +2,7 @@ module EventsHelper
   def format_calendar_date(d, course)
     outside_of_course = (d < course.start_date or d > course.end_date)
     css_class = outside_of_course ? "outside-of-class" : "in-class"
+    id = d.to_s
 
     output = ""
     unless outside_of_course
@@ -24,7 +25,7 @@ module EventsHelper
     end
 
     # See https://github.com/topfunky/calendar_helper for format explanation:
-    [ output, { class: css_class } ]
+    [ output, { class: css_class, id: id } ]
   end
 
   private
