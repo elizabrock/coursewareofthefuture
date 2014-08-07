@@ -139,4 +139,12 @@ feature "Student Self Report", js: true do
       page.should have_content "Total hours cannot be greater than 24"
     end
   end
+
+  scenario "Student should not see 'Attended Class:' on weekends" do
+    Timecop.travel(Time.new(2013, 3, 23))
+    visit current_path
+    within("td[data-date='3/16']"){ page.should have_content "Self-Report:" }
+    within("td[data-date='3/16']"){ page.should_not have_content "Attended class" }
+  end
+
 end

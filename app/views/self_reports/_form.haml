@@ -12,9 +12,10 @@
     .row
       .small-12.columns
         %h6.self-report Self-Report for #{self_report.date.to_date}:
-    .row
-      .small-12.columns
-        = f.input :attended, label: "Attended class", as: :radio_buttons, collection: [['Yes', true], ['No', false]]
+    -unless [0,6].include? self_report.date.wday
+      .row
+        .small-12.columns
+          = f.input :attended, label: "Attended class", as: :radio_buttons, collection: [['Yes', true], ['No', false]]
     .row
       .small-12.columns
         = f.input :hours_coding, as: :select, collection: 0..10, selected: self_report.hours_coding.to_i
