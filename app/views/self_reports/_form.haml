@@ -1,5 +1,5 @@
 %div.self-report-form
-  = simple_form_for self_report, html: { id: self_report.date }, defaults: {input_html: {class: 'tiny radius'}}, remote: true do |f|
+  = simple_form_for self_report, html: { id: "day#{self_report.date.yday}" }, defaults: {input_html: {class: 'tiny radius'}}, remote: true do |f|
     = f.hidden_field :date
     - unless self_report.errors.empty?
       .row
@@ -11,7 +11,7 @@
               %p All fields are required.
     .row
       .small-12.columns
-        %h6 Self-Report:
+        %h6.self-report Self-Report for #{self_report.date.to_date}:
     .row
       .small-12.columns
         = f.input :attended, label: "Attended class", as: :radio_buttons, collection: [['Yes', true], ['No', false]]

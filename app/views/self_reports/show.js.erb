@@ -1,5 +1,3 @@
-$('td[data-date="<%= self_report.date.to_date %>"]')
-  .bind("ajax:success", function() {
-    $('td[data-date="<%= self_report.date.to_date %>"] form')
-    .replaceWith("<%= escape_javascript(render self_report) %>");
-})
+$("#selfreport<%= self_report.date.yday %>").foundation('reveal', 'close');
+$('td[data-date="<%= self_report.date.to_date %>"] div.self-report').
+  replaceWith("<%= escape_javascript(render self_report) %>");

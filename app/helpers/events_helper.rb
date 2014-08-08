@@ -8,20 +8,21 @@ module EventsHelper
     unless outside_of_course
       events = []
       events << { summary: "Today", class: "success"} if d == Date.today
-      events << { summary: "First Day of Class", class: ""} if d == course.start_date
-      events << { summary: "Last Day of Class", class: ""} if d == course.end_date
+      events << { summary: "First Day of Class", class: "secondary"} if d == course.start_date
+      events << { summary: "Last Day of Class", class: "secondary"} if d == course.end_date
       events << populate_events(d, course)
       events << populate_materials(d, course)
       events << populate_milestones(d, course)
       events << populate_quizzes(d, course)
 
-      output << content_tag("h5", d.mday.to_s)
+      output << content_tag("h5", d.mday.to_s, class: "day-header")
       events.flatten.each do |e|
         title = e[:summary]
         label_class = e[:class]
         output << content_tag("span", title, class: "label radius #{label_class}")
       end
-      output << self_report_form(d, course) unless outside_of_course
+
+      output << self_report(d, course) unless outside_of_course
     end
 
     # See https://github.com/topfunky/calendar_helper for format explanation:
@@ -30,20 +31,17 @@ module EventsHelper
 
   private
 
-  def self_report_form(d, course)
+  def self_report(d, course)
     return "" if d > Date.today.end_of_day
 
-    if self_report = current_user.self_reports.find{ |sr| sr.date == d }
-      render self_report
-    else
-      self_report = SelfReport.new(date: d)
-      render(partial: "self_reports/form", locals: { self_report: self_report })
-    end
+    self_report = current_user.self_reports.find{ |sr| sr.date == d }
+    self_report ||= SelfReport.new(date: d)
+    render self_report
   end
 
   def populate_events(d, course)
     events = course.events.find_all{|e| e.date == d }
-    events.collect{ |event| { summary: event.summary, class: ""} }
+    events.collect{ |event| { summary: event.summary, class: "secondary"} }
   end
 
   def populate_materials(d, course)
@@ -59,7 +57,7 @@ module EventsHelper
     milestones.collect do |milestone|
       milestone_description = "#{milestone.assignment.title}: #{milestone.title} Due"
       link = milestone.assignment.published? ? course_assignment_path(course, milestone.assignment) : edit_course_assignment_path(course, milestone.assignment)
-      { summary: link_to(milestone_description, link), class: "alert"}
+      { summary: link_to(milestone_description, link), class: "secondary"}
     end
   end
 
@@ -68,7 +66,7 @@ module EventsHelper
     quizzes.collect do |quiz|
       quiz_description = "#{quiz.title} Due"
       link = quiz.published? ? edit_course_quiz_submission_path(course, quiz) : edit_course_quiz_path(course, quiz)
-      { summary: link_to(quiz_description, link), class: "alert"}
+      { summary: link_to(quiz_description, link), class: "secondary"}
     end
   end
 end

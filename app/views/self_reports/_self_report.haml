@@ -1,12 +1,25 @@
-.self_report_info
-  %strong Class:
-  = self_report.attended? ? "Attended" : "Missed"
-  %br
-  %strong Coding:
-  #{number_to_human(self_report.hours_coding)} hours
-  %strong Learning:
-  #{number_to_human(self_report.hours_learning)} hours
-  %br
-  %strong Sleep:
-  #{number_to_human(self_report.hours_slept)} hours
-  = link_to "edit", edit_self_report_path(self_report), remote: true, method: :get, class: :edit
+.self-report
+  .row
+    .small-12.columns
+      %h6.self-report Self-Report:
+  - if !self_report.new_record?
+    .row
+      .small-12.columns
+        %strong Class:
+        = self_report.attended? ? "Attended" : "Missed"
+        %br
+        %strong Coding:
+        #{number_to_human(self_report.hours_coding)} hours
+        %strong Learning:
+        #{number_to_human(self_report.hours_learning)} hours
+        %br
+        %strong Sleep:
+        #{number_to_human(self_report.hours_slept)} hours
+  .row
+    .small-12.columns
+      - if self_report.new_record?
+        = link_to "Enter Self Report!", "#", class: "fi-page-add button small alert", "data-reveal-id" => "selfreport#{self_report.date.yday}"
+      - else
+        = link_to "edit", edit_self_report_path(self_report), class: "edit fi-pencil", "data-reveal-id" => "selfreport#{self_report.date.yday}"
+      .reveal-modal{ id: "selfreport#{self_report.date.yday}", "data-reveal" => "day#{self_report.date.yday}" }
+        = render partial: 'self_reports/form', locals: { self_report: self_report }

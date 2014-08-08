@@ -37,11 +37,11 @@ feature "Student Self Report", js: true do
   end
 
   scenario "Student sees a self-report form for days that need missing reports" do
-    within("td[data-date='3/14']"){ page.should have_content "Self-Report:" }
-    within("td[data-date='3/11']"){ page.should have_content "Self-Report:" }
-    within("td[data-date='3/15']"){ page.should have_content "Self-Report:" }
-    within("td[data-date='3/12']"){ page.should_not have_content "Self-Report:" }
-    within("td[data-date='3/13']"){ page.should_not have_content "Self-Report:" }
+    within("td[data-date='3/14']"){ page.should have_content "Enter Self Report!" }
+    within("td[data-date='3/11']"){ page.should have_content "Enter Self Report!" }
+    within("td[data-date='3/15']"){ page.should have_content "Enter Self Report!" }
+    within("td[data-date='3/12']"){ page.should have_content "edit" }
+    within("td[data-date='3/13']"){ page.should have_content "edit" }
   end
 
   scenario "Student still sees self-report form is another user has filled out their own report" do
@@ -74,13 +74,14 @@ feature "Student Self Report", js: true do
 
   scenario "Student enters self-report form" do
     within("td[data-date='3/14']") do
-      page.should have_content "Self-Report:"
-      choose "Yes"
-      page.select("1", from: "Hours coding")
-      page.select("2", from: "Hours learning")
-      page.select("3", from: "Hours slept")
-      click_button "Submit"
-      page.should_not have_content "Self-Report:"
+      click_link "Enter Self Report!"
+    end
+    choose "Yes"
+    page.select("1", from: "Hours coding")
+    page.select("2", from: "Hours learning")
+    page.select("3", from: "Hours slept")
+    click_button "Submit"
+    within("td[data-date='3/14']") do
       page.should have_content "Class: Attended"
       page.should have_content "Coding: 1 hours"
       page.should have_content "Learning: 2 hours"
@@ -93,10 +94,14 @@ feature "Student Self Report", js: true do
       page.should have_content "Class: Attended"
       page.should have_content "Sleep: 7.5 hours"
       click_link "edit"
-      page.should have_content "Attended class"
+    end
+    # 3/13 is the 72nd day of the year
+    within("form#day72") do
       page.select("3", from: "Hours coding")
       page.select("6", from: "Hours slept")
       click_button "Submit"
+    end
+    within("td[data-date='3/13']") do
       page.should have_content "Class: Attended"
       page.should have_content "Coding: 3 hours"
       page.should have_content "Sleep: 6 hours"
@@ -106,8 +111,13 @@ feature "Student Self Report", js: true do
 
   scenario "Student enters empty form" do
     within("td[data-date='3/14']") do
-      page.should have_content "Self-Report:"
+      click_link "Enter Self Report!"
+    end
+    # 3/14 is the 73rd day of the year
+    within("form#day73") do
       click_button "Submit"
+    end
+    within("form#day73") do
       page.should have_content "must be selected"
       page.should have_content "Total hours must be greater than 0"
     end
@@ -115,11 +125,17 @@ feature "Student Self Report", js: true do
 
   scenario "Student enters form with more than 24 hours" do
     within("td[data-date='3/14']") do
+      click_link "Enter Self Report!"
+    end
+    # 3/14 is the 73rd day of the year
+    within("form#day73") do
       choose "Yes"
       page.select("9", from: "Hours coding")
       page.select("9", from: "Hours learning")
       page.select("9", from: "Hours slept")
       click_button "Submit"
+    end
+    within("form#day73") do
       page.should have_content "Total hours cannot be greater than 24"
     end
   end

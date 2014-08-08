@@ -66,8 +66,19 @@ table.calendar {
   }
 
   td {
+    position: relative;
     vertical-align: top;
     height: 9em;
+    padding-bottom: 10em; // Compensates for taking the self report form out of the flow.
+
+    // Positioning the Self-Reports to "stick"
+    // to the bottom of the table cell.
+    div.self-report {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      max-height: 10em;
+    }
 
     &.otherMonth, &.outside-of-class h5 {
       color: #bbb;
@@ -78,14 +89,20 @@ table.calendar {
       margin-top: 0;
       text-align: left;
     }
-    // Self-Report Header
-    h6 {
-      margin-top: 0.5em;
-      border-bottom: 1px solid #6600ff;
-    }
+
     .label {
       overflow: hidden;
       width: 100%;
     }
   }
+}
+
+div.self-report {
+  padding: 0.5em;
+}
+
+// Self-Report Header
+h6.self-report {
+  margin: 0.5em 0.25em;
+  border-bottom: 1px solid #6600ff;
 }
