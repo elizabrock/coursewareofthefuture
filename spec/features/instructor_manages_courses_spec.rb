@@ -11,7 +11,7 @@ feature "Instructor manages courses", js: true do
     fill_in "Start Date", with: "2014/01/24"
     fill_in "End Date", with: "2014/03/24"
     fill_in "Source Repository", with: "elizabrock/source"
-    click_button "Create Course"
+    find(:button, "Create Course", visible: false).trigger('click')
     page.should have_content "Course successfully created"
     Course.where(title: "Cohort 4",
                  start_date: "2014/01/24", end_date: "2014/03/24").count.should == 1
