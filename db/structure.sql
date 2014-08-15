@@ -504,9 +504,6 @@ CREATE TABLE users (
     instructor boolean,
     photo_confirmed boolean DEFAULT false,
     photo character varying(255),
-    forem_admin boolean DEFAULT false,
-    forem_state character varying(255) DEFAULT 'pending_review'::character varying,
-    forem_auto_subscribe boolean DEFAULT false,
     observer boolean
 );
 
