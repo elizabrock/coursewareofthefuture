@@ -5,6 +5,11 @@ describe MilestoneSubmission do
   it { should validate_presence_of :milestone }
   it { should validate_presence_of :user }
   it { should validate_presence_of :repository }
+    visit course_assignment_path
+    page.should have_css('class = "read-status label')
+  end
+
+
   describe "after_create" do
     it "should delegate mail creation to the milestone mailer" do
 
