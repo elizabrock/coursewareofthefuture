@@ -17,14 +17,21 @@
       - quiz_submission = current_user.quiz_submissions.find{ |qs| qs.quiz == quiz }
       - if quiz_submission
         - if quiz_submission.graded?
-          %li= link_to "#{quiz.title} (#{quiz_submission.formatted_grade})", course_quiz_submission_path(current_course, quiz)
+          %li
+            = link_to "#{quiz.title} (#{quiz_submission.formatted_grade})", course_quiz_submission_path(current_course, quiz)
+            .read-status.label.radius.secondary.fi-check read
         - elsif quiz_submission.submitted?
-          %li= link_to "#{quiz.title} (submitted for grading)", course_quiz_submission_path(current_course, quiz)
+          %li
+            = link_to "#{quiz.title} (submitted for grading)", course_quiz_submission_path(current_course, quiz)
+            .read-status.label.radius.secondary.fi-check read
         - else
-          %li= link_to "#{quiz.title} (incomplete, due #{quiz.deadline})", edit_course_quiz_submission_path(current_course, quiz)
+          %li
+            = link_to "#{quiz.title} (incomplete, due #{quiz.deadline})", edit_course_quiz_submission_path(current_course, quiz)
+            .read-status.label.radius.secondary.fi-check read
       - else
-        %li= link_to "#{quiz.title} (due #{quiz.deadline})", edit_course_quiz_submission_path(current_course, quiz)
-
+        %li
+          = link_to "#{quiz.title} (due #{quiz.deadline})", edit_course_quiz_submission_path(current_course, quiz)
+          .read-status.label.radius.alert.fi-asterisk new&nbsp;
 - if can? :manage, Quiz
   %h2 Instructor Information:
   %ul.no-bullet
