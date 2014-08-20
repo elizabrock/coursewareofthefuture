@@ -67,7 +67,8 @@ module EventsHelper
     quizzes.collect do |quiz|
       quiz_description = "#{quiz.title} Due"
       link = quiz.published? ? edit_course_quiz_submission_path(course, quiz) : edit_course_quiz_path(course, quiz)
-      { summary: link_to(quiz_description, link), class: "secondary"}
+      class_text = quiz.quiz_submissions[0] ? "secondary" : "alert"
+      { summary: link_to(quiz_description, link), class: class_text}
     end
   end
 end
