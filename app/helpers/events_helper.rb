@@ -57,7 +57,8 @@ module EventsHelper
     milestones.collect do |milestone|
       milestone_description = "#{milestone.assignment.title}: #{milestone.title} Due"
       link = milestone.assignment.published? ? course_assignment_path(course, milestone.assignment) : edit_course_assignment_path(course, milestone.assignment)
-      { summary: link_to(milestone_description, link), class: "secondary"}
+      class_text = milestone.milestone_submissions[0] ? "secondary" : "alert"
+      { summary: link_to(milestone_description, link), class: class_text }
     end
   end
 
