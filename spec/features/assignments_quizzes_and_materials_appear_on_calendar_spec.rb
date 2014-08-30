@@ -15,13 +15,13 @@ feature "Assignments quizzes and materials appear on calendar", vcr: true do
     Fabricate(:milestone, title: "Pt. 2", deadline: "2014/01/04", assignment: published)
 
     visit course_calendar_path(course)
-    page.should have_calendar_entry("1/02", text: "Koans: Pt. 1 Due")
-    page.should have_calendar_entry("1/04", text: "Koans: Pt. 2 Due")
-    page.should_not have_content "Unpublished Assignment"
-    page.should_not have_content "Pt. n"
+    expect(page).to have_calendar_entry("1/02", text: "Koans: Pt. 1 Due")
+    expect(page).to have_calendar_entry("1/04", text: "Koans: Pt. 2 Due")
+    expect(page).to_not have_content "Unpublished Assignment"
+    expect(page).to_not have_content "Pt. n"
 
     click_link "Koans: Pt. 1 Due"
-    current_path.should == course_assignment_path(course, published)
+    expect(current_path).to eql course_assignment_path(course, published)
   end
 
   scenario "Assignments, as instructor" do
@@ -35,12 +35,12 @@ feature "Assignments quizzes and materials appear on calendar", vcr: true do
     Fabricate(:milestone, title: "Pt. 2", deadline: "2014/01/04", assignment: published)
 
     visit course_calendar_path(course)
-    page.should have_calendar_entry("1/02", text: "Koans: Pt. 1 Due")
-    page.should have_calendar_entry("1/04", text: "Koans: Pt. 2 Due")
-    page.should have_calendar_entry("1/03", text: "Unpublished Assignment: Pt. n Due")
+    expect(page).to have_calendar_entry("1/02", text: "Koans: Pt. 1 Due")
+    expect(page).to have_calendar_entry("1/04", text: "Koans: Pt. 2 Due")
+    expect(page).to have_calendar_entry("1/03", text: "Unpublished Assignment: Pt. n Due")
 
     click_link "Unpublished Assignment: Pt. n Due"
-    current_path.should == edit_course_assignment_path(course, unpublished)
+    expect(current_path).to eql edit_course_assignment_path(course, unpublished)
   end
 
   scenario "Fix: Multiple milestones on a day" do
@@ -51,8 +51,8 @@ feature "Assignments quizzes and materials appear on calendar", vcr: true do
     Fabricate(:milestone, title: "Pt. 2", deadline: "2014/01/02", assignment: published)
 
     visit course_calendar_path(course)
-    page.should have_calendar_entry("1/02", text: "Koans: Pt. 1 Due")
-    page.should have_calendar_entry("1/02", text: "Koans: Pt. 2 Due")
+    expect(page).to have_calendar_entry("1/02", text: "Koans: Pt. 1 Due")
+    expect(page).to have_calendar_entry("1/02", text: "Koans: Pt. 2 Due")
   end
 
   scenario "Quizzes" do
@@ -62,12 +62,12 @@ feature "Assignments quizzes and materials appear on calendar", vcr: true do
     Fabricate(:quiz, title: "Baseline Knowledge", deadline: "2014/01/01", course: course)
     midpoint_quiz = Fabricate(:quiz, title: "Midpoint Checkin", deadline: "2014/01/15", course: course)
     visit course_calendar_path(course)
-    page.should have_calendar_entry("1/01", text: "Baseline Knowledge Due")
-    page.should have_calendar_entry("1/15", text: "Midpoint Checkin Due")
-    page.should_not have_content("Unpublished Knowledge")
+    expect(page).to have_calendar_entry("1/01", text: "Baseline Knowledge Due")
+    expect(page).to have_calendar_entry("1/15", text: "Midpoint Checkin Due")
+    expect(page).to_not have_content("Unpublished Knowledge")
 
     click_link "Midpoint Checkin Due"
-    current_path.should == edit_course_quiz_submission_path(course, midpoint_quiz)
+    expect(current_path).to eql edit_course_quiz_submission_path(course, midpoint_quiz)
   end
 
   scenario "Quizzes, as an instructor" do
@@ -77,12 +77,12 @@ feature "Assignments quizzes and materials appear on calendar", vcr: true do
     Fabricate(:quiz, title: "Baseline Knowledge", deadline: "2014/01/01", course: course)
     Fabricate(:quiz, title: "Midpoint Checkin", deadline: "2014/01/15", course: course)
     visit course_calendar_path(course)
-    page.should have_calendar_entry("1/01", text: "Baseline Knowledge Due")
-    page.should have_calendar_entry("1/02", text: "Unpublished Knowledge Due")
-    page.should have_calendar_entry("1/15", text: "Midpoint Checkin Due")
+    expect(page).to have_calendar_entry("1/01", text: "Baseline Knowledge Due")
+    expect(page).to have_calendar_entry("1/02", text: "Unpublished Knowledge Due")
+    expect(page).to have_calendar_entry("1/15", text: "Midpoint Checkin Due")
 
     click_link "Unpublished Knowledge Due"
-    current_path.should == edit_course_quiz_path(course, unpublished_quiz)
+    expect(current_path).to eql edit_course_quiz_path(course, unpublished_quiz)
   end
 
   scenario "Fix: Multiple quizzes on a day" do
@@ -91,8 +91,8 @@ feature "Assignments quizzes and materials appear on calendar", vcr: true do
     Fabricate(:quiz, title: "Baseline Knowledge", deadline: "2014/01/01", course: course)
     Fabricate(:quiz, title: "Midpoint Checkin", deadline: "2014/01/01", course: course)
     visit course_calendar_path(course)
-    page.should have_calendar_entry("1/01", text: "Baseline Knowledge Due")
-    page.should have_calendar_entry("1/01", text: "Midpoint Checkin Due")
+    expect(page).to have_calendar_entry("1/01", text: "Baseline Knowledge Due")
+    expect(page).to have_calendar_entry("1/01", text: "Midpoint Checkin Due")
   end
 
   scenario "Covered Materials" do
@@ -105,11 +105,11 @@ feature "Assignments quizzes and materials appear on calendar", vcr: true do
               material_fullpath: "computer-science/logic/set_theory.md",
               covered_on: "2014/01/20", course: course)
     visit course_calendar_path(course)
-    page.should have_calendar_entry("1/15", text: "Logic")
-    page.should have_calendar_entry("1/20", text: "Set Theory")
+    expect(page).to have_calendar_entry("1/15", text: "Logic")
+    expect(page).to have_calendar_entry("1/20", text: "Set Theory")
 
     click_link "Logic"
-    current_path.should == course_material_path(course, logic.material_fullpath).gsub("%2F","/")
+    expect(current_path).to eql course_material_path(course, logic.material_fullpath).gsub("%2F","/")
   end
 
   scenario "Fix: multiple covered materials on a day" do
@@ -122,7 +122,7 @@ feature "Assignments quizzes and materials appear on calendar", vcr: true do
               material_fullpath: "computer-science/logic/set_theory.md",
               covered_on: "2014/01/15", course: course)
     visit course_calendar_path(course)
-    page.should have_calendar_entry("1/15", text: "Logic")
-    page.should have_calendar_entry("1/15", text: "Set Theory")
+    expect(page).to have_calendar_entry("1/15", text: "Logic")
+    expect(page).to have_calendar_entry("1/15", text: "Set Theory")
   end
 end

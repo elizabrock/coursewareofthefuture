@@ -26,7 +26,7 @@ feature "Student is notified of graded quiz" do
     populate_quiz_submission(quiz_submission, [ {question: "Are you happy?", answer: "false" },
                                                 {question: "What are you happy about?", answer: "The food!" },
                                                 {question: "Is class over?", answer: "false" } ])
-    unread_emails_for(user.email).size.should == 0
+    expect(unread_emails_for(user.email).size).to eql 0
   end
 
   scenario "Graded quiz receives feedback" do
@@ -45,14 +45,14 @@ feature "Student is notified of graded quiz" do
         answer.save
       end
     end
-    quiz_submission.should be_graded
+    expect(quiz_submission).to be_graded
 
-    unread_emails_for(user.email).size.should == 1
+    expect(unread_emails_for(user.email).size).to eql 1
     open_email(user.email)
-    current_email.should have_subject "Checkin Quiz Graded"
+    expect(current_email).to have_subject "Checkin Quiz Graded"
     visit_in_email /View Quiz Feedback/
-    page.should have_list ["Are you happy?", "What are you happy about?", "Is class over?"]
-    page.should have_list ["Your Answer: False", "Your Answer: The food!", "Your Answer: False"]
-    page.should have_list ["Correct Answer: True", "Correct Answer: There is no correct answer.", "Correct Answer: False"]
+    expect(page).to have_list ["Are you happy?", "What are you happy about?", "Is class over?"]
+    expect(page).to have_list ["Your Answer: False", "Your Answer: The food!", "Your Answer: False"]
+    expect(page).to have_list ["Correct Answer: True", "Correct Answer: There is no correct answer.", "Correct Answer: False"]
   end
 end

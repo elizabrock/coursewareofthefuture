@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 describe SelfReport do
-  it { should validate_presence_of :user }
-  it { should validate_presence_of :date }
-  it { should validate_uniqueness_of :date }
-  it { should validate_presence_of :hours_coding }
-  it { should validate_presence_of :hours_learning }
-  it { should validate_presence_of :hours_slept }
-  it { should validate_presence_of :hours_slept }
+  it { is_expected.to validate_presence_of :user }
+  it { is_expected.to validate_presence_of :date }
+  it { is_expected.to validate_uniqueness_of :date }
+  it { is_expected.to validate_presence_of :hours_coding }
+  it { is_expected.to validate_presence_of :hours_learning }
+  it { is_expected.to validate_presence_of :hours_slept }
+  it { is_expected.to validate_presence_of :hours_slept }
 
   describe "Total hours cannot be more than 24" do
     let(:over_twenty_four_student){ Fabricate.build(:self_report, hours_coding: 10, hours_learning: 10, hours_slept: 10) }
@@ -16,20 +16,20 @@ describe SelfReport do
     context "Total hours are more_than_twenty_four" do
       it "should not save if over 24 hours" do
         over_twenty_four_student.save
-        over_twenty_four_student.errors[:base].should == ["Total hours cannot be greater than 24"]
-        SelfReport.count.should == 0
+        expect(over_twenty_four_student.errors[:base]).to eql ["Total hours cannot be greater than 24"]
+        expect(SelfReport.count).to eql 0
       end
     end
     context "Total hours are equal_to_twenty_four" do
       it "should save if equaled to 24 hours" do
         twenty_four_student.save
-        SelfReport.count.should == 1
+        expect(SelfReport.count).to eql 1
       end
     end
     context "Total hours are less_than_twenty_four" do
       it "should save if under 24 hours" do
         under_twenty_four_student.save
-        SelfReport.count.should == 1
+        expect(SelfReport.count).to eql 1
       end
     end
   end
@@ -54,10 +54,10 @@ describe SelfReport do
         Fabricate(:self_report, user: uptodate_student, date: 1.day.ago.beginning_of_day)
         do_action
       end
-      it { unread_emails_for(truant_student.email).size.should == 1 }
-      it { unread_emails_for(barely_truant_student.email).size.should == 1 }
-      it { unread_emails_for(uptodate_student.email).size.should == 0 }
-      it { unread_emails_for(unenrolled_student.email).size.should == 0 }
+      it { expect(unread_emails_for(truant_student.email).size).to eql 1 }
+      it { expect(unread_emails_for(barely_truant_student.email).size).to eql 1 }
+      it { expect(unread_emails_for(uptodate_student.email).size).to eql 0 }
+      it { expect(unread_emails_for(unenrolled_student.email).size).to eql 0 }
     end
     context "when no students are missing reports" do
       before do
@@ -65,7 +65,7 @@ describe SelfReport do
         do_action
       end
       it "shouldn't send any emails" do
-        unread_emails_for(uptodate_student.email).size.should == 0
+        expect(unread_emails_for(uptodate_student.email).size).to eql 0
       end
     end
   end

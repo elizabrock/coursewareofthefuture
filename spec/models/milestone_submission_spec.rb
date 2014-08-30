@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 describe MilestoneSubmission do
-  it { should belong_to :milestone }
-  it { should validate_presence_of :milestone }
-  it { should validate_presence_of :user }
-  it { should validate_presence_of :repository }
+  it { is_expected.to belong_to :milestone }
+  it { is_expected.to validate_presence_of :milestone }
+  it { is_expected.to validate_presence_of :user }
+  it { is_expected.to validate_presence_of :repository }
   describe "after_create" do
     it "should delegate mail creation to the milestone mailer" do
 

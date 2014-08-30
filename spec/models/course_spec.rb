@@ -1,15 +1,15 @@
 require 'rails_helper'
 
 describe Course do
-  it { should have_many :assignments }
-  it { should have_many :covered_materials }
-  it { should have_many :enrollments }
-  it { should have_many :events }
-  it { should have_many :milestones }
-  it { should have_many :quizzes }
-  it { should have_many :users }
-  it { should validate_presence_of :title }
-  it { should validate_presence_of :start_date }
-  it { should validate_presence_of :end_date }
-  it { should validate_presence_of :source_repository }
+  it { is_expected.to have_many :assignments }
+  it { is_expected.to have_many :covered_materials }
+  it { is_expected.to have_many :enrollments }
+  it { is_expected.to have_many :events }
+  it { is_expected.to have_many :milestones }
+  it { is_expected.to have_many :quizzes }
+  it { is_expected.to have_many :users }
+  it { is_expected.to validate_presence_of :title }
+  it { is_expected.to validate_presence_of :start_date }
+  it { is_expected.to validate_presence_of :end_date }
+  it { is_expected.to validate_presence_of :source_repository }
 end

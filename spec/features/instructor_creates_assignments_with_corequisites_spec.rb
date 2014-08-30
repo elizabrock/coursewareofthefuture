@@ -16,49 +16,49 @@ feature "Instructor creates assignment with corequisites", vcr: true do
     within_fieldset("Strings Milestone") do
       fill_in "Deadline", with: "2013/03/24"
       within("fieldset.corequisites") do
-        page.should have_checkboxes(material_titles)
+        expect(page).to have_checkboxes(material_titles)
       end
       check "Garbage Collection"
     end
     within_fieldset("Objects Milestone") do
       fill_in "Deadline", with: "2013/04/28"
       within("fieldset.corequisites") do
-        page.should have_checkboxes(material_titles)
+        expect(page).to have_checkboxes(material_titles)
       end
       check "Logic"
     end
     within_fieldset("Triangles Milestone") do
       fill_in "Deadline", with: "2013/05/28"
       within("fieldset.corequisites") do
-        page.should have_checkboxes(material_titles)
+        expect(page).to have_checkboxes(material_titles)
       end
       check "Logic"
       check "Truth Tables"
     end
 
     click_button "Save Assignment"
-    page.should have_content "Your assignment has been updated."
+    expect(page).to have_content "Your assignment has been updated."
 
     click_link "Assignments"
     click_link "Ruby Koans"
 
     within(milestone("Strings")) do
-      page.should_not have_content("Logic")
-      page.should have_content("Garbage Collection")
-      page.should_not have_content("Truth Tables")
-      page.should_not have_content("Basic Control Structures")
+      expect(page).not_to have_content("Logic")
+      expect(page).to have_content("Garbage Collection")
+      expect(page).not_to have_content("Truth Tables")
+      expect(page).not_to have_content("Basic Control Structures")
     end
     within(milestone("Objects")) do
-      page.should have_content("Logic")
-      page.should_not have_content("Garbage Collection")
-      page.should_not have_content("Truth Tables")
-      page.should_not have_content("Basic Control Structures")
+      expect(page).to have_content("Logic")
+      expect(page).not_to have_content("Garbage Collection")
+      expect(page).not_to have_content("Truth Tables")
+      expect(page).not_to have_content("Basic Control Structures")
     end
     within(milestone("Triangles")) do
-      page.should have_content("Logic")
-      page.should_not have_content("Garbage Collection")
-      page.should have_content("Truth Tables")
-      page.should_not have_content("Basic Control Structures")
+      expect(page).to have_content("Logic")
+      expect(page).not_to have_content("Garbage Collection")
+      expect(page).to have_content("Truth Tables")
+      expect(page).not_to have_content("Basic Control Structures")
     end
   end
 end

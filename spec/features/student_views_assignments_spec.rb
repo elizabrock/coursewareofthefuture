@@ -13,10 +13,10 @@ feature "Student views assignments" do
     visit root_path
     click_link "Assignments"
     click_link "Capstone"
-    page.should have_content("Milestone 1 (due 5/01)")
-    page.should have_content("Milestone 2 (due 5/15)")
-    within(milestone(1)){ page.should have_content "This milestone is simple" }
-    within(milestone(2)){ page.should have_content "Ability to view and submit is pending completion of previous milestones" }
+    expect(page).to have_content("Milestone 1 (due 5/01)")
+    expect(page).to have_content("Milestone 2 (due 5/15)")
+    within(milestone(1)){ expect(page).to have_content "This milestone is simple" }
+    within(milestone(2)){ expect(page).to have_content "Ability to view and submit is pending completion of previous milestones" }
   end
 
   scenario "Student views an assignment with corequisites", vcr: true do
@@ -42,19 +42,19 @@ feature "Student views assignments" do
     visit course_assignment_path(course, assignment)
 
     within(milestone("Foo")) do
-      page.should have_content("Logic")
-      page.should_not have_content("Booleans and Bits")
-      page.should_not have_content("Garbage Collection")
+      expect(page).to have_content("Logic")
+      expect(page).not_to have_content("Booleans and Bits")
+      expect(page).not_to have_content("Garbage Collection")
     end
     within(milestone("Bar")) do
-      page.should have_content("Garbage Collection")
-      page.should_not have_content("Logic")
-      page.should_not have_content("Booleans and Bits")
+      expect(page).to have_content("Garbage Collection")
+      expect(page).not_to have_content("Logic")
+      expect(page).not_to have_content("Booleans and Bits")
     end
 
     click_link "Logic"
-    current_path.should == "/courses/#{course.id}/materials/computer-science/logic/logic.md"
-    page.should have_content "Logic is, broadly speaking, the application of reasoning to an activity or concept. In Computer Science, we primarily use deductive reasoning (a.k.a. deductive logic) along with boolean algebra (e.g. two-valued logic)."
+    expect(current_path).to eql "/courses/#{course.id}/materials/computer-science/logic/logic.md"
+    expect(page).to have_content "Logic is, broadly speaking, the application of reasoning to an activity or concept. In Computer Science, we primarily use deductive reasoning (a.k.a. deductive logic) along with boolean algebra (e.g. two-valued logic)."
   end
 
   scenario "Viewing the assignment list only shows published assignments" do
@@ -64,8 +64,8 @@ feature "Student views assignments" do
     signin_as :student, courses: [course]
     visit root_path
     click_link "Assignments"
-    page.should have_content "Capstone"
-    page.should_not have_content "Foobar"
+    expect(page).to have_content "Capstone"
+    expect(page).not_to have_content "Foobar"
   end
 
   scenario "Viewing the assignment list shows the deadlines" do
@@ -79,7 +79,7 @@ feature "Student views assignments" do
     signin_as :student, courses: [course]
     visit root_path
     click_link "Assignments"
-    page.should have_content "Foobar (5/01 - 5/15)"
+    expect(page).to have_content "Foobar (5/01 - 5/15)"
   end
 
   scenario "Viewing the assignment list prints them in deadline order" do
@@ -123,6 +123,6 @@ feature "Student views assignments" do
     signin_as :student, courses: [course]
     visit root_path
     click_link "Assignments"
-    page.should have_list ["BazGrille (4/01)", "Foobar (5/01 - 5/15)", "Things (5/14 - 5/31)", "Final (6/01)"]
+    expect(page).to have_list ["BazGrille (4/01)", "Foobar (5/01 - 5/15)", "Things (5/14 - 5/31)", "Final (6/01)"]
   end
 end

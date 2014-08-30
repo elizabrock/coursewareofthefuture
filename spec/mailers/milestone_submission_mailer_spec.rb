@@ -13,38 +13,38 @@ describe MilestoneSubmissionMailer do
 
     before do
       course.users << [student, instructor1, instructor2]
-      instructor3.courses.should be_empty
+      expect(instructor3.courses).to be_empty
 
       milestone = Fabricate(:milestone, title: "Milestone Uno", assignment: assignment)
       milestone_submission = Fabricate(:milestone_submission, milestone: milestone, user: student)
     end
 
     it "should send 1 email to each instructor" do
-      unread_emails_for(instructor1.email).size.should == 1
-      unread_emails_for(instructor2.email).size.should == 1
+      expect(unread_emails_for(instructor1.email).size).to eql 1
+      expect(unread_emails_for(instructor2.email).size).to eql 1
     end
 
     it "should not send emails to instructors of other courses" do
-      unread_emails_for(instructor3.email).size.should == 0
+      expect(unread_emails_for(instructor3.email).size).to eql 0
     end
 
     it "should not send an email to the student" do
-      unread_emails_for(student.email).size.should == 0
+      expect(unread_emails_for(student.email).size).to eql 0
     end
 
     it "should have a subject line with the assignment's name in it" do
       open_email(instructor1.email)
-      current_email.should have_subject("New Submission for Test Assignment")
+      expect(current_email).to have_subject("New Submission for Test Assignment")
     end
 
     it "should have body text with the student's name and the assignment's name in it" do
       open_email(instructor1.email)
-      current_email.should have_body_text("Lisa Smith has submitted Test Assignment: Milestone Uno.")
+      expect(current_email).to have_body_text("Lisa Smith has submitted Test Assignment: Milestone Uno.")
     end
 
     it "should link to the assignment page" do
       open_email(instructor1.email)
-      current_email.should have_body_text(course_assignment_url(course, assignment))
+      expect(current_email).to have_body_text(course_assignment_url(course, assignment))
     end
   end
 end

@@ -27,51 +27,51 @@ feature "Instructor grades quizzes" do
 
   scenario "Viewing information about a quiz" do
     visit course_assignments_path(course)
-    page.should have_content "Checkin Quiz (2 completed, 1 in progress)"
+    expect(page).to have_content "Checkin Quiz (2 completed, 1 in progress)"
     click_link "Checkin Quiz (2 completed, 1 in progress)"
-    within("#incomplete_quizzes"){ page.should have_content "susie" }
-    within("#completed_quizzes"){ page.should have_content "jane" }
-    within("#completed_quizzes"){ page.should have_content "sally" }
-    page.should_not have_content "adam"
+    within("#incomplete_quizzes"){ expect(page).to have_content "susie" }
+    within("#completed_quizzes"){ expect(page).to have_content "jane" }
+    within("#completed_quizzes"){ expect(page).to have_content "sally" }
+    expect(page).not_to have_content "adam"
   end
 
   scenario "Grading by question" do
     visit course_assignments_path(course)
     click_link "Checkin Quiz (2 completed, 1 in progress)"
-    page.should have_content("Are you happy? (Automatically Graded)")
-    page.should have_content("What are you happy about? (2 pending grades)")
-    page.should have_content("Is class over? (Automatically Graded)")
+    expect(page).to have_content("Are you happy? (Automatically Graded)")
+    expect(page).to have_content("What are you happy about? (2 pending grades)")
+    expect(page).to have_content("Is class over? (Automatically Graded)")
     click_link "What are you happy about?"
-    page.should have_content("jane")
-    page.should have_content("sally")
-    page.should_not have_content("adam")
-    page.should_not have_content("susie")
+    expect(page).to have_content("jane")
+    expect(page).to have_content("sally")
+    expect(page).not_to have_content("adam")
+    expect(page).not_to have_content("susie")
     within_fieldset("jane"){ select "Correct" }
     click_button "Save Grades"
-    page.should have_content "Grades for 'What are you happy about?' have been updated."
-    page.should have_content("Are you happy? (Automatically Graded)")
-    page.should have_content("What are you happy about? (1 pending grades)")
-    page.should have_content("Is class over? (Automatically Graded)")
+    expect(page).to have_content "Grades for 'What are you happy about?' have been updated."
+    expect(page).to have_content("Are you happy? (Automatically Graded)")
+    expect(page).to have_content("What are you happy about? (1 pending grades)")
+    expect(page).to have_content("Is class over? (Automatically Graded)")
     click_link "What are you happy about?"
-    page.should have_content("jane")
-    page.should have_content("sally")
-    page.should_not have_content("adam")
-    page.should_not have_content("susie")
+    expect(page).to have_content("jane")
+    expect(page).to have_content("sally")
+    expect(page).not_to have_content("adam")
+    expect(page).not_to have_content("susie")
     within_fieldset("jane") do
-      find(:option, "Correct").should be_selected
+      expect(find(:option, "Correct")).to be_selected
     end
     within_fieldset("sally") do
-      find(:option, "").should be_selected
+      expect(find(:option, "")).to be_selected
       select "Incorrect"
     end
     click_button "Save Grades"
-    page.should have_content "Grades for 'What are you happy about?' have been updated."
-    page.should have_content "Are you happy? (Automatically Graded)"
-    page.should have_content "What are you happy about? (Graded)"
-    page.should have_content "Is class over? (Automatically Graded)"
+    expect(page).to have_content "Grades for 'What are you happy about?' have been updated."
+    expect(page).to have_content "Are you happy? (Automatically Graded)"
+    expect(page).to have_content "What are you happy about? (Graded)"
+    expect(page).to have_content "Is class over? (Automatically Graded)"
     click_link "What are you happy about?"
-    within_fieldset("jane"){ find(:option, "Correct").should be_selected }
-    within_fieldset("sally"){ find(:option, "Incorrect").should be_selected }
+    within_fieldset("jane"){ expect(find(:option, "Correct")).to be_selected }
+    within_fieldset("sally"){ expect(find(:option, "Incorrect")).to be_selected }
   end
 
   scenario "Finishing grading marks quiz submission as graded" do
@@ -81,34 +81,34 @@ feature "Instructor grades quizzes" do
     within_fieldset("jane"){ select "Correct" }
     # Note that I'm not grading Sally's quiz
     click_button "Save Grades"
-    page.should have_content "Grades for 'What are you happy about?' have been updated."
-    page.should have_content "Are you happy? (Automatically Graded)"
-    page.should have_content "What are you happy about? (1 pending grades)"
-    page.should have_content "Is class over? (Automatically Graded)"
-    QuizSubmission.where(user: jane, graded: true, grade: 66).count.should == 1
-    QuizSubmission.where(user: sally, graded: false).count.should == 1
+    expect(page).to have_content "Grades for 'What are you happy about?' have been updated."
+    expect(page).to have_content "Are you happy? (Automatically Graded)"
+    expect(page).to have_content "What are you happy about? (1 pending grades)"
+    expect(page).to have_content "Is class over? (Automatically Graded)"
+    expect(QuizSubmission.where(user: jane, graded: true, grade: 66).count).to eql 1
+    expect(QuizSubmission.where(user: sally, graded: false).count).to eql 1
     click_link "What are you happy about?"
-    within_fieldset("jane"){ find(:option, "Correct").should be_selected }
+    within_fieldset("jane"){ expect(find(:option, "Correct")).to be_selected }
     within_fieldset("sally"){ select "Incorrect" }
     click_button "Save Grades"
-    QuizSubmission.where(user: sally, graded: true, grade: 33).count.should == 1
+    expect(QuizSubmission.where(user: sally, graded: true, grade: 33).count).to eql 1
   end
 
   scenario "Updating question updates grade" do
-    QuizSubmission.where(user: jane, graded: false).count.should == 1
+    expect(QuizSubmission.where(user: jane, graded: false).count).to eql 1
     visit course_assignments_path(course)
     click_link "Checkin Quiz (2 completed, 1 in progress)"
     click_link "What are you happy about?"
     within_fieldset("jane"){ select "Correct" }
     click_button "Save Grades"
-    page.should have_content "Grades for 'What are you happy about?' have been updated."
-    QuizSubmission.where(user: jane, graded: true, grade: 66).count.should == 1
+    expect(page).to have_content "Grades for 'What are you happy about?' have been updated."
+    expect(QuizSubmission.where(user: jane, graded: true, grade: 66).count).to eql 1
     click_link "What are you happy about?"
     within_fieldset("jane") do
-      find(:option, "Correct").should be_selected
+      expect(find(:option, "Correct")).to be_selected
       select "Incorrect"
     end
     click_button "Save Grades"
-    QuizSubmission.where(user: jane, graded: true, grade: 33).count.should == 1
+    expect(QuizSubmission.where(user: jane, graded: true, grade: 33).count).to eql 1
   end
 end

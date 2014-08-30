@@ -11,20 +11,20 @@ feature "Student authentication" do
     sign_into_github_as "joe"
     visit root_path
     click_link "Sign In with Github"
-    page.should have_content "Successfully authenticated from Github account."
-    page.should have_content "Sign Out"
-    page.should_not have_content "Sign In"
+    expect(page).to have_content "Successfully authenticated from Github account."
+    expect(page).to have_content "Sign Out"
+    expect(page).not_to have_content "Sign In"
     click_link "Sign Out"
-    page.should_not have_content "Sign Out"
-    page.should have_content "Sign In with Github"
-    User.where(
+    expect(page).not_to have_content "Sign Out"
+    expect(page).to have_content "Sign In with Github"
+    expect(User.where(
       email: "joesmith@example.com",
       github_uid: "12345",
       github_username: "joe",
       name: "Joe Smith",
       github_access_token: ENV["GITHUB_ACCESS_TOKEN"],
-    ).count.should == 1
-    User.count.should == 1
+    ).count).to eql 1
+    expect(User.count).to eql 1
   end
 
   scenario "Student can log in and log out with github" do
@@ -35,43 +35,43 @@ feature "Student authentication" do
     sign_into_github_as "joe"
     visit root_path
     click_link "Sign In with Github"
-    page.should have_content "Successfully authenticated from Github account."
-    page.should have_content "Sign Out"
-    page.should_not have_content "Sign In"
+    expect(page).to have_content "Successfully authenticated from Github account."
+    expect(page).to have_content "Sign Out"
+    expect(page).not_to have_content "Sign In"
     click_link "Sign Out"
-    page.should_not have_content "Sign Out"
-    page.should have_content "Sign In with Github"
-    User.count.should == 1
+    expect(page).not_to have_content "Sign Out"
+    expect(page).to have_content "Sign In with Github"
+    expect(User.count).to eql 1
   end
 
   scenario "No more sign ups" do
     visit root_path
-    page.should_not have_content "Sign Up"
+    expect(page).not_to have_content "Sign Up"
   end
 
   scenario "Fix: revoked authorization breaks github auth" do
     sign_into_github_as "joe"
     visit root_path
     click_link "Sign In with Github"
-    User.where(
+    expect(User.where(
       email: "joesmith@example.com",
       github_uid: "12345",
       github_username: "joe",
       name: "Joe Smith",
       github_access_token: ENV["GITHUB_ACCESS_TOKEN"],
-    ).count.should == 1
+    ).count).to eql 1
     click_link "Sign Out"
 
     # This should update the user token:
     sign_into_github_as("joe", token: 8675301)
     click_link "Sign In with Github"
-    User.where(
+    expect(User.where(
       email: "joesmith@example.com",
       github_uid: "12345",
       github_username: "joe",
       name: "Joe Smith",
       github_access_token: "8675301",
-    ).count.should == 1
-    User.count.should == 1
+    ).count).to eql 1
+    expect(User.count).to eql 1
   end
 end
