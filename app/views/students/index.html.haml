@@ -1,0 +1,5 @@
+%ul#student_list
+  - students.each do |student|
+    %li
+      %img.profile_photo(src='#{student.photo}')
+      =link_to student.name, student_path(student)

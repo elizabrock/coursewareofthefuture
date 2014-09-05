@@ -45,6 +45,7 @@ Coursewareofthefuture::Application.routes.draw do
       post :studentify
     end
   end
+  resources :students, only: [:index, :show]
   get '/theme/css/:filename', to: redirect{ |params, req| "/assets/theme/#{params[:filename]}.#{params[:format]}" }
   get '/js/*filename', to: redirect{ |params, req| "/assets/theme/#{params[:filename]}.#{params[:format]}" }
 end
