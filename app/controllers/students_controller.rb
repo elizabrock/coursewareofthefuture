@@ -6,4 +6,9 @@ class StudentsController < ApplicationController
 
   def index
   end
+
+  def show
+    @student = User.find_by_id(params[:id])
+    @milestone_submissions = MilestoneSubmission.where("user_id = ?", @student)
+  end
 end

@@ -1,0 +1,10 @@
+%img.profile_photo(src='#{@student.photo}')
+%h1= @student.name
+%p= @student.phone
+%p= @student.email
+%h1 Completed Assignments
+%ul#assignment_list
+  - @milestone_submissions.each do |milestone_sub|
+    %li
+      %p= milestone_sub.milestone.title
+      %p= milestone_sub.milestone.instructions
