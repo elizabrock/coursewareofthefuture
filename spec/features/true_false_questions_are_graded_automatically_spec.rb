@@ -17,12 +17,12 @@ feature "True/False questions are graded automatically" do
     page.find(:xpath, "//div[contains(normalize-space(.), 'Is class over?')]/label[contains(text(), 'True')]/input").set(true)
     page.find(:xpath, "//div[contains(normalize-space(.), 'Is class in session?')]/label[contains(text(), 'False')]/input").set(true)
     click_button "Finish Quiz"
-    page.should have_content "Your quiz has been submitted for grading."
-    current_path.should == course_assignments_path(course)
-    page.should have_content "Baseline Knowledge Quiz (submitted for grading)"
-    QuestionAnswer.where(question: q1, answer: "true", score: 1).count.should == 1
-    QuestionAnswer.where(question: q2, answer: "Everything!", score: 0).count.should == 1
-    QuestionAnswer.where(question: q3, answer: "true", score: -1).count.should == 1
-    QuestionAnswer.where(question: q4, answer: "false", score: 1).count.should == 1
+    expect(page).to have_content "Your quiz has been submitted for grading."
+    expect(current_path).to eql course_assignments_path(course)
+    expect(page).to have_content "Baseline Knowledge Quiz (submitted for grading)"
+    expect(QuestionAnswer.where(question: q1, answer: "true", score: 1).count).to eql 1
+    expect(QuestionAnswer.where(question: q2, answer: "Everything!", score: 0).count).to eql 1
+    expect(QuestionAnswer.where(question: q3, answer: "true", score: -1).count).to eql 1
+    expect(QuestionAnswer.where(question: q4, answer: "false", score: 1).count).to eql 1
   end
 end

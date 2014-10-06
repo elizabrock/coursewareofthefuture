@@ -19,7 +19,7 @@ feature "Student submits milestone", vcr: true do
     click_link "Capstone"
     # This is not ideal, since it will change when Eliza has more public repos.
     # However, the effort required to set up a proper test user doesn't seem warranted yet.
-    page.should have_options_for("Assignment Repository", options: [
+    expect(page).to have_options_for("Assignment Repository", options: [
       "",
       "blueberry-cal",
       "coursewareofthefuture",
@@ -59,18 +59,18 @@ feature "Student submits milestone", vcr: true do
       "tr3w-conversion",
       "wedding"
     ])
-    page.should_not have_content "This milestone is hard"
+    expect(page).not_to have_content "This milestone is hard"
     select "software-development-curriculum", from: "Assignment Repository"
     within(milestone(1)){ click_button "Submit Milestone" }
-    page.should have_content "Milestone 1 has been submitted for grading"
-    within(milestone(1)){ page.should have_content "Status: Submitted for Grading" }
-    # page.should have_content "Assignment Repository: elizabrock/software-development-curriculum"
-    page.should have_content "This milestone is hard"
+    expect(page).to have_content "Milestone 1 has been submitted for grading"
+    within(milestone(1)){ expect(page).to have_content "Status: Submitted for Grading" }
+    # expect(page).to have_content "Assignment Repository: elizabrock/software-development-curriculum"
+    expect(page).to have_content "This milestone is hard"
     select "software-development-curriculum", from: "Assignment Repository"
     within(milestone("Milestone 2")){ click_button "Submit Milestone" }
-    page.should have_content "Milestone 2 has been submitted for grading"
-    within(milestone("Milestone 1")){ page.should have_content "Status: Submitted for Grading" }
-    within(milestone("Milestone 2")){ page.should have_content "Status: Submitted for Grading" }
+    expect(page).to have_content "Milestone 2 has been submitted for grading"
+    within(milestone("Milestone 1")){ expect(page).to have_content "Status: Submitted for Grading" }
+    within(milestone("Milestone 2")){ expect(page).to have_content "Status: Submitted for Grading" }
   end
 
   scenario "student has over 30 public repos" do
@@ -82,7 +82,7 @@ feature "Student submits milestone", vcr: true do
     click_link "Assignments"
     click_link "Capstone"
     repo_options = find_field("Assignment Repository").all("option")
-    repo_options.size.should == 49
+    expect(repo_options.size).to eql 49
   end
 
   scenario "Student has no public repos?" do
@@ -93,7 +93,7 @@ feature "Student submits milestone", vcr: true do
     visit root_path
     click_link "Assignments"
     click_link "Capstone"
-    page.should have_css(".error", text: "You must have public repos in order to submit milestones")
+    expect(page).to have_css(".error", text: "You must have public repos in order to submit milestones")
   end
 
   scenario "Resubmitting Milestone" do

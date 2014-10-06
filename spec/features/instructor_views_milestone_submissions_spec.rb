@@ -20,34 +20,34 @@ feature "Instructor view milestone submissions" do
   scenario "viewing assignments index, as instructor" do
     signin_as(:instructor, name: "Eliza", courses: [course])
     click_link "Assignments"
-    page.should have_content("Milestone 1 (2 completed, 3 incomplete, due 2/05)")
-    page.should have_content("Milestone 2 (1 completed, 4 incomplete, due 2/15)")
+    expect(page).to have_content("Milestone 1 (2 completed, 3 incomplete, due 2/05)")
+    expect(page).to have_content("Milestone 2 (1 completed, 4 incomplete, due 2/15)")
   end
 
   scenario "viewing assignments index, as student" do
     signin_as(:student, courses: [course])
     click_link "Assignments"
-    page.should_not have_content("Milestone 1")
-    page.should_not have_content("Milestone 2")
+    expect(page).not_to have_content("Milestone 1")
+    expect(page).not_to have_content("Milestone 2")
   end
 
   scenario "viewing a milestone1's submissions" do
     signin_as(:instructor, name: "Eliza", courses: [course])
     click_link "Assignments"
     click_link "Milestone 1"
-    page.should have_link("susie", href: "https://github.com/susie/m1")
-    page.should have_link("jane", href: "https://github.com/jane/m1")
-    page.should_not have_link("susie", href: "https://github.com/susie/m2")
-    page.should have_list(["Eliza", "joe", "sally"])
+    expect(page).to have_link("susie", href: "https://github.com/susie/m1")
+    expect(page).to have_link("jane", href: "https://github.com/jane/m1")
+    expect(page).not_to have_link("susie", href: "https://github.com/susie/m2")
+    expect(page).to have_list(["Eliza", "joe", "sally"])
   end
 
   scenario "viewing a milestone2's submissions" do
     signin_as(:instructor, name: "Eliza", courses: [course])
     click_link "Assignments"
     click_link "Milestone 2"
-    page.should have_link("susie", href: "https://github.com/susie/m2")
-    page.should_not have_link("susie", href: "https://github.com/susie/m1")
-    page.should_not have_link("jane", href: "https://github.com/jane/m1")
-    page.should have_list(["Eliza", "jane", "joe", "sally"])
+    expect(page).to have_link("susie", href: "https://github.com/susie/m2")
+    expect(page).not_to have_link("susie", href: "https://github.com/susie/m1")
+    expect(page).not_to have_link("jane", href: "https://github.com/jane/m1")
+    expect(page).to have_list(["Eliza", "jane", "joe", "sally"])
   end
 end

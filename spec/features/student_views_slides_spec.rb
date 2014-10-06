@@ -11,7 +11,7 @@ feature "Student views slides" do
     click_link "Materials"
     click_link "Logic"
     click_link "View As Slides"
-    current_path.should == course_material_slides_path(course, covered_material.fullpath)
+    expect(current_path).to eql course_material_slides_path(course, covered_material.fullpath)
   end
 
   scenario "Instructor is on materials page and views slides", vcr: true do
@@ -20,7 +20,7 @@ feature "Student views slides" do
     click_link "Materials"
     click_link "Logic"
     click_link "View As Slides"
-    current_path.should == course_material_slides_path(course, covered_material.fullpath)
+    expect(current_path).to eql course_material_slides_path(course, covered_material.fullpath)
   end
 
   scenario "Instructor is on materials page and views slides for material that wasn't covered", vcr: true do
@@ -29,6 +29,6 @@ feature "Student views slides" do
     click_link "Materials"
     click_link "Truth Tables"
     click_link "View As Slides"
-    current_path.should == course_material_slides_path(course, "computer-science/logic/truth-tables.md")
+    expect(current_path).to eql course_material_slides_path(course, "computer-science/logic/truth-tables.md")
   end
 end

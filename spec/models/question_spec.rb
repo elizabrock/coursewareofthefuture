@@ -1,21 +1,21 @@
 require 'rails_helper'
 
 describe Question do
-  it { should belong_to :quiz }
-  it { should have_many :question_answers }
-  it { should validate_presence_of :quiz }
-  it { should validate_presence_of :question }
-  it { should validate_presence_of :question_type }
-  it { should validate_presence_of :correct_answer }
-  it { should ensure_inclusion_of(:question_type).in_array(%w{boolean free_text}) }
+  it { is_expected.to belong_to :quiz }
+  it { is_expected.to have_many :question_answers }
+  it { is_expected.to validate_presence_of :quiz }
+  it { is_expected.to validate_presence_of :question }
+  it { is_expected.to validate_presence_of :question_type }
+  it { is_expected.to validate_presence_of :correct_answer }
+  it { is_expected.to ensure_inclusion_of(:question_type).in_array(%w{boolean free_text}) }
   context "correct answer validation" do
     context "for a boolean question" do
       let(:question){ Question.new(question_type: "boolean") }
-      it { question.should ensure_inclusion_of(:correct_answer).in_array(["true", "false", "True", "False"]) }
+      it { expect(question).to ensure_inclusion_of(:correct_answer).in_array(["true", "false", "True", "False"]) }
     end
     context "for a free text question" do
       let(:question){ Question.new(question_type: "free_text") }
-      it { question.should_not ensure_inclusion_of(:correct_answer).in_array(["true", "false"]) }
+      it { expect(question).not_to ensure_inclusion_of(:correct_answer).in_array(["true", "false"]) }
     end
   end
 end

@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 describe QuestionAnswer do
-  it { should belong_to :question }
-  it { should belong_to :quiz_submission }
-  it { should validate_presence_of :question }
-  it { should validate_presence_of :quiz_submission }
+  it { is_expected.to belong_to :question }
+  it { is_expected.to belong_to :quiz_submission }
+  it { is_expected.to validate_presence_of :question }
+  it { is_expected.to validate_presence_of :quiz_submission }
   describe "when quiz is submitted" do
     let(:quiz){ Fabricate(:quiz) }
     let(:true_question_correct){ Fabricate(:boolean_question, correct_answer: "true", quiz: quiz) }
@@ -30,21 +30,21 @@ describe QuestionAnswer do
     end
     context "boolean answers" do
       it "should grade correct true answers" do
-        quiz_submission.question_answers.for(true_question_correct).first.score.should == 1
+        expect(quiz_submission.question_answers.for(true_question_correct).first.score).to eql 1
       end
       it "should grade correct false answers" do
-        quiz_submission.question_answers.for(false_question_correct).first.score.should == 1
+        expect(quiz_submission.question_answers.for(false_question_correct).first.score).to eql 1
       end
       it "should grade incorrect true answers" do
-        quiz_submission.question_answers.for(true_question_incorrect).first.score.should == -1
+        expect(quiz_submission.question_answers.for(true_question_incorrect).first.score).to eql -1
       end
       it "should grade incorrect false answers" do
-        quiz_submission.question_answers.for(false_question_incorrect).first.score.should == -1
+        expect(quiz_submission.question_answers.for(false_question_incorrect).first.score).to eql -1
       end
     end
     context "free text answers" do
       it "should not grade itself" do
-        quiz_submission.question_answers.for(free_text_question).first.score.should == 0
+        expect(quiz_submission.question_answers.for(free_text_question).first.score).to eql 0
       end
     end
   end

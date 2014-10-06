@@ -11,16 +11,16 @@ feature "Instructor creates quiz with corequisites", vcr: true do
     fill_in "Title", with: "Baseline Knowledge Quiz"
     click_button "Create Quiz"
 
-    page.should have_checkboxes(material_titles)
+    expect(page).to have_checkboxes(material_titles)
     check "Logic"
     check "Garbage Collection"
     click_button "Save Changes"
 
     within("fieldset.corequisites") do
-      page.should have_checkboxes(material_titles)
-      page.should have_checked_field("Logic")
-      page.should have_checked_field("Garbage Collection")
-      page.should have_unchecked_field("Truth Tables")
+      expect(page).to have_checkboxes(material_titles)
+      expect(page).to have_checked_field("Logic")
+      expect(page).to have_checked_field("Garbage Collection")
+      expect(page).to have_unchecked_field("Truth Tables")
     end
 
     uncheck "Logic"
@@ -33,14 +33,14 @@ feature "Instructor creates quiz with corequisites", vcr: true do
     click_button "Save Changes"
     check "Published"
     click_button "Save Changes"
-    page.should have_content "Your quiz has been published"
+    expect(page).to have_content "Your quiz has been published"
 
     click_link "Baseline Knowledge Quiz"
     within(".corequisites") do
-      page.should_not have_content("Logic")
-      page.should have_content("Garbage Collection")
-      page.should have_content("Truth Tables")
-      page.should_not have_content("Basic Control Structures")
+      expect(page).not_to have_content("Logic")
+      expect(page).to have_content("Garbage Collection")
+      expect(page).to have_content("Truth Tables")
+      expect(page).not_to have_content("Basic Control Structures")
     end
   end
 end

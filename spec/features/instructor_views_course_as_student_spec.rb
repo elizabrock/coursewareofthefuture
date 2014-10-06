@@ -8,16 +8,16 @@ feature "Instructor views course as student", vcr: true do
     signin_as :instructor, courses: [course]
     visit course_path(course)
     click_link "Materials"
-    hash_of("#all_materials").should == materials_list
+    expect(hash_of("#all_materials")).to eql materials_list
     click_link "View As Student"
-    page.should have_content "Student View"
-    hash_of("#all_materials").should == materials_list
+    expect(page).to have_content "Student View"
+    expect(hash_of("#all_materials")).to eql materials_list
     click_link "Assignments"
-    page.should have_content "Student View"
-    page.should_not have_content "New Assignment"
+    expect(page).to have_content "Student View"
+    expect(page).not_to have_content "New Assignment"
     click_link "Materials"
-    page.should have_content "Student View"
-    hash_of("#all_materials").should == materials_list
+    expect(page).to have_content "Student View"
+    expect(hash_of("#all_materials")).to eql materials_list
   end
 
   scenario "Exiting student view" do
@@ -25,17 +25,17 @@ feature "Instructor views course as student", vcr: true do
     visit course_path(course)
     click_link "Materials"
     click_link "View As Student"
-    page.should have_content "Student View"
-    hash_of("#all_materials").should == materials_list
+    expect(page).to have_content "Student View"
+    expect(hash_of("#all_materials")).to eql materials_list
     click_link "View As Instructor"
-    hash_of("#all_materials").should == materials_list
+    expect(hash_of("#all_materials")).to eql materials_list
   end
 
   scenario "Impersonation isn't visible to students" do
     signin_as :student, courses: [course]
     visit course_path(course)
     click_link "Materials"
-    page.should_not have_content "View As Instructor"
-    page.should_not have_content "View As Student"
+    expect(page).not_to have_content "View As Instructor"
+    expect(page).not_to have_content "View As Student"
   end
 end

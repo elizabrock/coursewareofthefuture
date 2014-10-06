@@ -22,25 +22,25 @@ describe MaterialsHelper do
 
   describe "#edit_material_url" do
     it "should return github edit url for markdown files" do
-      edit_material_url(markdown_material).should == "https://github.com/elizabrock/inquizator-test-repo/edit/master/computer-science/logic/logic.md"
+      expect(edit_material_url(markdown_material)).to eql "https://github.com/elizabrock/inquizator-test-repo/edit/master/computer-science/logic/logic.md"
     end
     it "should be nil for directories" do
-      edit_material_url(subdirectory_material).should be_nil
+      expect(edit_material_url(subdirectory_material)).to be_nil
     end
     it "should be nil for non-markdown files" do
-      edit_material_url(image_material).should be_nil
+      expect(edit_material_url(image_material)).to be_nil
     end
   end
 
   describe "#pretty_path_for" do
     it "should return the a humanized name for a file's directory" do
-      pretty_path_for(markdown_material).should == "Computer Science > Logic > "
+      expect(pretty_path_for(markdown_material)).to eql "Computer Science > Logic > "
     end
     it "should return the a humanized name for a directory's parent directory" do
-      pretty_path_for(subdirectory_material).should == "Computer Science > "
+      expect(pretty_path_for(subdirectory_material)).to eql "Computer Science > "
     end
     it "should return the a humanized name for an image's directory" do
-      pretty_path_for(image_material).should == "Computer Science > Logic > "
+      expect(pretty_path_for(image_material)).to eql "Computer Science > Logic > "
     end
   end
 end

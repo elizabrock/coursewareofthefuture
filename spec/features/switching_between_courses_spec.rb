@@ -30,41 +30,41 @@ feature "Switching between courses", vcr: true do
 
     signin_as(:instructor)
     visit root_path
-    page.should have_content "Which course are you teaching today?"
+    expect(page).to have_content "Which course are you teaching today?"
 
-    page.should have_list(["Front-End Development", "Software Development Fundamentals", "Future Course"])
-    page.should_not have_content "Past Course"
+    expect(page).to have_list(["Front-End Development", "Software Development Fundamentals", "Future Course"])
+    expect(page).not_to have_content "Past Course"
 
     click_link "Software Development Fundamentals"
-    page.should have_content "Grinchmas"
-    page.should have_content "Airing of Grievances"
+    expect(page).to have_content "Grinchmas"
+    expect(page).to have_content "Airing of Grievances"
     click_link "Peers"
-    page.should have_list ["Sally", "Susie"]
-    page.should_not have_content("Jim")
-    page.should_not have_content("Joe")
+    expect(page).to have_list ["Sally", "Susie"]
+    expect(page).not_to have_content("Jim")
+    expect(page).not_to have_content("Joe")
     click_link "Materials"
-    page.should have_content "Computer Science"
-    page.should_not have_content "Unit 1"
+    expect(page).to have_content "Computer Science"
+    expect(page).not_to have_content "Unit 1"
     click_link "Course Calendar"
-    page.should have_content "Grinchmas"
-    page.should have_content "Airing of Grievances"
-    page.should_not have_content "Day Off"
+    expect(page).to have_content "Grinchmas"
+    expect(page).to have_content "Airing of Grievances"
+    expect(page).not_to have_content "Day Off"
 
     click_link "Front-End Development"
-    page.should have_content "Day Off"
-    page.should have_content "Not a Day Off"
-    page.should_not have_content "Grinchmas"
+    expect(page).to have_content "Day Off"
+    expect(page).to have_content "Not a Day Off"
+    expect(page).not_to have_content "Grinchmas"
     click_link "Peers"
-    page.should have_content "Jim"
-    page.should have_content "Joe"
-    page.should_not have_content "Susie"
-    page.should_not have_content "Sally"
+    expect(page).to have_content "Jim"
+    expect(page).to have_content "Joe"
+    expect(page).not_to have_content "Susie"
+    expect(page).not_to have_content "Sally"
     click_link "Materials"
-    page.should have_content "Unit1"
-    page.should_not have_content "Computer Science"
+    expect(page).to have_content "Unit1"
+    expect(page).not_to have_content "Computer Science"
     click_link "Course Calendar"
-    page.should have_content "Day Off"
-    page.should have_content "Not a Day Off"
-    page.should_not have_content "Grinchmas"
+    expect(page).to have_content "Day Off"
+    expect(page).to have_content "Not a Day Off"
+    expect(page).not_to have_content "Grinchmas"
   end
 end

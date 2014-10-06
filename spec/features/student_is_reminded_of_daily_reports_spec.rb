@@ -15,11 +15,11 @@ feature "Student is reminded of daily reports" do
   scenario "Reminder email is sent on day-of" do
     Timecop.travel(Time.new(2013, 03, 11, 8, 00)) do
       Cron.run!
-      unread_emails_for(student.email).size.should == 1
+      expect(unread_emails_for(student.email).size).to eql 1
       open_email(student.email)
-      current_email.should have_subject "Reminder: Enter Your Self-Report"
+      expect(current_email).to have_subject "Reminder: Enter Your Self-Report"
       visit_in_email "Head to the Course Calendar"
-      current_path.should == course_calendar_path(cohort4)
+      expect(current_path).to eql course_calendar_path(cohort4)
     end
   end
 
@@ -27,10 +27,10 @@ feature "Student is reminded of daily reports" do
     student.become_observer!
     Timecop.travel(Time.new(2013, 03, 11, 8, 00)) do
       Cron.run!
-      unread_emails_for(student.email).size.should == 0
+      expect(unread_emails_for(student.email).size).to eql 0
       student.update_attribute(:observer, false)
       Cron.run!
-      unread_emails_for(student.email).size.should == 1
+      expect(unread_emails_for(student.email).size).to eql 1
     end
   end
 
@@ -41,7 +41,7 @@ feature "Student is reminded of daily reports" do
                 attended: "false",
                 hours_coding: 5, hours_slept: 9, hours_learning: 0, user: student)
       Cron.run!
-      unread_emails_for(student.email).size.should == 0
+      expect(unread_emails_for(student.email).size).to eql 0
     end
   end
 
@@ -56,11 +56,11 @@ feature "Student is reminded of daily reports" do
                 attended: true,
                 hours_coding: 2, hours_slept: 7.5, hours_learning: 4, user: student)
       Cron.run!
-      unread_emails_for(student.email).size.should == 1
+      expect(unread_emails_for(student.email).size).to eql 1
       open_email(student.email)
-      current_email.should have_subject "Reminder: Enter Your Self-Report"
+      expect(current_email).to have_subject "Reminder: Enter Your Self-Report"
       visit_in_email "Head to the Course Calendar"
-      current_path.should == course_calendar_path(cohort4)
+      expect(current_path).to eql course_calendar_path(cohort4)
     end
   end
 end

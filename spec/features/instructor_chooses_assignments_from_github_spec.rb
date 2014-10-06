@@ -9,26 +9,26 @@ feature "Instructor chooses assignments from github", vcr: true, js: true do
     Fabricate(:assignment, title: "Capstone", course: course)
 
     instructor = Fabricate(:instructor, courses: [course])
-    instructor.photo_confirmed?.should be_truthy
+    expect(instructor.photo_confirmed?).to be_truthy
 
     instructor2 = signin_as(instructor)
-    instructor2.id.should == instructor.id
-    instructor2.photo_confirmed?.should be_truthy
+    expect(instructor2.id).to eql instructor.id
+    expect(instructor2.photo_confirmed?).to be_truthy
 
-    Course.count.should == 1
+    expect(Course.count).to eql 1
 
     visit root_path
     visit course_path(course)
     click_link "Assignments"
     click_link "New Assignment"
-    page.should have_options_for("Assignment",
+    expect(page).to have_options_for("Assignment",
                 options: ["Cheers", "Ruby Koans", "Some Other Exercise", "Unfinished Exercise"])
     select "Ruby Koans", from: "Assignment"
     click_button "Set Milestones"
-    page.should have_content("publishing makes an assignment visible to students")
-    page.should have_content("Strings")
-    page.should have_content("Objects")
-    page.should have_content("Triangles")
+    expect(page).to have_content("publishing makes an assignment visible to students")
+    expect(page).to have_content("Strings")
+    expect(page).to have_content("Objects")
+    expect(page).to have_content("Triangles")
     within_fieldset("Strings Milestone") do
       fill_in "Deadline", with: "2013/03/24"
     end
@@ -39,21 +39,21 @@ feature "Instructor chooses assignments from github", vcr: true, js: true do
       fill_in "Deadline", with: "2013/05/28"
     end
     click_button "Save Assignment"
-    page.should have_content "Your assignment has been updated."
+    expect(page).to have_content "Your assignment has been updated."
     click_link "Assignments"
-    page.should have_list ["Ruby Koans", "Capstone"]
+    expect(page).to have_list ["Ruby Koans", "Capstone"]
     click_link "Ruby Koans"
-    page.should have_content("Strings (due 3/24)")
-    page.should have_content("Objects (due 4/28)")
-    page.should have_content("Triangles (due 5/28)")
+    expect(page).to have_content("Strings (due 3/24)")
+    expect(page).to have_content("Objects (due 4/28)")
+    expect(page).to have_content("Triangles (due 5/28)")
     within(milestone("Strings")) do
-      page.should have_content "Strings are basically arrays."
+      expect(page).to have_content "Strings are basically arrays."
     end
     within(milestone("Objects")) do
-      page.should have_content "Objects are bloby."
+      expect(page).to have_content "Objects are bloby."
     end
     within(milestone("Triangles")) do
-      page.should have_content "Triangles are shapes."
+      expect(page).to have_content "Triangles are shapes."
     end
   end
 
@@ -68,10 +68,10 @@ feature "Instructor chooses assignments from github", vcr: true, js: true do
     click_link "New Assignment"
     select "Ruby Koans", from: "Assignment"
     click_button "Set Milestones"
-    page.should have_content("publishing makes an assignment visible to students")
-    page.should have_content("Strings")
-    page.should have_content("Objects")
-    page.should have_content("Triangles")
+    expect(page).to have_content("publishing makes an assignment visible to students")
+    expect(page).to have_content("Strings")
+    expect(page).to have_content("Objects")
+    expect(page).to have_content("Triangles")
     within_fieldset("Strings Milestone") do
       fill_in "Deadline", with: "2013/03/24"
     end
@@ -82,41 +82,41 @@ feature "Instructor chooses assignments from github", vcr: true, js: true do
       fill_in "Deadline", with: "2014/05/28"
     end
     click_button "Save Assignment"
-    page.should have_content "Your assignment could not be updated."
+    expect(page).to have_content "Your assignment could not be updated."
     within_fieldset("Triangles Milestone") do
-      page.should have_error_message("Must be in the course timeframe", on: "Deadline")
-      find_field("Deadline").value.should =~ /#{"2014/05/28"}/
+      expect(page).to have_error_message("Must be in the course timeframe", on: "Deadline")
+      expect(find_field("Deadline").value).to match /#{"2014/05/28"}/
       fill_in "Deadline", with: "2014/02/03"
     end
     within_fieldset("Strings Milestone") do
-      page.should have_error_message("Must be in the course timeframe", on: "Deadline")
-      find_field("Deadline").value.should =~ /#{"2013/03/24"}/
+      expect(page).to have_error_message("Must be in the course timeframe", on: "Deadline")
+      expect(find_field("Deadline").value).to match /#{"2013/03/24"}/
       fill_in "Deadline", with: "2014/02/01"
     end
     within_fieldset("Objects Milestone") do
-      page.should_not have_content("Must be set")
-      find_field("Deadline").value.should == ""
+      expect(page).not_to have_content("Must be set")
+      expect(find_field("Deadline").value).to eql ""
     end
     click_button "Save Assignment"
-    page.should have_content "Your assignment has been updated."
+    expect(page).to have_content "Your assignment has been updated."
     check "Published"
     click_button "Save Assignment"
-    page.should have_content "Your assignment could not be published."
+    expect(page).to have_content "Your assignment could not be published."
     within_fieldset("Objects Milestone") do
-      page.should have_error_message("can't be blank", on: "Deadline")
+      expect(page).to have_error_message("can't be blank", on: "Deadline")
       fill_in "Deadline", with: "2014/02/02"
     end
     within_fieldset("Triangles Milestone") do
-      find_field("Deadline").value.should =~ /#{"2014/02/03"}/
+      expect(find_field("Deadline").value).to match /#{"2014/02/03"}/
     end
     within_fieldset("Strings Milestone") do
-      find_field("Deadline").value.should =~ /#{"2014/02/01"}/
+      expect(find_field("Deadline").value).to match /#{"2014/02/01"}/
     end
     click_button "Save Assignment"
-    page.should have_content "Your assignment has been published."
-    page.should have_content("Strings (due 2/01)")
-    page.should have_content("Objects (due 2/02)")
-    page.should have_content("Triangles (due 2/03)")
+    expect(page).to have_content "Your assignment has been published."
+    expect(page).to have_content("Strings (due 2/01)")
+    expect(page).to have_content("Objects (due 2/02)")
+    expect(page).to have_content("Triangles (due 2/03)")
   end
 
   scenario "Sad path: Exercise that's missing it's innards" do
@@ -124,10 +124,10 @@ feature "Instructor chooses assignments from github", vcr: true, js: true do
     signin_as :instructor, courses: [course]
     click_link "Assignments"
     click_link "New Assignment"
-    page.should have_options_for("Assignment",
+    expect(page).to have_options_for("Assignment",
                 options: ["Cheers", "Ruby Koans", "Some Other Exercise", "Unfinished Exercise"])
     select "Unfinished Exercise", from: "Assignment"
     click_button "Set Milestones"
-    page.should have_content "Could not retrieve instructions.md in exercises/04-unfinished-exercise. Please confirm that the instructions.md is ready and then try again."
+    expect(page).to have_content "Could not retrieve instructions.md in exercises/04-unfinished-exercise. Please confirm that the instructions.md is ready and then try again."
   end
 end

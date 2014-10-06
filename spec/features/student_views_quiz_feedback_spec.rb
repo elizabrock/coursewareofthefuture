@@ -27,13 +27,13 @@ feature "Student views quiz feedback" do
                                                 {question: "What are you happy about?", answer: "The food!", score: 1 },
                                                 {question: "Is class over?", answer: "false", score: 1 } ])
     click_link "Assignments"
-    page.should have_content "Checkin (66%)"
+    expect(page).to have_content "Checkin (66%)"
     click_link "Checkin (66%)"
-    page.should have_content "Checkin (66%)"
-    page.should have_list ["Are you happy?", "What are you happy about?", "Is class over?"]
-    page.should have_list ["Your Answer: False", "Your Answer: The food!", "Your Answer: False"]
-    page.should have_list ["Correct Answer: True", "Correct Answer: There is no correct answer.", "Correct Answer: False"]
-    page.should have_list ["Incorrect", "Correct", "Correct"]
+    expect(page).to have_content "Checkin (66%)"
+    expect(page).to have_list ["Are you happy?", "What are you happy about?", "Is class over?"]
+    expect(page).to have_list ["Your Answer: False", "Your Answer: The food!", "Your Answer: False"]
+    expect(page).to have_list ["Correct Answer: True", "Correct Answer: There is no correct answer.", "Correct Answer: False"]
+    expect(page).to have_list ["Incorrect", "Correct", "Correct"]
   end
 
   scenario "Incompletely graded quizzes show no feedback" do
@@ -43,13 +43,13 @@ feature "Student views quiz feedback" do
                                                 {question: "What are you happy about?", answer: "The food!", score: 0 },
                                                 {question: "Is class over?", answer: "false", score: 1 } ])
     click_link "Assignments"
-    page.should have_content "Checkin (submitted for grading)"
+    expect(page).to have_content "Checkin (submitted for grading)"
     click_link "Checkin (submitted for grading)"
-    page.should have_content "Checkin (Pending)"
-    page.should have_list ["Are you happy?", "What are you happy about?", "Is class over?"]
-    page.should have_list ["Your Answer: False", "Your Answer: The food!", "Your Answer: False"]
-    page.should_not have_content "Correct Answer"
-    page.should_not have_content "Incorrect"
-    page.should_not have_content "Correct"
+    expect(page).to have_content "Checkin (Pending)"
+    expect(page).to have_list ["Are you happy?", "What are you happy about?", "Is class over?"]
+    expect(page).to have_list ["Your Answer: False", "Your Answer: The food!", "Your Answer: False"]
+    expect(page).not_to have_content "Correct Answer"
+    expect(page).not_to have_content "Incorrect"
+    expect(page).not_to have_content "Correct"
   end
 end
