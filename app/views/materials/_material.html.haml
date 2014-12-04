@@ -15,16 +15,7 @@
         .read-status.label.radius.alert.fi-asterisk new&nbsp;
   %td.data
     - if material.leaf? and material.markdown?
-
       - covered_material ||= CoveredMaterial.new(material_fullpath: material.fullpath, covered_on: Time.zone.now)
-      - status_class = covered_material.new_record? ? "secondary" : "covered_on"
-      - label_copy = covered_material.new_record? ? "Upcoming" : "Covered #{covered_material.covered_on}"
-
-      .label.radius{ class: status_class}
-        = label_copy
-        - if can?(:manage, CoveredMaterial)
-          %a.edit-date-covered.fi-clock{ href: "#", data: { reveal: { id: "reveal#{material.local_id}" } } }
-          .reveal-modal{ id: "reveal#{material.local_id}", data: { reveal: "" } }
-            = render partial: 'covered_materials/form', locals: { covered_material: covered_material }
+      = render covered_material, locals: { material: material }
 
 = render partial: "materials/material", collection: material.children, locals: { level: level+1 }

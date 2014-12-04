@@ -7,6 +7,8 @@
       %li= link_to "Edit on Github", edit_material_url(material), class: "button secondary fi-page-edit"
     %li= link_to "View As Slides", course_material_slides_path(current_course, material), class: "button secondary fi-monitor"
 
+  = render covered_material, locals: { material: material }
+
   - if read_materials_fullpaths.include?(material.fullpath)
     .label.radius.fi-check.read-status Read
   - else
