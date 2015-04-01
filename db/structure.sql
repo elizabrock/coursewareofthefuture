@@ -504,9 +504,6 @@ CREATE TABLE users (
     instructor boolean,
     photo_confirmed boolean DEFAULT false,
     photo character varying(255),
-    forem_admin boolean DEFAULT false,
-    forem_state character varying(255) DEFAULT 'pending_review'::character varying,
-    forem_auto_subscribe boolean DEFAULT false,
     observer boolean
 );
 
@@ -832,66 +829,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140417184051');
 
 INSERT INTO schema_migrations (version) VALUES ('20140423123810');
 
-INSERT INTO schema_migrations (version) VALUES ('20140605150044');
-
-INSERT INTO schema_migrations (version) VALUES ('20140605150045');
-
-INSERT INTO schema_migrations (version) VALUES ('20140605150046');
-
-INSERT INTO schema_migrations (version) VALUES ('20140605150047');
-
-INSERT INTO schema_migrations (version) VALUES ('20140605150048');
-
-INSERT INTO schema_migrations (version) VALUES ('20140605150049');
-
-INSERT INTO schema_migrations (version) VALUES ('20140605150050');
-
-INSERT INTO schema_migrations (version) VALUES ('20140605150051');
-
-INSERT INTO schema_migrations (version) VALUES ('20140605150052');
-
-INSERT INTO schema_migrations (version) VALUES ('20140605150053');
-
-INSERT INTO schema_migrations (version) VALUES ('20140605150054');
-
-INSERT INTO schema_migrations (version) VALUES ('20140605150055');
-
-INSERT INTO schema_migrations (version) VALUES ('20140605150056');
-
-INSERT INTO schema_migrations (version) VALUES ('20140605150057');
-
-INSERT INTO schema_migrations (version) VALUES ('20140605150058');
-
-INSERT INTO schema_migrations (version) VALUES ('20140605150059');
-
-INSERT INTO schema_migrations (version) VALUES ('20140605150060');
-
-INSERT INTO schema_migrations (version) VALUES ('20140605150061');
-
-INSERT INTO schema_migrations (version) VALUES ('20140605150062');
-
-INSERT INTO schema_migrations (version) VALUES ('20140605150063');
-
-INSERT INTO schema_migrations (version) VALUES ('20140605150064');
-
-INSERT INTO schema_migrations (version) VALUES ('20140605150065');
-
-INSERT INTO schema_migrations (version) VALUES ('20140605150066');
-
-INSERT INTO schema_migrations (version) VALUES ('20140605150067');
-
-INSERT INTO schema_migrations (version) VALUES ('20140605150068');
-
-INSERT INTO schema_migrations (version) VALUES ('20140605150069');
-
-INSERT INTO schema_migrations (version) VALUES ('20140605150070');
-
-INSERT INTO schema_migrations (version) VALUES ('20140605150071');
-
-INSERT INTO schema_migrations (version) VALUES ('20140605150072');
-
-INSERT INTO schema_migrations (version) VALUES ('20140605150073');
-
 INSERT INTO schema_migrations (version) VALUES ('20140607233822');
 
 INSERT INTO schema_migrations (version) VALUES ('20140609151348');
@@ -911,8 +848,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140702215950');
 INSERT INTO schema_migrations (version) VALUES ('20140703184009');
 
 INSERT INTO schema_migrations (version) VALUES ('20140703184558');
-
-INSERT INTO schema_migrations (version) VALUES ('20140705192116');
 
 INSERT INTO schema_migrations (version) VALUES ('20140802164604');
 
