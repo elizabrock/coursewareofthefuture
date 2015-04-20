@@ -15,7 +15,7 @@
       %h3 Milestone Submissions:
       %ol
         - milestone_submissions.each do |milestone_submission|
-          %li= link_to milestone_submission.user.name, repository_url(milestone_submission.repository)
+          %li= link_to milestone_submission.user.name, milestone_submission.repository_url
 
   .medium-6.columns
     #missing_submissions.panel
