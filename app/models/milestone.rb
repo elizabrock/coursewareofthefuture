@@ -11,6 +11,7 @@ class Milestone < ActiveRecord::Base
   before_create :set_default_corequisite_fullpaths
 
   def corequisites
+    return [] unless corequisite_fullpaths.present?
     corequisite_fullpaths.find_all{|fp| !fp.blank? }.map{ |fp| Corequisite.new(fp) }
   end
 

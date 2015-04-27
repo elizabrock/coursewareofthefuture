@@ -13,6 +13,7 @@ class Quiz < ActiveRecord::Base
   scope :unpublished, ->{ where("published is null or published = false") }
 
   def corequisites
+    return [] unless corequisite_fullpaths.present?
     corequisite_fullpaths.map{ |fp| Corequisite.new(fp) }
   end
 
