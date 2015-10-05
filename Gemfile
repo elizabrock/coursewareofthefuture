@@ -11,7 +11,7 @@ gem 'carrierwave'
 # Coffeescript
 gem 'coffee-rails', '~> 4.0'
 # For CSS3 sass mixins:
-gem 'compass-rails'
+gem "compass-rails", git: 'https://github.com/robkilby/compass-rails', branch: 'sprockets-3'
 # Lets rails use d3.js visualization
 gem 'd3-rails'
 # Magic Sauce.  We will get to this.
@@ -46,7 +46,7 @@ gem 'rails', '~> 4.1'
 # Markdown gem (works with haml's :markdown tag)
 gem 'redcarpet'
 # Sassy
-gem 'sass-rails', '~> 4.0'
+gem 'sass-rails'
 # Improves on Rails form_for:
 gem 'simple_form'
 # Used for rendering materials as slide decks:
