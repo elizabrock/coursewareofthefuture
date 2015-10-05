@@ -2,7 +2,7 @@ class SelfReport < ActiveRecord::Base
   belongs_to :user, inverse_of: :self_reports
 
   validates_presence_of :date
-  validates_uniqueness_of :date, scope: :user
+  validates_uniqueness_of :date, scope: :user_id
   validates_presence_of :hours_coding
   validates_presence_of :hours_learning
   validates_presence_of :hours_slept
