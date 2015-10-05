@@ -21,20 +21,39 @@ feature "Student submits milestone", vcr: true do
     # However, the effort required to set up a proper test user doesn't seem warranted yet.
     page.should have_options_for("Assignment Repository", options: [
       "",
+      "attendance_tracker",
       "blueberry-cal",
+      "calculator",
+      "cheersjs",
+      "cheers_csharp",
+      "cheers_take2",
+      "cheers_take3",
+      "chess",
+      "cohort_7_game_of_life",
       "coursewareofthefuture",
       "coveralls-ruby",
+      "CSharpSinglyLinkedLists",
       "deadsets",
+      "elizabrock.github.io",
       "fabrication",
+      "front-end-development-curriculum",
       "FuturePerfect",
+      "GitPushDemo",
+      "greenthumb",
+      "huckleberry_cal",
       "inquizator-test-repo",
       "Intro-to-Rails-3-Presentation",
       "LaTeX-Resume",
       "license-to-kill",
       "linked_list_cohort3",
       "linked_list_cohort_blueberry",
+      "linked_list_cohort_huckleberry",
       "linked_list_cohort_tangerine",
+      "luketucker28.github.io",
+      "mathgician",
+      "median",
       "monologue",
+      "MvcMovie",
       "NSS-basic-rails-blog",
       "nss-cal",
       "nss-capstone-2-example",
@@ -49,15 +68,26 @@ feature "Student submits milestone", vcr: true do
       "NSS-Test-Repo",
       "presentation_nashville_hack_day",
       "project_management_export_to_latex",
+      "SavingsMultiplied",
       "SavingsMultipliedRedux",
+      "SharpShapes",
       "slide-em-up",
       "software-development-curriculum",
       "software-development-curriculum-mark-two",
       "squmblr",
+      "stepoff",
+      "student_picker",
+      "TakeANumber",
       "tapestry",
+      "test",
       "testing_cheers",
+      "tonys_pizza",
       "tr3w-conversion",
-      "wedding"
+      "volunteerism",
+      "WaitForIt",
+      "wedding",
+      "would_you_rather",
+      "zss"
     ])
     page.should_not have_content "This milestone is hard"
     select "software-development-curriculum", from: "Assignment Repository"
@@ -82,7 +112,7 @@ feature "Student submits milestone", vcr: true do
     click_link "Assignments"
     click_link "Capstone"
     repo_options = find_field("Assignment Repository").all("option")
-    repo_options.size.should == 49
+    repo_options.size.should == 62
   end
 
   scenario "Student has no public repos?" do

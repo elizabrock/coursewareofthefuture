@@ -10,9 +10,11 @@ http_interactions:
       Accept:
       - application/vnd.github.v3+json
       User-Agent:
-      - Octokit Ruby Gem 3.3.0
+      - Octokit Ruby Gem 4.1.1
+      Content-Type:
+      - application/json
       Authorization:
-      - token bb350eb0e5b0da397856cb971b2977f61248a33c
+      - token 4851e298db2a543f8e6eba673964391ccc8a66d2
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -23,7 +25,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 04 Dec 2014 16:15:37 GMT
+      - Mon, 05 Oct 2015 19:41:08 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -33,21 +35,21 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4835'
+      - '4852'
       X-Ratelimit-Reset:
-      - '1417712540'
+      - '1444076265'
       Cache-Control:
       - private, max-age=60, s-maxage=60
       Last-Modified:
       - Thu, 05 Jun 2014 15:07:28 GMT
       Etag:
-      - '"f16659dac5bbd6c5e09a73ba7de1f7a0"'
+      - W/"eeae4a57c50bae9b981a605ed08fe89a"
       X-Oauth-Scopes:
       - public_repo, user
       X-Accepted-Oauth-Scopes:
       - ''
       X-Oauth-Client-Id:
-      - 6420f58670f870ffcda8
+      - 69ff90749f74a27a1f12
       Vary:
       - Accept, Authorization, Cookie, X-GitHub-OTP
       - Accept-Encoding
@@ -67,18 +69,18 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Github-Request-Id:
-      - 44358582:15D5:8097786:548088A9
+      - 442FACD1:17F59:E2B84CF:5612D254
       Strict-Transport-Security:
       - max-age=31536000; includeSubdomains; preload
       X-Content-Type-Options:
       - nosniff
       X-Served-By:
-      - 4c8b2d4732c413f4b9aefe394bd65569
+      - 2811da37fbdda4367181b328b22b2499
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: '{"sha":"2a665ec69c1d9386913c182f3f6c9b88323bfda4","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/2a665ec69c1d9386913c182f3f6c9b88323bfda4","tree":[{"path":"README.markdown","mode":"100644","type":"blob","sha":"cc22f00419fa7b2132874538a5dd5c8b3f640e0e","size":119,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/cc22f00419fa7b2132874538a5dd5c8b3f640e0e"},{"path":"computer-science","mode":"040000","type":"tree","sha":"ce2716d38e9b41927d683dbdf671a3462a45cab3","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/ce2716d38e9b41927d683dbdf671a3462a45cab3"},{"path":"computer-science/logic","mode":"040000","type":"tree","sha":"326b4dd8bb1312a69fbaafba712712a701bb506e","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/326b4dd8bb1312a69fbaafba712712a701bb506e"},{"path":"computer-science/logic/logic.md","mode":"100644","type":"blob","sha":"6e590dd772840ca2fc20faf9c764c6737c742a61","size":3910,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/6e590dd772840ca2fc20faf9c764c6737c742a61"},{"path":"computer-science/logic/truth-tables.md","mode":"100644","type":"blob","sha":"05dd003f350bc01d02c47d166b38444341c89218","size":2747,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/05dd003f350bc01d02c47d166b38444341c89218"},{"path":"computer-science/logic/wikimedia-commons-venn-and.png","mode":"100644","type":"blob","sha":"a67b582e31761e238a7226a521169810d9298f12","size":7369,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/a67b582e31761e238a7226a521169810d9298f12"},{"path":"computer-science/logic/wikimedia-commons-venn-not-a.png","mode":"100644","type":"blob","sha":"5dc3aedfef7e41917e8ac040461d41cfc42d8f59","size":6592,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/5dc3aedfef7e41917e8ac040461d41cfc42d8f59"},{"path":"computer-science/logic/wikimedia-commons-venn-or.png","mode":"100644","type":"blob","sha":"783a4d53d958a6f425b6e2be573f53ba460543b2","size":6790,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/783a4d53d958a6f425b6e2be573f53ba460543b2"},{"path":"computer-science/programming","mode":"040000","type":"tree","sha":"8680f2470acb00ed54685a204e11b248059ab02c","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8680f2470acb00ed54685a204e11b248059ab02c"},{"path":"computer-science/programming/advanced-programming","mode":"040000","type":"tree","sha":"7d076cd5b323687d7da77118a16dbdb37194f40d","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/7d076cd5b323687d7da77118a16dbdb37194f40d"},{"path":"computer-science/programming/advanced-programming/garbage-collection.md","mode":"100644","type":"blob","sha":"287ead2db5710f92f22a6c8d35e4b8d793f5df8c","size":21,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/287ead2db5710f92f22a6c8d35e4b8d793f5df8c"},{"path":"computer-science/programming/basic-programming","mode":"040000","type":"tree","sha":"45810db36fbaf756b46d46f22d2349a8eb031697","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/45810db36fbaf756b46d46f22d2349a8eb031697"},{"path":"computer-science/programming/basic-programming/control-structures","mode":"040000","type":"tree","sha":"af288260a80498d2fc1264cfcddf63390e384c69","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/af288260a80498d2fc1264cfcddf63390e384c69"},{"path":"computer-science/programming/basic-programming/control-structures/basic-control-structures.md","mode":"100644","type":"blob","sha":"14c7cf9e6dd154c3332fd765a4d633f05d4795bf","size":75,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/14c7cf9e6dd154c3332fd765a4d633f05d4795bf"},{"path":"computer-science/programming/basic-programming/data-structures-and-types","mode":"040000","type":"tree","sha":"d2cb78a3bf495f540f331773f37df9336bba7ed1","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/d2cb78a3bf495f540f331773f37df9336bba7ed1"},{"path":"computer-science/programming/basic-programming/data-structures-and-types/booleans-and-bits","mode":"040000","type":"tree","sha":"c965acb62b20d509fad94b5142d9b1a05ce15955","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/c965acb62b20d509fad94b5142d9b1a05ce15955"},{"path":"computer-science/programming/basic-programming/data-structures-and-types/booleans-and-bits/booleans-and-bits.md","mode":"100644","type":"blob","sha":"e69de29bb2d1d6434b8b29ae775ad8c2e48c5391","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"},{"path":"computer-science/programming/functional-programming","mode":"040000","type":"tree","sha":"4383aff82c476a87a2270dc8c2c64b9d3e60f77e","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/4383aff82c476a87a2270dc8c2c64b9d3e60f77e"},{"path":"computer-science/programming/functional-programming/introduction-to-functional-programming.md","mode":"100644","type":"blob","sha":"e69de29bb2d1d6434b8b29ae775ad8c2e48c5391","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"},{"path":"exercises","mode":"040000","type":"tree","sha":"db3ed9eba9ec12c264a098d64a4f43318545b648","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/db3ed9eba9ec12c264a098d64a4f43318545b648"},{"path":"exercises/01-cheers","mode":"040000","type":"tree","sha":"8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7"},{"path":"exercises/01-cheers/instructions.md","mode":"100644","type":"blob","sha":"23b3ea221d0204e8fd6f172b064fc7100156661e","size":188,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/23b3ea221d0204e8fd6f172b064fc7100156661e"},{"path":"exercises/02-ruby-koans","mode":"040000","type":"tree","sha":"3c98f96cd950d34afa5b4c5dfbf2248d0c31e30f","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/3c98f96cd950d34afa5b4c5dfbf2248d0c31e30f"},{"path":"exercises/02-ruby-koans/instructions.md","mode":"100644","type":"blob","sha":"1d9deefb42c90844df6bd5681356294108e35a07","size":295,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/1d9deefb42c90844df6bd5681356294108e35a07"},{"path":"exercises/03-some-other-exercise","mode":"040000","type":"tree","sha":"8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7"},{"path":"exercises/03-some-other-exercise/instructions.md","mode":"100644","type":"blob","sha":"23b3ea221d0204e8fd6f172b064fc7100156661e","size":188,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/23b3ea221d0204e8fd6f172b064fc7100156661e"},{"path":"exercises/04-unfinished-exercise","mode":"040000","type":"tree","sha":"fd6b3d30c0e2f274ee08774c93ee760aaf82db1f","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/fd6b3d30c0e2f274ee08774c93ee760aaf82db1f"},{"path":"exercises/04-unfinished-exercise/misnamed_instructions.md","mode":"100644","type":"blob","sha":"a48978a3da687765f2759960f3b30ca9233057c0","size":101,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/a48978a3da687765f2759960f3b30ca9233057c0"},{"path":"life-skills","mode":"040000","type":"tree","sha":"8b8df79bbe0e532c05fe9196a7124f37f597273c","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8b8df79bbe0e532c05fe9196a7124f37f597273c"},{"path":"life-skills/data-storage-and-formats.jpg","mode":"100644","type":"blob","sha":"5280dbe0a81acde56b761a41915e95267cdda9bb","size":2747239,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/5280dbe0a81acde56b761a41915e95267cdda9bb"},{"path":"life-skills/life-skills.md","mode":"100644","type":"blob","sha":"99f5c931e20a1d1f0910099ec896f5d8b26b7c9f","size":110,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/99f5c931e20a1d1f0910099ec896f5d8b26b7c9f"},{"path":"rails","mode":"040000","type":"tree","sha":"fb0c1b52f401362013c5b276639369394e475c17","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/fb0c1b52f401362013c5b276639369394e475c17"},{"path":"rails/actionview","mode":"040000","type":"tree","sha":"c871138a8c7ceb05f457b320f9e86da042d3c471","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/c871138a8c7ceb05f457b320f9e86da042d3c471"},{"path":"rails/actionview/erb-and-haml.md","mode":"100644","type":"blob","sha":"e69de29bb2d1d6434b8b29ae775ad8c2e48c5391","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"},{"path":"rails/ruby-ecosystem","mode":"040000","type":"tree","sha":"2309a566fede9759a61de07b63492b88beae6ac4","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/2309a566fede9759a61de07b63492b88beae6ac4"},{"path":"rails/ruby-ecosystem/nyan-cat.md","mode":"100644","type":"blob","sha":"897724baad8d19ece351845c1976f04097ddce35","size":332,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/897724baad8d19ece351845c1976f04097ddce35"}],"truncated":false}'
     http_version: 
-  recorded_at: Thu, 04 Dec 2014 16:15:38 GMT
+  recorded_at: Mon, 05 Oct 2015 19:41:08 GMT
 - request:
     method: get
     uri: https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/master?recursive=true
@@ -89,9 +91,11 @@ http_interactions:
       Accept:
       - application/vnd.github.v3+json
       User-Agent:
-      - Octokit Ruby Gem 3.3.0
+      - Octokit Ruby Gem 4.1.1
+      Content-Type:
+      - application/json
       Authorization:
-      - token bb350eb0e5b0da397856cb971b2977f61248a33c
+      - token 4851e298db2a543f8e6eba673964391ccc8a66d2
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -102,7 +106,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 04 Dec 2014 16:15:37 GMT
+      - Mon, 05 Oct 2015 19:41:08 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -112,21 +116,21 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4834'
+      - '4851'
       X-Ratelimit-Reset:
-      - '1417712540'
+      - '1444076265'
       Cache-Control:
       - private, max-age=60, s-maxage=60
       Last-Modified:
       - Thu, 05 Jun 2014 15:07:28 GMT
       Etag:
-      - '"f16659dac5bbd6c5e09a73ba7de1f7a0"'
+      - W/"eeae4a57c50bae9b981a605ed08fe89a"
       X-Oauth-Scopes:
       - public_repo, user
       X-Accepted-Oauth-Scopes:
       - ''
       X-Oauth-Client-Id:
-      - 6420f58670f870ffcda8
+      - 69ff90749f74a27a1f12
       Vary:
       - Accept, Authorization, Cookie, X-GitHub-OTP
       - Accept-Encoding
@@ -146,86 +150,7 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       X-Github-Request-Id:
-      - 44358582:15D9:6ABF682:548088A9
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubdomains; preload
-      X-Content-Type-Options:
-      - nosniff
-      X-Served-By:
-      - d594a23ec74671eba905bf91ef329026
-    body:
-      encoding: UTF-8
-      string: '{"sha":"2a665ec69c1d9386913c182f3f6c9b88323bfda4","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/2a665ec69c1d9386913c182f3f6c9b88323bfda4","tree":[{"path":"README.markdown","mode":"100644","type":"blob","sha":"cc22f00419fa7b2132874538a5dd5c8b3f640e0e","size":119,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/cc22f00419fa7b2132874538a5dd5c8b3f640e0e"},{"path":"computer-science","mode":"040000","type":"tree","sha":"ce2716d38e9b41927d683dbdf671a3462a45cab3","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/ce2716d38e9b41927d683dbdf671a3462a45cab3"},{"path":"computer-science/logic","mode":"040000","type":"tree","sha":"326b4dd8bb1312a69fbaafba712712a701bb506e","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/326b4dd8bb1312a69fbaafba712712a701bb506e"},{"path":"computer-science/logic/logic.md","mode":"100644","type":"blob","sha":"6e590dd772840ca2fc20faf9c764c6737c742a61","size":3910,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/6e590dd772840ca2fc20faf9c764c6737c742a61"},{"path":"computer-science/logic/truth-tables.md","mode":"100644","type":"blob","sha":"05dd003f350bc01d02c47d166b38444341c89218","size":2747,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/05dd003f350bc01d02c47d166b38444341c89218"},{"path":"computer-science/logic/wikimedia-commons-venn-and.png","mode":"100644","type":"blob","sha":"a67b582e31761e238a7226a521169810d9298f12","size":7369,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/a67b582e31761e238a7226a521169810d9298f12"},{"path":"computer-science/logic/wikimedia-commons-venn-not-a.png","mode":"100644","type":"blob","sha":"5dc3aedfef7e41917e8ac040461d41cfc42d8f59","size":6592,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/5dc3aedfef7e41917e8ac040461d41cfc42d8f59"},{"path":"computer-science/logic/wikimedia-commons-venn-or.png","mode":"100644","type":"blob","sha":"783a4d53d958a6f425b6e2be573f53ba460543b2","size":6790,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/783a4d53d958a6f425b6e2be573f53ba460543b2"},{"path":"computer-science/programming","mode":"040000","type":"tree","sha":"8680f2470acb00ed54685a204e11b248059ab02c","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8680f2470acb00ed54685a204e11b248059ab02c"},{"path":"computer-science/programming/advanced-programming","mode":"040000","type":"tree","sha":"7d076cd5b323687d7da77118a16dbdb37194f40d","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/7d076cd5b323687d7da77118a16dbdb37194f40d"},{"path":"computer-science/programming/advanced-programming/garbage-collection.md","mode":"100644","type":"blob","sha":"287ead2db5710f92f22a6c8d35e4b8d793f5df8c","size":21,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/287ead2db5710f92f22a6c8d35e4b8d793f5df8c"},{"path":"computer-science/programming/basic-programming","mode":"040000","type":"tree","sha":"45810db36fbaf756b46d46f22d2349a8eb031697","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/45810db36fbaf756b46d46f22d2349a8eb031697"},{"path":"computer-science/programming/basic-programming/control-structures","mode":"040000","type":"tree","sha":"af288260a80498d2fc1264cfcddf63390e384c69","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/af288260a80498d2fc1264cfcddf63390e384c69"},{"path":"computer-science/programming/basic-programming/control-structures/basic-control-structures.md","mode":"100644","type":"blob","sha":"14c7cf9e6dd154c3332fd765a4d633f05d4795bf","size":75,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/14c7cf9e6dd154c3332fd765a4d633f05d4795bf"},{"path":"computer-science/programming/basic-programming/data-structures-and-types","mode":"040000","type":"tree","sha":"d2cb78a3bf495f540f331773f37df9336bba7ed1","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/d2cb78a3bf495f540f331773f37df9336bba7ed1"},{"path":"computer-science/programming/basic-programming/data-structures-and-types/booleans-and-bits","mode":"040000","type":"tree","sha":"c965acb62b20d509fad94b5142d9b1a05ce15955","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/c965acb62b20d509fad94b5142d9b1a05ce15955"},{"path":"computer-science/programming/basic-programming/data-structures-and-types/booleans-and-bits/booleans-and-bits.md","mode":"100644","type":"blob","sha":"e69de29bb2d1d6434b8b29ae775ad8c2e48c5391","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"},{"path":"computer-science/programming/functional-programming","mode":"040000","type":"tree","sha":"4383aff82c476a87a2270dc8c2c64b9d3e60f77e","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/4383aff82c476a87a2270dc8c2c64b9d3e60f77e"},{"path":"computer-science/programming/functional-programming/introduction-to-functional-programming.md","mode":"100644","type":"blob","sha":"e69de29bb2d1d6434b8b29ae775ad8c2e48c5391","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"},{"path":"exercises","mode":"040000","type":"tree","sha":"db3ed9eba9ec12c264a098d64a4f43318545b648","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/db3ed9eba9ec12c264a098d64a4f43318545b648"},{"path":"exercises/01-cheers","mode":"040000","type":"tree","sha":"8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7"},{"path":"exercises/01-cheers/instructions.md","mode":"100644","type":"blob","sha":"23b3ea221d0204e8fd6f172b064fc7100156661e","size":188,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/23b3ea221d0204e8fd6f172b064fc7100156661e"},{"path":"exercises/02-ruby-koans","mode":"040000","type":"tree","sha":"3c98f96cd950d34afa5b4c5dfbf2248d0c31e30f","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/3c98f96cd950d34afa5b4c5dfbf2248d0c31e30f"},{"path":"exercises/02-ruby-koans/instructions.md","mode":"100644","type":"blob","sha":"1d9deefb42c90844df6bd5681356294108e35a07","size":295,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/1d9deefb42c90844df6bd5681356294108e35a07"},{"path":"exercises/03-some-other-exercise","mode":"040000","type":"tree","sha":"8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7"},{"path":"exercises/03-some-other-exercise/instructions.md","mode":"100644","type":"blob","sha":"23b3ea221d0204e8fd6f172b064fc7100156661e","size":188,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/23b3ea221d0204e8fd6f172b064fc7100156661e"},{"path":"exercises/04-unfinished-exercise","mode":"040000","type":"tree","sha":"fd6b3d30c0e2f274ee08774c93ee760aaf82db1f","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/fd6b3d30c0e2f274ee08774c93ee760aaf82db1f"},{"path":"exercises/04-unfinished-exercise/misnamed_instructions.md","mode":"100644","type":"blob","sha":"a48978a3da687765f2759960f3b30ca9233057c0","size":101,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/a48978a3da687765f2759960f3b30ca9233057c0"},{"path":"life-skills","mode":"040000","type":"tree","sha":"8b8df79bbe0e532c05fe9196a7124f37f597273c","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8b8df79bbe0e532c05fe9196a7124f37f597273c"},{"path":"life-skills/data-storage-and-formats.jpg","mode":"100644","type":"blob","sha":"5280dbe0a81acde56b761a41915e95267cdda9bb","size":2747239,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/5280dbe0a81acde56b761a41915e95267cdda9bb"},{"path":"life-skills/life-skills.md","mode":"100644","type":"blob","sha":"99f5c931e20a1d1f0910099ec896f5d8b26b7c9f","size":110,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/99f5c931e20a1d1f0910099ec896f5d8b26b7c9f"},{"path":"rails","mode":"040000","type":"tree","sha":"fb0c1b52f401362013c5b276639369394e475c17","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/fb0c1b52f401362013c5b276639369394e475c17"},{"path":"rails/actionview","mode":"040000","type":"tree","sha":"c871138a8c7ceb05f457b320f9e86da042d3c471","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/c871138a8c7ceb05f457b320f9e86da042d3c471"},{"path":"rails/actionview/erb-and-haml.md","mode":"100644","type":"blob","sha":"e69de29bb2d1d6434b8b29ae775ad8c2e48c5391","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"},{"path":"rails/ruby-ecosystem","mode":"040000","type":"tree","sha":"2309a566fede9759a61de07b63492b88beae6ac4","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/2309a566fede9759a61de07b63492b88beae6ac4"},{"path":"rails/ruby-ecosystem/nyan-cat.md","mode":"100644","type":"blob","sha":"897724baad8d19ece351845c1976f04097ddce35","size":332,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/897724baad8d19ece351845c1976f04097ddce35"}],"truncated":false}'
-    http_version: 
-  recorded_at: Thu, 04 Dec 2014 16:15:38 GMT
-- request:
-    method: get
-    uri: https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/master?recursive=true
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept:
-      - application/vnd.github.v3+json
-      User-Agent:
-      - Octokit Ruby Gem 3.3.0
-      Authorization:
-      - token bb350eb0e5b0da397856cb971b2977f61248a33c
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - GitHub.com
-      Date:
-      - Thu, 04 Dec 2014 16:15:37 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Status:
-      - 200 OK
-      X-Ratelimit-Limit:
-      - '5000'
-      X-Ratelimit-Remaining:
-      - '4833'
-      X-Ratelimit-Reset:
-      - '1417712540'
-      Cache-Control:
-      - private, max-age=60, s-maxage=60
-      Last-Modified:
-      - Thu, 05 Jun 2014 15:07:28 GMT
-      Etag:
-      - '"f16659dac5bbd6c5e09a73ba7de1f7a0"'
-      X-Oauth-Scopes:
-      - public_repo, user
-      X-Accepted-Oauth-Scopes:
-      - ''
-      X-Oauth-Client-Id:
-      - 6420f58670f870ffcda8
-      Vary:
-      - Accept, Authorization, Cookie, X-GitHub-OTP
-      - Accept-Encoding
-      X-Github-Media-Type:
-      - github.v3; format=json
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Frame-Options:
-      - deny
-      Content-Security-Policy:
-      - default-src 'none'
-      Access-Control-Allow-Credentials:
-      - 'true'
-      Access-Control-Expose-Headers:
-      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
-        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
-      Access-Control-Allow-Origin:
-      - "*"
-      X-Github-Request-Id:
-      - 44358582:15D9:6ABF6D8:548088A9
+      - 442FACD1:17F56:562854F:5612D254
       Strict-Transport-Security:
       - max-age=31536000; includeSubdomains; preload
       X-Content-Type-Options:
@@ -233,8 +158,89 @@ http_interactions:
       X-Served-By:
       - 065b43cd9674091fec48a221b420fbb3
     body:
-      encoding: UTF-8
+      encoding: ASCII-8BIT
       string: '{"sha":"2a665ec69c1d9386913c182f3f6c9b88323bfda4","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/2a665ec69c1d9386913c182f3f6c9b88323bfda4","tree":[{"path":"README.markdown","mode":"100644","type":"blob","sha":"cc22f00419fa7b2132874538a5dd5c8b3f640e0e","size":119,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/cc22f00419fa7b2132874538a5dd5c8b3f640e0e"},{"path":"computer-science","mode":"040000","type":"tree","sha":"ce2716d38e9b41927d683dbdf671a3462a45cab3","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/ce2716d38e9b41927d683dbdf671a3462a45cab3"},{"path":"computer-science/logic","mode":"040000","type":"tree","sha":"326b4dd8bb1312a69fbaafba712712a701bb506e","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/326b4dd8bb1312a69fbaafba712712a701bb506e"},{"path":"computer-science/logic/logic.md","mode":"100644","type":"blob","sha":"6e590dd772840ca2fc20faf9c764c6737c742a61","size":3910,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/6e590dd772840ca2fc20faf9c764c6737c742a61"},{"path":"computer-science/logic/truth-tables.md","mode":"100644","type":"blob","sha":"05dd003f350bc01d02c47d166b38444341c89218","size":2747,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/05dd003f350bc01d02c47d166b38444341c89218"},{"path":"computer-science/logic/wikimedia-commons-venn-and.png","mode":"100644","type":"blob","sha":"a67b582e31761e238a7226a521169810d9298f12","size":7369,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/a67b582e31761e238a7226a521169810d9298f12"},{"path":"computer-science/logic/wikimedia-commons-venn-not-a.png","mode":"100644","type":"blob","sha":"5dc3aedfef7e41917e8ac040461d41cfc42d8f59","size":6592,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/5dc3aedfef7e41917e8ac040461d41cfc42d8f59"},{"path":"computer-science/logic/wikimedia-commons-venn-or.png","mode":"100644","type":"blob","sha":"783a4d53d958a6f425b6e2be573f53ba460543b2","size":6790,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/783a4d53d958a6f425b6e2be573f53ba460543b2"},{"path":"computer-science/programming","mode":"040000","type":"tree","sha":"8680f2470acb00ed54685a204e11b248059ab02c","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8680f2470acb00ed54685a204e11b248059ab02c"},{"path":"computer-science/programming/advanced-programming","mode":"040000","type":"tree","sha":"7d076cd5b323687d7da77118a16dbdb37194f40d","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/7d076cd5b323687d7da77118a16dbdb37194f40d"},{"path":"computer-science/programming/advanced-programming/garbage-collection.md","mode":"100644","type":"blob","sha":"287ead2db5710f92f22a6c8d35e4b8d793f5df8c","size":21,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/287ead2db5710f92f22a6c8d35e4b8d793f5df8c"},{"path":"computer-science/programming/basic-programming","mode":"040000","type":"tree","sha":"45810db36fbaf756b46d46f22d2349a8eb031697","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/45810db36fbaf756b46d46f22d2349a8eb031697"},{"path":"computer-science/programming/basic-programming/control-structures","mode":"040000","type":"tree","sha":"af288260a80498d2fc1264cfcddf63390e384c69","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/af288260a80498d2fc1264cfcddf63390e384c69"},{"path":"computer-science/programming/basic-programming/control-structures/basic-control-structures.md","mode":"100644","type":"blob","sha":"14c7cf9e6dd154c3332fd765a4d633f05d4795bf","size":75,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/14c7cf9e6dd154c3332fd765a4d633f05d4795bf"},{"path":"computer-science/programming/basic-programming/data-structures-and-types","mode":"040000","type":"tree","sha":"d2cb78a3bf495f540f331773f37df9336bba7ed1","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/d2cb78a3bf495f540f331773f37df9336bba7ed1"},{"path":"computer-science/programming/basic-programming/data-structures-and-types/booleans-and-bits","mode":"040000","type":"tree","sha":"c965acb62b20d509fad94b5142d9b1a05ce15955","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/c965acb62b20d509fad94b5142d9b1a05ce15955"},{"path":"computer-science/programming/basic-programming/data-structures-and-types/booleans-and-bits/booleans-and-bits.md","mode":"100644","type":"blob","sha":"e69de29bb2d1d6434b8b29ae775ad8c2e48c5391","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"},{"path":"computer-science/programming/functional-programming","mode":"040000","type":"tree","sha":"4383aff82c476a87a2270dc8c2c64b9d3e60f77e","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/4383aff82c476a87a2270dc8c2c64b9d3e60f77e"},{"path":"computer-science/programming/functional-programming/introduction-to-functional-programming.md","mode":"100644","type":"blob","sha":"e69de29bb2d1d6434b8b29ae775ad8c2e48c5391","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"},{"path":"exercises","mode":"040000","type":"tree","sha":"db3ed9eba9ec12c264a098d64a4f43318545b648","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/db3ed9eba9ec12c264a098d64a4f43318545b648"},{"path":"exercises/01-cheers","mode":"040000","type":"tree","sha":"8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7"},{"path":"exercises/01-cheers/instructions.md","mode":"100644","type":"blob","sha":"23b3ea221d0204e8fd6f172b064fc7100156661e","size":188,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/23b3ea221d0204e8fd6f172b064fc7100156661e"},{"path":"exercises/02-ruby-koans","mode":"040000","type":"tree","sha":"3c98f96cd950d34afa5b4c5dfbf2248d0c31e30f","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/3c98f96cd950d34afa5b4c5dfbf2248d0c31e30f"},{"path":"exercises/02-ruby-koans/instructions.md","mode":"100644","type":"blob","sha":"1d9deefb42c90844df6bd5681356294108e35a07","size":295,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/1d9deefb42c90844df6bd5681356294108e35a07"},{"path":"exercises/03-some-other-exercise","mode":"040000","type":"tree","sha":"8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7"},{"path":"exercises/03-some-other-exercise/instructions.md","mode":"100644","type":"blob","sha":"23b3ea221d0204e8fd6f172b064fc7100156661e","size":188,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/23b3ea221d0204e8fd6f172b064fc7100156661e"},{"path":"exercises/04-unfinished-exercise","mode":"040000","type":"tree","sha":"fd6b3d30c0e2f274ee08774c93ee760aaf82db1f","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/fd6b3d30c0e2f274ee08774c93ee760aaf82db1f"},{"path":"exercises/04-unfinished-exercise/misnamed_instructions.md","mode":"100644","type":"blob","sha":"a48978a3da687765f2759960f3b30ca9233057c0","size":101,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/a48978a3da687765f2759960f3b30ca9233057c0"},{"path":"life-skills","mode":"040000","type":"tree","sha":"8b8df79bbe0e532c05fe9196a7124f37f597273c","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8b8df79bbe0e532c05fe9196a7124f37f597273c"},{"path":"life-skills/data-storage-and-formats.jpg","mode":"100644","type":"blob","sha":"5280dbe0a81acde56b761a41915e95267cdda9bb","size":2747239,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/5280dbe0a81acde56b761a41915e95267cdda9bb"},{"path":"life-skills/life-skills.md","mode":"100644","type":"blob","sha":"99f5c931e20a1d1f0910099ec896f5d8b26b7c9f","size":110,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/99f5c931e20a1d1f0910099ec896f5d8b26b7c9f"},{"path":"rails","mode":"040000","type":"tree","sha":"fb0c1b52f401362013c5b276639369394e475c17","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/fb0c1b52f401362013c5b276639369394e475c17"},{"path":"rails/actionview","mode":"040000","type":"tree","sha":"c871138a8c7ceb05f457b320f9e86da042d3c471","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/c871138a8c7ceb05f457b320f9e86da042d3c471"},{"path":"rails/actionview/erb-and-haml.md","mode":"100644","type":"blob","sha":"e69de29bb2d1d6434b8b29ae775ad8c2e48c5391","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"},{"path":"rails/ruby-ecosystem","mode":"040000","type":"tree","sha":"2309a566fede9759a61de07b63492b88beae6ac4","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/2309a566fede9759a61de07b63492b88beae6ac4"},{"path":"rails/ruby-ecosystem/nyan-cat.md","mode":"100644","type":"blob","sha":"897724baad8d19ece351845c1976f04097ddce35","size":332,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/897724baad8d19ece351845c1976f04097ddce35"}],"truncated":false}'
     http_version: 
-  recorded_at: Thu, 04 Dec 2014 16:15:39 GMT
-recorded_with: VCR 2.9.2
+  recorded_at: Mon, 05 Oct 2015 19:41:08 GMT
+- request:
+    method: get
+    uri: https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/master?recursive=true
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Octokit Ruby Gem 4.1.1
+      Content-Type:
+      - application/json
+      Authorization:
+      - token 4851e298db2a543f8e6eba673964391ccc8a66d2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Mon, 05 Oct 2015 19:41:09 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4850'
+      X-Ratelimit-Reset:
+      - '1444076265'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Last-Modified:
+      - Thu, 05 Jun 2014 15:07:28 GMT
+      Etag:
+      - W/"eeae4a57c50bae9b981a605ed08fe89a"
+      X-Oauth-Scopes:
+      - public_repo, user
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Oauth-Client-Id:
+      - 69ff90749f74a27a1f12
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding
+      X-Github-Media-Type:
+      - github.v3; format=json
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 442FACD1:17F5A:10E08487:5612D254
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Served-By:
+      - bd82876e9bf04990f289ba22f246ee9b
+    body:
+      encoding: ASCII-8BIT
+      string: '{"sha":"2a665ec69c1d9386913c182f3f6c9b88323bfda4","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/2a665ec69c1d9386913c182f3f6c9b88323bfda4","tree":[{"path":"README.markdown","mode":"100644","type":"blob","sha":"cc22f00419fa7b2132874538a5dd5c8b3f640e0e","size":119,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/cc22f00419fa7b2132874538a5dd5c8b3f640e0e"},{"path":"computer-science","mode":"040000","type":"tree","sha":"ce2716d38e9b41927d683dbdf671a3462a45cab3","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/ce2716d38e9b41927d683dbdf671a3462a45cab3"},{"path":"computer-science/logic","mode":"040000","type":"tree","sha":"326b4dd8bb1312a69fbaafba712712a701bb506e","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/326b4dd8bb1312a69fbaafba712712a701bb506e"},{"path":"computer-science/logic/logic.md","mode":"100644","type":"blob","sha":"6e590dd772840ca2fc20faf9c764c6737c742a61","size":3910,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/6e590dd772840ca2fc20faf9c764c6737c742a61"},{"path":"computer-science/logic/truth-tables.md","mode":"100644","type":"blob","sha":"05dd003f350bc01d02c47d166b38444341c89218","size":2747,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/05dd003f350bc01d02c47d166b38444341c89218"},{"path":"computer-science/logic/wikimedia-commons-venn-and.png","mode":"100644","type":"blob","sha":"a67b582e31761e238a7226a521169810d9298f12","size":7369,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/a67b582e31761e238a7226a521169810d9298f12"},{"path":"computer-science/logic/wikimedia-commons-venn-not-a.png","mode":"100644","type":"blob","sha":"5dc3aedfef7e41917e8ac040461d41cfc42d8f59","size":6592,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/5dc3aedfef7e41917e8ac040461d41cfc42d8f59"},{"path":"computer-science/logic/wikimedia-commons-venn-or.png","mode":"100644","type":"blob","sha":"783a4d53d958a6f425b6e2be573f53ba460543b2","size":6790,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/783a4d53d958a6f425b6e2be573f53ba460543b2"},{"path":"computer-science/programming","mode":"040000","type":"tree","sha":"8680f2470acb00ed54685a204e11b248059ab02c","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8680f2470acb00ed54685a204e11b248059ab02c"},{"path":"computer-science/programming/advanced-programming","mode":"040000","type":"tree","sha":"7d076cd5b323687d7da77118a16dbdb37194f40d","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/7d076cd5b323687d7da77118a16dbdb37194f40d"},{"path":"computer-science/programming/advanced-programming/garbage-collection.md","mode":"100644","type":"blob","sha":"287ead2db5710f92f22a6c8d35e4b8d793f5df8c","size":21,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/287ead2db5710f92f22a6c8d35e4b8d793f5df8c"},{"path":"computer-science/programming/basic-programming","mode":"040000","type":"tree","sha":"45810db36fbaf756b46d46f22d2349a8eb031697","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/45810db36fbaf756b46d46f22d2349a8eb031697"},{"path":"computer-science/programming/basic-programming/control-structures","mode":"040000","type":"tree","sha":"af288260a80498d2fc1264cfcddf63390e384c69","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/af288260a80498d2fc1264cfcddf63390e384c69"},{"path":"computer-science/programming/basic-programming/control-structures/basic-control-structures.md","mode":"100644","type":"blob","sha":"14c7cf9e6dd154c3332fd765a4d633f05d4795bf","size":75,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/14c7cf9e6dd154c3332fd765a4d633f05d4795bf"},{"path":"computer-science/programming/basic-programming/data-structures-and-types","mode":"040000","type":"tree","sha":"d2cb78a3bf495f540f331773f37df9336bba7ed1","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/d2cb78a3bf495f540f331773f37df9336bba7ed1"},{"path":"computer-science/programming/basic-programming/data-structures-and-types/booleans-and-bits","mode":"040000","type":"tree","sha":"c965acb62b20d509fad94b5142d9b1a05ce15955","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/c965acb62b20d509fad94b5142d9b1a05ce15955"},{"path":"computer-science/programming/basic-programming/data-structures-and-types/booleans-and-bits/booleans-and-bits.md","mode":"100644","type":"blob","sha":"e69de29bb2d1d6434b8b29ae775ad8c2e48c5391","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"},{"path":"computer-science/programming/functional-programming","mode":"040000","type":"tree","sha":"4383aff82c476a87a2270dc8c2c64b9d3e60f77e","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/4383aff82c476a87a2270dc8c2c64b9d3e60f77e"},{"path":"computer-science/programming/functional-programming/introduction-to-functional-programming.md","mode":"100644","type":"blob","sha":"e69de29bb2d1d6434b8b29ae775ad8c2e48c5391","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"},{"path":"exercises","mode":"040000","type":"tree","sha":"db3ed9eba9ec12c264a098d64a4f43318545b648","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/db3ed9eba9ec12c264a098d64a4f43318545b648"},{"path":"exercises/01-cheers","mode":"040000","type":"tree","sha":"8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7"},{"path":"exercises/01-cheers/instructions.md","mode":"100644","type":"blob","sha":"23b3ea221d0204e8fd6f172b064fc7100156661e","size":188,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/23b3ea221d0204e8fd6f172b064fc7100156661e"},{"path":"exercises/02-ruby-koans","mode":"040000","type":"tree","sha":"3c98f96cd950d34afa5b4c5dfbf2248d0c31e30f","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/3c98f96cd950d34afa5b4c5dfbf2248d0c31e30f"},{"path":"exercises/02-ruby-koans/instructions.md","mode":"100644","type":"blob","sha":"1d9deefb42c90844df6bd5681356294108e35a07","size":295,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/1d9deefb42c90844df6bd5681356294108e35a07"},{"path":"exercises/03-some-other-exercise","mode":"040000","type":"tree","sha":"8fe8641fa77fd4e90ad0128774a07aaeea7a47b7","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8fe8641fa77fd4e90ad0128774a07aaeea7a47b7"},{"path":"exercises/03-some-other-exercise/instructions.md","mode":"100644","type":"blob","sha":"23b3ea221d0204e8fd6f172b064fc7100156661e","size":188,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/23b3ea221d0204e8fd6f172b064fc7100156661e"},{"path":"exercises/04-unfinished-exercise","mode":"040000","type":"tree","sha":"fd6b3d30c0e2f274ee08774c93ee760aaf82db1f","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/fd6b3d30c0e2f274ee08774c93ee760aaf82db1f"},{"path":"exercises/04-unfinished-exercise/misnamed_instructions.md","mode":"100644","type":"blob","sha":"a48978a3da687765f2759960f3b30ca9233057c0","size":101,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/a48978a3da687765f2759960f3b30ca9233057c0"},{"path":"life-skills","mode":"040000","type":"tree","sha":"8b8df79bbe0e532c05fe9196a7124f37f597273c","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/8b8df79bbe0e532c05fe9196a7124f37f597273c"},{"path":"life-skills/data-storage-and-formats.jpg","mode":"100644","type":"blob","sha":"5280dbe0a81acde56b761a41915e95267cdda9bb","size":2747239,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/5280dbe0a81acde56b761a41915e95267cdda9bb"},{"path":"life-skills/life-skills.md","mode":"100644","type":"blob","sha":"99f5c931e20a1d1f0910099ec896f5d8b26b7c9f","size":110,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/99f5c931e20a1d1f0910099ec896f5d8b26b7c9f"},{"path":"rails","mode":"040000","type":"tree","sha":"fb0c1b52f401362013c5b276639369394e475c17","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/fb0c1b52f401362013c5b276639369394e475c17"},{"path":"rails/actionview","mode":"040000","type":"tree","sha":"c871138a8c7ceb05f457b320f9e86da042d3c471","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/c871138a8c7ceb05f457b320f9e86da042d3c471"},{"path":"rails/actionview/erb-and-haml.md","mode":"100644","type":"blob","sha":"e69de29bb2d1d6434b8b29ae775ad8c2e48c5391","size":0,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"},{"path":"rails/ruby-ecosystem","mode":"040000","type":"tree","sha":"2309a566fede9759a61de07b63492b88beae6ac4","url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/trees/2309a566fede9759a61de07b63492b88beae6ac4"},{"path":"rails/ruby-ecosystem/nyan-cat.md","mode":"100644","type":"blob","sha":"897724baad8d19ece351845c1976f04097ddce35","size":332,"url":"https://api.github.com/repos/elizabrock/inquizator-test-repo/git/blobs/897724baad8d19ece351845c1976f04097ddce35"}],"truncated":false}'
+    http_version: 
+  recorded_at: Mon, 05 Oct 2015 19:41:09 GMT
+recorded_with: VCR 2.9.3
