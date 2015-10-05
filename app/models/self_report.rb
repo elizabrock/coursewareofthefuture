@@ -42,7 +42,7 @@ class SelfReport < ActiveRecord::Base
     Course.active.all.each do |course|
       course.users.except_observers.each do |user|
         unless user.self_reports.where(date: 1.day.ago.beginning_of_day).count > 0
-          SelfReportsMailer.reminder(user, course).deliver
+          SelfReportsMailer.reminder(user, course).deliver_now
         end
       end
     end

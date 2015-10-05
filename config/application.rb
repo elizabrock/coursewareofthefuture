@@ -29,5 +29,6 @@ module Coursewareofthefuture
     config.action_mailer.postmark_settings = { :api_key => ENV["POSTMARK_KEY"] }
 
     config.active_record.schema_format = :sql
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end

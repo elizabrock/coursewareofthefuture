@@ -9,7 +9,7 @@ describe MilestoneSubmission do
     it "should delegate mail creation to the milestone mailer" do
 
       milestone_submission = Fabricate.build(:milestone_submission)
-      mailer = double(deliver: true)
+      mailer = double(deliver_now: true)
 
       expect(MilestoneSubmissionMailer).to receive(:notify_instructors).with(milestone_submission).and_return(mailer).once
 
