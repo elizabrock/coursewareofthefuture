@@ -12,10 +12,10 @@ feature "True/False questions are graded automatically" do
     q4 = Fabricate(:question, question_type: "boolean", question: "Is class in session?", correct_answer: "false", quiz: quiz)
     click_link "Assignments"
     click_link "Baseline Knowledge"
-    page.find(:xpath, "//div[contains(normalize-space(.), 'Are you happy?')]/label[contains(text(), 'True')]/input").set(true)
+    page.find(:xpath, "//div[contains(normalize-space(./label), 'Are you happy?')]//label[contains(text(), 'True')]/input").set(true)
     fill_in "What are you happy about?", with: "Everything!"
-    page.find(:xpath, "//div[contains(normalize-space(.), 'Is class over?')]/label[contains(text(), 'True')]/input").set(true)
-    page.find(:xpath, "//div[contains(normalize-space(.), 'Is class in session?')]/label[contains(text(), 'False')]/input").set(true)
+    page.find(:xpath, "//div[contains(normalize-space(./label), 'Is class over?')]//label[contains(text(), 'True')]/input").set(true)
+    page.find(:xpath, "//div[contains(normalize-space(./label), 'Is class in session?')]//label[contains(text(), 'False')]/input").set(true)
     click_button "Finish Quiz"
     page.should have_content "Your quiz has been submitted for grading."
     current_path.should == course_assignments_path(course)
