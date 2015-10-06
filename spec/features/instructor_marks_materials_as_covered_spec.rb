@@ -5,10 +5,13 @@ feature "Instructor marks materials as covered", vcr: true do
   scenario "Students don't see 'Mark as Covered'" do
     course = Fabricate(:course)
     signin_as :student, courses: [course]
-    visit root_path
-    click_link "Materials"
-    page.should_not have_content "Mark as Covered"
-    click_link "Logic"
+    visit course_path(course)
+    page.should_not have_content("Materials")
+    visit course_materials_path(course)
+    page.should have_content("You must be authenticated as an instructor to access this material.")
+    current_path.should == course_path(course)
+    visit course_material_path(course, "computer-science/logic/logic.md")
+    page.should have_content("Logic")
     page.should_not have_content "Mark as Covered"
   end
 
