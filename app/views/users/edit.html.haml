@@ -15,7 +15,7 @@
         .row
           .small-12.large-3.columns
             %h6 Current Photo:
-            = image_tag current_user.avatar_url, class: "profile_photo"
+            = image_tag current_user.photo_url, class: "profile_photo"
             = f.input :photo_confirmed, label: "This is a picture of me."
           .small-12.large-8.columns
             %h6 Upload a new photo:

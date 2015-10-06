@@ -23,9 +23,10 @@ feature "Student authentication" do
       github_username: "joe",
       name: "Joe Smith",
       github_access_token: ENV["GITHUB_ACCESS_TOKEN"],
-      github_avatar_url: "https://avatars.github.com/#{12345}?s=460"
     ).count.should == 1
     User.count.should == 1
+    user = User.last
+    user.photo_url.should == "/uploads/user/photo/#{user.id}/12345.jpeg"
   end
 
   scenario "Student can log in and log out with github" do

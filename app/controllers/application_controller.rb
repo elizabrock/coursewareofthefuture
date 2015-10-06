@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
   def require_profile!
     return unless user_signed_in?
     return unless request.method == "GET"
-    unless current_user.photo_confirmed?
+    unless current_user.has_confirmed_photo?
       flash.keep
       flash.alert = "You must confirm your profile image in order to continue."
       redirect_to edit_user_path(current_user)

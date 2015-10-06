@@ -39,7 +39,7 @@ feature "User confirms photo", vcr: true do
     sign_into_github_as "joe"
     visit root_path
     click_link "Sign In with Github"
-    page.find('img.profile_photo')['src'].should =~ /avatars.github.com.12345/
+    page.find('img.profile_photo')['src'].should =~ /12345.jpeg/
     attach_file("user_photo", File.join(Rails.root, "/spec/support/files/github.png"))
     click_button "Save Changes"
     page.should have_content "Your profile has been updated."

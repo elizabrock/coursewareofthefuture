@@ -1,4 +1,4 @@
 %li.user
   = link_to user_path(user, course_id: current_course.try(:id)) do
-    = image_tag(user.avatar_url, class: "profile_photo")
+    = image_tag(user.photo, class: "profile_photo")
     %p= user.name

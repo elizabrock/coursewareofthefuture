@@ -1,6 +1,6 @@
 .row
   .small-6.medium-2.columns
-    =link_to(image_tag(user.avatar_url, class: "profile_photo"), user_path)
+    =link_to(image_tag(user.photo, class: "profile_photo"), user_path)
   .small-6.medium-10.columns
     - if can?(:instructify, user)
       .right= button_to "Make Instructor", instructify_user_path(user), class: "button secondary small radius"
