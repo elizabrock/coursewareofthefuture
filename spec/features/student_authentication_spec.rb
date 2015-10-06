@@ -23,6 +23,7 @@ feature "Student authentication" do
       github_username: "joe",
       name: "Joe Smith",
       github_access_token: ENV["GITHUB_ACCESS_TOKEN"],
+      github_avatar_url: "https://avatars.github.com/#{12345}?s=460"
     ).count.should == 1
     User.count.should == 1
   end

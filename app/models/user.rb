@@ -36,8 +36,8 @@ class User < ActiveRecord::Base
     self.save!
   end
 
-  def has_confirmed_photo?
-    self.photo.present? && self.photo_confirmed?
+  def avatar_url
+    photo_url || github_avatar_url
   end
 
   def repositories
@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
       user.github_username = auth.info.nickname
       user.name = auth.info.name
       user.email = auth.info.email
-      user.remote_photo_url = auth.info.image
+      user.github_avatar_url = auth.info.image
     end
     unless user.github_access_token == auth_token
       user.update_attribute(:github_access_token, auth_token)

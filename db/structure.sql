@@ -503,8 +503,9 @@ CREATE TABLE users (
     background text,
     instructor boolean,
     photo_confirmed boolean DEFAULT false,
-    photo character varying(255),
-    observer boolean
+    observer boolean,
+    photo character varying,
+    github_avatar_url character varying
 );
 
 
@@ -850,4 +851,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140703184009');
 INSERT INTO schema_migrations (version) VALUES ('20140703184558');
 
 INSERT INTO schema_migrations (version) VALUES ('20140802164604');
+
+INSERT INTO schema_migrations (version) VALUES ('20151005210453');
 

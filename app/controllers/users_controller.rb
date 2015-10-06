@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    user_params = params.require(:user).permit(:name, :email, :phone, :goals, :background, :remote_photo_url, :photo_confirmed, :photo)
+    user_params = params.require(:user).permit(:name, :email, :phone, :goals, :background, :photo_confirmed, :photo)
     if current_user.update_attributes(user_params)
       flash[:notice] = "Your profile has been updated."
       redirect_to current_user

@@ -15,13 +15,11 @@
         .row
           .small-12.large-3.columns
             %h6 Current Photo:
-            = image_tag current_user.photo_url, class: "profile_photo"
+            = image_tag current_user.avatar_url, class: "profile_photo"
             = f.input :photo_confirmed, label: "This is a picture of me."
           .small-12.large-8.columns
-            %h6 Update your photo:
+            %h6 Upload a new photo:
             = f.input :photo, as: :file, label: "Upload a photo"
-            %p Or...
-            = f.input :remote_photo_url, label: "Web address for your photo"
   .row
     .small-3.columns
   - if can?(:edit_goals_and_background, current_user)
@@ -29,7 +27,7 @@
       .small-12.columns
         %fieldset
           %legend Private Information
-          %p This information only visible to you and your instructor(s).
+          %p This information is only visible to you and your instructor(s).
           .row
             .small-6.columns
               = f.input :goals, input_html: { rows: 5 }
