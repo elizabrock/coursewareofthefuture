@@ -3,18 +3,18 @@
     #{milestone.title}
     %span.due (due #{milestone.deadline})
 
-    - if already_submitted or can_submit_milestone or can?(:edit, milestone)
-      .instructions
-        %h3 Reading Corequisites
-        - if milestone.corequisites.empty?
-          %p There are no corequisites for this milestone.
-        - else
-          %ul.corequisites
-            - milestone.corequisites.each do |corequisite|
-              %li= link_to corequisite.formatted_title, material_path_for(corequisite)
-        %h3 Instructions
-        :markdown
-          #{milestone.instructions}
+  - if already_submitted or can_submit_milestone or can?(:edit, milestone)
+    .instructions
+      %h3 Reading Corequisites
+      - if milestone.corequisites.empty?
+        %p There are no corequisites for this milestone.
+      - else
+        %ul.corequisites
+          - milestone.corequisites.each do |corequisite|
+            %li= link_to corequisite.formatted_title, material_path_for(corequisite)
+      %h3 Instructions
+      :markdown
+        #{milestone.instructions}
 
   - if already_submitted or can?(:edit, milestone)
     %span.button.disabled.small.secondary Status: Submitted for Grading
