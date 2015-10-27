@@ -1,18 +1,24 @@
 .milestone
-  %h2 #{milestone.title} (due #{milestone.deadline})
+  %h2
+    #{milestone.title}
+    %span.due (due #{milestone.deadline})
 
-  %h2 Milestone Corequisites
-  %ul.corequisites
-    - milestone.corequisites.each do |corequisite|
-      %li= link_to corequisite.formatted_title, material_path_for(corequisite)
+    - if already_submitted or can_submit_milestone or can?(:edit, milestone)
+      .instructions
+        %h3 Reading Corequisites
+        - if milestone.corequisites.empty?
+          %p There are no corequisites for this milestone.
+        - else
+          %ul.corequisites
+            - milestone.corequisites.each do |corequisite|
+              %li= link_to corequisite.formatted_title, material_path_for(corequisite)
+        %h3 Instructions
+        :markdown
+          #{milestone.instructions}
 
   - if already_submitted or can?(:edit, milestone)
-    :markdown
-      #{milestone.instructions}
     %span.button.disabled.small.secondary Status: Submitted for Grading
   - elsif can_submit_milestone
-    :markdown
-      #{milestone.instructions}
     = simple_form_for milestone.milestone_submissions.new, html: { class: "inline" } do |f|
       = f.input :milestone_id, as: :hidden
       = f.input :repository, label: "Assignment Repository", collection: current_user.repositories.map{|r| r["name"]}
@@ -20,5 +26,4 @@
         .error.label You must have public repos in order to submit milestones
       = f.button :submit, "Submit Milestone", class: "tiny"
   - else
-    %a.button Ability to view and submit is pending completion of previous milestones
-
+    %a.button Ability to view and submit this milestone is pending completion of previous milestones

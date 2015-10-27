@@ -1,0 +1,13 @@
+.milestone {
+  padding-top: 0.5em;
+  margin-top: 0.5em;
+
+  .due {
+    font-size: 50%;
+  }
+
+  .instructions {
+    border-left: 1px solid $secondary-color;
+    padding-left: 1em;
+  }
+}
