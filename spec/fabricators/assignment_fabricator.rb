@@ -1,4 +1,5 @@
 Fabricator(:assignment) do
+  title "Test Assignment #1"
   course
   published true
 end

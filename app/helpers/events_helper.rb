@@ -48,9 +48,10 @@ module EventsHelper
     covered_materials = course.covered_materials.find_all{|cm| cm.covered_on == d }
     covered_materials.collect do |covered_material|
       material_description = "#{covered_material.formatted_title} Covered"
+      class_text = ReadMaterial.where(material_fullpath: covered_material.material_fullpath)[0] ? "secondary" : "alert"
       read_class = read_materials_fullpaths.include?(covered_material.fullpath) ? "fi-check" : "fi-asterisk"
 
-      { summary: link_to(material_description, material_path_for(covered_material)), class: "secondary read-status #{read_class}"}
+      { summary: link_to(material_description, material_path_for(covered_material)), class: "#{class_text} read-status #{read_class}"}
     end
   end
 
@@ -59,7 +60,8 @@ module EventsHelper
     milestones.collect do |milestone|
       milestone_description = "#{milestone.assignment.title}: #{milestone.title} Due"
       link = milestone.assignment.published? ? course_assignment_path(course, milestone.assignment) : edit_course_assignment_path(course, milestone.assignment)
-      { summary: link_to(milestone_description, link), class: "secondary"}
+      class_text = milestone.milestone_submissions[0] ? "secondary" : "alert"
+      { summary: link_to(milestone_description, link), class: class_text }
     end
   end
 
@@ -68,7 +70,8 @@ module EventsHelper
     quizzes.collect do |quiz|
       quiz_description = "#{quiz.title} Due"
       link = quiz.published? ? edit_course_quiz_submission_path(course, quiz) : edit_course_quiz_path(course, quiz)
-      { summary: link_to(quiz_description, link), class: "secondary"}
+      class_text = quiz.quiz_submissions[0] ? "secondary" : "alert"
+      { summary: link_to(quiz_description, link), class: class_text}
     end
   end
 end
