@@ -44,10 +44,10 @@
                   Course Calendar
                   - if self_reports_due > 0
                     %span.count_icon= self_reports_due
-              %li= link_to "Materials", course_materials_path(current_course), id: current_if("materials")
+              - if can?(:manage, Material)
+                %li= link_to "Materials", course_materials_path(current_course), id: current_if("materials")
               %li= link_to "Assignments", course_assignments_path(current_course), id: current_if("assignments")
               %li= link_to "Peers", course_enrollments_path(current_course), id: current_if("enrollments", "users")
-              %li= link_to "IRC", irc_path(course_id: current_course.try(:id)), id: current_if("irc")
               %li.right
                 %span
                   %a{ "data-dropdown" => "hover1", "data-options" => "is_hover:true" }= current_course.try(:title) || "Choose Course >"

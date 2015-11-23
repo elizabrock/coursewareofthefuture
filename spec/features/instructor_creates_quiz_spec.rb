@@ -106,7 +106,7 @@ feature "Instructor creates quiz", vcr: true do
       fill_in "Correct Answer", with: "True"
     end
     # TODO: Make a proper selector via. JS:
-    # within(page.find(:xpath, "//fieldset[position()=3]")){ page.find(:xpath, "//div[contains(normalize-space(.), '#{"Correct Answer"}')]/label[contains(text(), '#{"true"}')]/input").set(true) }
+    # within(page.find(:xpath, "//fieldset[position()=3]")){ page.find(:xpath, "//div[contains(normalize-space(./label), '#{"Correct Answer"}')]//label[contains(text(), '#{"true"}')]/input").set(true) }
     click_button "Save Changes"
     page.should have_content "Your quiz has been updated."
     Question.where(question_type: "boolean",

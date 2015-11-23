@@ -23,6 +23,10 @@ module Features
       within(tr, &block)
     end
 
+    def label_for(topic, &block)
+      find(:xpath, "//span[contains(@class, 'label') and contains(normalize-space(.),'#{topic}')]")
+    end
+
     def mark_as_read(topic)
       within_tr_for(topic){ click_button "Mark as Read" }
     end

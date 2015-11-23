@@ -15,8 +15,8 @@ feature "Student takes quiz" do
   end
 
   scenario "Answering some questions without submitting" do
-    page.find(:xpath, "//div[contains(normalize-space(.), '#{"Are you happy?"}')]/label[contains(text(), '#{"True"}')]/input").set(true)
-    page.find(:xpath, "//div[contains(normalize-space(.), '#{"Is class over?"}')]/label[contains(text(), '#{"False"}')]/input").set(true)
+    page.find(:xpath, "//div[contains(normalize-space(./label), '#{"Are you happy?"}')]//label[contains(text(), '#{"True"}')]/input").set(true)
+    page.find(:xpath, "//div[contains(normalize-space(./label), '#{"Is class over?"}')]//label[contains(text(), '#{"False"}')]/input").set(true)
     click_button "Save Progress"
     page.should have_content "Your quiz progress has been saved"
     current_path.should == course_assignments_path(course)
@@ -28,18 +28,18 @@ feature "Student takes quiz" do
   end
 
   scenario "Answering all questions without submitting" do
-    page.find(:xpath, "//div[contains(normalize-space(.), '#{"Are you happy?"}')]/label[contains(text(), '#{"True"}')]/input").set(true)
+    page.find(:xpath, "//div[contains(normalize-space(./label), '#{"Are you happy?"}')]//label[contains(text(), '#{"True"}')]/input").set(true)
     fill_in "What are you happy about?", with: "Everything!"
-    page.find(:xpath, "//div[contains(normalize-space(.), '#{"Is class over?"}')]/label[contains(text(), '#{"False"}')]/input").set(true)
+    page.find(:xpath, "//div[contains(normalize-space(./label), '#{"Is class over?"}')]//label[contains(text(), '#{"False"}')]/input").set(true)
     click_button "Save Progress"
     page.should have_content "Your quiz progress has been saved"
     page.should have_content "Baseline Knowledge (incomplete, due"
   end
 
   scenario "Submitting completed quiz" do
-    page.find(:xpath, "//div[contains(normalize-space(.), '#{"Are you happy?"}')]/label[contains(text(), '#{"True"}')]/input").set(true)
+    page.find(:xpath, "//div[contains(normalize-space(./label), '#{"Are you happy?"}')]//label[contains(text(), '#{"True"}')]/input").set(true)
     fill_in "What are you happy about?", with: "Everything!"
-    page.find(:xpath, "//div[contains(normalize-space(.), '#{"Is class over?"}')]/label[contains(text(), '#{"False"}')]/input").set(true)
+    page.find(:xpath, "//div[contains(normalize-space(./label), '#{"Is class over?"}')]//label[contains(text(), '#{"False"}')]/input").set(true)
     click_button "Finish Quiz"
     page.should have_content "Your quiz has been submitted for grading."
     current_path.should == course_assignments_path(course)
@@ -47,8 +47,8 @@ feature "Student takes quiz" do
   end
 
   scenario "Student can't submit partial quiz" do
-    page.find(:xpath, "//div[contains(normalize-space(.), '#{"Are you happy?"}')]/label[contains(text(), '#{"True"}')]/input").set(true)
-    page.find(:xpath, "//div[contains(normalize-space(.), '#{"Is class over?"}')]/label[contains(text(), '#{"False"}')]/input").set(true)
+    page.find(:xpath, "//div[contains(normalize-space(./label), '#{"Are you happy?"}')]//label[contains(text(), '#{"True"}')]/input").set(true)
+    page.find(:xpath, "//div[contains(normalize-space(./label), '#{"Is class over?"}')]//label[contains(text(), '#{"False"}')]/input").set(true)
     click_button "Finish Quiz"
     page.should have_content "Your quiz cannot yet be submitted for grading"
     within(div_labeled("Are you happy?")){ page.should have_checked_field("True") }
@@ -59,8 +59,8 @@ feature "Student takes quiz" do
   end
 
   scenario "Attempting to submit a partial quiz still saves the answers" do
-    page.find(:xpath, "//div[contains(normalize-space(.), '#{"Are you happy?"}')]/label[contains(text(), '#{"True"}')]/input").set(true)
-    page.find(:xpath, "//div[contains(normalize-space(.), '#{"Is class over?"}')]/label[contains(text(), '#{"False"}')]/input").set(true)
+    page.find(:xpath, "//div[contains(normalize-space(./label), '#{"Are you happy?"}')]//label[contains(text(), '#{"True"}')]/input").set(true)
+    page.find(:xpath, "//div[contains(normalize-space(./label), '#{"Is class over?"}')]//label[contains(text(), '#{"False"}')]/input").set(true)
     click_button "Finish Quiz"
     page.should have_content "Your quiz cannot yet be submitted for grading"
     visit course_assignments_path(course)

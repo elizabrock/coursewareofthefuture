@@ -1,4 +1,4 @@
-ruby '2.1.1'
+ruby '2.2.3'
 #ruby-gemset=coursewareofthefuture
 source 'https://rubygems.org'
 
@@ -11,7 +11,7 @@ gem 'carrierwave'
 # Coffeescript
 gem 'coffee-rails', '~> 4.0'
 # For CSS3 sass mixins:
-gem 'compass-rails'
+gem "compass-rails"
 # Lets rails use d3.js visualization
 gem 'd3-rails'
 # Magic Sauce.  We will get to this.
@@ -34,8 +34,6 @@ gem 'honeybadger'
 gem 'jquery-rails'
 # jquery-ui on rails:
 gem 'jquery-ui-rails'
-# Performance monitoring:
-gem 'newrelic_rpm'
 # Github API gem:
 gem 'octokit'
 # OAuth for Github
@@ -48,7 +46,7 @@ gem 'rails', '~> 4.1'
 # Markdown gem (works with haml's :markdown tag)
 gem 'redcarpet'
 # Sassy
-gem 'sass-rails', '~> 4.0'
+gem 'sass-rails'
 # Improves on Rails form_for:
 gem 'simple_form'
 # Used for rendering materials as slide decks:

@@ -5,21 +5,24 @@ feature "Student marks materials as read", vcr: true do
   scenario "Student marks item as read" do
     course = Fabricate(:course_with_instructor)
     signin_as :student, courses: [course]
-    Fabricate(:covered_material,
+    logic = Fabricate(:covered_material,
               material_fullpath: "computer-science/logic/logic.md",
               course: course)
     Fabricate(:covered_material,
               material_fullpath: "computer-science/logic/set_theory.md",
               course: course)
 
-    visit course_materials_path(course)
+    visit course_path(course)
     click_link "Logic"
     click_link "Mark as Read"
     page.should have_content "Logic has been marked as read."
-    current_path.should == course_materials_path(course)
-    within_tr_for("Logic") do
-      page.should have_content("read")
-    end
+    current_path.should == course_material_path(course, logic.material_fullpath)
+    page.should have_css(".label.read-status", text: "Read")
+    click_on "Course Calendar"
+    # TODO: Use a more appropriate class for this, instead of a foundation
+    # class
+    label_for("Logic")["class"].should include("fi-check")
+    label_for("Set Theory")["class"].should include("fi-asterisk")
 
     click_link "Logic"
     page.should_not have_link "Mark as Read"
@@ -38,20 +41,24 @@ feature "Student marks materials as read", vcr: true do
 
     signin_as(:student, courses: [course1, course2])
 
-    visit course_materials_path(course2)
+    visit course_path(course2)
     page.should_not have_css(".read-status", text: "Read")
 
-    visit course_materials_path(course1)
+    visit course_path(course1)
     page.should_not have_css(".read-status", text: "Read")
     click_link "Logic"
     click_link "Mark as Read"
-    within_tr_for("Logic") do
-      page.should have_content("read")
-    end
 
-    visit course_materials_path(course2)
-    within_tr_for("Logic") do
-      page.should have_content("read")
-    end
+    page.should have_css(".label.read-status", text: "Read")
+    click_on "Course Calendar"
+
+    # TODO: Use a more appropriate class for this, instead of a foundation
+    # class
+    label_for("Logic")["class"].should include("fi-check")
+
+    visit course_path(course2)
+    # TODO: Use a more appropriate class for this, instead of a foundation
+    # class
+    label_for("Logic")["class"].should include("fi-check")
   end
 end

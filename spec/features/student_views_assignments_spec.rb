@@ -16,7 +16,7 @@ feature "Student views assignments" do
     page.should have_content("Milestone 1 (due 5/01)")
     page.should have_content("Milestone 2 (due 5/15)")
     within(milestone(1)){ page.should have_content "This milestone is simple" }
-    within(milestone(2)){ page.should have_content "Ability to view and submit is pending completion of previous milestones" }
+    within(milestone(2)){ page.should have_content "Ability to view and submit this milestone is pending completion of previous milestones" }
   end
 
   scenario "Student views an assignment with corequisites", vcr: true do
@@ -24,11 +24,11 @@ feature "Student views assignments" do
       title: "Cohort 4",
       start_date: "2013/04/28",
       end_date: "2013/06/01")
-    signin_as :student, courses: [course], github_username: "elizabrock"
+    student = signin_as :student, courses: [course], github_username: "elizabrock"
 
     assignment = Fabricate(:assignment, title: "Capstone", course: course)
 
-    Fabricate(:milestone,
+    milestone_foo = Fabricate(:milestone,
               title: "Foo",
               deadline: "2013/05/15",
               corequisite_fullpaths: ["computer-science/logic/logic.md"],
@@ -46,6 +46,8 @@ feature "Student views assignments" do
       page.should_not have_content("Booleans and Bits")
       page.should_not have_content("Garbage Collection")
     end
+    Fabricate(:milestone_submission, user: student, milestone: milestone_foo)
+    visit course_assignment_path(course, assignment)
     within(milestone("Bar")) do
       page.should have_content("Garbage Collection")
       page.should_not have_content("Logic")

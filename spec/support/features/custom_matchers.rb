@@ -30,7 +30,7 @@ end
 
 RSpec::Matchers.define :have_checkboxes do |expected_checkboxes|
   match do |page|
-    @actual_checkboxes = page.all("label.checkbox").map{|o| o.text}.flatten
+    @actual_checkboxes = page.all("span.checkbox label").map{|o| o.text}.flatten
     @actual_checkboxes.should == expected_checkboxes
   end
 

@@ -2,19 +2,19 @@ require 'rails_helper'
 
 feature "Instructor view milestone submissions" do
   let(:course){ Fabricate(:course, start_date: "2014/01/01", end_date: "2014/03/01") }
-  let!(:joe){ Fabricate(:user, name: "joe", courses: [course]) }
-  let!(:jane){ Fabricate(:user, name: "jane", courses: [course]) }
-  let!(:sally){ Fabricate(:user, name: "sally", courses: [course]) }
-  let!(:susie){ Fabricate(:user, name: "susie", courses: [course]) }
+  let!(:joe){ Fabricate(:user, name: "joe", courses: [course], github_username: "joe") }
+  let!(:jane){ Fabricate(:user, name: "jane", courses: [course], github_username: "jane") }
+  let!(:sally){ Fabricate(:user, name: "sally", courses: [course], github_username: "sally") }
+  let!(:susie){ Fabricate(:user, name: "susie", courses: [course], github_username: "susie") }
 
   let(:assignment){ Fabricate(:assignment, title: "Capstone", course: course) }
   let(:milestone1){ Fabricate(:milestone, title: "Milestone 1", deadline: "2014/02/05", assignment: assignment) }
   let(:milestone2){ Fabricate(:milestone, title: "Milestone 2", deadline: "2014/02/15", assignment: assignment) }
 
   background do
-    Fabricate(:milestone_submission, user: susie, repository: "susie/m1", milestone: milestone1)
-    Fabricate(:milestone_submission, user: jane, repository: "jane/m1", milestone: milestone1)
-    Fabricate(:milestone_submission, user: susie, repository: "susie/m2", milestone: milestone2)
+    Fabricate(:milestone_submission, user: susie, repository: "m1", milestone: milestone1)
+    Fabricate(:milestone_submission, user: jane, repository: "m1", milestone: milestone1)
+    Fabricate(:milestone_submission, user: susie, repository: "m2", milestone: milestone2)
   end
 
   scenario "viewing assignments index, as instructor" do

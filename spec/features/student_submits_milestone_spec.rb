@@ -20,45 +20,7 @@ feature "Student submits milestone", vcr: true do
     # This is not ideal, since it will change when Eliza has more public repos.
     # However, the effort required to set up a proper test user doesn't seem warranted yet.
     page.should have_options_for("Assignment Repository", options: [
-      "",
-      "blueberry-cal",
-      "coursewareofthefuture",
-      "coveralls-ruby",
-      "deadsets",
-      "fabrication",
-      "FuturePerfect",
-      "inquizator-test-repo",
-      "Intro-to-Rails-3-Presentation",
-      "LaTeX-Resume",
-      "license-to-kill",
-      "linked_list_cohort3",
-      "linked_list_cohort_blueberry",
-      "linked_list_cohort_tangerine",
-      "monologue",
-      "NSS-basic-rails-blog",
-      "nss-cal",
-      "nss-capstone-2-example",
-      "NSS-CLI-test-example",
-      "NSS-futureperfect-CLI",
-      "NSS-futureperfect-rails",
-      "NSS-Ruby-Koans",
-      "nss-squawker",
-      "NSS-Syllabus-Cohort-3",
-      "NSS-Syllabus-Fall-2012",
-      "NSS-Syllabus-Spring-2013",
-      "NSS-Test-Repo",
-      "presentation_nashville_hack_day",
-      "project_management_export_to_latex",
-      "SavingsMultipliedRedux",
-      "slide-em-up",
-      "software-development-curriculum",
-      "software-development-curriculum-mark-two",
-      "squmblr",
-      "tapestry",
-      "testing_cheers",
-      "tr3w-conversion",
-      "wedding"
-    ])
+      "", "attendance_tracker", "blueberry-cal", "cal", "calculator", "cheersjs", "cheers_csharp", "cheers_csharp_cohort10", "cheers_take2", "cheers_take3", "chess", "cohort_7_game_of_life", "ConwaysGameOfLife", "coursewareofthefuture", "coveralls-ruby", "deadsets", "DotNetKoans", "elizabrock.github.io", "fabrication", "front-end-development-curriculum", "FuturePerfect", "GitPushDemo", "greenthumb", "Hapless-Path", "huckleberry_cal", "inquizator-test-repo", "Intro-to-Rails-3-Presentation", "LaTeX-Resume", "license-to-kill", "LinkedListCohortJuniper", "linked_list_cohort3", "linked_list_cohort_blueberry", "linked_list_cohort_grape", "linked_list_cohort_huckleberry", "linked_list_cohort_tangerine", "luketucker28.github.io", "mathgician", "median", "monologue", "MvcMovie", "NSS-basic-rails-blog", "nss-cal", "NSS-Cal-Refactor", "nss-capstone-2-example", "NSS-CLI-test-example", "NSS-futureperfect-CLI", "NSS-futureperfect-rails", "NSS-Linked-List", "nss-linked-list-implementation", "NSS-Linked-List-Spring-2013", "NSS-Ruby-Koans", "nss-squawker", "NSS-Syllabus-Cohort-3", "NSS-Syllabus-Fall-2012", "NSS-Syllabus-Spring-2013", "NSS-Test-Repo", "presentation_nashville_hack_day", "project_management_export_to_latex", "ruby_koans_online", "SavingsMultiplied", "SavingsMultipliedRedux", "SharpShapes", "skeleton_dance", "slide-em-up", "software-development-curriculum", "software-development-curriculum-mark-two", "squmblr", "stepoff", "student_picker", "TakeANumber", "tapestry", "test", "testing_cheers", "tonys_pizza", "tr3w-conversion", "volunteerism", "WaitForIt", "wedding", "would_you_rather", "zss"])
     page.should_not have_content "This milestone is hard"
     select "software-development-curriculum", from: "Assignment Repository"
     within(milestone(1)){ click_button "Submit Milestone" }
@@ -82,7 +44,7 @@ feature "Student submits milestone", vcr: true do
     click_link "Assignments"
     click_link "Capstone"
     repo_options = find_field("Assignment Repository").all("option")
-    repo_options.size.should == 49
+    repo_options.size.should == 62
   end
 
   scenario "Student has no public repos?" do

@@ -8,9 +8,13 @@ class MilestoneSubmission < ActiveRecord::Base
 
   after_create :notify_instructors
 
+  def repository_url
+    "https://github.com/#{user.github_username}/#{repository}"
+  end
+
   protected
 
   def notify_instructors
-    MilestoneSubmissionMailer.notify_instructors(self).deliver
+    MilestoneSubmissionMailer.notify_instructors(self).deliver_now
   end
 end

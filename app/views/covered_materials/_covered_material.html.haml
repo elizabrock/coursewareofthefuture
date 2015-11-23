@@ -1,0 +1,7 @@
+- status_class = covered_material.new_record? ? "secondary" : "covered_on"
+.label.radius{ class: status_class}
+  = covered_material_label_copy(covered_material)
+  - if can?(:manage, CoveredMaterial)
+    %a.edit-date-covered.fi-clock{ href: "#", data: { reveal: { id: "reveal#{material.local_id}" } } }
+    .reveal-modal{ id: "reveal#{material.local_id}", data: { reveal: "" } }
+      = render partial: 'covered_materials/form', locals: { covered_material: covered_material }

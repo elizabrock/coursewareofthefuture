@@ -25,6 +25,8 @@ feature "Student authentication" do
       github_access_token: ENV["GITHUB_ACCESS_TOKEN"],
     ).count.should == 1
     User.count.should == 1
+    user = User.last
+    user.photo_url.should == "/uploads/user/photo/#{user.id}/12345.jpeg"
   end
 
   scenario "Student can log in and log out with github" do

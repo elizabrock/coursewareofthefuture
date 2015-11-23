@@ -17,7 +17,6 @@ feature "Users see course navigation when viewing student profiles" do
     me = signin_as :student, courses: [course]
     click_link "My Profile"
     current_path.should == user_path(me)
-    page.should have_content "Materials"
     page.should have_content "Calendar"
   end
 
@@ -26,7 +25,6 @@ feature "Users see course navigation when viewing student profiles" do
     visit course_path(course)
     click_link "My Profile"
     current_path.should == user_path(me)
-    page.should have_content "Materials"
     page.should have_content "Calendar"
   end
 
@@ -36,7 +34,6 @@ feature "Users see course navigation when viewing student profiles" do
     click_link "Enroll in another course"
     click_link "My Profile"
     current_path.should == user_path(me)
-    page.should_not have_content "Materials"
     page.should_not have_content "Calendar"
   end
 
@@ -45,7 +42,6 @@ feature "Users see course navigation when viewing student profiles" do
     visit root_path
     click_link "My Profile"
     current_path.should == user_path(me)
-    page.should_not have_content "Materials"
     page.should_not have_content "Calendar"
   end
 
@@ -57,7 +53,6 @@ feature "Users see course navigation when viewing student profiles" do
     click_link "June Smith"
     page.should have_content "June Smith"
     page.should have_content "june@smith.com"
-    page.should have_content "Materials"
     page.should have_content "Calendar"
   end
 
@@ -70,7 +65,6 @@ feature "Users see course navigation when viewing student profiles" do
     click_link "June Smith"
     page.should have_content "June Smith"
     page.should have_content "june@smith.com"
-    page.should have_content "Materials"
     page.should have_content "Calendar"
   end
 

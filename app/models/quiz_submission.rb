@@ -53,6 +53,6 @@ class QuizSubmission < ActiveRecord::Base
   private
 
   def notify_student!
-    QuizMailer.notify_student(self).deliver
+    QuizMailer.notify_student(self).deliver_now
   end
 end
