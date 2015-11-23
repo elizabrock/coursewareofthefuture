@@ -83,6 +83,7 @@ feature "Student enrolls in course" do
     signin_as :student
     visit root_path
     page.should_not have_link "Enroll in another course"
+    page.should have_content "There are no open courses at this time."
   end
 
   scenario "Enroll in another course doesn't show up if you're enrolled in all courses" do
