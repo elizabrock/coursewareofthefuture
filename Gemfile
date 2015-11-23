@@ -42,6 +42,8 @@ gem 'omniauth-github'
 gem 'pg'
 # Sent email through Postmark
 gem 'postmark-rails'
+# rails server that handles multiple connections
+gem 'puma'
 gem 'rails', '~> 4.1'
 # Markdown gem (works with haml's :markdown tag)
 gem 'redcarpet'
@@ -53,8 +55,6 @@ gem 'simple_form'
 gem 'slide-em-up', github: 'elizabrock/slide-em-up', branch: 'master', require: false
 # Compresses javacript and css:
 gem 'uglifier', '>= 1.3.0'
-# rails server that handles multiple connections
-gem 'unicorn'
 
 group :production do
   # Makes the heroku logs more informative:

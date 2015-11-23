@@ -17,6 +17,10 @@ This is the courseware for Nashville Software School.
 5. `rake`
 6. Confirm that rake passed.  If it didn't, that means your setup is missing something.
 
+## Rails Server
+
+Run the Rails server with `puma`.
+
 ### System Dependencies
 
 * phantomjs
