@@ -11,7 +11,7 @@ gem 'carrierwave'
 # Coffeescript
 gem 'coffee-rails', '~> 4.0'
 # For CSS3 sass mixins:
-gem "compass-rails", git: 'https://github.com/robkilby/compass-rails', branch: 'sprockets-3'
+gem "compass-rails"
 # Lets rails use d3.js visualization
 gem 'd3-rails'
 # Magic Sauce.  We will get to this.
