@@ -36,7 +36,7 @@ SET default_with_oids = false;
 CREATE TABLE assignments (
     id integer NOT NULL,
     course_id integer,
-    title character varying(255),
+    title character varying,
     summary text,
     published boolean,
     created_at timestamp without time zone,
@@ -69,12 +69,12 @@ ALTER SEQUENCE assignments_id_seq OWNED BY assignments.id;
 
 CREATE TABLE courses (
     id integer NOT NULL,
-    title character varying(255),
+    title character varying,
     start_date date,
     end_date date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    source_repository character varying(255)
+    source_repository character varying
 );
 
 
@@ -104,7 +104,7 @@ ALTER SEQUENCE courses_id_seq OWNED BY courses.id;
 CREATE TABLE covered_materials (
     id integer NOT NULL,
     course_id integer,
-    material_fullpath character varying(255),
+    material_fullpath character varying,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     covered_on date
@@ -170,7 +170,7 @@ CREATE TABLE events (
     id integer NOT NULL,
     course_id integer,
     date date,
-    summary character varying(255),
+    summary character varying,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -203,8 +203,8 @@ CREATE TABLE milestone_submissions (
     id integer NOT NULL,
     user_id integer,
     milestone_id integer,
-    repository character varying(255),
-    status character varying(255),
+    repository character varying,
+    status character varying,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -236,7 +236,7 @@ ALTER SEQUENCE milestone_submissions_id_seq OWNED BY milestone_submissions.id;
 CREATE TABLE milestones (
     id integer NOT NULL,
     assignment_id integer,
-    title character varying(255),
+    title character varying,
     instructions text,
     deadline date,
     created_at timestamp without time zone,
@@ -306,7 +306,7 @@ CREATE TABLE questions (
     id integer NOT NULL,
     quiz_id integer,
     question text,
-    question_type character varying(255),
+    question_type character varying,
     correct_answer text,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
@@ -374,7 +374,7 @@ ALTER SEQUENCE quiz_submissions_id_seq OWNED BY quiz_submissions.id;
 CREATE TABLE quizzes (
     id integer NOT NULL,
     course_id integer,
-    title character varying(255),
+    title character varying,
     deadline date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
@@ -409,7 +409,7 @@ ALTER SEQUENCE quizzes_id_seq OWNED BY quizzes.id;
 CREATE TABLE read_materials (
     id integer NOT NULL,
     user_id integer,
-    material_fullpath character varying(255),
+    material_fullpath character varying,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -439,7 +439,7 @@ ALTER SEQUENCE read_materials_id_seq OWNED BY read_materials.id;
 --
 
 CREATE TABLE schema_migrations (
-    version character varying(255) NOT NULL
+    version character varying NOT NULL
 );
 
 
@@ -485,26 +485,26 @@ ALTER SEQUENCE self_reports_id_seq OWNED BY self_reports.id;
 
 CREATE TABLE users (
     id integer NOT NULL,
-    email character varying(255) DEFAULT ''::character varying NOT NULL,
+    email character varying DEFAULT ''::character varying NOT NULL,
     remember_created_at timestamp without time zone,
     sign_in_count integer DEFAULT 0 NOT NULL,
     current_sign_in_at timestamp without time zone,
     last_sign_in_at timestamp without time zone,
-    current_sign_in_ip character varying(255),
-    last_sign_in_ip character varying(255),
+    current_sign_in_ip character varying,
+    last_sign_in_ip character varying,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    name character varying(255),
-    phone character varying(255),
-    github_uid character varying(255),
-    github_username character varying(255),
-    github_access_token character varying(255),
+    name character varying,
+    phone character varying,
+    github_uid character varying,
+    github_username character varying,
+    github_access_token character varying,
     goals text,
     background text,
     instructor boolean,
     photo_confirmed boolean DEFAULT false,
-    observer boolean,
-    photo character varying
+    photo character varying,
+    observer boolean
 );
 
 
@@ -730,11 +730,11 @@ ALTER TABLE ONLY self_reports
 
 
 --
--- Name: students_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY users
-    ADD CONSTRAINT students_pkey PRIMARY KEY (id);
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
 
 
 --
