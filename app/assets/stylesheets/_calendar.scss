@@ -96,6 +96,15 @@ table.calendar {
     }
   }
 }
+div.note {
+  padding: 0.5em;
+}
+
+// Note Header
+h6.Note {
+  margin: 0.5em 0.25em;
+  border-bottom: 1px solid #6600ff;
+}
 
 div.self-report {
   padding: 0.5em;

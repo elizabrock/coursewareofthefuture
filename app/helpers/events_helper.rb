@@ -23,6 +23,8 @@ module EventsHelper
       end
 
       output << self_report(d, course) unless outside_of_course
+
+      output << note
     end
 
     # See https://github.com/topfunky/calendar_helper for format explanation:
@@ -30,6 +32,10 @@ module EventsHelper
   end
 
   private
+
+  def note
+    return "note"
+  end
 
   def self_report(d, course)
     return "" if d > Date.today.end_of_day
