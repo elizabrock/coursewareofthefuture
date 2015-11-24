@@ -13,14 +13,11 @@ module Features
     end
 
     def sign_into_github_as(user_or_username, token: nil)
-      if user_or_username.is_a? User
-        user = user_or_username
-      end
-
       token = user_or_username.try(:github_access_token) || token || ENV["GITHUB_ACCESS_TOKEN"]
       username = user_or_username.try(:github_username) || user_or_username
+      name = user_or_username.try(:name) || "#{username.capitalize} Smith"
       uid = user_or_username.try(:github_uid) || '12345'
-      email = user.try(:email) || "#{username}smith@example.com"
+      email = user_or_username.try(:email) || "#{username}smith@example.com"
 
       photo_url = "https://avatars.github.com/#{uid}?s=460"
       @default_image ||= File.read(Rails.root.join('spec', 'support', 'files', 'arson_girl.jpg'))
@@ -38,7 +35,7 @@ module Features
         info: {
           nickname: username,
           email: email,
-          name: "#{username.capitalize} Smith",
+          name: name,
           image: photo_url,
         },
         extra: {

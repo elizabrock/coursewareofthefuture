@@ -50,17 +50,15 @@ class User < ActiveRecord::Base
 
   def self.find_or_create_for_github_oauth(auth)
     auth_token = auth.credentials.token
-    user = User.where(github_uid: auth.uid).first_or_create do |user|
-      user.github_access_token = auth_token
-      user.github_uid = auth.uid
-      user.github_username = auth.info.nickname
-      user.name = auth.info.name
-      user.email = auth.info.email
+    user = User.where(github_uid: auth.uid).first || User.new(github_uid: auth.uid)
+    user.github_access_token = auth_token
+    user.github_username = auth.info.nickname
+    user.name ||= auth.info.name
+    user.email = auth.info.email if user.email.blank?
+    if user.new_record?
       user.remote_photo_url = auth.info.image
     end
-    unless user.github_access_token == auth_token
-      user.update_attribute(:github_access_token, auth_token)
-    end
+    user.save!
     user
   end
 
