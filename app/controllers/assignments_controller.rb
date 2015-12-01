@@ -1,5 +1,5 @@
 class AssignmentsController < ApplicationController
-  expose(:assignment_options){ Material.exercise_list_for(current_user.octoclient, current_course.source_repository) }
+  expose(:assignment_options){ Material.exercises(current_user.octoclient, current_course.source_repository) }
   expose(:assignments){ current_course.assignments }
   expose(:assignment, attributes: :assignment_params)
   expose(:viewable_assignments){ assignments.to_a.delete_if{|a| cannot? :view, a }.sort_by{|a| a.last_deadline || 1.year.from_now } }
@@ -15,8 +15,6 @@ class AssignmentsController < ApplicationController
       assignment.populate_from_github(current_user.octoclient)
       assignment.save!
       redirect_to edit_course_assignment_path(current_course, assignment)
-    rescue Octokit::NotFound
-      redirect_to new_course_assignment_path(current_course), alert: "Could not retrieve instructions.md in #{assignment.source}.  Please confirm that the instructions.md is ready and then try again."
     end
   end
 

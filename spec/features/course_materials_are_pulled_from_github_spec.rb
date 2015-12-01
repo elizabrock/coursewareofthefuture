@@ -6,7 +6,9 @@ feature "Course materials are pulled from github", vcr: true do
     signin_as :instructor, courses: [course]
     visit course_path(course)
     click_link "Materials"
-    page.should_not have_exercises_from_github
+    page.should_not have_content("Exercises")
+    page.should_not have_content("Cheers")
+    page.should_not have_content("Ruby Koans")
     hash_of("#all_materials").should == materials_list
   end
 

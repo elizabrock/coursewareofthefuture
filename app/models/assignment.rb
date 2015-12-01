@@ -31,7 +31,7 @@ class Assignment < ActiveRecord::Base
   end
 
   def populate_from_github(client)
-    markdown = Material.retrieve(source + "/instructions.md", course.source_repository, client).content
+    markdown = Material.retrieve(source, course.source_repository, client).content
     sections = markdown.split("##").each do |section|
       title, body = section.split("\n",2)
       title.gsub!(/#+\s*/,"")

@@ -1,33 +1,31 @@
 require 'rails_helper'
 
 describe Material do
-  describe ".exercise_list_for", vcr: true do
+  describe ".exercises", vcr: true do
     let(:user){ Fabricate(:user) }
-    let(:materials){ Material.exercise_list_for(user.octoclient, "elizabrock/inquizator-test-repo") }
-    it "should retrieve all the materials in that subdirectory" do
-      expected_materials = [{:title=>"Cheers"}, {:title=>"Ruby Koans"}, {:title=>"Some Other Exercise"}, {:title=>"Unfinished Exercise"}]
+    let(:materials){ Material.exercises(user.octoclient, "elizabrock/inquizator-test-repo") }
+    it "should retrieve all the exercises in the repository" do
+      expected_materials = [
+        {title: "Cheers", path: "01-intro-to-ruby/exercises/01-cheers.md"},
+        {title: "Koans Online", path: "01-intro-to-ruby/exercises/02-koans_online.md"},
+        {title: "Ruby Koans", path: "01-intro-to-ruby/exercises/03-ruby-koans.md"},
+        {title: "Instructions", path: "exercises/03-some-other-exercise/instructions.md"},
+        {title: "Unfinished Exercise", path: "exercises/04-unfinished-exercise/unfinished-exercise.md"},
+      ]
       materials.map(&:to_hash).should == expected_materials
     end
   end
   describe ".list", vcr: true do
     let(:user){ Fabricate(:user) }
-    let(:materials){ Material.list(user.octoclient, "elizabrock/inquizator-test-repo", "exercises") }
+    let(:materials){ Material.list(user.octoclient, "elizabrock/inquizator-test-repo", "computer-science") }
     it "should retrieve all the materials in that subdirectory" do
-      expected_materials = [{:title=>"Cheers"}, {:title=>"Ruby Koans"}, {:title=>"Some Other Exercise"}, {:title=>"Unfinished Exercise"}]
+      expected_materials = [{:title=>"Logic"}, {:title=>"Programming"}]
       materials.map(&:to_hash).should == expected_materials
     end
   end
-  describe ".materials_for", vcr: true do
+  describe ".materials", vcr: true do
     let(:user){ Fabricate(:user) }
-    let(:materials){ Material.materials_for(user.octoclient, "elizabrock/inquizator-test-repo") }
-    it "should load the full material tree" do
-      actual_materials = materials.to_hash
-      actual_materials.should == materials_hash
-    end
-  end
-  describe ".root", vcr: true do
-    let(:user){ Fabricate(:user) }
-    let(:materials){ Material.root(user.octoclient, "elizabrock/inquizator-test-repo", /^exercises/) }
+    let(:materials){ Material.materials(user.octoclient, "elizabrock/inquizator-test-repo") }
     it "should load the full material tree" do
       actual_materials = materials.to_hash
       actual_materials.should == materials_hash
@@ -53,6 +51,16 @@ describe Material do
     end
   end
   describe "individual materials" do
+    let(:exercise_tree_item) {
+      double(:sawyer_resource,
+            content: nil,
+            mode: "100644",
+            type: "blob",
+            sha: "e7373bbf81969d5b04886d8555703e7da3ba8e01",
+            path: "01-intro-to-ruby/exercises/01-cheers.md",
+            size: 906,
+            html_url: "https://github.com/elizabrock/inquizator-test-repo/blob/master/01-intro-to-ruby/exercises/01-cheers.md"
+            )}
     let(:markdown_tree_item) {
       double(:sawyer_resource,
             content: nil,
@@ -81,6 +89,7 @@ describe Material do
             path: "computer-science/logic/wikimedia-commons-venn-and.png",
             size: 7369,
             html_url: "https://github.com/elizabrock/inquizator-test-repo/blob/master/computer-science/logic/wikimedia-commons-venn-and.png" ) }
+    let(:exercise_material){ Material.new(exercise_tree_item) }
     let(:markdown_material){ Material.new(markdown_tree_item) }
     let(:subdirectory_material){ Material.new(subdirectory_tree_item) }
     let(:image_material){ Material.new(image_tree_item) }
@@ -120,6 +129,9 @@ describe Material do
       end
     end
     describe "#directory?" do
+      it "should return false for exercise files" do
+        exercise_material.directory?.should be_falsey
+      end
       it "should return false for markdown files" do
         markdown_material.directory?.should be_falsey
       end
@@ -130,7 +142,24 @@ describe Material do
         image_material.directory?.should be_falsey
       end
     end
+    describe "#exercise?" do
+      it "should return true for exercise files" do
+        exercise_material.markdown?.should be_truthy
+      end
+      it "should return false for markdown files" do
+        markdown_material.exercise?.should be_falsey
+      end
+      it "should be false for directories" do
+        subdirectory_material.exercise?.should be_falsey
+      end
+      it "should be false for non-markdown files" do
+        image_material.exercise?.should be_falsey
+      end
+    end
     describe "#markdown?" do
+      it "should return true for exercise files" do
+        exercise_material.markdown?.should be_truthy
+      end
       it "should return true for markdown files" do
         markdown_material.markdown?.should be_truthy
       end

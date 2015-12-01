@@ -6,6 +6,8 @@ class Material
   attr_accessor :children, :local_id
   @@LAST_ID = 0
 
+  INSTRUCTOR_NOTES_PATTERN = /instructor_notes/
+  EXERCISE_PATTERN = /[Ee]xercises/
   ROOT = "."
 
   def initialize(item = nil)
@@ -16,12 +18,12 @@ class Material
     @local_id = @@LAST_ID
   end
 
-  def self.exercise_list_for(client, source_repository)
-    Material.list(client, source_repository, "exercises")
-  end
-
-  def self.materials_for(client, source_repository)
-    Material.root(client, source_repository, /^exercises/)
+  def self.exercises(client, repository)
+    exercises = client.tree(repository, "master", recursive: true).tree
+    exercises = exercises.find_all{ |item| item[:path].match(EXERCISE_PATTERN) && !item[:path].match(INSTRUCTOR_NOTES_PATTERN) }
+    exercises = exercises.map{ |item| Material.new(item) }
+    exercises = exercises.find_all{ |item| item.exercise? and item.markdown? }
+    exercises
   end
 
   def self.list(client, repository, directory)
@@ -29,11 +31,24 @@ class Material
     contents.map{ |item| Material.new(item) }
   end
 
+  def self.materials(client, repository)
+    root = Material.new()
+    tree = client.tree(repository, "master", recursive: true).tree
+    materials = tree.map{ |tree_item| Material.new(tree_item) }
+    materials.each do |material|
+      unless material.fullpath.match(EXERCISE_PATTERN)
+        parent = root.find(material.directory)
+        parent.incorporate_child(material)
+      end
+    end
+    root
+  end
+
   def self.retrieve(filepath, repository, client)
     begin
       result = client.contents(repository, path: filepath)
       Material.new(result)
-    rescue Octokit::Forbidden
+    rescue Octokit::Forbidden # For Binary files
       directory = File.dirname(filepath)
       sibling_materials = Material.list(client, repository, directory)
       material = sibling_materials.find{|material| material.fullpath == filepath}
@@ -43,18 +58,8 @@ class Material
     end
   end
 
-  def self.root(client, repository, skip_files_matching)
-    root = Material.new()
-    tree = client.tree(repository, "master", recursive: true).tree
-    materials = tree.map{ |tree_item| Material.new(tree_item) }
-    materials.each do |material|
-      insert_into_tree(material, root, skip_files_matching)
-    end
-    root
-  end
-
   def incorporate_child(child)
-    return unless child.markdown? or child.directory?
+    return unless child.directory? or (child.markdown? and !child.exercise?)
     self.children << child
   end
 
@@ -73,6 +78,10 @@ class Material
 
   def directory?
     @item.type == "tree"
+  end
+
+  def exercise?
+    @item.path.match(EXERCISE_PATTERN)
   end
 
   def find(path)
@@ -132,13 +141,5 @@ class Material
 
   def item
     @item
-  end
-
-  private
-
-  def self.insert_into_tree(material, root, skip_files_matching)
-    return if material.fullpath.match(skip_files_matching)
-    parent = root.find(material.directory)
-    parent.incorporate_child(material)
   end
 end

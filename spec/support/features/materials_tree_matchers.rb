@@ -19,6 +19,8 @@ end
 
 def materials_list
   [
+    { level: "1", title: "Intro to Ruby" },
+    { level: "2", title: "Intro to Ruby", path: "01-intro-to-ruby/intro-to-ruby.md"},
     { level: "1", title: "Computer Science" },
     { level: "2", title: "Logic" },
     { level: "3", title: "Logic", path: "computer-science/logic/logic.md"},
@@ -46,6 +48,11 @@ end
 
 def materials_hash
   [
+    { title: "Intro to Ruby",
+      children: [
+        { title: "Intro to Ruby",
+          path: "01-intro-to-ruby/intro-to-ruby.md" } ]
+    },
     { title: "Computer Science",
       children: [
         { title: "Logic",

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 feature "Instructor chooses assignments from github", vcr: true, js: true do
-
   scenario "Happy Path, creating an assignment" do
     course = Fabricate(:course,
                         title: "Cohort 4",
@@ -22,7 +21,8 @@ feature "Instructor chooses assignments from github", vcr: true, js: true do
     click_link "Assignments"
     click_link "New Assignment"
     page.should have_options_for("Assignment",
-                options: ["Cheers", "Ruby Koans", "Some Other Exercise", "Unfinished Exercise"])
+                options: ["Cheers", "Koans Online", "Ruby Koans", "Instructions", "Unfinished Exercise"])
+
     select "Ruby Koans", from: "Assignment"
     click_button "Set Milestones"
     page.should have_content("publishing makes an assignment visible to students")
@@ -66,7 +66,7 @@ feature "Instructor chooses assignments from github", vcr: true, js: true do
     visit course_path(course)
     click_link "Assignments"
     click_link "New Assignment"
-    select "Ruby Koans", from: "Assignment"
+    select "Koans Online", from: "Assignment"
     click_button "Set Milestones"
     page.should have_content("publishing makes an assignment visible to students")
     page.should have_content("Strings")
@@ -117,17 +117,5 @@ feature "Instructor chooses assignments from github", vcr: true, js: true do
     page.should have_content("Strings (due 2/01)")
     page.should have_content("Objects (due 2/02)")
     page.should have_content("Triangles (due 2/03)")
-  end
-
-  scenario "Sad path: Exercise that's missing it's innards" do
-    course = Fabricate(:course, title: "Cohort 4")
-    signin_as :instructor, courses: [course]
-    click_link "Assignments"
-    click_link "New Assignment"
-    page.should have_options_for("Assignment",
-                options: ["Cheers", "Ruby Koans", "Some Other Exercise", "Unfinished Exercise"])
-    select "Unfinished Exercise", from: "Assignment"
-    click_button "Set Milestones"
-    page.should have_content "Could not retrieve instructions.md in exercises/04-unfinished-exercise. Please confirm that the instructions.md is ready and then try again."
   end
 end
