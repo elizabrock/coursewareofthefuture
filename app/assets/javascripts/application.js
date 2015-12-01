@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.tabelizer
+//= require jquery.bonsai
 //= require jquery-ui/datepicker
 //= require foundation/foundation
 //= require foundation/foundation.alert
@@ -22,6 +22,8 @@
 //= require_tree .
 
 $(function(){
-  $('table#all_materials').tabelize();
+  $('ul#all_materials').bonsai({
+    expandAll: false
+  });
   $(document).foundation();
 });

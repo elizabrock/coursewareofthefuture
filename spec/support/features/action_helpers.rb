@@ -18,9 +18,9 @@ module Features
       end
     end
 
-    def within_tr_for(topic, &block)
-      tr = find(:xpath, "//tr[.//a/span[@class='title' and contains(normalize-space(.),'#{topic}')]]")
-      within(tr, &block)
+    def within_li_for(topic, &block)
+      li = find(:xpath, "//li[./span[@class='title' and contains(normalize-space(.),'#{topic}')]]")
+      within(li, &block)
     end
 
     def label_for(topic, &block)
@@ -28,11 +28,11 @@ module Features
     end
 
     def mark_as_read(topic)
-      within_tr_for(topic){ click_button "Mark as Read" }
+      within_li_for(topic){ click_button "Mark as Read" }
     end
 
     def mark_as_covered(topic, options = {})
-      within_tr_for(topic) do
+      within_li_for(topic) do
         if date = options[:on]
           fill_in "Date", with: date
         end

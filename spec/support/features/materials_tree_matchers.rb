@@ -1,16 +1,14 @@
 def hash_of(path)
-  table = first(:css, path)
+  list = first(:css, path)
   result = []
-  return result unless table
-  data_trs = table.all("tr").to_a
-  data_trs.each do |tr|
-    hash = { level: tr["data-level"] }
-    if tr.has_css?("td.title a")
-      link = tr.find("td.title a")
-      hash[:title] = link.find("span").text
+  return result unless list
+  child_lis = list.all("li").to_a
+  child_lis.each do |li|
+    hash = { }
+    hash[:title] = li.find("> span.title").text
+    if li.has_css?("> span.title a")
+      link = li.find("> span.title a")
       hash[:path] = link["href"].gsub(/\/courses\/\d+\/materials\//, "").gsub("%2F", "/")
-    else
-      hash[:title] = tr.find("span.title").text
     end
     result << hash
   end
@@ -19,30 +17,30 @@ end
 
 def materials_list
   [
-    { level: "1", title: "Intro to Ruby" },
-    { level: "2", title: "Intro to Ruby", path: "01-intro-to-ruby/intro-to-ruby.md"},
-    { level: "1", title: "Computer Science" },
-    { level: "2", title: "Logic" },
-    { level: "3", title: "Logic", path: "computer-science/logic/logic.md"},
-    { level: "3", title: "Truth Tables", path: "computer-science/logic/truth-tables.md" },
-    { level: "2", title: "Programming" },
-    { level: "3", title: "Advanced Programming" },
-    { level: "4", title: "Garbage Collection", path: "computer-science/programming/advanced-programming/garbage-collection.md" },
-    { level: "3", title: "Basic Programming" },
-    { level: "4", title: "Control Structures" },
-    { level: "5", title: "Basic Control Structures", path: "computer-science/programming/basic-programming/control-structures/basic-control-structures.md" },
-    { level: "4", title: "Data Structures and Types" },
-    { level: "5", title: "Booleans and Bits" },
-    { level: "6", title: "Booleans and Bits", path: "computer-science/programming/basic-programming/data-structures-and-types/booleans-and-bits/booleans-and-bits.md" },
-    { level: "3", title: "Functional Programming" },
-    { level: "4", title: "Introduction to Functional Programming", path: "computer-science/programming/functional-programming/introduction-to-functional-programming.md" },
-    { level: "1", title: "Life Skills" },
-    { level: "2", title: "Life Skills", path: "life-skills/life-skills.md" },
-    { level: "1", title: "Rails" },
-    { level: "2", title: "ActionView" },
-    { level: "3", title: "ERB and Haml", path: "rails/actionview/erb-and-haml.md" },
-    { level: "2", title: "Ruby Ecosystem" },
-    { level: "3", title: "Nyan Cat", path: "rails/ruby-ecosystem/nyan-cat.md" }
+    { title: "Intro to Ruby" },
+    { title: "Intro to Ruby", path: "01-intro-to-ruby/intro-to-ruby.md"},
+    { title: "Computer Science" },
+    { title: "Logic" },
+    { title: "Logic", path: "computer-science/logic/logic.md"},
+    { title: "Truth Tables", path: "computer-science/logic/truth-tables.md" },
+    { title: "Programming" },
+    { title: "Advanced Programming" },
+    { title: "Garbage Collection", path: "computer-science/programming/advanced-programming/garbage-collection.md" },
+    { title: "Basic Programming" },
+    { title: "Control Structures" },
+    { title: "Basic Control Structures", path: "computer-science/programming/basic-programming/control-structures/basic-control-structures.md" },
+    { title: "Data Structures and Types" },
+    { title: "Booleans and Bits" },
+    { title: "Booleans and Bits", path: "computer-science/programming/basic-programming/data-structures-and-types/booleans-and-bits/booleans-and-bits.md" },
+    { title: "Functional Programming" },
+    { title: "Introduction to Functional Programming", path: "computer-science/programming/functional-programming/introduction-to-functional-programming.md" },
+    { title: "Life Skills" },
+    { title: "Life Skills", path: "life-skills/life-skills.md" },
+    { title: "Rails" },
+    { title: "ActionView" },
+    { title: "ERB and Haml", path: "rails/actionview/erb-and-haml.md" },
+    { title: "Ruby Ecosystem" },
+    { title: "Nyan Cat", path: "rails/ruby-ecosystem/nyan-cat.md" }
   ]
 end
 

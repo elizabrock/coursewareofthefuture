@@ -1,4 +1,4 @@
 %h1 Course Materials &amp; Outline
 
-%table#all_materials.controller
+%ul#all_materials
   = render partial: "materials/material", collection: materials.children, locals: { level: 1 }

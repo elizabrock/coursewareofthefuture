@@ -1,21 +1,18 @@
 - covered_material = covered_materials.find{|cm| cm.material_fullpath == material.fullpath}
 
-%tr{ data: { level: level }, id: "level_#{level}_#{material.local_id}" }
-  %td.title
-    - if material.markdown?
-      = link_to material_path_for(material) do
-        %span.title= material.formatted_title
-    - else
-      %span.title= material.formatted_title
-  %td.data
+%li{id: "material_#{material.local_id}"}
+  %span.title
+    = link_to_if material.markdown?, material.formatted_title, material_path_for(material)
+  %span.read_status
     - if covered_material.present?
       - if read_materials_fullpaths.include?(covered_material.fullpath)
         .read-status.label.radius.secondary.fi-check read
       - else
         .read-status.label.radius.alert.fi-asterisk new&nbsp;
-  %td.data
+  %span.covered_status
     - if material.leaf? and material.markdown?
       - covered_material ||= CoveredMaterial.new(material_fullpath: material.fullpath, covered_on: Time.zone.now)
       = render covered_material, locals: { material: material }
 
-= render partial: "materials/material", collection: material.children, locals: { level: level+1 }
+  - unless material.children.empty?
+    %ul= render partial: "materials/material", collection: material.children

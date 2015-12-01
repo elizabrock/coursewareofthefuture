@@ -1,17 +1,7 @@
 #all_materials {
   border: none;
-
-  td.title .label {
-    background: none;
-    color: $body-font-color;
-    font-size: 1em;
-  }
-
-  td.data {
-    text-align: left;
-  }
-  .f-dropdown.content.open {
-    min-width: 14em;
+  ul {
+    margin-bottom: 0;
   }
 }
 
