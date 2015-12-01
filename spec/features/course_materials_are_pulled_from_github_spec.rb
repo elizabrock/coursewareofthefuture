@@ -1,10 +1,21 @@
 require 'rails_helper'
 
 feature "Course materials are pulled from github", vcr: true do
-  scenario "Viewing the materials list (as instructor)" do
+  scenario "Viewing the materials list should include all materials but no exercises" do
     course = Fabricate(:course)
     signin_as :instructor, courses: [course]
     visit course_path(course)
+    click_link "Materials"
+    page.should_not have_content("Exercises")
+    page.should_not have_content("Cheers")
+    page.should_not have_content("Ruby Koans")
+    hash_of("#all_materials").should == materials_list
+  end
+
+  scenario "Viewing the materials list should include all materials but no exercises" do
+    course = Fabricate(:course)
+    signin_as :student, courses: [course]
+    visit root_path
     click_link "Materials"
     page.should_not have_content("Exercises")
     page.should_not have_content("Cheers")
@@ -17,6 +28,7 @@ feature "Course materials are pulled from github", vcr: true do
     Fabricate(:covered_material, material_fullpath: "computer-science/logic/logic.md", course: course)
     signin_as :student, courses: [course]
     visit root_path
+    click_link "Materials"
     click_link "Logic"
     page.should have_content "Logic is, broadly speaking, the application of reasoning to an activity or concept. In Computer Science, we primarily use deductive reasoning (a.k.a. deductive logic) along with boolean algebra (e.g. two-valued logic)."
     page.should have_css("h1", text: "Logic")

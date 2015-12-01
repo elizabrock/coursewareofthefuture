@@ -7,8 +7,6 @@ class MaterialsController < ApplicationController
   expose(:covered_materials){ current_course.covered_materials }
   expose(:covered_material){ covered_materials.where(material_fullpath: material.fullpath).first || CoveredMaterial.new(material_fullpath: material.fullpath, covered_on: Time.zone.now) }
 
-  before_filter :require_instructor!, except: [:show]
-
   def show
     if material.markdown?
       render :show

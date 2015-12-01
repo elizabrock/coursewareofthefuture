@@ -8,6 +8,7 @@ feature "Student views slides" do
   scenario "Student is on materials page and views slides", vcr: true do
     signin_as :student, courses: [course]
     visit course_path(course)
+    click_link "Materials"
     click_link "Logic"
     click_link "View As Slides"
     current_path.should == course_material_slides_path(course, covered_material.fullpath)

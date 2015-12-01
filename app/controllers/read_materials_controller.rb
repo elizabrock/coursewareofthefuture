@@ -5,7 +5,7 @@ class ReadMaterialsController < ApplicationController
   def create
     read_material.save!
     flash[:notice] = "#{read_material.formatted_title} has been marked as read."
-    redirect_to course_material_path(current_course, read_material.material_fullpath)
+    redirect_to course_materials_path(current_course)
   end
 
   private

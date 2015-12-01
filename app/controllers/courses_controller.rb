@@ -4,7 +4,6 @@ class CoursesController < ApplicationController
   expose(:first_of_each_month_of_course){ (current_course.start_date.change(day: 1)..current_course.end_date).select{ |d| d.day == 1 } }
   expose(:read_materials_fullpaths){ current_user.read_materials.map(&:material_fullpath) }
 
-
   before_filter :require_instructor!, except: [:show]
 
   def create
