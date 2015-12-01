@@ -1,5 +1,5 @@
 class AssignmentsController < ApplicationController
-  expose(:assignment_options){ Material.list(current_user.octoclient, current_course.source_repository, "exercises") }
+  expose(:assignment_options){ Material.exercise_list_for(current_user.octoclient, current_course.source_repository) }
   expose(:assignments){ current_course.assignments }
   expose(:assignment, attributes: :assignment_params)
   expose(:viewable_assignments){ assignments.to_a.delete_if{|a| cannot? :view, a }.sort_by{|a| a.last_deadline || 1.year.from_now } }

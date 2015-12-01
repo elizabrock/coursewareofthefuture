@@ -16,6 +16,14 @@ class Material
     @local_id = @@LAST_ID
   end
 
+  def self.exercise_list_for(client, source_repository)
+    Material.list(client, source_repository, "exercises")
+  end
+
+  def self.materials_for(client, source_repository)
+    Material.root(client, source_repository, /^exercises/)
+  end
+
   def self.list(client, repository, directory)
     contents = client.contents(repository, path: directory)
     contents.map{ |item| Material.new(item) }

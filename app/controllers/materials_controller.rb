@@ -1,6 +1,5 @@
 class MaterialsController < ApplicationController
-
-  expose(:materials){ Material.root(current_user.octoclient, current_course.source_repository, /^exercises/) }
+  expose(:materials){ Material.materials_for(current_user.octoclient, current_course.source_repository) }
   expose(:material){ Material.retrieve(params[:id], current_course.source_repository, current_user.octoclient) }
 
   expose(:read_materials_fullpaths){ current_user.read_materials.map(&:material_fullpath) }

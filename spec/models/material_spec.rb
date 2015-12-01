@@ -1,6 +1,14 @@
 require 'rails_helper'
 
 describe Material do
+  describe ".exercise_list_for", vcr: true do
+    let(:user){ Fabricate(:user) }
+    let(:materials){ Material.exercise_list_for(user.octoclient, "elizabrock/inquizator-test-repo") }
+    it "should retrieve all the materials in that subdirectory" do
+      expected_materials = [{:title=>"Cheers"}, {:title=>"Ruby Koans"}, {:title=>"Some Other Exercise"}, {:title=>"Unfinished Exercise"}]
+      materials.map(&:to_hash).should == expected_materials
+    end
+  end
   describe ".list", vcr: true do
     let(:user){ Fabricate(:user) }
     let(:materials){ Material.list(user.octoclient, "elizabrock/inquizator-test-repo", "exercises") }
@@ -9,7 +17,14 @@ describe Material do
       materials.map(&:to_hash).should == expected_materials
     end
   end
-
+  describe ".materials_for", vcr: true do
+    let(:user){ Fabricate(:user) }
+    let(:materials){ Material.materials_for(user.octoclient, "elizabrock/inquizator-test-repo") }
+    it "should load the full material tree" do
+      actual_materials = materials.to_hash
+      actual_materials.should == materials_hash
+    end
+  end
   describe ".root", vcr: true do
     let(:user){ Fabricate(:user) }
     let(:materials){ Material.root(user.octoclient, "elizabrock/inquizator-test-repo", /^exercises/) }
