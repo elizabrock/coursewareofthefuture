@@ -35,11 +35,10 @@ class Material
     root = Material.new()
     tree = client.tree(repository, "master", recursive: true).tree
     materials = tree.map{ |tree_item| Material.new(tree_item) }
+    materials = materials.reject{ |m| m.fullpath.match(EXERCISE_PATTERN) or m.fullpath.match(INSTRUCTOR_NOTES_PATTERN) }
     materials.each do |material|
-      unless material.fullpath.match(EXERCISE_PATTERN)
-        parent = root.find(material.directory)
-        parent.incorporate_child(material)
-      end
+      parent = root.find(material.directory)
+      parent.incorporate_child(material)
     end
     root
   end
