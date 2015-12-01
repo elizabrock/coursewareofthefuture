@@ -11,25 +11,25 @@ feature "Student submits milestone", vcr: true do
 
   scenario "Submitting milestone, happy path" do
     signin_as(:student,
-              name: "Eliza",
-              github_username: "elizabrock",
+              name: "Jim Weirich",
+              github_username: "jimweirich",
               courses: [course])
     visit root_path
     click_link "Assignments"
     click_link "Capstone"
-    # This is not ideal, since it will change when Eliza has more public repos.
-    # However, the effort required to set up a proper test user doesn't seem warranted yet.
+    # Ruby legend, Jim Weirich, passed away last year.  As such, his list of
+    # public repos will never again change :(
     page.should have_options_for("Assignment Repository", options: [
-      "", "attendance_tracker", "blueberry-cal", "cal", "calculator", "cheersjs", "cheers_csharp", "cheers_csharp_cohort10", "cheers_take2", "cheers_take3", "chess", "cohort_7_game_of_life", "ConwaysGameOfLife", "coursewareofthefuture", "DotNetKoans", "elizabrock.github.io", "front-end-development-curriculum", "FuturePerfect", "greenthumb", "Hapless-Path", "huckleberry_cal", "inquizator-test-repo", "Intro-to-Rails-3-Presentation", "LaTeX-Resume", "license-to-kill", "LinkedListCohortJuniper", "linked_list_cohort3", "linked_list_cohort_blueberry", "linked_list_cohort_grape", "linked_list_cohort_huckleberry", "linked_list_cohort_tangerine", "mathgician", "median", "MvcMovie", "NSS-basic-rails-blog", "nss-cal", "NSS-Cal-Refactor", "nss-capstone-2-example", "NSS-CLI-test-example", "NSS-futureperfect-CLI", "NSS-futureperfect-rails", "NSS-Linked-List", "nss-linked-list-implementation", "NSS-Linked-List-Spring-2013", "NSS-Ruby-Koans", "nss-squawker", "NSS-Syllabus-Cohort-3", "NSS-Syllabus-Fall-2012", "NSS-Syllabus-Spring-2013", "presentation_nashville_hack_day", "project_management_export_to_latex", "ruby_koans_online", "SavingsMultiplied", "SavingsMultipliedRedux", "SharpShapes", "skeleton_dance", "slide-em-up", "software-development-curriculum", "software-development-curriculum-mark-two", "squmblr", "stepoff", "student_picker", "TakeANumber", "test", "testing_cheers", "tonys_pizza", "tr3w-conversion", "volunteerism", "WaitForIt", "wedding", "would_you_rather", "zss"
+      "", "argus", "BankOcrKata", "beer_song", "bnr-ios-rubymotion", "builder", "dim", "docs", "dudley", "emacs-setup", "emacs-setup-esk", "emacs-starter-kit", "EverCraft-Kata", "example_blogger_with_seo", "flexmock", "gilded_rose_kata", "gimme", "Given", "gotags", "greenletters", "irb-setup", "jsblogger_sample", "kata-number-to-led", "lambda_fizz", "pair_programming_bot", "partially_valid", "Personography", "polite_programmer_blog", "polite_programmer_presentation", "presentation-connascence-examined", "presentation-given", "presentation_10papers", "presentation_agile_engineering_practices", "presentation_connascence", "presentation_enterprise_mom", "presentation_event-vs-cells", "presentation_flying_robots", "presentation_kata_and_analysis", "presentation_parenthetically_speaking", "presentation_playing_it_safe", "presentation_solid_ruby", "presentation_source_control", "presentation_testing_why_dont_we_do_it_like_this", "presentation_to_infinity", "presentation_writing_solid_ruby_code", "presentation_ynot", "present_code", "project_euler_solutions", "protection_proxy", "raffle", "rake", "rakedocs", "RakePresentations", "rava", "re", "rspec-given", "rubyspec", "sample_friends_app", "sicp-study", "slidedown", "sorcerer", "sudoku", "swimlanes", "texp", "travis_ci_flexmock_debug", "wyriki"
     ])
     page.should_not have_content "This milestone is hard"
-    select "software-development-curriculum", from: "Assignment Repository"
+    select "sample_friends_app", from: "Assignment Repository"
     within(milestone(1)){ click_button "Submit Milestone" }
     page.should have_content "Milestone 1 has been submitted for grading"
     within(milestone(1)){ page.should have_content "Status: Submitted for Grading" }
-    # page.should have_content "Assignment Repository: elizabrock/software-development-curriculum"
+    # page.should have_content "Assignment Repository: jimweirich/sample_friends_app"
     page.should have_content "This milestone is hard"
-    select "software-development-curriculum", from: "Assignment Repository"
+    select "sample_friends_app", from: "Assignment Repository"
     within(milestone("Milestone 2")){ click_button "Submit Milestone" }
     page.should have_content "Milestone 2 has been submitted for grading"
     within(milestone("Milestone 1")){ page.should have_content "Status: Submitted for Grading" }
@@ -38,14 +38,14 @@ feature "Student submits milestone", vcr: true do
 
   scenario "student has over 30 public repos" do
     signin_as(:student,
-              name: "Samantha",
-              github_username: "slyeargin",
+              name: "Jim Weirich",
+              github_username: "jimweirich",
               courses: [course])
     visit root_path
     click_link "Assignments"
     click_link "Capstone"
     repo_options = find_field("Assignment Repository").all("option")
-    repo_options.size.should == 62
+    repo_options.size.should == 66
   end
 
   scenario "Student has no public repos?" do
