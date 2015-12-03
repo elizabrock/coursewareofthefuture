@@ -19,6 +19,7 @@
 //= require foundation/foundation.dropdown
 //= require foundation/foundation.reveal
 //= require d3
+//= require corequisites
 //= require_tree .
 
 $(function(){

@@ -1,0 +1,11 @@
+%fieldset.corequisites
+  %legend Corequisites
+  .row
+    .small-12.large-6.columns
+      %h5 Add Corequisites:
+      %ul.corequisites
+        - materials.children.each do |material|
+          %li= render partial: 'corequisites/corequisite_fields', locals: { material: material, f: f }
+    .small-12.large-6.columns
+      %h5 Current Corequisites:
+      %ul.selected_corequisites

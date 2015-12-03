@@ -99,6 +99,10 @@ form {
     margin-bottom: 1em;
   }
 
+  div.input.check_boxes {
+    margin-bottom: 0;
+  }
+
   input[type="text"],
   input[type="password"],
   input[type="date"],
@@ -116,7 +120,7 @@ form {
     margin-bottom: 0.5em;
   }
 
-  input.radio_buttons, input.boolean {
+  input.radio_buttons, input.boolean, input.check_boxes, input.checkbox {
     margin: 0 0.5em 0 0;
   }
 

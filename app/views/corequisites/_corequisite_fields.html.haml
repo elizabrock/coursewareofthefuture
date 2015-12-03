@@ -1,0 +1,8 @@
+- if material.leaf?
+  = f.input :corequisite_fullpaths, as: :check_boxes, collection: [[ material.formatted_title, material.fullpath]], label: false
+- else
+  = material.formatted_title
+- unless material.children.empty?
+  %ul
+    - material.children.each do |child|
+      %li= render partial: 'corequisites/corequisite_fields', locals: { material: child, f: f }

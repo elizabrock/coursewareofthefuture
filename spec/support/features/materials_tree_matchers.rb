@@ -117,5 +117,5 @@ end
 def material_titles
   materials_list.map do |material|
     material.has_key?(:path) ? material[:title] : nil
-  end.compact.sort
+  end.compact
 end
