@@ -8,6 +8,14 @@ GIT
       sprockets (< 4.0)
 
 GIT
+  remote: git://github.com/bernat/best_in_place.git
+  revision: f6f108ecaba04d9990ceea03df00ca6006bb9b0f
+  specs:
+    best_in_place (3.0.3)
+      actionpack (>= 3.2)
+      railties (>= 3.2)
+
+GIT
   remote: git://github.com/elizabrock/slide-em-up.git
   revision: a02e0a0e90476a992253fdbd70e8c59b07db3f08
   branch: master
@@ -448,6 +456,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  best_in_place!
   calendar_helper
   cancan
   carrierwave

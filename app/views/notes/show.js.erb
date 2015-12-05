@@ -1,0 +1,3 @@
+$("#note<%= note.date.yday %>").foundation('reveal', 'close');
+$('td[data-date="<%= note.date.yday %>"] div.note').
+  replaceWith("<%= escape_javascript(render note) %>");

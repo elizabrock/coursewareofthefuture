@@ -273,7 +273,8 @@ CREATE TABLE notes (
     content text,
     user_id integer,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    date timestamp without time zone
 );
 
 
@@ -918,4 +919,6 @@ INSERT INTO schema_migrations (version) VALUES ('20151005210453');
 INSERT INTO schema_migrations (version) VALUES ('20151006131415');
 
 INSERT INTO schema_migrations (version) VALUES ('20151124164846');
+
+INSERT INTO schema_migrations (version) VALUES ('20151201162316');
 

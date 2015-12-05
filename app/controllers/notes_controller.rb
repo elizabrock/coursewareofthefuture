@@ -1,4 +1,5 @@
 class NotesController < ApplicationController
+  expose(:notes){ current_user.notes }
   expose(:note, attributes: :note_params)
 
   before_filter :require_instructor!
@@ -20,10 +21,11 @@ class NotesController < ApplicationController
   end
 
 
+
   private
 
   def note_params
-    params.require(:note).permit(:content)
+    params.require(:note).permit(:content, :date)
   end
 
 end

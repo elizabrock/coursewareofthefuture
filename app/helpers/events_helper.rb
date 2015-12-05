@@ -24,7 +24,7 @@ module EventsHelper
 
       output << self_report(d, course) unless outside_of_course
 
-      output << note
+      output << note(d, course) unless outside_of_course
     end
 
     # See https://github.com/topfunky/calendar_helper for format explanation:
@@ -33,8 +33,10 @@ module EventsHelper
 
   private
 
-  def note
-    return "note"
+  def note(d, course)
+    note = current_user.notes.find{ |n| n.date == d }
+    note ||= Note.new(date: d)
+    render note
   end
 
   def self_report(d, course)
