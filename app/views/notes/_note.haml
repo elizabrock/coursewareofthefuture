@@ -1,17 +1,18 @@
-.note
-  .row
-    .small-12.columns
-  - if !note.new_record?
+- if can?(:manage, Note)
+  .note
     .row
       .small-12.columns
-        %h6.note Instructor Note
-        %strong
-        = note.content
-  .row
-    .small-12.columns
-      - if note.new_record?
-        = link_to "Instructor Note!", "#", class: "fi-page-edit button tiny success", "data-reveal-id" => "note#{note.date.yday}"
-      - else
-        = link_to "edit", edit_note_path(note), class: "edit fi-pencil", "data-reveal-id" => "note#{note.date.yday}"
-      .reveal-modal{ id: "note#{note.date.yday}", "data-reveal" => "day#{note.date.yday}" }
-        = render partial: 'notes/form', locals: { note: note }
+    - if !note.new_record?
+      .row
+        .small-12.columns
+          %h6.note Instructor Note
+          %strong
+          = note.content
+    .row
+      .small-12.columns
+        - if note.new_record?
+          = link_to "Instructor Note!", "#", class: "fi-page-edit button tiny success", "data-reveal-id" => "note#{note.date.yday}"
+        - else
+          = link_to "edit", edit_note_path(note), class: "edit fi-pencil", "data-reveal-id" => "note#{note.date.yday}"
+        .reveal-modal{ id: "note#{note.date.yday}", "data-reveal" => "day#{note.date.yday}" }
+          = render partial: 'notes/form', locals: { note: note }
