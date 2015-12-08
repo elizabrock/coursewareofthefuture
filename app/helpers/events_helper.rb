@@ -34,7 +34,7 @@ module EventsHelper
   private
 
   def note(d, course)
-    note = current_user.notes.find{ |n| n.date == d }
+    note = course.notes.find{ |n| n.date == d }
     note ||= Note.new(date: d)
     render note
   end

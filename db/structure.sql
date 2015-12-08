@@ -274,7 +274,8 @@ CREATE TABLE notes (
     user_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    date timestamp without time zone
+    date timestamp without time zone,
+    course_id integer
 );
 
 
@@ -786,6 +787,13 @@ ALTER TABLE ONLY users
 
 
 --
+-- Name: index_notes_on_course_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_notes_on_course_id ON notes USING btree (course_id);
+
+
+--
 -- Name: index_notes_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -804,6 +812,14 @@ CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+--
+-- Name: fk_rails_666b79e1d8; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY notes
+    ADD CONSTRAINT fk_rails_666b79e1d8 FOREIGN KEY (course_id) REFERENCES courses(id);
 
 
 --
@@ -921,4 +937,6 @@ INSERT INTO schema_migrations (version) VALUES ('20151006131415');
 INSERT INTO schema_migrations (version) VALUES ('20151124164846');
 
 INSERT INTO schema_migrations (version) VALUES ('20151201162316');
+
+INSERT INTO schema_migrations (version) VALUES ('20151208191729');
 

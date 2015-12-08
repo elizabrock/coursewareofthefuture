@@ -30,7 +30,7 @@ Coursewareofthefuture::Application.routes.draw do
   resource :enrollment, only: [:new]
   resource :irc, only: :show, controller: :irc
   resources :milestone_submissions, only: [:create]
-  resources :notes
+  resources :notes, except: [:destroy]
   resources :question_grades, only: [:edit, :update]
   resources :read_materials, only: [:create]
   resources :self_reports, except: [:destroy]

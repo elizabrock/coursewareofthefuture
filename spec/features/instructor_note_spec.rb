@@ -13,10 +13,14 @@ feature "Instructor Note", js:true do
     joe = signin_as :instructor, courses: [course]
     Fabricate(:note,
               date: "2013/03/12",
-              content: "new note", user: joe)
+              content: "new note",
+              course: course,
+              user: joe)
     Fabricate(:note,
               date: "2013/03/13",
-              content: "another new note", user: joe)
+              content: "another new note",
+              course: course,
+              user: joe)
     click_link "Course Calendar"
   end
 
