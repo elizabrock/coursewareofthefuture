@@ -2,8 +2,6 @@ ruby '2.2.3'
 #ruby-gemset=coursewareofthefuture
 source 'https://rubygems.org'
 
-# Helps generate the calendar markup on the calendar page
-gem 'calendar_helper'
 # Authorization gem:  gives us Ability model and can? :edit, item
 gem 'cancan'
 # Image upload (profile pictures)

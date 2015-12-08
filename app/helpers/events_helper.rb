@@ -1,3 +1,5 @@
+require 'calendar_helper'
+
 module EventsHelper
   def format_calendar_date(d, course)
     outside_of_course = (d < course.start_date or d > course.end_date)
