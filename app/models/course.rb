@@ -6,6 +6,7 @@ class Course < ActiveRecord::Base
   has_many :enrollments
   has_many :events
   has_many :milestones, through: :assignments
+  has_many :notes
   has_many :quizzes
   has_many :users, through: :enrollments
 

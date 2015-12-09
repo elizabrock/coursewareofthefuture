@@ -13,6 +13,7 @@ Bundler.require(:default, Rails.env)
 
 module Coursewareofthefuture
   class Application < Rails::Application
+    # Excon.defaults[:ssl_verify_peer] = false
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

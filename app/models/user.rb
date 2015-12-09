@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :courses, through: :enrollments
   has_many :milestones, through: :milestone_submissions
   has_many :milestone_submissions
+  has_many :notes
   has_many :read_materials
   has_many :self_reports, inverse_of: :user
   has_many :quiz_submissions

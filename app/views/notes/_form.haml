@@ -1,0 +1,12 @@
+%div.note-form
+  = simple_form_for note, html: { id: "day#{note.date.yday}" }, defaults: {input_html: {class: 'tiny radius'}}, remote: true do |f|
+    = f.hidden_field :date
+    .row
+      .small-12.columns
+        %h6.note Instructor Note for #{note.date.to_date}:
+    .row
+      .small-12.columns
+      = f.input :content, label: "Note"
+    .row
+      .small-12.columns
+      = f.button :submit, value: "Noted", class: 'small success'

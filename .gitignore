@@ -24,3 +24,6 @@ coverage/*
 
 config/database.yml
 spec/cassettes
+
+# Dependency directory
+node_modules
