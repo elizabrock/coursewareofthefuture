@@ -271,11 +271,11 @@ ALTER SEQUENCE milestones_id_seq OWNED BY milestones.id;
 CREATE TABLE notes (
     id integer NOT NULL,
     content text,
-    user_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     date timestamp without time zone,
-    course_id integer
+    course_id integer,
+    user_id integer
 );
 
 
@@ -794,13 +794,6 @@ CREATE INDEX index_notes_on_course_id ON notes USING btree (course_id);
 
 
 --
--- Name: index_notes_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_notes_on_user_id ON notes USING btree (user_id);
-
-
---
 -- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -820,14 +813,6 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 
 ALTER TABLE ONLY notes
     ADD CONSTRAINT fk_rails_666b79e1d8 FOREIGN KEY (course_id) REFERENCES courses(id);
-
-
---
--- Name: fk_rails_7f2323ad43; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY notes
-    ADD CONSTRAINT fk_rails_7f2323ad43 FOREIGN KEY (user_id) REFERENCES users(id);
 
 
 --
