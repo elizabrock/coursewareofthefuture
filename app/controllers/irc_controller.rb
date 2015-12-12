@@ -1,2 +1,0 @@
-class IrcController < ApplicationController
-end
