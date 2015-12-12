@@ -6,24 +6,25 @@ class Assignment < ActiveRecord::Base
 
   accepts_nested_attributes_for :milestones
 
+  validate :start_date_must_be_appropriate, if: [:course, :start_date]
   validates_presence_of :course
+  validates_presence_of :start_date, if: Proc.new{ |a| a.published? }
   validates_associated :milestones
+  validates_length_of :milestones, minimum: 1, message: "must contain at least one milestone", if: Proc.new{ |a| a.published? }
 
   scope :published, ->{ where(published: true) }
 
-  def first_deadline
-    @first_deadline ||= milestones.map(&:deadline).min
+  def end_date
+    milestones.last.try(:deadline) || course.end_date
   end
 
-  def last_deadline
-    @last_deadline ||= milestones.map(&:deadline).max
+  def publishable?
+    start_date.present? && !milestones.empty? && milestones.all?{ |m| m.publishable? }
   end
 
   def title_with_deadlines
-    if first_deadline
-      first = first_deadline
-      last = last_deadline
-      deadlines = (first == last) ? first : [first, last].join(" - ")
+    if start_date
+      deadlines = (start_date == end_date) ? start_date : [start_date, end_date].join(" - ")
       "#{title} (#{deadlines})"
     else
       title
@@ -41,6 +42,14 @@ class Assignment < ActiveRecord::Base
       else
         self.milestones.build(title: title, instructions: body)
       end
+    end
+  end
+
+  private
+
+  def start_date_must_be_appropriate
+    if course.start_date > start_date or start_date > course.end_date.end_of_day
+      errors.add(:start_date, "must be in the course timeframe of #{course.start_date} to #{course.end_date}")
     end
   end
 end

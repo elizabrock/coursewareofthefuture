@@ -40,7 +40,8 @@ CREATE TABLE assignments (
     summary text,
     published boolean,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    start_date date
 );
 
 
@@ -854,4 +855,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140802164604');
 INSERT INTO schema_migrations (version) VALUES ('20151005210453');
 
 INSERT INTO schema_migrations (version) VALUES ('20151006131415');
+
+INSERT INTO schema_migrations (version) VALUES ('20151209194249');
 

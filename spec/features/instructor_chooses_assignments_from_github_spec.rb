@@ -5,7 +5,7 @@ feature "Instructor chooses assignments from github", vcr: true, js: true do
     course = Fabricate(:course,
                         title: "Cohort 4",
                         start_date: "2013/02/28", end_date: "2013/06/01")
-    Fabricate(:assignment, title: "Capstone", course: course)
+    Fabricate(:published_assignment, title: "Capstone", course: course)
 
     instructor = Fabricate(:instructor, courses: [course])
     instructor.photo_confirmed?.should be_truthy
@@ -29,6 +29,7 @@ feature "Instructor chooses assignments from github", vcr: true, js: true do
     page.should have_content("Strings")
     page.should have_content("Objects")
     page.should have_content("Triangles")
+    fill_in "Start Date", with: "2013/03/20"
     within_fieldset("Strings Milestone") do
       fill_in "Deadline", with: "2013/03/24"
     end
@@ -72,6 +73,14 @@ feature "Instructor chooses assignments from github", vcr: true, js: true do
     page.should have_content("Strings")
     page.should have_content("Objects")
     page.should have_content("Triangles")
+    fill_in "Start Date", with: "2014/03/30"
+
+    click_button "Save Assignment"
+    page.should have_content "Your assignment could not be updated."
+    page.should have_error_message("must be in the course timeframe", on: "Start Date")
+
+    fill_in "Start Date", with: ""
+    # Pretty much any deadline is A.OK. until we try to publish the assignment.
     within_fieldset("Strings Milestone") do
       fill_in "Deadline", with: "2013/03/24"
     end
@@ -82,38 +91,36 @@ feature "Instructor chooses assignments from github", vcr: true, js: true do
       fill_in "Deadline", with: "2014/05/28"
     end
     click_button "Save Assignment"
-    page.should have_content "Your assignment could not be updated."
-    within_fieldset("Triangles Milestone") do
-      page.should have_error_message("Must be in the course timeframe", on: "Deadline")
-      find_field("Deadline").value.should =~ /#{"2014/05/28"}/
-      fill_in "Deadline", with: "2014/02/03"
-    end
-    within_fieldset("Strings Milestone") do
-      page.should have_error_message("Must be in the course timeframe", on: "Deadline")
-      find_field("Deadline").value.should =~ /#{"2013/03/24"}/
-      fill_in "Deadline", with: "2014/02/01"
-    end
-    within_fieldset("Objects Milestone") do
-      page.should_not have_content("Must be set")
-      find_field("Deadline").value.should == ""
-    end
-    click_button "Save Assignment"
     page.should have_content "Your assignment has been updated."
+
     check "Published"
     click_button "Save Assignment"
     page.should have_content "Your assignment could not be published."
+    page.should have_error_message("can't be blank", on: "Start Date")
+    fill_in "Start Date", with: "2014/01/30"
+
+    click_button "Save Assignment"
+    page.should have_content "Your assignment could not be published."
+
+    within_fieldset("Triangles Milestone") do
+      find_field("Deadline").value.should =~ /#{"2014/05/28"}/
+      page.should have_error_message("must be in the assignment timeframe", on: "Deadline")
+      fill_in "Deadline", with: "2014/02/03"
+    end
+    within_fieldset("Strings Milestone") do
+      find_field("Deadline").value.should =~ /#{"2013/03/24"}/
+      page.should have_error_message("must be in the assignment timeframe", on: "Deadline")
+      fill_in "Deadline", with: "2014/02/01"
+    end
     within_fieldset("Objects Milestone") do
+      find_field("Deadline").value.should == ""
       page.should have_error_message("can't be blank", on: "Deadline")
       fill_in "Deadline", with: "2014/02/02"
     end
-    within_fieldset("Triangles Milestone") do
-      find_field("Deadline").value.should =~ /#{"2014/02/03"}/
-    end
-    within_fieldset("Strings Milestone") do
-      find_field("Deadline").value.should =~ /#{"2014/02/01"}/
-    end
+
     click_button "Save Assignment"
     page.should have_content "Your assignment has been published."
+    page.should have_content("starts 1/30")
     page.should have_content("Strings (due 2/01)")
     page.should have_content("Objects (due 2/02)")
     page.should have_content("Triangles (due 2/03)")

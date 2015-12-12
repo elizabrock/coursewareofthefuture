@@ -2,7 +2,7 @@ class AssignmentsController < ApplicationController
   expose(:assignment_options){ Material.exercises(current_user.octoclient, current_course.source_repository) }
   expose(:assignments){ current_course.assignments }
   expose(:assignment, attributes: :assignment_params)
-  expose(:viewable_assignments){ assignments.to_a.delete_if{|a| cannot? :view, a }.sort_by{|a| a.last_deadline || 1.year.from_now } }
+  expose(:viewable_assignments){ assignments.to_a.delete_if{|a| cannot? :view, a }.sort_by{|a| a.end_date } }
 
   expose(:published_quizzes){ current_course.quizzes.published }
   expose(:unpublished_quizzes){ current_course.quizzes.unpublished }
@@ -35,7 +35,7 @@ class AssignmentsController < ApplicationController
   private
 
   def assignment_params
-    params.require(:assignment).permit(:title, :summary, :published, :source,
+    params.require(:assignment).permit(:title, :summary, :published, :source, :start_date,
                                        milestones_attributes: [:id, :title, :instructions, :deadline, corequisite_fullpaths: [] ])
   end
 end

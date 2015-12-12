@@ -4,9 +4,20 @@ feature "Student submits milestone", vcr: true do
   let(:course){ Fabricate(:course) }
 
   background do
-    assignment = Fabricate(:assignment, title: "Capstone", course: course)
-    Fabricate(:milestone, title: "Milestone 1", deadline: Date.today, instructions: "This milestone is simple", assignment: assignment)
-    Fabricate(:milestone, title: "Milestone 2", deadline: 15.days.from_now, instructions: "This milestone is hard", assignment: assignment)
+    assignment = Fabricate(:published_assignment,
+                           title: "Capstone",
+                           course: course,
+                           start_date: Date.today,
+                           milestones: [
+                             Fabricate.build(:milestone,
+                                             title: "Milestone 1",
+                                             deadline: Date.today,
+                                             instructions: "This milestone is simple"),
+                             Fabricate.build(:milestone,
+                                             title: "Milestone 2",
+                                             deadline: 15.days.from_now,
+                                             instructions: "This milestone is hard")
+                           ])
   end
 
   scenario "Submitting milestone, happy path" do
@@ -68,6 +79,4 @@ feature "Student submits milestone", vcr: true do
     pending
     fail
   end
-
-
 end

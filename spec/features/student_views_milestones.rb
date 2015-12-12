@@ -4,11 +4,17 @@ feature "Student submits milestone", vcr: true do
   let(:course){ Fabricate(:course) }
 
   background do
-    assignment = Fabricate(:assignment, title: "Capstone", course: course)
-    assignment2 = Fabricate(:assignment, title: "Mid-Term", course: course)
-    milestone = Fabricate(:milestone, title: "Milestone 1", deadline: Date.today, instructions: "This milestone is simple", assignment: assignment)
+    milestone = Fabricate.build(:milestone,
+                                title: "Milestone 1",
+                                deadline: Date.today)
+    assignment = Fabricate(:published_assignment,
+                           title: "Capstone",
+                           course: course,
+                           milestones: [
+                             milestone,
+                             Fabricate.build(:milestone, title: "Milestone 2", deadline: 15.days.from_now)
+                           ])
     user = signin_as(:student, courses: [course])
-    Fabricate(:milestone, title: "Milestone 2", deadline: 15.days.from_now, instructions: "This milestone is hard", assignment: assignment)
     Fabricate(:milestone_submission, milestone: milestone, user: user)
   end
 

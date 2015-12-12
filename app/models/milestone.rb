@@ -2,9 +2,9 @@ class Milestone < ActiveRecord::Base
   belongs_to :assignment, inverse_of: :milestones
   has_many :milestone_submissions
 
-  validate :deadline_must_be_appropriate, if: :deadline
-  validates_presence_of :assignment
-  validates_presence_of :deadline, if: ->{ assignment.published? }
+  validate :deadline_must_be_appropriate, if: [:assignment, :deadline]
+  validates_presence_of :assignment, :instructions, :title
+  validates_presence_of :deadline, if: ->{ assignment.try(:published?) }
 
   default_scope ->{ order("deadline ASC") }
 
@@ -13,6 +13,10 @@ class Milestone < ActiveRecord::Base
   def corequisites
     return [] unless corequisite_fullpaths.present?
     corequisite_fullpaths.find_all{|fp| !fp.blank? }.map{ |fp| Corequisite.new(fp) }
+  end
+
+  def publishable?
+    deadline.present?
   end
 
   def title_for_instructor
@@ -24,8 +28,9 @@ class Milestone < ActiveRecord::Base
   private
 
   def deadline_must_be_appropriate
-    if assignment.course.start_date > deadline or deadline > assignment.course.end_date.end_of_day
-      errors.add(:deadline, "Must be in the course timeframe of #{assignment.course.start_date} to #{assignment.course.end_date}")
+    return unless assignment.start_date.present?
+    if assignment.start_date > deadline or deadline > assignment.course.end_date.end_of_day
+      errors.add(:deadline, "must be in the assignment timeframe of #{assignment.start_date} to #{assignment.course.end_date}")
     end
   end
 

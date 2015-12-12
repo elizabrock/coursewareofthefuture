@@ -7,16 +7,30 @@ feature "Assignments quizzes and materials appear on calendar", vcr: true do
   scenario "Assignments" do
     signin_as :student, courses: [course], github_username: "elizabrock"
 
-    unpublished = Fabricate(:unpublished_assignment, title: "Unpublished Assignment", course: course)
-    Fabricate(:milestone, title: "Pt. n", deadline: "2014/01/03", assignment: unpublished)
+    unpublished = Fabricate(:unpublished_assignment,
+                            title: "Unpublished Assignment",
+                            start_date: "2014/01/01",
+                            course: course,
+                            milestones: [
+                              Fabricate.build(:milestone, title: "Pt. n", deadline: "2014/01/03")
+                            ])
 
-    published = Fabricate(:published_assignment, title: "Koans", course: course)
-    Fabricate(:milestone, title: "Pt. 1", deadline: "2014/01/02", assignment: published)
-    Fabricate(:milestone, title: "Pt. 2", deadline: "2014/01/04", assignment: published)
+    published = Fabricate(:published_assignment,
+                          title: "Koans",
+                          course: course,
+                          start_date: "2014/01/01",
+                          milestones: [
+                            Fabricate.build(:milestone, title: "Pt. 1", deadline: "2014/01/02"),
+                            Fabricate.build(:milestone, title: "Pt. 2", deadline: "2014/01/06")
+                          ])
 
     visit course_calendar_path(course)
+    page.should have_calendar_entry("1/01", text: "Koans Starts")
     page.should have_calendar_entry("1/02", text: "Koans: Pt. 1 Due")
-    page.should have_calendar_entry("1/04", text: "Koans: Pt. 2 Due")
+    page.should have_calendar_entry("1/03", text: "Work on Koans: Pt. 2")
+    page.should have_calendar_entry("1/04", text: "Work on Koans: Pt. 2")
+    page.should have_calendar_entry("1/05", text: "Work on Koans: Pt. 2")
+    page.should have_calendar_entry("1/06", text: "Koans: Pt. 2 Due")
     page.should_not have_content "Unpublished Assignment"
     page.should_not have_content "Pt. n"
 
@@ -27,16 +41,32 @@ feature "Assignments quizzes and materials appear on calendar", vcr: true do
   scenario "Assignments, as instructor" do
     signin_as :instructor, courses: [course]
 
-    unpublished = Fabricate(:unpublished_assignment, title: "Unpublished Assignment", course: course)
-    Fabricate(:milestone, title: "Pt. n", deadline: "2014/01/03", assignment: unpublished)
+    unpublished = Fabricate(:unpublished_assignment,
+                            title: "Unpublished Assignment",
+                            start_date: "2014/01/01",
+                            course: course,
+                            milestones: [
+                              Fabricate.build(:milestone, title: "Pt. n", deadline: "2014/01/03")
+                            ])
 
-    published = Fabricate(:published_assignment, title: "Koans", course: course)
-    Fabricate(:milestone, title: "Pt. 1", deadline: "2014/01/02", assignment: published)
-    Fabricate(:milestone, title: "Pt. 2", deadline: "2014/01/04", assignment: published)
+    published = Fabricate(:published_assignment,
+                          title: "Koans",
+                          course: course,
+                          start_date: "2014/01/01",
+                          milestones: [
+                            Fabricate.build(:milestone, title: "Pt. 1", deadline: "2014/01/02"),
+                            Fabricate.build(:milestone, title: "Pt. 2", deadline: "2014/01/06")
+                          ])
 
     visit course_calendar_path(course)
+    page.should have_calendar_entry("1/01", text: "Koans Starts")
     page.should have_calendar_entry("1/02", text: "Koans: Pt. 1 Due")
-    page.should have_calendar_entry("1/04", text: "Koans: Pt. 2 Due")
+    page.should have_calendar_entry("1/03", text: "Work on Koans: Pt. 2")
+    page.should have_calendar_entry("1/04", text: "Work on Koans: Pt. 2")
+    page.should have_calendar_entry("1/05", text: "Work on Koans: Pt. 2")
+    page.should have_calendar_entry("1/06", text: "Koans: Pt. 2 Due")
+    page.should have_calendar_entry("1/01", text: "Unpublished Assignment Starts")
+    page.should have_calendar_entry("1/02", text: "Work on Unpublished Assignment: Pt. n")
     page.should have_calendar_entry("1/03", text: "Unpublished Assignment: Pt. n Due")
 
     click_link "Unpublished Assignment: Pt. n Due"
@@ -46,9 +76,14 @@ feature "Assignments quizzes and materials appear on calendar", vcr: true do
   scenario "Fix: Multiple milestones on a day" do
     signin_as :student, courses: [course]
 
-    published = Fabricate(:published_assignment, title: "Koans", course: course)
-    Fabricate(:milestone, title: "Pt. 1", deadline: "2014/01/02", assignment: published)
-    Fabricate(:milestone, title: "Pt. 2", deadline: "2014/01/02", assignment: published)
+    published = Fabricate(:published_assignment,
+                          title: "Koans",
+                          course: course,
+                          start_date: "2014/01/01",
+                          milestones: [
+                            Fabricate.build(:milestone, title: "Pt. 1", deadline: "2014/01/02"),
+                            Fabricate.build(:milestone, title: "Pt. 2", deadline: "2014/01/02")
+                          ])
 
     visit course_calendar_path(course)
     page.should have_calendar_entry("1/02", text: "Koans: Pt. 1 Due")

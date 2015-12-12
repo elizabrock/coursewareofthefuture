@@ -1,8 +1,10 @@
 Fabricator(:course) do
   title "Test Course"
   source_repository "elizabrock/inquizator-test-repo"
-  start_date { Date.today }
-  end_date { Date.today + 90 }
+  end_date { Date.today + 30 }
+  after_build do |course|
+    course.start_date ||= course.end_date - 30
+  end
 end
 
 Fabricator(:course_with_instructor, from: :course) do
@@ -12,6 +14,6 @@ Fabricator(:course_with_instructor, from: :course) do
 end
 
 Fabricator(:past_course, from: :course) do
-  start_date { Date.today - 120 }
+  start_date { Date.today - 60 }
   end_date { Date.today - 30 }
 end

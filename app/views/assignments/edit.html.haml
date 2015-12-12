@@ -3,6 +3,7 @@
 = simple_form_for assignment, url: course_assignment_path(current_course, assignment) do |f|
   = f.input :title
   = f.input :summary
+  = f.input :start_date, label: "Start Date", as: :date
   = f.input :published, hint: "publishing makes an assignment visible to students"
   = f.simple_fields_for :milestones do |m|
     %fieldset

@@ -9,14 +9,18 @@ describe MilestoneSubmissionMailer do
     let(:instructor3){ Fabricate(:instructor) }
     let(:student){ Fabricate(:student, name: "Lisa Smith") }
     let(:course){ Fabricate(:course) }
-    let(:assignment){ Fabricate(:assignment, title: "Test Assignment", course: course) }
+    let(:assignment){ Fabricate(:published_assignment,
+                                title: "Test Assignment",
+                                course: course,
+                                milestones: [
+                                  Fabricate.build(:milestone, title: "Milestone Uno")
+                                ]) }
 
     before do
       course.users << [student, instructor1, instructor2]
       instructor3.courses.should be_empty
 
-      milestone = Fabricate(:milestone, title: "Milestone Uno", assignment: assignment)
-      milestone_submission = Fabricate(:milestone_submission, milestone: milestone, user: student)
+      milestone_submission = Fabricate(:milestone_submission, milestone: assignment.milestones.first, user: student)
     end
 
     it "should send 1 email to each instructor" do

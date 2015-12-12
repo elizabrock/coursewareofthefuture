@@ -1,4 +1,5 @@
 Fabricator(:milestone) do
-  assignment
   deadline { 2.days.from_now }
+  title { "Fabricated Milestone" }
+  instructions { "Add a fabricator to your project" }
 end
