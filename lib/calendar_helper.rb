@@ -103,10 +103,6 @@ module CalendarHelper
       :month_header        => true,
       :calendar_title      => month_names[options[:month]],
       :summary             => "Calendar for #{month_names[options[:month]]} #{options[:year]}",
-      :show_week_numbers   => false,
-      :week_number_class   => 'weekNumber',
-      :week_number_title   => 'CW',
-      :week_number_format  => :iso8601, # :iso8601 or :us_canada,
       :show_other_months   => true
     }
     options = defaults.merge options
@@ -132,9 +128,9 @@ module CalendarHelper
       cal << %(<tr>)
       if options[:previous_month_text] or options[:next_month_text]
         cal << %(<th colspan="2">#{options[:previous_month_text]}</th>)
-        colspan = options[:show_week_numbers] ? 4 : 3
+        colspan = 3
       else
-        colspan = options[:show_week_numbers] ? 8 : 7
+        colspan = 7
       end
       cal << %(<th colspan="#{colspan}" class="#{options[:month_name_class]}">#{options[:calendar_title]}</th>)
       cal << %(<th colspan="2">#{options[:next_month_text]}</th>) if options[:next_month_text]
@@ -142,8 +138,6 @@ module CalendarHelper
     end
 
     cal << %(<tr class="#{options[:day_name_class]}">)
-
-    cal << %(<th>#{options[:week_number_title]}</th>) if options[:show_week_numbers]
 
     week_days.each do |wday|
       cal << %(<th id="#{th_id(Date::DAYNAMES[wday], options[:table_id])}" scope="col">)
@@ -155,7 +149,6 @@ module CalendarHelper
 
     # previous month
     begin_of_week = beginning_of_week(first, first_weekday)
-    cal << %(<td class="#{options[:week_number_class]}">#{week_number(begin_of_week, options[:week_number_format])}</td>) if options[:show_week_numbers]
 
     begin_of_week.upto(first - 1) do |d|
       cal << generate_other_month_cell(d, options)
@@ -178,7 +171,6 @@ module CalendarHelper
         cal << %(</tr>)
         if cur != last
           cal << %(<tr>)
-          cal << %(<td class="#{options[:week_number_class]}">#{week_number(cur + 1, options[:week_number_format])}</td>) if options[:show_week_numbers]
         end
       end
     end
@@ -193,29 +185,6 @@ module CalendarHelper
   end
 
   private
-
-  def week_number(day, format)
-    case format
-    when :iso8601
-      reference_day = seek_previous_wday(day, 1)
-      reference_day.strftime('%V').to_i
-    when :us_canada
-      # US: the first day of the year defines the first calendar week
-      first_day_of_year = Date.new((day + 7).year, 1, 1)
-      reference_day = seek_next_wday(seek_next_wday(day, first_day_of_year.wday), 0)
-      reference_day.strftime('%U').to_i
-    else
-      raise "Invalid calendar week format provided."
-    end
-  end
-
-  def seek_previous_wday(ref_date, wday)
-    ref_date - days_between(ref_date.wday, wday)
-  end
-
-  def seek_next_wday(ref_date, wday)
-    ref_date + days_between(ref_date.wday, wday)
-  end
 
   def first_day_of_week(day)
     day
