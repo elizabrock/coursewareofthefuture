@@ -1,8 +1,7 @@
 module Features
   module ActionHelpers
-
     def div_labeled(label)
-      parent = find(:css, "label", text: label).find(:xpath, "..")
+      find(:css, "label", text: label).find(:xpath, "..")
     end
 
     def milestone(identifier)
@@ -35,7 +34,6 @@ module Features
         click_button "Mark as Covered"
       end
     end
-
   end
 end
 

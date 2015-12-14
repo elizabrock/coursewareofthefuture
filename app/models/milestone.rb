@@ -8,11 +8,33 @@ class Milestone < ActiveRecord::Base
 
   default_scope ->{ order("deadline ASC") }
 
-  before_create :set_default_corequisite_fullpaths
+  after_initialize :set_default_corequisite_fullpaths
 
   def corequisites
     return [] unless corequisite_fullpaths.present?
     corequisite_fullpaths.find_all{|fp| !fp.blank? }.map{ |fp| Corequisite.new(fp) }
+  end
+
+  def populate_from_markdown(section, materials)
+    return if section.blank?
+    lines = section.split("\n")
+    return if lines.empty?
+    if lines.first.start_with?("#")
+      line = lines.delete_at(0)
+      self.title = line.gsub(/#+\s*/,"")
+    end
+    return if lines.empty?
+    corequisite_preamble = "> requires: "
+    if lines.first.start_with?(corequisite_preamble)
+      line = lines.delete_at(0).sub(corequisite_preamble, "")
+      line.split(", ").each do |basename|
+        filename = basename + ".md"
+        material = materials.find_by_filename(filename)
+        self.corequisite_fullpaths << material.fullpath if material
+      end
+    end
+    return if lines.empty?
+    self.instructions = lines.join("\n").strip
   end
 
   def publishable?

@@ -91,6 +91,16 @@ class Material
     matching_child.find(remaining_path)
   end
 
+  def find_by_filename(filename)
+    result = self.children.find{ |c| c.filename == filename }
+    return result if result
+    self.children.each do |child|
+      result = child.find_by_filename(filename)
+      return result if result
+    end
+    nil
+  end
+
   def filename
     @filename ||= File.basename(self.fullpath)
   end

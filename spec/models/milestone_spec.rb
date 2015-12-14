@@ -59,4 +59,95 @@ describe Milestone do
       Fabricate.build(:milestone, deadline: 10.days.from_now).publishable?.should be_truthy
     end
   end
+  context "#populate_from_markdown", vcr: true do
+    let(:assignment){ Fabricate(:course).assignments.build }
+    let(:milestone){ assignment.milestones.build }
+    let(:expected_instructions){ "Pellentesque ornare sem lacinia quam venenatis vestibulum." }
+    before do
+      octoclient = Fabricate(:user).octoclient
+      course = assignment.course
+      materials = Material.materials(octoclient, course.source_repository)
+      milestone.populate_from_markdown(source, materials)
+    end
+    context "blank string" do
+      let(:source){ "" }
+      it "should not populate the milestone" do
+        milestone.title.should be_nil
+        milestone.instructions.should be_nil
+        milestone.corequisites.should be_empty
+      end
+    end
+    context "only a title and instructions, no corequisites" do
+      let(:source){ "## Foo Milestone\nPellentesque ornare sem lacinia quam venenatis vestibulum." }
+      it "should populate the milestone" do
+        milestone.title.should == "Foo Milestone"
+        milestone.instructions.should == expected_instructions
+        milestone.corequisites.should be_empty
+      end
+    end
+    context "title, instructions and corequisites" do
+      let(:source){ "## Foo Milestone\n> requires: life-skills, nyan-cat\nPellentesque ornare sem lacinia quam venenatis vestibulum." }
+      it "should populate the milestone" do
+        milestone.title.should == "Foo Milestone"
+        milestone.instructions.should == expected_instructions
+        milestone.corequisites.map(&:formatted_title).should == ["Life Skills", "Nyan Cat"]
+      end
+    end
+    context "title, instructions, corequisites, with missing corequisites" do
+      let(:source){ "## Foo Milestone\n> requires: life-skills, not-there, nyan-cat\nPellentesque ornare sem lacinia quam venenatis vestibulum." }
+      it "should populate the milestone" do
+        milestone.title.should == "Foo Milestone"
+        milestone.instructions.should == expected_instructions
+        milestone.corequisites.map(&:formatted_title).should == ["Life Skills", "Nyan Cat"]
+      end
+    end
+    context "title, instructions, corequisites, with malformed corequisites" do
+      let(:source){ "## Foo Milestone\n> requires: life-skills nyan-cat\nPellentesque ornare sem lacinia quam venenatis vestibulum." }
+      it "should populate the milestone" do
+        milestone.title.should == "Foo Milestone"
+        milestone.instructions.should == expected_instructions
+        milestone.corequisites.should be_empty
+      end
+    end
+    context "only a title and corequisites, and no instructions" do
+      let(:source){ "## Foo Milestone\n> requires: life-skills, nyan-cat" }
+      it "should populate the milestone" do
+        milestone.title.should == "Foo Milestone"
+        milestone.instructions.should be_nil
+        milestone.corequisites.map(&:formatted_title).should == ["Life Skills", "Nyan Cat"]
+      end
+    end
+    context "only a title, and no instructions or corequisites" do
+      let(:source){ "## Foo Milestone" }
+      it "should populate the milestone" do
+        milestone.title.should == "Foo Milestone"
+        milestone.instructions.should be_nil
+        milestone.corequisites.should be_empty
+      end
+    end
+    context "with a instructions, and no corequisites or title" do
+      let(:source){ "Pellentesque ornare sem lacinia quam venenatis vestibulum." }
+      it "should populate the milestone" do
+        milestone.title.should be_nil
+        milestone.instructions.should == expected_instructions
+        milestone.corequisites.should be_empty
+      end
+    end
+    context "with a instructions and corequisites, and no title" do
+      let(:source){ "> requires: life-skills, nyan-cat\nPellentesque ornare sem lacinia quam venenatis vestibulum." }
+      it "should populate the milestone" do
+        milestone.title.should be_nil
+        milestone.instructions.should == expected_instructions
+        milestone.corequisites.map(&:formatted_title).should == ["Life Skills", "Nyan Cat"]
+      end
+    end
+    context "with corequisites and no title or instructions" do
+      let(:source){ "> requires: life-skills, nyan-cat" }
+      it "should populate the milestone" do
+        milestone.title.should be_nil
+        milestone.instructions.should be_nil
+        milestone.corequisites.map(&:formatted_title).should == ["Life Skills", "Nyan Cat"]
+      end
+    end
+  end
 end

@@ -7,7 +7,7 @@ class Assignment < ActiveRecord::Base
   accepts_nested_attributes_for :milestones
 
   validate :start_date_must_be_appropriate, if: [:course, :start_date]
-  validates_presence_of :course
+  validates_presence_of :course, :title
   validates_presence_of :start_date, if: Proc.new{ |a| a.published? }
   validates_associated :milestones
   validates_length_of :milestones, minimum: 1, message: "must contain at least one milestone", if: Proc.new{ |a| a.published? }
@@ -33,15 +33,21 @@ class Assignment < ActiveRecord::Base
 
   def populate_from_github(client)
     markdown = Material.retrieve(source, course.source_repository, client).content
-    sections = markdown.split("##").each do |section|
-      title, body = section.split("\n",2)
-      title.gsub!(/#+\s*/,"")
-      if summary.blank?
-        self.title = title
-        self.summary = body
-      else
-        self.milestones.build(title: title, instructions: body)
-      end
+    materials = Material.materials(client, course.source_repository)
+
+    sections = markdown.split("##")
+    if sections.first.match(/^#[^#]/)
+      title_section = sections.delete_at(0)
+      title, summary = title_section.split("\n",2)
+      self.title = title.gsub(/#\s*/,"")
+      self.summary = summary.strip
+    elsif !sections.first.match(/^##/) # This isn't a milestone, either..
+      self.summary = sections.delete_at(0).strip
+    end
+
+    sections.each do |section|
+      full_section = "##" + section
+      self.milestones.build.populate_from_markdown(full_section, materials)
     end
   end
 

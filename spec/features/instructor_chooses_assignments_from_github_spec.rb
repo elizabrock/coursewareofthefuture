@@ -21,7 +21,7 @@ feature "Instructor chooses assignments from github", vcr: true, js: true do
     click_link "Assignments"
     click_link "New Assignment"
     page.should have_options_for("Assignment",
-                options: ["Cheers", "Koans Online", "Ruby Koans", "Instructions", "Unfinished Exercise"])
+                options: ["Cheers", "Koans Online", "Ruby Koans", "Instructions", "Unfinished Exercise", "Half Baked Assignment", "Almost Empty Exercise", "No Milestones"])
 
     select "Ruby Koans", from: "Assignment"
     click_button "Set Milestones"
@@ -55,6 +55,41 @@ feature "Instructor chooses assignments from github", vcr: true, js: true do
     end
     within(milestone("Triangles")) do
       page.should have_content "Triangles are shapes."
+    end
+  end
+
+  scenario "Sad Path, attempting to create an unfinished assignment" do
+    course = Fabricate(:course,
+      title: "Cohort 4",
+      start_date: "2014/01/16",
+      end_date: "2014/02/03")
+    signin_as :instructor, courses: [course]
+    visit course_path(course)
+    click_link "Assignments"
+    click_link "New Assignment"
+    select "Unfinished Exercise", from: "Assignment"
+    click_button "Set Milestones"
+    # FIXME: A user-friendly message would be much more ideal here.
+    page.should have_content("Your assignment could not be created. Title can't be blank.")
+    find_field("Assignment").value.should == "01-intro-to-ruby/exercises/01-cheers.md"
+  end
+
+  scenario "Sadish Path, attempting to create a half-baked assignment" do
+    course = Fabricate(:course,
+      title: "Cohort 4",
+      start_date: "2014/01/16",
+      end_date: "2014/02/03")
+    signin_as :instructor, courses: [course]
+    visit course_path(course)
+    click_link "Assignments"
+    click_link "New Assignment"
+    select "Half Baked Assignment", from: "Assignment"
+    click_button "Set Milestones"
+
+    find_field("Title").value.should == "Half-Baked Assignment"
+    find_field("Summary").value.should == ""
+    within_fieldset("Milestone 1") do
+      find_field("Title").value.should == "Milestone 1"
     end
   end
 

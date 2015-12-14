@@ -13,8 +13,12 @@ class AssignmentsController < ApplicationController
     assignment.assign_attributes(assignment_params)
     begin
       assignment.populate_from_github(current_user.octoclient)
-      assignment.save!
-      redirect_to edit_course_assignment_path(current_course, assignment)
+      if assignment.save
+        redirect_to edit_course_assignment_path(current_course, assignment)
+      else
+        flash.now[:alert] = "Your assignment could not be created. #{assignment.errors.full_messages.join(", ")}."
+        render :new
+      end
     end
   end
 
